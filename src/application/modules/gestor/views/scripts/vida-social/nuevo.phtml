@@ -1,0 +1,126 @@
+<form method="post" action="" id="frmVidaSocial">
+    <div id="mictaInnerContent" class="grid20">
+        <a id="linkVolver" class="right" href="/gestor/vida-social/">« Volver</a>
+        <h6 class="Titulo980 bold">NUEVO ARTÍCULO EN VIDA SOCIAL</h6>
+        <div id="adminGalVD">
+            <div class="block grid17">
+                <label class="labelGestorVidaS Trebuchet" for="titulo">
+                    <span class="req">*</span> Título
+                </label>
+                <?= $this->frm->titulo->setAttribs(array("id" => "titulo", "maxlength"=>"60", "class" => "inputAdminG  ml10 left"))->renderViewHelper() ?>
+
+                <div class="right bad response errorvidasocial mT5 hide">
+                    Ingresa un titulo para el artículo.
+                    <?/*
+                    $errors = $this->frm->titulo->getMessages();
+                    foreach ($errors as $e) {
+                        echo $e;
+                    }*/
+                    ?>
+                </div>
+            </div>
+            <div class="block grid17">
+                <label class="labelGestorVidaS Trebuchet" for="contenido">
+                    <span class="req">*</span> Contenido
+                </label>
+<?= $this->frm->contenido->setAttribs(array("id" => "contenido",  "class" => "contenidoAdminG  ml10 left"))->renderViewHelper() ?>
+                <div class="right bad response errorvidasocial mT5 hide">Ingresa un contenido para el artículo.</div>
+            </div>
+            <div class="grid17 block mT5" >
+                <div class="left">
+                    <label class="labelNEsR  ml5 left c3 Trebuchet" for="fechainievent">
+                      <!--<span class="req" title="Requerido">*</span>-->
+                        <span class="req">*</span> Fecha del Evento: </label>
+<?= $this->frm->fechainievent->setAttribs(array("id" => "fechainievent", "readonly"=>"true", "size"=>"9", "class" => "left ", "style" => "margin-left: 76px;"))->renderViewHelper() ?>
+                    <a href="#">
+                        <img class="ml10" width="23" height="23" src="<?= MEDIA_URL ?>/images/calendar.png">
+                    </a>
+                </div>
+                <div class="right bad response errorvidasocial hide mT5">
+                    Selecciona una Fecha de Inicio del Evento
+                </div>
+            </div>
+            <div class="grid17 block mT5" >
+                <div class="left">
+                    <label class="labelNEsR  ml5 left c3 Trebuchet" for="fechaini">
+                      <!--<span class="req" title="Requerido">*</span>-->
+                        <span class="req">*</span> Fecha inicio: </label>
+<?= $this->frm->fechaini->setAttribs(array("id" => "fechaini", "readonly"=>"true", "size"=>"9", "class" => "left ", "style" => "margin-left: 106px;"))->renderViewHelper() ?>
+                    <a href="#">
+                        <img class="ml10" width="23" height="23" src="<?= MEDIA_URL ?>/images/calendar.png">
+                    </a>
+                </div>
+                <div class="right bad response errorvidasocial hide mT5">
+                    Selecciona una Fecha de Inicio y Fin para el artículo
+                </div>
+                <div class="left ml10">
+                    <label class="labeldateGest  ml5 mR10 left c3 Trebuchet" for="fechafin">
+                      <!--<span class="req" title="Requerido">*</span>-->
+                        <span class="req">*</span> Fecha Fin: </label>
+<?= $this->frm->fechafin->setAttribs(array("id" => "fechafin", "readonly"=>"true", "size"=>"9", "class" => "left "))->renderViewHelper() ?>
+                    <a href="#">
+                        <img class="ml10" width="23" height="23" src="<?= MEDIA_URL ?>/images/calendar.png">
+                    </a>
+                </div>
+                
+            </div>
+            <div class="block grid17 left ">
+                <label class="labelGestorVidaS Trebuchet" for="publicar">Publicar</label>
+<?= $this->frm->publicar->setAttribs(array("id" => "publicar", "class" => "ml20 "))->renderViewHelper() ?>
+                <label class="Trebuchet11 black m10all " for="publicar">El artículo se publicará una vez creado</label>
+            </div>
+
+<!--            <div class="block grid17 left ">
+                <label class="labelGestorVidaS Trebuchet" for="principal">Principal</label>
+< ?= $this->frm->principal->setAttribs(array("id" => "principal", "class" => "ml20 "))->renderViewHelper() ?>
+                <label class="Trebuchet11 black m10all " for="principal">El artículo se establecerá como principal (en Portada).</label>
+            </div>-->
+
+
+            <div class="block grid17 ">
+                <label class="labelGestorVidaS Trebuchet" for="ftitulo">Imágenes</label>
+                <input id="txtImage" class="inputAdminG ml10 left gray Trebuchet11" type="text" value="Formatos permitidos> jpg, png, gif" name="nombres">
+                <a class="BrowserBtn left ml10"></a>
+                <input type="file" name="path_logo_preview" id="path_logo_preview" />
+            </div>
+
+            <div class="block grid18 ">
+            <label class="labelGestorVidaS Trebuchet" for="txtImageDescription">Leyenda de foto</label>
+            <input id="txtImageDescription" class="inputAdminG ml10 left gray Trebuchet11" type="text" value="" name="descripcion" maxlength="120">
+            <a id="upload-data" class="AdGesAddBtn left ml10"></a>
+            
+            <div id="error_sinstructions2" class="right response errorvidasocial mT5 bad">
+                <span id="me_sinstructions2"></span>
+            </div>
+            <div id="preloader" class="left"></div>
+
+            </div>
+
+            <div class="clear"></div>
+            
+            <div id="adminGestImg">
+                <div class="aGesImgBig left">
+                    <div id="titleFI">Principal</div>
+                    <div id="FirstImagen"></div>
+                    <div id="SecondImagen"></div>
+                    <!-- <div class="admiGeCrossBig"></div>-->
+                </div>
+                <div class="right" id="galeria">
+                    <ul id="contentImgs">
+                        <!-- imagenes -->
+                    </ul>
+                </div>
+            </div>
+            <div class="pT20Z" id="adminSaveCancEB">
+                <a href="#" class="adminSaveBtnbene left"></a>
+                <a href="/gestor/vida-social/" class="adminQuitBtnbene left"></a>
+            </div>
+        </div>
+    </div>
+    <div id="listaimagenes_content" class="hide">
+        
+    </div>
+    <div id="listadesc_content" class="hide">
+        
+    </div>
+</form>

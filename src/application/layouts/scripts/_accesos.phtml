@@ -1,0 +1,92 @@
+<?php  $arrayTipoBen=$this->layout()->tipos_beneficio_activoPublicado; ?>
+<div id="cajaAccesos">
+    <?php /*
+    <!--    <h6>No te pierdas:</h6>-->
+    */
+    ?>
+    <ul class="menuPromMain">
+        <? if(!empty($arrayTipoBen["2"])){ ?>
+        <li>
+            <h3>
+                    <a class="bDpromociones btnDirectos" href="<?php echo $this->url(array(
+                    'action'=>'index',
+                    'controller'=>'catalogo-virtual',
+                    'module'=>'suscriptor'),
+                    'default',true); ?>/nuevo/productos-servicios/"></a>
+             </h3>
+        </li>
+        <? } if(!empty($arrayTipoBen["4"])){ ?>
+        <li>
+            <h3>
+                <a class="bDtickets btnDirectos" href="<?php echo $this->url(array(
+                'action'=>'index',
+                'controller'=>'catalogo-virtual',
+                'module'=>'suscriptor'),
+                'default',true); ?>/nuevo/entrada/"></a>
+            </h3>
+        </li>    
+        <? } if(!empty($arrayTipoBen["1"])){ ?>
+        <li>
+            <h3>
+                <a class="bDbenfpermanentes btnDirectos" href="<?php echo $this->url(array(
+                'action'=>'index',
+                'controller'=>'catalogo-virtual',
+                'module'=>'suscriptor'),
+                'default',true); ?>/nuevo/viaje/"></a>
+            </h3>
+        </li>
+        
+        <? } if(!empty($arrayTipoBen["3"])){ ?>
+        <li>
+            <h3>
+                <a class="bDcierrapuertas btnDirectos" href="<?php echo $this->url(array(
+                'action'=>'index',
+                'controller'=>'catalogo-virtual',
+                'module'=>'suscriptor'),
+                'default',true); ?>/nuevo/ventas-exclusivas/"></a>
+            </h3>
+        </li>
+        <? } if(!empty($arrayTipoBen["6"])){ ?>
+        <li>
+            <h3>
+                <a class="bDcines btnDirectos" href="<?php echo $this->url(array(
+                'action'=>'index',
+                'controller'=>'catalogo-virtual',
+                'module'=>'suscriptor'),
+                'default',true); ?>/nuevo/cine/"></a>
+            </h3>
+        </li>        
+        <? } if(!empty($arrayTipoBen["8"])){ ?>
+        <li>
+            <h3>
+                <a class="bDrestaurantes btnDirectos" href="<?php echo $this->url(array(
+                'action'=>'index',
+                'controller'=>'catalogo-virtual',
+                'module'=>'suscriptor'),
+                'default',true); ?>/nuevo/restaurante/"></a>
+            </h3>
+        </li>       
+        <? } if(!empty($arrayTipoBen["9"])){ ?>
+        <li>
+            <h3>
+                <a class="bDeducacion btnDirectos" href="<?php echo $this->url(array(
+                'action'=>'index',
+                'controller'=>'catalogo-virtual',
+                'module'=>'suscriptor'),
+                'default',true); ?>/nuevo/educacion/"></a>
+            </h3>
+        </li>
+        <? } ?>
+        <li>
+            <h3>
+                <a class="bDclubVino btnDirectos hideIndent" href="http://closduvin.com.pe/" target="_blank" >Club Del Vino</a>
+            </h3>
+        </li>
+        <li>
+            <h3>
+                <a class="bDClubTienda btnDirectos hideIndent" href="http://clubsuscriptores.pe/tienda/" target="_blank" >Tienda Club</a>
+            </h3>
+        </li>
+    </ul>
+
+</div>

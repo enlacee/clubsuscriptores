@@ -1,0 +1,65 @@
+<?php
+$fechaini = new Zend_Date($this->encuesta['fecha_inicio']);
+$fechafin = new Zend_Date($this->encuesta['fecha_fin']);
+
+//$now = new Zend_Date();
+//echo $now->toString('YYYY-MM-dd HH:mm:ss').' - '.$now; exit;
+?>
+	<style>
+      	.example { font-family: Arial,Helvetica,sans-serif,Garuda; font-size: 12px; color: #999999; line-height: 150%; }
+      	.awesome .graph-header { /*width: 370px;*/ }
+	  	.example li{
+	  		color: #999999;
+			text-align: left;
+		}
+		.description { margin-top: 2px; }
+		.description strong{ color: #565A5B; }
+		
+		#encuesta-graph li span.barra {
+		    background-color: #4C4C4C;
+		    display: block;
+		    height: 10px;
+		    width: 0;
+		}
+		
+		#encuesta-graph li span.ini {
+		    background-color: #999999;
+		    display: block;
+		    height: 14px;
+		    width: 1px;
+		}
+		
+		#encuesta-graph li span.top {
+		    background-color: #FF5300;
+		}
+		
+    </style>
+	<div class="example awesome" align="center">
+      <div class="graph-header">
+        <h4>Encuesta: <?php echo $this->escape($this->encuesta['nombre']); ?></h4>
+        <p>
+        	<?php echo $this->encuesta['pregunta']; ?><br/>(Votos: <?php echo $this->total_votos['tvotos']; ?>) Inicio: <?php echo $fechaini->toString(Zend_Date::DATES); ?> - Fin: <?php echo $fechafin->toString(Zend_Date::DATES); ?>
+        </p>
+      </div>
+      <div id="encuesta-graph" class="graph" style="width: 470px; height: auto;">
+      <ul>
+      	<?php foreach ($this->resultado_encuesta as $opciones):
+      		$porcent = round((($opciones['votos']*100)/$this->total_votos['tvotos']),0);
+      	?>
+      	<li><span class="ini"></span><span class="barra" style="width: <?php echo $porcent.'%'; ?>"><input type="hidden" value="<?php echo $porcent; ?>"/></span></li>
+      	<li class="description"><strong><?php echo $porcent.'%'; ?></strong>&nbsp;&nbsp;<?php echo $opciones['opcion'].' ('.$opciones['votos'].' voto'.($opciones['votos']==1?'':'s').')'; ?></li>
+      	<?php endforeach;?>
+      </ul>
+      </div>
+    </div>
+    <script type="text/javascript">
+    	var obj = '', max = 0;
+    	$('.barra input').each(function(){
+        	var eval = Math.round($(this).val());
+			if(eval>max){
+				max = $(this).val();
+				obj = $(this);
+			}
+    	});
+    	obj.parent().addClass('top');
+    </script>

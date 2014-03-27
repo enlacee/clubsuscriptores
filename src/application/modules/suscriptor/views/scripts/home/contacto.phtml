@@ -1,0 +1,150 @@
+<!--CONTENT-->
+<div id="main-content2" class="grid20">
+	<div id="content" class="grid14 left">
+            <div id="TopboxBack">
+                <div id="topBox" class="grayborder2 mB20 r5">				
+                    <div class="flowWAll">	
+                        <h1 class="Titulo680 bold font18">CONTACTO</h1>
+                        <div id="cajaContacto" class="mictaContet grayborder2 r3">
+                            <p class="mctaDescription"> Si tienes alguna duda o pregunta, o simplemente, quieres brindarnos un consejo; puedes escribirnos señalando el asunto. Te responderemos a la brevedad posible. Gracias! </p>
+                            <form id="formContact" action="" method="post">
+                                <fieldset class="all">
+                                    <div class="block">
+                                        <label class="labelFC left" for="nombres"> <span class="req" title="Requerido">*</span> Nombre: </label>
+                                        <?php
+                                        $errors = $this -> form_contacto -> nombres -> hasErrors();
+                                        echo $this -> form_contacto -> nombres -> setAttribs(array('id' => 'nombres', 'class' => 'fields inputFC left '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '1')) -> renderViewHelper();
+                                        ?>
+                                        <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                        <?php  echo($errors ? $this -> form_contacto -> nombres -> errMsg : '');?>
+                                        </span>
+                                        <?php //var_dump($errors,$this->ispost); ?>
+                                    </div>
+                                    <div class="block">
+                                        <label class="labelFC left" for="apellidos"> <span class="req" title="Requerido">*</span> Apellidos: </label>
+                                        <?php
+                                        $errors = $this -> form_contacto -> apellidos -> hasErrors();
+                                        echo $this -> form_contacto -> apellidos -> setAttribs(array('id' => 'apellidos', 'class' => 'fields inputFC left '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '2')) -> renderViewHelper();
+                                        ?>
+                                        <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                        <?php  echo($errors ? $this -> form_contacto -> apellidos -> errMsg : '');?>
+                                        </span>
+                                        <?php //var_dump($errors,$this->ispost); ?>
+                                    </div>
+                                    <div class="block">
+                                        <label class="labelFC left" for="nro_documento"> <span class="req" title="Requerido">*</span> Documento: </label>
+                                        <div class="divFC left">
+                                        <?php
+                                        $errors = $this -> form_contacto -> tipo_documento -> hasErrors();
+                                        $properties = array('id' => 'tipo_documento', 'class' => 'left selectSFC', 'tabindex' => '3');
+                                        echo $this -> form_contacto -> tipo_documento -> setAttribs($properties) -> renderViewHelper();
+                                        ?>
+                                        <?php
+                                        $errors = $this -> form_contacto -> nro_documento -> hasErrors();
+                                        $properties = array('id' => 'nro_documento', 'class' => 'right fields inputSFC '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '4', 'maxlength'=> '8');
+                                        echo $this -> form_contacto -> nro_documento -> setAttribs($properties) -> renderViewHelper();
+                                        ?>
+                                        </div>
+                                        <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                        <?php  echo($errors ? $this -> form_contacto -> nro_documento -> errMsg : '');?>
+                                        </span>
+                                        <?php //var_dump($errors,$this->ispost); ?>
+                                    </div>
+                                    <div class="block">
+                                        <label class="labelFC left" for="telefonos"> <span class="req" title="Requerido">*</span> Teléfonos: </label>
+                                        <?php
+                                        $errors = $this -> form_contacto -> telefonos -> hasErrors();
+                                        echo $this -> form_contacto -> telefonos -> setAttribs(array('id' => 'telefonos', 'class' => 'fields inputFC left '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '5')) -> renderViewHelper();
+                                        ?>
+                                        <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                        <?php  echo($errors ? $this -> form_contacto -> telefonos -> errMsg : '');?>
+                                        <?php //var_dump($errors,$this->ispost); ?>
+                                        </span>
+                                    </div>
+                                    <div class="block">
+                                        <label class="labelFC left" for="email"> <span class="req" title="Requerido">*</span> Email: </label>
+                                        <?php
+                                        $errors = $this -> form_contacto -> email -> hasErrors();
+                                        echo $this -> form_contacto -> email -> setAttribs(array('id' => 'email', 'class' => 'fields inputFC left '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '6')) -> renderViewHelper();
+                                        ?>
+                                        <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                        <?php  echo($errors ? $this -> form_contacto -> email -> errMsg : '');?>
+                                        </span>
+                                        <?php //var_dump($errors,$this->ispost); ?>
+                                    </div>
+                                    <div class="block">
+                                        <label class="labelFC left" for="categoria"> <span class="req" title="Requerido">*</span> Asunto: </label>
+                                        <div class="divFC left">
+                                            <select id="categoria" name="categoria" class="selectFC fields ready left" tabindex="7">
+                                                    <option value="Sugerencia">Sugerencia</option>
+                                                    <option value="Suscripción">Suscripción</option>
+                                                    <option value="Consulta">Consulta</option>
+                                            </select>
+                                        </div>
+                                        <span class="response left"></span>
+                                    </div>
+                                    <div class="block">
+                                        <label class="labelFC left" for="mensaje"> <span class="req" title="Requerido">*</span> Mensaje: </label>
+                                        <?php
+                                        $errors = $this -> form_contacto -> mensaje -> hasErrors();
+                                        echo $this -> form_contacto -> mensaje -> setAttribs(array('id' => 'mensaje','class' => 'textareaFC fields left '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '8')) -> renderViewHelper();
+                                        ?>
+                                        <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                            <?php  echo($errors ? $this -> form_contacto -> mensaje -> errMsg : '');?>
+                                        </span>
+                                        <?php //var_dump($errors,$this->ispost); ?>
+                                    </div>
+                                    <div class="block">
+                                        <div class="emptyFC">
+                                        <?php  echo $this -> form_contacto -> challenge;?>
+                                        </div>
+                                    </div>
+                                    <div class="block">
+                                        <div class="emptyFC">
+                                        <?php
+                                        echo $this -> form_contacto -> enviar -> setAttribs(array('id' => 'MictaSendbtn', 'class' => 'btnAll left')) -> renderViewHelper();
+                                        ?>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>	
+
+                </div>
+            </div>
+	</div>
+	<!--SIDEBAR -->
+    <div id="sidebar" class="grid6">
+			<div id="socialifeBox" class="grayborder2 mB20 r5">
+				<h2 class="mbgray bold font18">ATENCIÓN AL SUSCRIPTOR</h2>
+				<p class="vidaSocialBajada Trebuchet">
+					Ponemos a tu disposición nuestra Central de Atención al Cliente para cualquier duda o consulta sobre nuestros beneficios.
+				</p>
+				<div id="horarioAtencion" class=" Trebuchet">
+					<span class="cshrTitle mbgray Trebuchet14 bold">Horario de atención:</span>
+					<p class=" Trebuchet11 c3">
+						Lunes a Viernes: 7am - 5pm
+						<br />
+						Sábados - Domingos y feriados: 7am - 1pm
+					</p>
+				</div>
+				<div id="horarioAtencion" class=" Trebuchet">
+					<span class="cshrTitle mbgray Trebuchet14 bold">Central telefónica</span>
+					<p class=" Trebuchet11 c3">
+						311-5100
+					</p>
+				</div>
+				<p class="vidaSocialBajada Trebuchet">
+					También puedes escribirnos a nuestra dirección de correo electrónico.
+				</p>
+				<div id="horarioAtencion" class=" Trebuchet">
+					<span class="cshrTitle mbgray Trebuchet14 bold">E-mail:</span>
+					<p class=" Trebuchet11 c3">
+						<a class="Trebuchet" >clubdesuscriptores@comercio.com.pe</a>
+					</p>
+				</div>
+			</div>
+		</div>
+</div>
+<!--footer -->

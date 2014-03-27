@@ -1,0 +1,77 @@
+<div id="boxes">
+    
+	<!-- Ventana de Prueba : Redimir Cupon -->
+	<div id="winRedimirCupon" class="window winRedimirCupon_box">
+    <div class="innerWin"> 
+        <a href="#Cerrar" class="sptAll closeWM icoCWM"><span class="hide">Cerrar</span></a>
+        <div class="iWindow r5">
+        	<div class="bLB3 r5 inWindow">
+            	<div id="content-winRedimirCupon" class="all">
+            		<!--verProceso-->
+              </div>
+          </div>    
+        </div>
+    </div>
+	</div>
+    
+    <!-- Ventana Cambiar Contraseña : Establecimiento -->
+    <?php if(!empty($this->layout()->frmChangePassE)):
+        $frmChangePassword = $this->layout()->frmChangePassE; ?>
+    <div id="winChangePassE" class="window">
+        <div class="innerWin"> <a id="idCloseChangeE" href="#Cerrar" class="sptAll closeWM icoCWM"><span class="hide">Cerrar</span></a>
+          <div class="iWindow r5">
+              <div class="bLB3 r5 inWindow">
+                
+                <h6 class="TilutoLightboxES">Cambio de Clave</h6>
+                <span class="adminCclaveTi">Para cambiar tu clave, ingresa los siguientes datos:</span>
+<!--                <div class="flash-message success">
+                    <div class="msgsTime msgYTIE"><div class="contenidoFlashMessage mB10 r5"></div></div>
+                </div>-->
+                  
+                <div id="bgmiAdminClave">
+                    <form id="cClaveCP" action="<?=SITE_URL.$frmChangePassword->getAction(); ?>" method="post">
+                      <fieldset id="mictaCambioClave" class="field textoinput pl10">
+                        <div class="block mB0">
+                          <label class="adminEslabelN" for="fACtns"> 
+                            <span class="req" title="Requerido">*</span> 
+                            Contraseña antigua: </label>
+                            <?= $frmChangePassword->oldpswd->setAttribs(array('id' => 'fACtns', 'class' => 'fields inputNmicta inputN left'))->renderViewHelper(); ?>
+                            <? $hasError = $frmChangePassword->oldpswd->hasErrors(); ?>
+<!--                        <input id="fEmail" class="fields inputNmicta left" type="text" tabindex="1" maxlength="32" value="" name="email">-->
+                            <span class="response cGray2 right <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $frmChangePassword->oldpswd->errMsg : '' ?></span>
+                        </div>
+                        <div class="block left mB0">
+                          <label class="adminEslabelN" for="fClave"> 
+                            <span class="req" title="Requerido">*</span> 
+                            Contraseña nueva: </label>
+                            <?= $frmChangePassword->pswd->setAttribs(array('id' => 'fClave', 'maxlength' => 32, 'class' => 'fields inputNmicta inputN left'))->renderViewHelper(); ?>
+                            <? $hasError = $frmChangePassword->pswd->hasErrors(); ?>
+<!--                          <input id="fEmailAd" class="fields inputNmicta left" type="text" tabindex="1" maxlength="32" value="" name="email">-->
+                            <span class="response cGray2 right <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $frmChangePassword->pswd->errMsg : '' ?></span>
+                        </div>
+                        <div class="block mB0">
+                          <label class="adminEslabelN" for="fRClave"> 
+                            <span class="req" title="Requerido">*</span> 
+                            Contraseña nueva:<br/>(confirmación) </label>
+                            <?= $frmChangePassword->pswd2->setAttribs(array('id' => 'fRClave', 'maxlength' => 32, 'class' => 'fields inputNmicta inputN left'))->renderViewHelper(); ?>
+                            <? $hasError = $frmChangePassword->pswd2->hasErrors(); ?>
+<!--                          <input id="fNombre" class="fields inputNmicta left" type="text" tabindex="1" maxlength="32" value="" name="email">-->
+                            <span class="response cGray2 right <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $frmChangePassword->pswd2->errMsg : '' ?> </span>
+                        </div>
+                        <div class="bloque">
+<!--                        <input type="submit" id="saveChangesBt" value="" class="btnAll saveChangesBt" style="margin-left: 270px;"/>-->
+                            <input type="submit" id="saveChangesBt" value="" class="btnAll saveChangesBt" tabindex="4"/>
+                        </div>
+                        <div class="hide messageChangePassE" id="idMessageChangePassE"></div>
+                      </fieldset>
+                    </form>
+                </div>
+                
+            </div>
+          </div>
+        </div>
+    </div>
+    <?php endif; ?>
+    
+    <div id="mask"> </div>
+</div>

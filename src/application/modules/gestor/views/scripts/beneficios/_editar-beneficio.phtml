@@ -1,0 +1,673 @@
+<form id="formBeneficio" class="all" method="post" action="" enctype="multipart/form-data">
+    <input type="hidden" value="<?=$this->idBen?>" id="idBen">
+    <fieldset id="dataFormNBF" class="fieldsBen all">
+        <div class="bloqueNbeneficio">
+            <? $hasError = $this->formBeneficio->establecimiento_id->hasErrors(); ?>
+            <label class="labelGestorBeneficio left" for="establecimiento_id">
+                <span class="req">*</span> Establecimiento: 
+            </label>
+            <?= $this->formBeneficio->establecimiento_id->setAttribs(
+                    array(
+                        'id' => 'establecimiento_id', 
+                        'class' => 'selectBenN left requerido  ' . ((!$hasError) ? ' ready' : ''),
+                        'tabindex' => '1'))->renderViewHelper();?>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->establecimiento_id->errMsg : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError = $this->formBeneficio->tipo_beneficio_id->hasErrors(); ?>
+            <label class="labelGestorBeneficio left" for="tipo_beneficio_id">
+                <span class="req">*</span> Tipo de Beneficio: 
+            </label>
+            <?= $this->formBeneficio->tipo_beneficio_id->setAttribs(
+                array('id' => 'tipo_beneficio_id', 
+                    'class' => 'selectBenN left requerido ' . ((!$hasError) ? ' ready' : ''),
+                    'tabindex' => '2'))->renderViewHelper();?>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->tipo_beneficio_id->errMsg : '' ?>
+            </span>
+        </div>  
+        <div class="bloqueNbeneficio">
+            <? $hasError = $this->formBeneficio->anunciante_id->hasErrors(); ?>
+            <label class="labelGestorBeneficio left" for="anunciante_id">
+                <span class="req">*</span> Anunciante: 
+            </label>
+            <?= $this->formBeneficio->anunciante_id->setAttribs(
+                    array(
+                        'id' => 'anunciante_id',
+                        'class' => 'selectBenN left requerido ' . ((!$hasError) ? ' ready' : ''), 
+                        'tabindex' => '2'))->renderViewHelper(); ?>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->anunciante_id->errMsg : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError = $this->formBeneficio->titulo->hasErrors(); ?>
+            <label class="labelGestorBeneficio left" for="titulo">
+                <span class="req">*</span> Nombre del beneficio: 
+            </label>
+            <?= $this->formBeneficio->titulo->setAttribs(
+                    array('id' => 'titulo', 
+                        'class' => 'inputBenN left requerido ' . ((!$hasError) ? ' ready' : ''),
+                        'tabindex' => '3'))->renderViewHelper(); ?>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->titulo->errMsg : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio newLogoB">
+            <? $hasError = $this->formBeneficio->path_logo->hasErrors(); ?>
+            <label class="labelGestorBeneficio left" for="path_logo"><span class="req">*</span> Imagen: </label>            
+            <div class="divBenN left">
+                <div id="img_avatar"  class="left" >
+                    <img src="<?= ($this->imgPhoto == '') 
+                                    ? MEDIA_URL . '/images/photoDefault.png' . "?" . time() 
+                                    : ELEMENTS_URL . '/images/beneficios/' . $this->imgPhoto . "?" . time(); ?>" 
+                         width="210" height="115"/>
+                </div>
+                <?= $this->formBeneficio->path_logo->setAttribs(
+                    array('id' => 'path_logo', 
+                        'class' => 'left opacity requerido ' . ((!$hasError) ? ' ready' : ''),
+                        'tabindex' => '4'))->renderFile(); ?>
+                <a for="path_logo" id="up_logo" class="btnAdminAll left"><span class="hide">Subir</span></a>
+            </div>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                    <?= $hasError ? $this->formBeneficio->path_logo->errMsg : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <label class="labelGestorBeneficio left" for="chapita"><span class="req">*</span> "Chapita": </label>
+            <div id="previewChapa" class="divBenN left">
+                <div id="outPreview" class="left iTooltip">
+                    <div id="iPreview" class="<?= $this->formBeneficio->chapita_color->getValue() == '' 
+                                                    ? 'rojo' 
+                                                    : $this->formBeneficio->chapita_color->getValue() ?>">
+                        <?= $this->formBeneficio->chapita->setAttribs(
+                                array('id' => 'chapita', 
+                                      'tabindex' => '7'
+                                ))->renderViewHelper(); ?>
+                        <?= $this->formBeneficio->chapita_color
+                                 ->setAttribs(array('id' => 'chapita_color'))->renderViewHelper(); ?>
+                        <span class="tip hide">Escribe la chapita</span>
+                    </div>
+                </div>
+                <div id="divColorCh" class="left">
+                    <label class="labelCh" for="inputChapa">Seleccione un color :</label>
+                    <ul id="ulColorCh">
+                        <li class="liColorCh left <?= ($this->formBeneficio->chapita_color->getValue() == 'rojo') 
+                                                        ? 'active' : '' ?>">
+                           <a rel="rojo" class="aColorCh redChapita iTooltip"><span class="tip hide">Rojo</span></a>
+                        </li>
+                        <li class="liColorCh left <?= ($this->formBeneficio->chapita_color->getValue() == 'verde') 
+                                                        ? 'active' : '' ?>">
+                           <a rel="verde" class="aColorCh greenChapita iTooltip"><span class="tip hide">Verde</span></a>
+                        </li>
+                        <li class="liColorCh left <?= ($this->formBeneficio->chapita_color->getValue() == 'azul') 
+                                                        ? 'active' : '' ?>">
+                           <a rel="azul" class="aColorCh blueChapita iTooltip"><span class="tip hide">Azul</span></a>
+                        </li>
+                        <li class="liColorCh left <?= ($this->formBeneficio->chapita_color->getValue() == 'amarillo') 
+                                                        ? 'active' : '' ?>">
+                           <a rel="amarillo" class="aColorCh yellowChapita iTooltip">
+                               <span class="tip hide">Amarillo</span>
+                           </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->chapita->errMsg : '' ?>
+            </span>
+        </div>   
+        <div class="bloqueNbeneficio">
+            <?= $hasError = $this->formBeneficio->categorias_seleccionadas->hasErrors(); ?>
+            <label class="labelGestorBeneficio left" for="cat_disponibles">
+                <span class="req">*</span> Categorías: 
+            </label>
+            <div class="divBenN left">
+                <?= $this->formBeneficio->categorias_disponibles->setAttribs(
+                            array('id' => 'cat_disponibles', 
+                                  'class' => 'comboMulti', 'tabindex' => '7', 'size' => '5'))->renderViewHelper();
+                ?>
+                <input type="button" class="btnArrowBlueRight" id="cat_right" />
+                <input type="button" class="btnArrowBlueLeft" id="cat_left" /> 
+                <?= $this->formBeneficio->categorias_seleccionadas->setAttribs(
+                        array('id' => 'cat_seleccionadas', 
+                             'class' => ' ml20 comboMulti requerido ' . ((!$hasError) ? ' ready' : ''), 
+                             'tabindex' => '8', 'size' => '5'))->renderViewHelper(); ?>
+            </div>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->categorias_seleccionadas->errMsg : '' ?>
+            </span>
+        </div>
+        <? $categorias_seleccionadas_data=$this->formBeneficio->categorias_seleccionadas->getValue(); ?>
+        <div class="bloqueNbeneficio pdfResultados" id="resultado" 
+            <?= (in_array($this->categoria_id_pdf, $categorias_seleccionadas_data)) ?'style="display: block;"':''; ?>>
+            <? $hasError = $this->formBeneficio->pdf_resultado->hasErrors(); ?>
+            <label class="labelGestorBeneficio left" for="pdf_resultado">
+                <span class="req">*</span> Lista de ganadores: 
+            </label>
+            <div  class="divBenN left">
+                <div id="cntPdfUpList" class="left">
+                    <?= $this->formBeneficio
+                             ->pdf_resultado->setAttribs(array('class' => 'left opacity'))->renderFile(); ?>
+                    <?= $this->formBeneficio
+                             ->pdf_name->setAttribs(array('style' => 'display:none'))->renderViewHelper(); ?>
+                    <label for="pdf_resultado" id="upPdfLsit"><span class="hide">Subir lista PDF</span></label>
+                </div>
+                &nbsp;
+                <a href="<?= SITE_URL ?>/resultados/<?= $this->codigo?>" target="_blank" >Ver Resultados</a>
+                <div id="dataUpPdf" class="left"></div>
+            </div>
+            <span id="pdf_msg" class="response left <?= $hasError ? ' bad' : '' ?>">
+                 <?= $hasError ? $this->formBeneficio->pdf_name->errMsg : '' ?>
+            </span>
+        </div>
+        
+        <div class="bloqueNbeneficio " >
+            <? $hasError = $this->formBeneficio->pdf_info_name->hasErrors(); ?>
+            <label class="labelGestorBeneficio ml5 left" for="pdf_info">
+                <span class="req">&nbsp;</span> PDF de información: 
+            </label>
+            <div class="divBenN left">
+            	<div id="cntPdfInfoUpList" class="left">
+                	<?= $this->formBeneficio->pdf_info->setAttribs(array('class' => 'left opacity'))->renderFile(); ?>
+                	<?= $this->formBeneficio
+                             ->pdf_info_name->setAttribs(array('style' => 'display:none'))->renderViewHelper(); ?>
+                	<label for="pdf_info" id="upPdfInfoLsit"><span class="hide">Subir lista PDF</span></label>
+                </div>                 
+                <?php if (($this->formBeneficio->pdf_info_descrip->getValue()!='') ? 'bad' : '') { ?>
+                    <a href="<?= SITE_URL ?>/informacion/<?= $this->codigo?>" target="_blank" >Ver información</a>
+                <?php } ?>
+                <div id="dataUpPdfInfo" class="left"></div>
+            </div>
+            <span id="pdf_msg_info" class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->pdf_info_name->errMsg : '' ?>
+            </span>
+        </div>
+        
+        <div class="bloqueNbeneficio">
+            <label class="labelGestorBeneficio ml5 left" for="pdf_info_descrip">
+                <span class="req">&nbsp;</span> Descripción del PDF información: 
+            </label>
+            <?= $this->formBeneficio->pdf_info_descrip->setAttribs(
+                    array('id' => 'pdf_info_descrip', 
+                          'class' => 'inputBenN left', 'tabindex' => '9'))->renderViewHelper(); ?>
+            <span class="response right"></span>
+        </div>
+
+        <div class="bloqueNbeneficio">
+            <? $hasError = $this->formBeneficio->descripcion->hasErrors(); ?>
+            <label class="labelGestorBeneficio ml5 left" for="descripcion">
+                <span class="req">*</span> Descripción: 
+                <br> &nbsp;&nbsp; Máximo de caracteres: 
+                <?= $this->formBeneficio->descripcion->getAttrib('maxlength'); ?>.
+            </label>
+            <?= $this->formBeneficio->descripcion->setAttribs(
+                   array('id' => 'descripcion', 'class' => 'inputBenN left requerido ' . ((!$hasError) ? ' ready' : ''),
+                         'tabindex' => '9', 'rows' => '4'))->renderViewHelper(); ?>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->descripcion->errMsg : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError = $this->formBeneficio->descripcion_corta->hasErrors(); ?>
+            <label class="labelGestorBeneficio ml5 left" for="descripcion_corta">
+                <span class="req">*</span> Descripción corta: 
+                <br> &nbsp;&nbsp;Máximo de caracteres: 
+                <?= $this->formBeneficio->descripcion_corta->getAttrib('maxlength'); ?>. 
+            </label>
+            <?= $this->formBeneficio->descripcion_corta->setAttribs(
+                    array('id' => 'descripcion_corta', 
+                          'class' => 'inputBenN left requerido ' . ((!$hasError) ? ' ready' : ''),
+                          'tabindex' => '10', 'rows' => '3'))->renderViewHelper(); ?>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->descripcion_corta->errMsg : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError = $this->formBeneficio->valor->hasErrors(); ?>
+            <label class="labelGestorBeneficio ml5 left" for="valor">
+                <span class="req">&nbsp;</span> Valor:
+                <br> &nbsp;&nbsp;Máximo de caracteres: <?= $this->formBeneficio->valor->getAttrib('maxlength'); ?>. 
+            </label>
+            <?= $this->formBeneficio->valor->setAttribs(
+                    array('id' => 'valor', 
+                          'class' => 'inputBenN left', 'tabindex' => '11', 'rows' => '1'))->renderViewHelper(); ?>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->valor->errMsg : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError = $this->formBeneficio->cuando->hasErrors(); ?>
+            <label class="labelGestorBeneficio ml5 left" for="cuando">
+                <span class="req">&nbsp;</span> Cuando:
+                <br> &nbsp;&nbsp;Máximo de caracteres: <?= $this->formBeneficio->cuando->getAttrib('maxlength'); ?>. 
+            </label>
+            <?= $this->formBeneficio->cuando->setAttribs(
+                    array('id' => 'cuando', 
+                          'class' => 'inputBenN left', 'tabindex' => '12', 'rows' => '1'))->renderViewHelper(); ?>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->cuando->errMsg : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError = $this->formBeneficio->como->hasErrors(); ?>
+            <label class="labelGestorBeneficio ml5 left" for="como">
+                <span class="req">&nbsp;</span> Cómo: 
+                <br> &nbsp;&nbsp;Máximo de caracteres: <?= $this->formBeneficio->como->getAttrib('maxlength'); ?>. 
+            </label>
+            <?= $this->formBeneficio->como->setAttribs(
+                    array('id' => 'como', 'class' => 'inputBenN left ',
+                          'tabindex' => '10', 'rows' => '1'))->renderViewHelper(); ?>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->como->errMsg : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError = $this->formBeneficio->direccion->hasErrors(); ?>
+            <label class="labelGestorBeneficio ml5 left" for="direccion">
+                <span class="req">&nbsp;</span> Dirección:
+                <br> &nbsp;&nbsp;Máximo de caracteres: <?= $this->formBeneficio->direccion->getAttrib('maxlength'); ?>. 
+            </label>
+            <?= $this->formBeneficio->direccion->setAttribs(
+                    array('id' => 'direccion', 
+                          'class' => 'inputBenN left', 'tabindex' => '13', 'rows' => '1'))->renderViewHelper(); ?>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->direccion->errMsg : '' ?>
+            </span>
+        </div>
+        
+        <div class="bloqueNbeneficio">
+            <? $hasError = $this->formBeneficio->terminos_condiciones_web->hasErrors(); ?>
+            <label class="labelGestorBeneficio ml5 left" for="terminos_condiciones_web">
+                <span class="req">&nbsp;</span> Términos y condiciones legales: 
+                <br> &nbsp;&nbsp;Máximo de caracteres: 
+                    <?= $this->formBeneficio->terminos_condiciones_web->getAttrib('maxlength'); ?>. 
+            </label>
+            <?= $this->formBeneficio->terminos_condiciones_web->setAttribs(
+                    array('id' => 'terminos_condiciones_web', 'class' => 'inputBenN left ',
+                          'tabindex' => '9', 'rows' => '4'))->renderViewHelper(); ?>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->terminos_condiciones_web->errMsg : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError = $this->formBeneficio->informacion_adicional->hasErrors(); ?>
+            <label class="labelGestorBeneficio ml5 left" for="descripcion">Información Adicional (HTML): </label>
+            <div class="cntEditHTML">
+                <?= $this->formBeneficio->informacion_adicional->setAttribs(
+                        array('id' => 'informacion_adicional', 
+                              'class' => 'inputBenN left', 'rows' => '6'))->renderViewHelper(); ?>
+            </div>
+            <span id="respEditor" class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->informacion_adicional->errMsg : '' ?>
+            </span>
+            <?= $this->formBeneficio->iframeH->renderViewHelper(); ?>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError=(($this->formBeneficio->email_info->getValue()=='') ? 'bad' : ''); ?>
+            <label class="labelGestorBeneficio ml5 left" for="email_info">
+                <span class="req">*</span> E-mail contacto: 
+            </label>
+            <div class="divBenN left">
+                <?= $this->formBeneficio->email_info->setAttribs(
+                        array('id' => 'email_info', 
+                              'class' => 'left inputBenN requerido ' . ((!$hasError) ? ' ready' : ''),
+                              'tabindex' => '14'))->renderViewHelper(); ?>                
+                <?= $this->formBeneficio->email_info_establecimiento->setAttribs(
+                        array('id' => 'email_info_establecimiento', 
+                              'class' => 'mT10 noBdr', 'tabindex' => '15'))->renderViewHelper(); ?>
+               <label for="email_info_establecimiento" class="Trebuchet11 black">Mismo email del establecimiento</label>                
+            </div>
+<!--            <span class="response left"></span>-->
+            <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? 'Campo Requerido!' : '' ?></span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError=(($this->formBeneficio->telefono_info->getValue()=='') ? 'bad' : ''); ?>
+            <label class="labelGestorBeneficio ml5 left" for="telefono_info">
+                <span class="req">*</span> Tel&eacute;f. contacto: 
+            </label>
+            <div class="divBenN left">
+                <?= $this->formBeneficio->telefono_info->setAttribs(
+                        array('id' => 'telefono_info', 
+                              'class' => 'left inputBenN requerido ' . ((!$hasError) ? ' ready' : ''),
+                              'tabindex' => '16'))->renderViewHelper(); ?>                
+                <?= $this->formBeneficio->telefono_info_establecimiento->setAttribs(
+                        array('id' => 'telefono_info_establecimiento', 
+                              'class' => 'mT10 noBdr', 'tabindex' => '17'))->renderViewHelper(); ?>
+                <label for="telefono_info_establecimiento" class="Trebuchet11 black">
+                    Mismo tel&eacute;fono del establecimiento
+                </label>
+            </div>
+<!--            <span class="response left"></span>-->
+            <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? 'Campo Requerido!' : '' ?></span>
+
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError=(($this->formBeneficio->maximo_por_subscriptor->getValue()=='') ? 'bad' : ''); 
+               $hasError2=(($this->formBeneficio->sin_limite_por_suscriptor->getValue()=='') ? 'bad' : ''); 
+               $hasError=(($hasError=='bad'&&$hasError2=='bad') ? 'bad' : '');
+               $disabled=(($this->formBeneficio->sin_limite_por_suscriptor->getValue() == '1') ? 'disabled' : 'other'); 
+            ?>
+            <label class="labelGestorBeneficio ml5 left" for="maximo_por_subscriptor">
+                <span class="req">*</span> L&iacute;mite cupos: 
+            </label>
+            <?= $this->formBeneficio->maximo_por_subscriptor->setAttribs(
+                    array(
+                        'id' => 'maximo_por_subscriptor', 'formu'=>'edit',
+                        'class' => 'inputNbeneStock left requerido ' . ((!$hasError) ? ' ready' : ''),
+                        $disabled=>$disabled,
+                        'tabindex' => '18'))->renderViewHelper(); ?>
+            <span class="Trebuchet11 black m10all "> por Suscriptor</span>
+            <?= $this->formBeneficio->sin_limite_por_suscriptor->setAttribs(
+                    array('id' => 'sin_limite_por_suscriptor', 
+                          'inputNbeneStock class' => 'ml20 noBdr mT10', 'tabindex' => '19'))->renderViewHelper(); ?>
+            <label for="sin_limite_por_suscriptor" class="Trebuchet11 black"></label>
+            <?= $this->formBeneficio->generar_cupon->setAttribs(
+                    array('id' => 'generar_cupon', 
+                          'inputNbeneStock class' => 'ml20 noBdr mT10', 'tabindex' => '20'))->renderViewHelper(); ?>
+            <label for="generar_cupon" class="Trebuchet11 black">Generar Cupon</label> 
+<!--            <span class="response right"></span>-->
+            <span id="maximoxs" class="response right <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? 'Campo Requerido!' : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio" id="div_descripcionCupon" 
+             <?= ($this->formBeneficio->generar_cupon->getValue() == "0")?'style="display: none;"':''; ?>>             
+            <? $hasError = $this->formBeneficio->descripcion_cupon->hasErrors(); ?>
+            <label class="labelGestorBeneficio ml5 left" for="descripcion_cupon">
+                <span class="req">&nbsp;</span> Descripción Cupón: 
+                <br> &nbsp;&nbsp;Máximo de caracteres: 
+                <?= $this->formBeneficio->descripcion_cupon->getAttrib('maxlength'); ?>. 
+            </label>
+            <?= $this->formBeneficio->descripcion_cupon->setAttribs(
+                    array('id' => 'descripcion_cupon', 
+                          'class' => 'inputBenN left requerido ' . ((!$hasError) ? ' ready' : ''),
+                          'tabindex' => '20', 'rows' => '3'))->renderViewHelper(); ?>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->descripcion_cupon->errMsg : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio" id="div_terminoCondicionCupon" 
+             <?= ($this->formBeneficio->generar_cupon->getValue() == "0")?'style="display: none;"':''; ?>>
+            <? $hasError = $this->formBeneficio->terminos_condiciones_cupon->hasErrors(); ?>
+            <label class="labelGestorBeneficio ml5 left" for="terminos_condiciones_cupon">
+                <span class="req">&nbsp;</span> Término y condicion legal - Cupón: 
+                <br> &nbsp;&nbsp;Máximo de caracteres: 
+                <?= $this->formBeneficio->terminos_condiciones_cupon->getAttrib('maxlength'); ?>. 
+            </label>
+            <?= $this->formBeneficio->terminos_condiciones_cupon->setAttribs(
+                    array('id' => 'terminos_condiciones_cupon', 
+                          'class' => 'inputBenN left ',
+                          'tabindex' => '20', 'rows' => '2'))->renderViewHelper(); ?>
+            <span class="response left <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? $this->formBeneficio->terminos_condiciones_cupon->errMsg : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio" id="cntTmonedaAW_bkp" <? //=(count($this->formsDetalle)>0)?'style="display: none;"':''?>>
+            <label class="labelGestorBeneficio ml5 left" for="tipo_moneda">
+                <span class="req">*</span> Tipo Moneda: 
+            </label>
+            <? $disabled=($this->cantCuponesGenerados>0)?'disabled':'other'?>
+            <?= $this->formBeneficio->tipo_moneda_id->setAttribs(
+                    array('id' => 'tipo_moneda_id', 
+                          'class' => 'inputNbeneStock left', 
+                          'tabindex' => '21',$disabled=>$disabled))->renderViewHelper(); ?>
+        </div>
+        <?php
+        $tipoRedencion=$this->formBeneficio->tipo_redencion->getValue();
+        $disabled=((count($this->formsDetalle)>0))?'disabled':'other';
+//        echo $this->formBeneficio->tipo_redencion->setAttribs(array(
+//                'id' => 'tipo_redencion',
+//                'readonly' => 'readonly'
+//            ))->renderViewHelper();
+        ?>
+        <div class="bloqueNbeneficio">
+            <label class="labelGestorBeneficio ml5 left" for="tipo_redencion">
+                <span class="req">*</span> Tipo Formulario: 
+            </label>
+            <?= $this->formBeneficio->tipo_redencion->setAttribs(
+                    array('id' => 'tipo_redencion', 'inputNbeneStock class' => 'ml20 noBdr mT10', 
+                          'tabindex' => '21',$disabled=>$disabled))->renderViewHelper(); ?>
+        </div>
+        <div class="bloqueNbeneficio">
+            <label class="labelGestorBeneficio ml5 left" for="maximo_por_subscriptor">
+                <span class="req">&nbsp;</span> Tipos Descuentos: 
+            </label>
+            <div class="clsContainerTP left" id="containerTP">
+                <div class="block">
+                    <a href="#" id="tipoPromocion" rel="1" 
+                       data="<?= (($this->formBeneficio->sin_limite_por_suscriptor->getValue() != '2') ? '1' : '0'); ?>" 
+                       dataStock="<?= (($this->formBeneficio->sin_stock->getValue() != '2') ? '1' : '0'); ?>" >
+                        Agregar detalle de descuento
+                    </a>
+                </div>
+                <ol id="dataOLRes">
+                    <?php 
+                    if(count($this->formsDetalle)>0){
+                        if ($tipoRedencion==1) {
+                    ?>  
+                            <p class="rowCont">Código&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % desc.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Max S.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Descripción</p>
+                    <?php
+                        }else {
+                    ?>
+                            <p class="rowCont">Código&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; P. Regul&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P. Susc.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ahorro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Max S.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Descripción</p>
+                    <?php
+                        }
+                    }
+                    $disabledSinLimitePorSuscriptor = 
+                        (($this->formBeneficio->sin_limite_por_suscriptor->getValue() != '2') ? 'disabled' : 'other');
+                    $disabledSinStock = 
+                        (($this->formBeneficio->sin_stock->getValue() != '2') ? 'disabled' : 'other');  
+                    foreach ($this->formsDetalle as $form):
+//                        var_dump($form->d_tipo_moneda->getValue());exit
+                    ?>
+                        <li class="rowCont">
+                    <?php 
+                            $readOnly="readonly";$idEli='noValidar';$altPr='';$altPs='';
+                            $PRegul='P Regul';$PSusc='P Susc';$StockDet='Stock';$MaxScr='Max S.';
+                            if (($form->d_cupon->getValue()==0)) {
+                                $readOnly="other";
+                                $idEli='';$altPr=$PRegul;$altPs=$PSusc;
+                            }
+                            
+                            echo $form->d_codigo->setAttribs(
+                                array(
+                                    'class' => 'placeH inputNbeneStock',
+                                    $readOnly=>$readOnly
+                                )
+                            )->renderViewHelper(); 
+                            
+                            if ($tipoRedencion==1) {
+                                echo $form->d_porcentaje_descuento->setAttribs(
+                                        array(
+                                            'class' => 'money placeH inputNbeneStock',
+                                            $readOnly=>$readOnly
+                                        )
+                                    )->renderViewHelper().' % ';
+                            } else {
+                                $valida=$form->d_precio_regular->getValue();
+                                if($valida==$PRegul) $classXD='cGray';
+                                else $classXD='';
+                                echo $form->d_precio_regular->setAttribs(
+                                        array(
+//                                            'noValidar'=>$idEli,
+                                            'class' => 'cInputPrecioRegul money placeH inputNbeneStock '.$classXD,
+                                            'alt' => $altPr
+//                                            $readOnly=>$readOnly
+                                        )
+                                    )->renderViewHelper();
+                                $valida=$form->d_precio_suscriptor->getValue();
+                                if($valida==$PSusc) $classXD='cGray';
+                                else $classXD='';
+                                echo $form->d_precio_suscriptor->setAttribs(
+                                        array(
+//                                            'noValidar'=>$idEli,
+                                            'class' => 'cInputPrecioSusc money placeH inputNbeneStock '.$classXD,
+                                            'alt' => $altPs
+//                                            $readOnly=>$readOnly
+                                        )
+                                    )->renderViewHelper();
+                                echo $form->d_descuento->setAttribs(
+                                        array(
+//                                            'noValidar'=>$idEli,
+                                            'class' => 'money placeH inputNbeneStock cGray'
+//                                            $readOnly=>$readOnly
+                                        )
+                                    )->renderViewHelper();
+                            }
+                                $valida=$form->d_cantidad->getValue();
+                                if($valida==$StockDet) $classXD='cGray';
+                                else $classXD='';
+                                echo $form->d_cantidad->setAttribs(
+                                    array(
+                                        'class' => 'money placeH inputNbeneStock tipProSinStock maxPorSusc_tipDesc '.$classXD,
+                                        'rel'=>"mxs",
+                                        'alt'=>"Stock",
+                                        $disabledSinStock=>$disabledSinStock
+                                    )
+                                )->renderViewHelper();
+                                $valida=$form->d_maximo_por_suscriptor->getValue();
+                                if($valida==$MaxScr) $classXD='cGray';
+                                else $classXD='';
+                                echo $form->d_maximo_por_suscriptor->setAttribs(
+                                    array(
+                                        'class' => 'money placeH inputNbeneStock tipProMaximoSusc maxPorSusc_tipDesc '.$classXD,
+                                        'rel'=>"mxs",
+                                        'alt'=>"Max S.",
+                                        $disabledSinLimitePorSuscriptor=>$disabledSinLimitePorSuscriptor
+                                    )
+                                )->renderViewHelper(); 
+                                echo $form->d_descripcion->setAttribs(
+                                    array(
+                                        'class' => 'placeH'
+                                    )
+                                )->renderViewHelper(); 
+                                echo $form->d_hidden->setAttribs(
+                                    array(
+                                        'name' => 'd_hidden['.$form->d_hidden->getValue().']', 
+                                        'class' => 'placeH'
+                                    )
+                                 )->renderViewHelper(); 
+                                if($readOnly=='other'){ ?><a class="deleteTD delD" href="#">Eliminar</a><? } ?>
+                        </li>
+                    <? endforeach; ?>
+                </ol>
+            </div>
+            <input type="hidden" id="inputValidTD" <?=((count($this->formsDetalle)>0))?'class="requerido"':''?> />
+            <span id="resListNMB" class="response right"></span>
+        </div>
+        <div id="cntStockAW_bkp" class="bloqueNbeneficio" >
+            <?php $hasError=(($this->formBeneVersion->stock->getValue()=='' 
+                    || $this->formBeneVersion->stock->getValue()=='0') ? 'bad' : ''); 
+               $hasError2=(($this->formBeneficio->sin_stock->getValue()=='' 
+                    || $this->formBeneficio->sin_stock->getValue()=='0') ? 'bad' : ''); 
+               $hasError=(($hasError=='bad'&&$hasError2=='bad') ? 'bad' : '');
+               $disabled=(($this->formBeneficio->sin_stock->getValue() != '0') ? 'disabled' : 'other');
+            ?>
+            <label class="labelGestorBeneficio ml5 left" for="stock"><span class="req">*</span> Stock cupos: </label>
+            <?= $this->formBeneVersion->stock->setAttribs(
+                    array(
+                        'id' => 'stock', 
+                        'formu'=>'edit' , 
+                        'class' => 'inputNbeneStock left requerido ' . ((!$hasError) ? ' ready' : ''),
+                        $disabled=>$disabled,
+                        'tabindex' => '21' ))->renderViewHelper(); ?>
+            <span class="Trebuchet11 black m10all ">Cupos</span>
+            <?= $this->formBeneficio->sin_stock->setAttribs(
+                    array('id' => 'sin_stock', 
+                          'class' => 'ml20 noBdr mT10', 'tabindex' => '22'))->renderViewHelper(); ?>
+            <label for="sin_stock" class="Trebuchet11 black "></label> 
+<!--            <span class="response right"></span>-->
+            <span class="response right <?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? 'Campo Requerido!' : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <label class="labelGestorBeneficio ml5 left" for="estado"><span class="req">*</span> Destacado :</label>
+            <?= $this->formBeneficio->destacado->setAttribs(
+                    array('id' => 'destacado', 'class' => 'selectBenN left requerido ready',
+                          'tabindex' => '23'))->renderViewHelper(); ?>
+            <span class="response right"></span>
+        </div>
+        <div class="bloqueNbeneficio" id="bannerSorteoDisponible" 
+            <?= ( !in_array($this->categoria_id_sorteoDisponible, $categorias_seleccionadas_data) && 
+                  $this->formBeneficio->tipo_beneficio_id->getValue() != $this->tipBen_idConcurso )
+                        ? 'style="display: none;"'
+                        : ''; ?>>
+            <label class="labelGestorBeneficio ml5 left" for="es_destacado_banner">
+                <span class="req">&nbsp;</span> Destacado Banner: 
+            </label>
+            <?= $this->formBeneficio->es_destacado_banner->setAttribs(
+                    array('id' => 'es_destacado_banner', 
+                          'class' => 'left ', 'tabindex' => '22'))->renderViewHelper();
+            ?>
+            <span class="response right"></span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <label class="labelGestorBeneficio ml5 left" for="estado">
+                <span class="req">*</span> <?= $this->formBeneficio->estado->getLabel() ?> :
+            </label>
+                <?= $this->formBeneficio->estado->setAttribs(array('tabindex' => '24'))->renderViewHelper(); ?>
+            <span class="response right"></span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError=(($this->formBeneVersion->fecha_inicio_publicacion->getValue()=='') ? 'bad' : ''); ?>
+            <label class="labelGestorBeneficio ml5 left" for="fecha_inicio_publicacion">
+                <span class="req">*</span> Inicio de Publicación: 
+            </label>
+            <?= $this->formBeneVersion->fecha_inicio_publicacion->setAttribs(
+                    array('id' => 'fecha_inicio_publicacion', 
+                          'class' => 'left icoCalendar requerido ' . ((!$hasError) ? ' ready' : ''),
+                          'tabindex' => '25', 'readonly' => 'readonly'))->renderViewHelper(); ?>
+<!--            <span class="response right"></span>-->
+            <span class="response right<?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? 'Campo Requerido!' : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError=(($this->formBeneVersion->fecha_fin_publicacion->getValue()=='') ? 'bad' : ''); ?>
+            <label class="labelGestorBeneficio ml5 left" for="fecha_fin_publicacion">
+                <span class="req">*</span> Fin de Publicación: 
+            </label>
+            <?= $this->formBeneVersion->fecha_fin_publicacion->setAttribs(
+                    array('id' => 'fecha_fin_publicacion', 
+                          'class' => 'left icoCalendar requerido ' . ((!$hasError) ? ' ready' : ''), 
+                          'tabindex' => '26', 'readonly' => 'readonly'))->renderViewHelper(); ?>
+<!--            <span class="response right"></span>-->
+            <span class="response right<?= $hasError ? ' bad' : '' ?>">
+                <?= $hasError ? 'Campo Requerido!' : '' ?>
+            </span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError=(($this->formBeneVersion->fecha_inicio_vigencia->getValue()=='') ? 'bad' : ''); ?>
+            <label class="labelGestorBeneficio ml5 left" for="fecha_inicio_vigencia">
+                <span class="req">*</span> Inicio de Vigencia: 
+            </label>
+            <?= $this->formBeneVersion->fecha_inicio_vigencia->setAttribs(
+                    array('id' => 'fecha_inicio_vigencia', 
+                          'class' => 'left icoCalendar requerido ' . ((!$hasError) ? ' ready' : ''),
+                          'tabindex' => '25', 'readonly' => 'readonly'))->renderViewHelper(); ?>
+<!--            <span class="response right"></span>-->
+            <span class="response right<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? 'Campo Requerido!' : '' ?></span>
+        </div>
+        <div class="bloqueNbeneficio">
+            <? $hasError=(($this->formBeneVersion->fecha_fin_vigencia->getValue()=='') ? 'bad' : ''); ?>
+            <label class="labelGestorBeneficio ml5 left" for="fecha_fin_vigencia">
+                <span class="req">*</span> Fin de Vigencia: 
+            </label>
+            <?= $this->formBeneVersion->fecha_fin_vigencia->setAttribs(
+                    array('id' => 'fecha_fin_vigencia', 
+                          'class' => 'left icoCalendar requerido ' . ((!$hasError) ? ' ready' : ''), 
+                          'tabindex' => '26', 'readonly' => 'readonly'))->renderViewHelper(); ?>
+<!--            <span class="response right"></span>-->
+            <span class="response right<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? 'Campo Requerido!' : '' ?></span>
+        </div>
+        <div class="all">
+            <div id="adminSaveNbene">
+                <input id="btnUpdate" class="adminSaveBtnbene left" type="submit" value="" />
+            </div> 
+        </div>
+    </fieldset>
+</form>

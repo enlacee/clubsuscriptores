@@ -1,0 +1,40 @@
+<?php echo $this->doctype() ?>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
+    <head>
+        <?php echo $this->headTitle() ?>
+        <?php echo $this->headLink() ?>
+        <?php echo $this->headMeta() ?>
+        <?php if ($this->layout()->staticCache) {
+               $excepciones = array("jquery");
+               $this->CacheStatic($this->headScript(), $excepciones);
+           }
+        ?>
+        <?php echo $this->headScript() ?>
+        <?php echo $this->headStyle() ?>
+        <?php echo $this->GoogleAnalytics();?>
+    </head>
+    <body>
+        <?php echo $this->CertificaTag(MODULE, CONTROLLER, ACTION);?>
+        <!--div id="bandTop" class="all">
+            <?php //echo $this->render('_band-top.phtml'); ?>
+        </div-->
+        <div id="wrap" class="center">
+        	<div id="outHeader">
+            <div id="header" class="grid20 center">
+                <?php echo $this->render('_header.phtml'); ?>
+            </div>
+          </div>  
+            <?php echo $this->partial('_menu.phtml', array('flashMessages' => $this->layout()->flashMessages)); ?>
+	          <?php echo $this->partial('_accesos.phtml',array('view'=>$this->view));?>
+            <div id="main-content" class="gridS20">
+              <!--<div id="main-content2" class="grid20"> -->
+	          	<?php echo $this->layout()->content ?>
+            	<!--</div>-->
+        		</div>
+	        <div id="footer">
+	            <?php echo $this->render('_footer.phtml',array('view'=>$this->view)); ?>            
+	        </div>
+        </div>       
+        <?php echo $this->partial('_boxes.phtml', array('loginForm' => $this->layout()->loginForm, 'recuperarClaveForm' => $this->layout()->recuperarClaveForm, 'modulo' => $this->layout()->modulo, 'registrorapido' => $this->layout()->registrorapido, 'mediaUrl' => $this->mediaUrl)); ?>
+    </body>
+</html>

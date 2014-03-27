@@ -1,0 +1,64 @@
+<?php if(!empty($this->totalitems)): ?>
+<div class="all cntPagFix">
+    <div class="left m5all"><?php echo $this->mostrando; ?></div>
+    <?php echo $this->paginationControl($this->beneficios,'Sliding','beneficios-ofertados/_page.phtml'); ?>
+</div>
+<?php endif; ?>
+<div class="mictaContet grayborder2 r3 mB20 table960Fix">
+    <table id="mictBenContent">
+        <thead id="mictaBenTitle">
+            <tr>
+<!--                <th class="mictBenTiTH ml5 mictbRight bold">Codigo</th>-->
+                <th class="mictBenTiTH ml5 mictbRight bold" style="width: 150px;">Nombre</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Tipo de <br/> beneficio</th>
+<!--                <th class="mictBenTiTH ml5 mictbRight bold grid5">Descripción</th>-->
+                <th class="mictBenTiTH ml5 mictbRight bold">
+                    Fecha inicio 
+                    <a id="idArrowOrder" class="<?php echo ($this->order=='asc'?'esblueArrowDown':'esblueArrow'); ?> right mR10 mT5"></a>
+<!--                    <a id="idArrowOrder" class="esblueArrowDown right mT5"></a>-->
+                </th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Fecha fin</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">% desc</th>
+                <th class="mictBenTiTH mictbRight bold grid2">Cupos por <br/> Suscriptor</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Stock <br/> Total</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Stock <br/> Disponible</th>
+<!--                <th class="mictBenTiTH  bold mictbRight">Cupos <br/> Generados</th>
+                <th class="mictBenTiTH  bold">Cupos<br/>Consumidos</th>-->
+            </tr>
+        </thead>
+        <tbody>
+            <?php $contreg = 0;
+                foreach ($this->beneficios as $beneficio): $contreg++; ?>
+                <tr class="<?php echo ($contreg%2==0?'':'even'); ?>">
+<!--                    <td class="mictBenFluTd mictbRight mictbTop">< ?php echo $this->escape($beneficio['codigo']); ?></td>-->
+                    <td class="mictBenFluTd mictbRight mictbTop" style="width: 150px;"><?php echo $this->escape($beneficio['titulo']); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $this->escape($beneficio['tipnombre']); ?></td>
+<!--                    <td class="mictBenFluTd mictbRight mictbTop">< ?php echo $this->escape($beneficio['descripcion']); ?></td>-->
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $this->DateFormatOpen($beneficio['fecha_inicio_vigencia']); //,"dd'-'MMM'-'y"); ?></td>
+                    <td class="mictBenFluTd mictbTop mictbRight"><?php echo $this->DateFormatOpen($beneficio['fecha_fin_vigencia']); //,"dd'-'MMM'-'y"); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $beneficio['chapita']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?php echo ($beneficio['sin_limite_por_suscriptor']==1)?'Ilimitado':
+                            $beneficio['maximo_por_subscriptor']; ?>
+                    </td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?php echo ($beneficio['sin_stock']==1)?'Ilimitado':$beneficio['stock']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?php echo ($beneficio['sin_stock']==1)?'Ilimitado':$beneficio['stock_actual']; ?></td>
+<!--                    <td class="mictBenFluTd mictbRight mictbTop">< ?php echo $beneficio['nrocuponsemitidos']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop">< ?php echo $beneficio['nrocuponsconsumidos']; ?></td>-->
+                </tr>
+            <?php endforeach; 
+                if($contreg<=0){
+                    echo '<tr class="even"><td class="mictBenFluTd mictbRight mictbTop" colspan="10" style="text-align:center;"> - No se encontraron registros - </td></tr>';
+                }
+            ?>
+        </tbody>
+    </table>
+</div>
+<?php if(!empty($this->totalitems)): ?>
+<div class="all cntPagFix">
+    <div class="left m5all"><?php echo $this->nroregistros; ?></div>
+    <?php echo $this->paginationControl($this->beneficios,'Sliding','beneficios-ofertados/_page.phtml'); ?>
+</div>
+<?php endif; ?>

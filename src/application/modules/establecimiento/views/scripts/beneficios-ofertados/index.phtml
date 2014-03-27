@@ -1,0 +1,42 @@
+        <div id="adminActivtyBoxR" class="all">
+            <form name="frmBeneficios" id="frmBeneficios" class="right" action="" method="post">
+                <label class="labelAdminEs"> 
+                    Estado:
+                    <?php echo $this->form->estado->setAttribs(
+                            array('class'=>'ml5 categorias')
+                        )->renderViewHelper();
+                    ?>
+                </label>
+                <label class="labelAdminEs ml10"> 
+                    Nombre:
+                    <?php echo $this->form->descripcion->setAttribs(
+                            array('value'=>'Busca por..','class'=>'cGray grid4 ml5','alt'=>'Busca por..')
+                        )->renderViewHelper(); 
+                    ?>
+                </label>
+                <?php if (empty($this->filtroEstablecimiento)): ?>
+                <label class="labelAdminEs ml10"> 
+                    Establecimiento:
+                    <?php echo $this->form->establecimiento->setAttribs(
+                            array('value'=>'Busca por..','class'=>'grid4 ml5','alt'=>'Busca por..')
+                        )->renderViewHelper(); 
+                    ?>
+                </label>
+                <?php endif; ?>
+                <label class="labelAdminEs ml10">
+                    <?php /*echo $this->form->buscar->setAttribs(
+                            array('class'=>'btnAll searchbt')
+                        )->renderViewHelper();*/
+                    ?>
+                    <input class="btnAll searchbt" type="button" id="btnSearchBenef" name="buscar" />
+                </label>
+            </form>
+        </div>
+        <div style="clear: both"></div><br>
+        <div id="idContentAjaxBenef">
+            <?php echo $this->partial(
+                    'beneficios-ofertados/filtro-list-beneficios.phtml',
+                    array('beneficios'=> $this->beneficios, 'mostrando' => $this->mostrando, 'nroregistros'=>$this->nroregistros, 'totalitems'=>$this->totalitems)
+                );
+            ?>
+        </div>

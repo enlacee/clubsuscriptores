@@ -1,0 +1,20 @@
+<div id="contentForgotMLS" class="contentForgotMLS hide">
+    <a href="#Login" id="backLogMLS">« Volver a Login</a>
+    <h6 class="TitleLoginEs">Recupera tu clave</h6>
+    <p class="Recuperarclave">Ingresa tu  dirección de e-mail y te enviaremos un mensaje con un enlace para que puedas cambiar tu contraseña.</p>
+    <form id="recuperar" action="<?= $this->baseUrl('/auth/recuperar-clave') ?>" method="post">
+        <fieldset id="formrecupClave" class="blockFieldMLS">
+            <label class="bold all" for="textForgotP">Dirección de email </label>
+            <?= $this->layout()->recuperarClaveForm->recuperar_token->renderViewHelper() ?>
+            <?= $this->layout()->recuperarClaveForm->email->setAttribs(array('id' => 'textForgotP', 'class' => 'inputrecupClave inputN'))->renderViewHelper() ?>
+<!--            <input type="text" name="email" id="textForgotP" value="" class="inputrecupClave inputN">-->
+            <div id="responseFP" class="hide"></div>
+            <div class="block">
+                <?= $this->layout()->recuperarClaveForm->Submit->setAttribs(array('id' => 'cambiarBtn', 'class' => 'active btnAll btncambiar', 'value' => ' '))->renderViewHelper() ?>
+<!--                <input type="submit" name="Submit" id="cambiarBtn" value="Submit" class="btnAll btncambiar">-->
+            </div>
+        </fieldset>
+    </form>
+    <div id="errorCmp" class="hide"></div>
+	<div id="loadingCFP" class="all hide"></div>
+</div>

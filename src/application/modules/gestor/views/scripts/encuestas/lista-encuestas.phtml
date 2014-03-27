@@ -1,0 +1,56 @@
+<?php if(!empty($this->nrofields)):?>
+<div class="all cntPagFix">
+    <div class="left m5all"><?php echo $this->mostrando; ?></div>
+    <?php echo $this->paginationControl($this->encuestas,'Sliding','encuestas/_page.phtml'); ?>
+</div>
+<?php endif; ?>
+<div class="adminGestorContet grayborder2 r3 mB20 table960Fix">
+    <table id="mictBenContent">
+        <thead id="mictaBenTitle">
+            <tr>
+<!--                <th width="4%" class="mictBenTiTH ml5 mictbRight bold"><input type="checkbox"/></th>-->
+                <th width="20%" class="mictBenTiTH ml5 mictbRight bold">Nombre de Encuesta</th>
+                <th width="28%" class="mictBenTiTH ml5 mictbRight bold">Pregunta</th>
+                <th width="13%" class="mictBenTiTH ml5 mictbRight bold">Fecha Registro</th>
+                <th width="8%" class="mictBenTiTH ml5 mictbRight bold"># Opciones</th>
+                <th width="9%" class="mictBenTiTH ml5 mictbRight bold">Número de<br />Respuestas</th>
+                <th width="9%" class="mictBenTiTH ml5 mictbRight bold">Estado</th>
+                <th width="15%" class="mictBenTiTH ml5 bold">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $contreg = 0;
+                foreach ($this->encuestas as $encuesta): $contreg++; ?>
+                <tr class="<?php echo ($contreg%2==0?'':'even'); ?>">
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $this->escape($encuesta['nombre']); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $this->escape($encuesta['pregunta']); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $this->DateFormatOpen($encuesta['fecha_registro'],"dd'-'MMM'-'y"); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $encuesta['numero_opciones']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo (!empty($encuesta['numero_respuestas'])?$encuesta['numero_respuestas']:'0'); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo ($encuesta['activo']==1?'Vigente':'No Vigente'); ?></td>
+                    <td class="mictBenFluTd mictbTop">
+                        <a href="#lboxEresultado" class="winModal noScrollTop encuestaOperaG" rel="<?php echo $encuesta['id']; ?>">Editar</a>
+                        <br/>
+                        <a href="#lboxEresultado" class="winModal noScrollTop encuestaViewG" rel="<?php echo $encuesta['id']; ?>">Ver Resultado</a>
+                        <br/>
+                        <a href="#wBoxGEnc" class="winModal noScrollTop encuestaViewPrevG" rel="<?php echo $encuesta['id']; ?>">Vista Previa</a>
+                        <br/>
+                        <a href="#encuestBaja" class="winModal noScrollTop encuestaDarBajaG" rel="<?php echo $encuesta['id']; ?>">Dar de Baja</a>
+                    </td>
+                </tr>
+            <?php endforeach; 
+                if($contreg<=0){
+                    echo '<tr class="even"><td class="mictBenFluTd mictbRight mictbTop" colspan="8" style="text-align:center;"> - No se encontraron registros - </td></tr>';
+                }
+            ?>
+        </tbody>
+    </table>
+</div>
+<div id="csrf" class="hidden"><?=$this->csrf?></div>
+<?php if(!empty($this->nrofields)):?>
+<div class="all cntPagFix">
+    <div class="left m5all"><?php echo $this->nroregistros; ?></div>
+    <?php echo $this->paginationControl($this->encuestas,'Sliding','encuestas/_page.phtml'); ?>
+</div>
+<?php endif; ?>
+<!--<li class="itemPag"><a class="linkPag points" href="#">...</a></li>-->

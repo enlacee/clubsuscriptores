@@ -1,0 +1,10 @@
+<form id="formBoxAdminG" class="right heightGA">
+	<fieldset id="adminformSearch" class="field textoinput">
+        <label class="bold labelTPB" for="fEmailAd" >
+                Estado:
+                <?= $this->formFiltroCategoria->estado->setAttribs(array('id' => 'estado', 'class' => 'm15'))->renderViewHelper() ?>
+        </label>
+        <?= $this->formFiltroCategoria->nombre->setAttribs(array('id' => 'nombre', 'class' => 'cGray  grid4'))->renderViewHelper() ?>
+        <input type="button" id="searchbt" value="" class="btnAll searchbt"/>
+    </fieldset>
+</form>

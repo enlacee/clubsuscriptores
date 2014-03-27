@@ -1,0 +1,13 @@
+<div id="content-eliminarCupon" data-error="<?=$this->data ?>" msj="<?=$this->msj ?>" >
+    <h6 class="TilutoLightbox">Eliminar cupón</h6>
+    <span class="Trebuchet14 gray">El cliente
+        <i><u><?=$this->cliente?></u></i> 
+        ha redimido el cupon del beneficio 
+        <i><u><?=$this->beneficio?></u></i>  en la fecha <?=$this->fecha?>. <br>        
+        ¿Estás seguro que deseas eliminar cupón?</span>
+    <div id="adminSaveCancEB" class="marginCero">
+        <a id="aceptEliminarCuponBtn" class="adminAceptBtn left" rel="<?=$this->idCup?>" href="#"></a>
+        <a id="aCloseEliminarB" class="adminQuitBtnbene left closeWM" href="#"></a>
+    </div>
+</div>
+<div id="csrf" class="hide"><?=$this->csrf?></div>

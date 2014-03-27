@@ -1,0 +1,19 @@
+<div id="MictaMainContentBox" class="grayborder2 r5">
+  <div id="MictaMainBox" class="all">
+    <?= $this->partial('mi-cuenta/_menu.phtml', array('menu_post_sel' => $this->menu_post_sel)) ?>
+    <div id="mictaInnerContent" class="all">
+      <?= $this->partial('mi-cuenta/_sidebar_datos_personales.phtml', array('menu_sel_side' => $this->menu_sel_side)) ?>
+	    <div id="MictaContentBox" class="right">
+	      <div class="mctaTittle bold">Cambio de Clave</div>
+	      <div class="mictaContet grayborder2 r3">
+	        <span class="mctaDescription">Para cambiar tu clave, ingresa los siguientes datos:</span>
+	        <div id="bgmictaCclave">
+	          <?= $this->partial('mi-cuenta/_cambio_clave.phtml', array('formCambioClave' => $this->formCambioClave)); ?>
+	<!--          <input type="submit" class="right active btnPink" value="" id="btnSaveChCP"/>-->
+	        </div>
+	      </div>
+	    </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,162 @@
+<? if($this->tipo==0): ?>
+        <div class="all r5" id="<?= $this->estado!=1? 'adminUserInactive':'adminUserActive'?>">
+            <?php if (isset($this->nombres) || isset($this->apellidos)){ ?>
+            <h6 class="black Trebuchet14 bold grid6 ml10 mT10">
+            Usuario:<span class="nBold gray"> <?=$this->escape($this->nombres.' '.$this->apellidos) ; ?></span>
+            </h6>
+            <h6 class="black Trebuchet14 bold grid6 ml10">Estado:<span class="<?=  $this->estado!=1? 'textoInactivo':'textoActivo'?>"> <?= $this->estado == 1? 'Activo':'Inactivo'; ?></span></h6>
+            <?php } else {?>
+            <h6 class="black Trebuchet14 bold grid6 ml10 mT10">
+            <span class="nBold gray"> Suscriptor no encontrado</span>
+            </h6>
+            <?php } ?>
+        </div>
+      <?php if ($this->estado == 1 || $this->arrayPromo != null) { ?>
+          <div class="AdminEsTittle bold">Promociones Disponibles</div>
+          <div class="mictaContet grayborder2 r3 table960Fix" id="ctaTableE">
+            <table id="mictBenContent" page="<?= $this->page?>" idBene="<?= $this->value?>" tipo="<?= $this->tipo?>" col="<?= $col = 'fecha_inicio_vigencia' ?>" ord="<?= $this->ord ?>" tipodoc="<?= $this->tipodoc ?>">
+              <thead id="mictaBenTitle">
+                <tr>
+                  <th class="mictBenTiTH ml5 grid5 mictbRight bold">Nombre</th>
+                  <th class="mictBenTiTH ml5 mictbRight bold">Tipo de beneficio</th>
+<!--                  <th class="mictBenTiTH ml5 mictbRight bold grid4">Descripción</th>-->
+                  <? $col = 'fecha_inicio_vigencia' ?>
+                  <th class="mictBenTiTH ml5 grid2 mictbRight bold">
+                  	Fecha inicio 
+                  	<a class="<?= $this->ord == 'ASC' ? 'esblueArrow': 'esblueArrowDown' ?> right mR10 mT5 validar ordenarFecha" ></a>
+                  </th>
+                  <th class="mictBenTiTH ml5 grid2 mictbRight bold">Fecha fin</th>
+                  <th class="mictBenTiTH ml5 mictbRight bold grid3">% desc</th>
+                  <th class="mictBenTiTH ml5 grid2 mictbRight bold">Stock Total</th>
+                  <th class="mictBenTiTH ml5 mictbRight bold grid3">Cupos Máximos</th>
+<!--                  <th class="mictBenTiTH ml5 mictbRight bold grid3">Cupos generados</th>-->
+                  <th class="mictBenTiTH ml5 mictbRight bold grid3">Cupos Consumidos</th>
+                  <th class="mictBenTiTH ml5 mictbRight bold grid3">Cupos Disponibles</th>
+                  <th class="mictBenTiTH  bold">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php if ($this->arrayPromo != null) { ?>
+                  <?php $count = 1  ?>
+                    <?php foreach ($this->arrayPromo as $item) {?>
+                    <tr class="<?= $count%2 == 0 ? 'even':'' ?>">
+                      <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($item['titulo']) ?></td>
+                      <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($item['abreviado']) ?></td>
+<!--                      <td class="mictBenFluTd mictbRight mictbTop">< ?= $this->escape($item['descripcion']) ?></td>-->
+                      <td class="mictBenFluTd mictbRight mictbTop"><?= date('d/m/Y', strtotime($item['fecha_inicio_vigencia']));  ?></td>
+                      <td class="mictBenFluTd mictbTop mictbRight"><?= date('d/m/Y', strtotime($item['fecha_fin_vigencia'])); ?></td>
+                      <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($item['chapita']) ?></td>
+                      <td class="mictBenFluTd mictbRight mictbTop"><?= ($item['sin_stock'] == 1)? 'Ilimitado':$item['stock_actual'] ?></td>
+                      <td class="mictBenFluTd mictbRight mictbTop"><?= ($item['sin_limite_por_suscriptor'] == 1)? 'Ilimitado':$item['maximo_por_subscriptor'] ?></td>
+<!--                      <td class="mictBenFluTd mictbRight mictbTop">< ?= $item['cupon_generado']==null ? '0':$item['cupon_generado'] ?></td>-->
+                      <td class="mictBenFluTd mictbRight mictbTop"><?= $item['cupon_consumido']==null ? '0':$item['cupon_consumido'] ?></td>
+                      <?php 
+                      
+                      if($item['sin_limite_por_suscriptor'] == 1 && $item['sin_stock'] != 1){
+                          $ndisponibles = $item['stock_actual'];
+                      } else {
+                            $ndisponibles = ($item['sin_limite_por_suscriptor'] == 1)
+                                ? 'Ilimitado'
+                                :($item['maximo_por_subscriptor'] - $item['cupon_consumido']);
+                      
+//                            $cuposRestante= ( (int) ($ndisponibles) - $item['generado']);
+//                            $ndisponibles = ($cuposRestante >= 0 && $ndisponibles != 'Ilimitado')
+//                                ?$cuposRestante
+//                                :$ndisponibles;
+                            //$cuposRestante= ( (int) ($ndisponibles) - $item['generado']);
+                            $stockActual=$item['stock_actual']+$item['generado'];
+                            
+                            $ndisponibles = ($item['sin_stock'] != 1 && $ndisponibles != 'Ilimitado')
+                                ?(($ndisponibles>$stockActual)?$stockActual:$ndisponibles)
+                                :$ndisponibles;
+                      }
+                            
+                      
+                         $f1 = new DateTime(date("Y-m-d"));
+                         $f2 = new DateTime($item['fecha_fin_vigencia']);
+                         $vencido = $f1>$f2;
+                      ?>
+                      <td class="mictBenFluTd mictbRight mictbTop <?$ndisponibles==0?"error":""?>"><?=$ndisponibles?></td>
+                      <td class="mictbTop">
+                          <!-- if($ndisponibles==0 || $vencido)  -->
+                        <? if($vencido)://if($vencido || $item['activo']==0): ?>
+                            <a class="btn_consumirInactive m5all" title="Consumir" idB="<?= $item['id_beneficio'] ?>" idS="<?= $this->idSus ?>" est="<?= $this->estado ?>" nroC=""></a>
+                        <? else: ?>
+                            <a class="winModal btn_consumir m5all" title="Consumir" idB="<?= $item['id_beneficio'] ?>" idS="<?= $this->idSus ?>" est="<?= $this->estado ?>" nroC="" href="#winRedimirCupon"></a>
+                        <? endif ?>
+                      	
+                      </td>
+                    </tr>
+                  <?php $count++; }?>
+              <?php } ?>
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination all">
+          <?php if ($this->arrayPromo != null && $this->tipo == 0) { ?>
+          <?= $this->paginationControl($this->arrayPromo, 'Sliding', 'redencion-beneficio/_pag.phtml') ?>
+          <?php } ?>
+      	  </div>
+  	  <?php } ?>
+<? else: ?>
+          <? if (count($this->cupon)>0): ?>
+            <? if($this->result==0): ?>
+                <div id="adminUserNoActive" class="all r5 btnAdminAll">
+                  <h6 class="Trebuchet14 bold ml10 mT10">
+                      <span class="textoActivo Trebuchet14 nBold">Cupón valido y pertenece a este establecimiento</span>
+                      <span class="gray nBold Trebuchet14 ml5"><?=$this->escape($this->cupon[0]["nombres"])?> <?=$this->escape($this->cupon[0]["apellidos"])?></span>
+                  </h6>
+                </div>
+
+                <div class="AdminEsTittle bold">Promociones Disponibles</div>
+              <div class="mictaContet grayborder2 r3 table960Fix" id="ctaTableE">
+                <table id="mictBenContent" idBene="<?= $this->value?>" tipo="<?= $this->tipo?>" col="<?= $col = 'fecha_inicio_vigencia' ?>" ord="<?= $ord = $this->col == $col && $this->ord == 'ASC' ? 'DESC': 'ASC' ?>">
+                  <thead id="mictaBenTitle">
+                    <tr>
+                        <th class="mictBenTiTH ml5 grid5 mictbRight bold">Nombre</th>
+                        <th class="mictBenTiTH ml5 grid5 mictbRight bold">Tipo de Beneficio</th>
+                        <th class="mictBenTiTH ml5 grid5 mictbRight bold">Descripción</th>
+                        <th class="mictBenTiTH ml5 grid5 mictbRight bold">Fecha Inicio</th>
+                        <th class="mictBenTiTH ml5 grid5 mictbRight bold">Fecha Fin</th>
+                        <th class="mictBenTiTH ml5 grid5 mictbRight bold">Stock Total</th>
+                        <th class="mictBenTiTH ml5 grid5 mictbRight bold">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <? foreach ($this->cupon as $item) :?>
+                      <tr>
+                          <td class="mictBenFluTd mictbRight mictbTop"><?=$this->escape($item["titulo"])?></td>
+                          <td class="mictBenFluTd mictbRight mictbTop"><?=$this->escape($item["tipobeneficio"])?></td>
+                          <td class="mictBenFluTd mictbRight mictbTop"><?=$this->escape($item["descripcion"])?></td>
+                          <td class="mictBenFluTd mictbRight mictbTop"><?=$item["fechainicio"]?></td>
+                          <td class="mictBenFluTd mictbRight mictbTop"><?=$item["fechafin"]?></td>
+                          <td class="mictBenFluTd mictbRight mictbTop"><?=$item["stock"]?></td>
+                          <td class="mictBenFluTd mictbRight mictbTop">
+                              <a class="winModal btn_consumir m5all" title="Consumir" idB="<?= $item['id_beneficio'] ?>" idS="<?=$item["suscriptor_id"]?>" est="<?=$item["estado"]?>" nroC="<?=$this->nrocupon?>" href="#winRedimirCupon"></a>
+                          </td>
+                      </tr >
+                      <? endforeach; ?>
+                  </tbody>
+                </table>
+              </div>
+            <? else: ?>
+                <div id="adminUserAlert" class="all r5 btnAdminAll">
+                    <h6 class=" Trebuchet14 nBold ml10 mT10">
+                        <span>Cupón existe pero no corresponde a una promo de este establecimiento</span>
+                        <span class="gray nBold Trebuchet14 ml5"><?=$this->escape($this->cupon[0]["nombres"])?> <?=$this->escape($this->cupon[0]["apellidos"])?></span>
+                    </h6>
+                </div>
+            <? endif; ?>
+          <? else: ?>
+              <!-- Cupon no encontrado -->
+              <div class="all r5 btnAdminAll" id="adminCuponInactive">
+                   <h6 class="Trebuchet14 nBold ml10 mT10">
+                        <span> Cupón no encontrado</span>
+                   </h6>
+              </div>   
+             
+          <? endif; ?>
+
+
+<? endif; ?>
+              <div id="csrf" class="hidden"><?=$this->csrf?></div>

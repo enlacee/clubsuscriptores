@@ -1,0 +1,23 @@
+<div id="mictaInnerContent" class="grid20"> 
+    <a id="linkVolver" class="right" href="/gestor/beneficios/">« Volver</a>
+    <h6 class="Titulo980 bold">EDITAR BENEFICIO</h6>
+    <div id="divNewBen" class="all">
+        <?= $this->partial(
+            'beneficios/_editar-beneficio.phtml', 
+            array(
+                'formBeneficio' => $this->formBeneficio, 
+                'formBeneVersion' => $this->formBeneVersion, 
+                'formsDetalle' => $this->formsDetalle, 
+                'imgPhoto' => $this->imgPhoto, 
+                'sufixlittle' => $this->sufixlittle,
+                'categoria_id_pdf' => $this->categoria_id_pdf,
+                'categoria_id_sorteoDisponible' => $this->categoria_id_sorteoDisponible,
+                'tipBen_idConcurso' => $this->tipBen_idConcurso,
+                'idBen' => $this->idBen,
+                'codigo' => $this->codigo,
+                'cantCuponesGenerados' => $this->cantCuponesGenerados
+                )
+            )
+    ?>
+    </div>
+</div>

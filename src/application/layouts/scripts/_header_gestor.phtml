@@ -1,0 +1,17 @@
+<div id="header" class="grid20" >
+    <h1 id="logo" class="sptAll left"> <a href="/" id="logoA" class="hideIndent">Club Suscriptor</a></h1>
+    <span id="AdminDate" class="right">
+        <?= $this->FormatoFecha("now"); ?>
+        <? if ($this->layout()->isAuth && !empty($this->layout()->auth['gestor'])) : ?> | <strong>
+                <?php echo ($this->layout()->auth['gestor']['sexo'] == 'M') ? 'Bienvenido ' : 'Bienvenida '; ?>
+                <?php
+                echo $this->escape(
+                    ucfirst($this->layout()->auth['gestor']['nombres']) . " " .
+                    ucfirst($this->layout()->auth['gestor']['apellido_paterno']) .
+                    ucfirst($this->layout()->auth['gestor']['apellido_materno'])
+                );
+                ?></strong> | <a href="<?= $this->url(array(), 'logout_gestor', true) ?>" >Salir</a>
+                <div class="alignR mT5"><a href="#winChangePassE" class="winModal">Cambiar Contraseña</a></div>
+        <? endif ?>
+    </span>
+</div>

@@ -1,0 +1,4 @@
+<div id="MictaMainNav" class="all">
+  <a href="<?php echo $this->url(array('action'=>'mis-datos-personales','controller'=>'mi-cuenta','module'=>'suscriptor'),'default',true); ?>" class="amiCtaBtn <?= $this->menu_post_sel == App_Controller_Action_Suscriptor::MENU_POST_DATOS_PERSONALES ? 'amiCtaBtnActive' : '' ?>">DATOS PERSONALES</a>
+  <a href="<?php echo $this->url(array('action'=>'index','controller'=>'mi-cuenta','module'=>'suscriptor'),'default',true); ?>" class="amiCtaBtn ml2 <?= $this->menu_post_sel == App_Controller_Action_Suscriptor::MENU_POST_MI_CUENTA ? 'amiCtaBtnActive' : '' ?>">MI CUENTA</a>
+</div>

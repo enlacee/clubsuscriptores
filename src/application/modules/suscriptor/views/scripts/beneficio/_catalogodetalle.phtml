@@ -1,0 +1,325 @@
+<!-- breadcrumb -->
+<?
+    $url = "/catalogo-virtual/";
+    $actualQuebuscas = "nuevo/";
+    $actualQuebuscas_descrip = "Lo nuevo";
+    $actualBeneficios_descrip = empty($this->beneficio['tbenef_slug'])
+                                    ?"todos"
+                                    :$this->escape($this->beneficio['tbenef_slug']);
+    $actualBeneficios=$actualBeneficios_descrip;
+    $actualBeneficios_descrip=  ucwords(str_replace("-", " ",$actualBeneficios_descrip));
+    $actualCategoria = $this->escape($this->beneficio['cat_nombre']);
+    $actualCategoriaSlug = "/".$this->escape($this->beneficio['cat_slug']);
+    $arrCate = explode("--", $actualCategoriaSlug);
+    $countCate = count($arrCate);
+    if ($countCate>3) {
+        $actualCategoria = "Categorías Online";
+        $actualCategoriaSlug = "/categorias-online";
+    }
+?>
+<ul class="breadcrumb" itemprop="breadcrumb" itemscope itemtype="http://schema.org/WebPage">
+    <li><a href="/">ClubDeSuscriptores</a> <span class="divider">&#62;</span></li>
+    <li><a href="<?=$url.$actualQuebuscas?>"><?=$actualQuebuscas_descrip?></a> <span class="divider">&#62;</span></li>
+    <li>
+        <a href="<?=$url.$actualQuebuscas.$actualBeneficios?>"><?= $actualBeneficios_descrip; ?></a> 
+        <span class="divider">&#62;</span>
+    </li>
+    <li>
+        <a href="<?=$url.$actualQuebuscas.$actualBeneficios.$actualCategoriaSlug;?>">
+            <?= $actualCategoria; ?>
+        </a> 
+        <span class="divider">&#62;</span>
+    </li>
+    <li class="active"><?=$this->escape($this->beneficio['titulo'])?></li>
+</ul>
+
+
+<div id="quieroLaPromoMainContentbox" class="grayborder2 r5">
+    <div id="iQuieroLPromo">
+        <h2 class="Titulo980 bold font18">Catálogo virtual de Beneficios</h2>
+        <!--    <a href="javascript:history.go(-1)">volver</a>-->
+        <div id="quieroLaPromoContentbox" class="grid20">
+            <div id="quieroLaPromoSearchContent" class="grid6">
+                <?=$this->partial('beneficio/_search_content.phtml', 
+                        array("itemsSeleccionados" => $this->itemsSeleccionados))?>
+            </div>
+            <div id="quieroLaPromoDetalleContent" class="right">
+
+                <!-- DETALLE DE LA PROMO -->
+                <div id="quieroLaPromoDetalle">
+                    <form action="" method="post" name="frmquieropromo" id="frmquieropromo">
+                        <h1 class="TilutoDetallePromo font18"><?=$this->escape($this->titulo_detalle)?> : 
+                            <?=$this->escape($this->beneficio['titulo'])?>
+                            <?=(empty($this->beneficio['activo'])
+                                    ?'<span style="color:#FF3300;font-size:12px;">&nbsp;&nbsp;&nbsp;CADUCADO!</span>' 
+                                    :'')?>
+                        </h1>
+                        <div id="DetalleEstCont">
+                            <div id="DetalleEstContFoto" class="fotoSombra">
+                                <img src="<?=$this->elementsUrl?>/images/beneficios/<?=$this->ImgName(
+                                        $this->beneficio['path_logo'], $this->sufixmedium)?>" 
+                                     id="fotoEstable" width="325" height="182" 
+                                     title="<?=$this->escape($this->beneficio['titulo'].' - '.
+                                             $this->beneficio['est_nombre'])?>"
+                                     alt="<?=$this->escape($this->beneficio['titulo'].' - '.
+                                             $this->beneficio['est_nombre']).' - Club De Suscriptores El Comercio Perú.'?>"
+                                     onerror="this.src='<?=$this->mediaUrl?>/images/fcatalogo_grande.jpg'"/>
+                                <div class="Qtipodeoferta2">
+                                    <h2 class="promostexto3 left">
+                                        <?=$this->escape($this->beneficio['abreviado'])?>
+                                    </h2>
+                                </div>
+                                <?php if (!empty($this->beneficio['chapita'])): ?>
+                                    <div id="promoflujo2" 
+                                         class="QtextoPromoChico <?=$this->escape($this->beneficio['chapita_color'])?> 
+                                         Tshadow">
+                                             <?=$this->beneficio['chapita']?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <?php 
+                            $sinstock = false;
+                            //$this->tipobeneficio == Application_Model_Beneficio::TIPO_PROMO
+                            if(!$this->beneficio['sorteo']):
+                                if (!empty($this->beneficio['generar_cupon'])):
+                            ?>
+                                <div id="numeropromos" class="grayborder2 r5">
+                                    <?php
+                                        $sinstock = empty($this->beneficio['stock_actual']);
+                                        if($this->beneficio['sin_stock']==1){ $sinstock = false; }
+                                        
+                                        if (empty($this->beneficio['activo'])): 
+                                    ?>
+                                        <span class="npromostexto Trebuchet14 gray bold left ">
+                                            La promo ya no está disponible
+                                        </span>
+                                    <?php elseif ($sinstock): ?>
+                                        <span class="npromostexto Trebuchet14 gray bold left ">Stock Agotado! </span>
+                                    <?php elseif ($this->maximo_permitido > 0): ?>
+                                        <span class="npromostexto Trebuchet left">
+                                            Ingresa el número de cupones que quieres
+                                        </span>
+                                        <select id="QnumeroPromos" class="right" name="ctrlnumeropromos">
+                                            <?php for ($i = $this->maximo_permitido; $i > 0; $i--): ?>
+                                                <option value="<?=$i?>"><?=$i?></option>
+                                            <?php endfor; ?>
+                                        </select>
+                                    <?php else: ?>
+                                        <span class="npromostexto Trebuchet left" style="width: 280px;">
+                                            Ha consumido el máximo de promos pemitidas.
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
+                            <?php else: 
+                                 if(empty($this->beneficio['sin_stock']) && empty($this->beneficio['stock_actual'])){ ?>
+                                <div id="numeropromos" class="grayborder2 r5">
+                                    <span class="npromostexto Trebuchet14 gray bold left ">Stock Agotado! </span>
+                                </div>
+                            <?php  }elseif(!empty($this->beneficio['maximo_por_subscriptor']) 
+                                        && empty($this->beneficio['sin_limite_por_suscriptor'])){ ?>
+                                <div id="numeropromos" class="grayborder2 r5">
+                                    <span class="npromostexto Trebuchet left" style="width: 280px;">
+                                        Máximo <?=$this->beneficio['maximo_por_subscriptor']?> consumos por suscriptor.
+                                    </span>
+                                </div>
+                            <?php  }else{
+                                        //echo 'aqui'; 
+                                   }
+                            ?>
+                            <?php endif;
+                            endif;  ?>
+                        </div>
+
+                        <div id="DetalleEstContText">
+                            <div id="NombredeEstaP" class="right bbdotted Trebuchet">
+                                <h2 class="TitulodeEstaP font18"><?=$this->escape($this->beneficio['est_nombre'])?></h2>
+                                <?php if (!empty($this->beneficio['descripcion'])): ?>
+                                    <span class="DescripdeEstaP">
+                                        <?=$this->escape($this->beneficio['descripcion'])?>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
+                            <?php if (!empty($this->beneficio['pdf_info_file'])): ?>
+                                <div id="npdf_info_file" class="right bbdotted mT10">
+                                    <h6 class="TitulodeEstaP2 mB2 bold"></h6>
+                                    <span class="DescripdeEstaP">
+                                        <a href="<?= SITE_URL ?>/informacion/<?= $this->beneficio['codigo']?>" 
+                                           target="_blank" >
+                                            <img class="apdf_info_descrip" 
+                                                 src="<?=$this->mediaUrl?>/images/btn_pdf.png" 
+                                                 width="20" height="23">
+                                            <?=$this->beneficio['pdf_info_descrip']?>
+                                        </a>
+                                    </span>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($this->beneficio['valor'])): ?>
+                                <div id="ValorEstaP" class="right bbdotted mT10">
+                                    <h6 class="TitulodeEstaP2 mB2 bold">Valor:</h6>
+                                    <span class="DescripdeEstaP"><?=$this->escape($this->beneficio['valor'])?></span>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($this->beneficio['activo'])): ?>
+                                <?php if (!empty($this->beneficio['direccion'])): ?>
+                                    <div id="DondeEstaP" class="right bbdotted mT10">
+                                        <h6 class="TitulodeEstaP2 mB2 bold">Dónde:</h6>
+                                        <h2 class="DescripdeEstaP">
+                                            <?=$this->escape($this->beneficio['direccion'])?>
+                                        </h2>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <?php if (!empty($this->beneficio['cuando'])): ?>
+                                <div id="CuandoEstaP"class="right bbdotted mT10">
+                                    <h6 class="TitulodeEstaP2 mB2 bold">Cúando:</h6>
+                                    <span class="DescripdeEstaP">
+                                        <?=$this->escape($this->beneficio['cuando'])?>
+                                        <!-- <hr /> -->
+                                        <?php //echo $this->BeneficioCuando($this->beneficio['fecha_inicio_vigencia'], $this->beneficio['fecha_fin_vigencia'])?>
+                                    </span>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($this->beneficio['como'])): ?>
+                                <div id="CuandoEstaP"class="right bbdotted mT10">
+                                    <h6 class="TitulodeEstaP2 mB2 bold">Cómo:</h6>
+                                    <span class="DescripdeEstaP">
+                                        <?=$this->escape($this->beneficio['como'])?>
+                                    </span>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($this->beneficio['activo'])): ?>
+                                <?php
+                                //$this->tipobeneficio == Application_Model_Beneficio::TIPO_PROMO
+                                if (!empty($this->beneficio['generar_cupon']) && !$this->beneficio['sorteo']):
+                                    $ruta = $this->url(array(), 'aplica_promo', true);
+                                    ?>
+                                    <input type="hidden" value="<?=$ruta?>" name="ruta"/>
+                                    <input type="hidden" value="<?=$this->beneficio['id']?>" name="beneficio_id"/>
+                                    <input type="hidden" value="<?=$this->beneficio['slug']?>" name="slug"/>
+                                    <a href="#winConfirmPedidoCupones" class="winModal noScrollTop" id="idaconfirmcupo">
+                                    </a>
+                                    <a href="#winMessages" class="winModal noScrollTop" id="idmessagecupo"></a>
+                                    <?php
+                                    $idbtn = 'Qpromobtn';
+                                    $btninactivo = 'QPbtnInactive';
+                                    $disabled = '';
+                                    if($this->beneficio['tipo_beneficio_id']==Application_Model_Beneficio::TIPO_SORTEO):
+                                        $idbtn = 'qParticiparbtn';
+                                        $btninactivo = 'qParticiparInactive';
+                                    endif;
+                                    if (($sinstock or $this->maximo_permitido <= 0)):
+                                        $idbtn = 'QPbtnInactive';
+                                        $disabled = 'disabled';
+                                        if($this->beneficio['tipo_beneficio_id']==
+                                                Application_Model_Beneficio::TIPO_SORTEO):
+                                            $idbtn = 'qParticiparInactive';
+                                        endif;
+                                    endif;
+                                    ?>
+                                    <input type="hidden" id="idclassbtnqp" name="idclassbtnqp" value="<?=$idbtn?>" 
+                                           alt="<?=$btninactivo?>"/>
+                                    <input type="button" id="Qpromobtn" class="btnAll <?=$idbtn?>" 
+                                           name="Qpromobtn" <?=$disabled?>/>
+                                <? endif;?>
+                                <?php if(!empty($this->beneficio['pdf_file'])): ?>
+                                    <a id="Qsorteobtn" class="btnAll qResultadosSorteo" target="_blank" 
+                                       href="<?= SITE_URL ?>/resultados/<?= $this->beneficio['codigo']?>">
+<!--                                        <input type="button" id="Qsorteobtn" class="btnAll qResultadosSorteo" name="Qpromobtn" />-->
+                                    </a>
+                                <? endif;?>
+                            <? endif;?>
+                        </div>
+                        
+                        <?php if (!empty($this->beneficio['activo'])): ?>
+                            <?php if (!empty($this->beneficio['telefono_info']) || 
+                                        !empty($this->beneficio['email_info'])): ?>
+                                <div id="MasinfoEstaP"class="mT10">
+                                    <h6 class="TitulodeEstaP2 mB2 bold">Más información:
+                                    <?php if (!empty($this->beneficio['telefono_info'])): ?>
+                                        <span class="DescripdeMasInfo">
+                                            Teléfono: <?=$this->beneficio['telefono_info']?>
+                                        </span>
+                                    <?php endif; ?>
+                                    </h6>
+                                    <?php if (!empty($this->beneficio['email_info'])): ?>
+                                        <a href="mailto:<?=$this->beneficio['email_info']?>" > 
+                                            <?=$this->beneficio['email_info']?> 
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        
+                        <div class="all" id="idinfo">
+                            <?
+                            if(!empty($this->beneficio["informacion_adicional"])):
+                                $x = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">'.
+                                    '<html xmlns="http://www.w3.org/1999/xhtml" lang="es">'.
+                                    '<head>'.
+                                    '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'.
+                                    '<link rel="stylesheet" type="text/css" href="'.MEDIA_URL.'/css/default.css">'.
+                                    '<style>table td,table th{ border:1px solid black }</style>'.
+                                    '</head>'.
+                                    '<body style="background-color:white">'.
+                                    $this->beneficio['informacion_adicional'].
+                                    '</body></html>';
+                            $nombrearchivo = "informacion_adicional_catalogodetalle_".$this->beneficio["id"].".html";
+                            $this->HtmlToIframe($x, ELEMENTS_ROOT."/pdfs_tmp/".$nombrearchivo);
+                            ?>
+                                <iframe class="<?=(!empty($this->beneficio["iframeH"])?'':'hide')?>" 
+                                  scrolling="no" id="iframeHTML" width="660" 
+                                  height="<?=(!empty($this->beneficio["iframeH"])?$this->beneficio["iframeH"]:'100%')?>" 
+                                  frameborder="0" style="margin: 0 0 10px 15px; padding:0" 
+                                  src="<?=ELEMENTS_URL?>/pdfs_tmp/<?=$nombrearchivo?>?<?=date("YmdHis")?>" ></iframe>
+                                <div id="loadIf" class="hide"></div>
+                            <?
+                            endif; 
+                            ?>
+                           
+                        </div>
+                        <?php if(!empty($this->beneficio["terminos_condiciones_web"])): ?>
+                        <div style=" padding-left: 15px" >
+                            <a id="alinkTerminoCondicion" href="#alinkTerminoCondicion">
+                                Términos y condiciones legales 
+                                <img src="<?=$this->mediaUrl?>/images/flechaA.png" >
+                            </a>
+                            <div id="mjsTerCondLegal" class="mT10" >
+                                <?=$this->beneficio['terminos_condiciones_web']?>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                    </form>
+                </div>
+                <!-- DETALLE DE LA PROMO -->
+                <div id="quieroLaPromoOtras">
+                    <h3 class="TilutoDetallePromo font18">
+<!--                        <a name="ac"><span></span></a>-->
+                        <?=$this->titulo_relacionados?>
+                    </h3>
+                    <?php
+                    echo $this->partial(
+                            'beneficio/_result_beneficios.phtml', array(
+                        'mediaUrl' => $this->mediaUrl,
+                        'elementsUrl' => $this->elementsUrl,
+                        'beneficios_relacionados' => $this->beneficios_relacionados,
+                        'totalitems' => $this->totalitems,
+                        'mostrando' => $this->mostrando,
+                        'routeSearch' => $this->routeSearch,
+                        'MostrandoN' => $this->MostrandoN,
+                        'MostrandoDe' => $this->MostrandoDe,
+                        'ord' => $this->ord,
+                        'col' => $this->col,
+                        'id' => $this->id,
+                        'slug' => $this->slug,
+                        'tipo' => $this->tipo,
+                        'sufixlittle' => $this->sufixlittle,
+                        'catbenef'=> $this->catbenef,
+                        "cadenabusqueda"=>$this->cadenabusqueda)
+                    );
+                    ?>
+                </div>
+                <!--este cierre este es quierolaPromocontentbox-->        
+            </div>
+        </div>
+    </div>
+</div>

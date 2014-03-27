@@ -1,0 +1,22 @@
+<h6 class="Titulo980 bold">Recuperar mi contraseña</h6>
+<p class="bold f14">Ingrese su nueva contraseña</p>
+<form action="" method="post" id="claveRC">
+	<fieldset class="blockField r5">
+		<div class="block">
+		  <label for="fClave" class="labelN labelRC"><span class="req" title="Requerido">*</span> Nueva contraseña:</label>
+		  <?=$this->form->password->setAttribs(array('id' => 'fClave', 'maxlength'=>32, 'class' => 'inputN inputRC left'))->renderViewHelper(); ?>
+		  <? $hasError = $this->form->password->hasErrors(); ?>
+		  <div class="error <?=$hasError?'':'hide'?> msgRC"><?=$hasError?$this->form->password->errMsg:''?></div>
+		</div>
+		<div class="block">
+	    <label for="fRClave" class="labelN labelRC"><span class="req" title="Requerido">*</span> Confirmar contraseña:</label>
+	    <?= $this->form->password2->setAttribs(array('id' => 'fRClave', 'maxlength'=>32, 'class' => 'inputN inputRC left'))->renderViewHelper(); ?>
+	    <? $hasError = $this->form->password2->hasErrors(); ?>
+	    <div class="error <?=$hasError?'':'hide'?> msgRC"><?=$hasError?$this->form->password2->errMsg:''?></div>
+		</div>
+	  <?=$this->form->token->renderViewHelper(); ?>
+		<div class="all">
+			<input type="submit" class="right btnAll" value="" id="btnAcepRetM"/>
+		</div>
+	</fieldset>
+</form>

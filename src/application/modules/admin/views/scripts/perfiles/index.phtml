@@ -1,0 +1,34 @@
+    <h6 class="Titulo980 bold">PERFILES</h6>
+      
+    <div id="encuestaContentBox">
+        <div class="left grid3">
+            <a href="#winAdminPerfil" rel="" class="adminAdBtn winModal noScrollTop perfilOperaA"></a>
+        </div>
+        <div id="adminActivtyBoxR" class="right">
+            <form name="frmPerfiles" id="frmPerfiles">
+                <fieldset id="adminformSearchencues" class="field textoinput mB0">
+                    <label class="left">
+                    <span class="mT10 mR10 bold">Nombre del Perfil:</span>
+                    <?php echo $this->form->perfil->setAttribs(
+                            array('value'=>'Busca por..','class'=>'cGray mR10 grid4','alt'=>'Busca por..')
+                        )->renderViewHelper(); 
+                    ?>
+                    </label>
+                    <label class="left">
+                    <?php echo $this->form->buscar->setAttribs(
+                            array('class'=>'btnAll searchbtGest','id'=>'btnSearchPerfil')
+                        )->renderViewHelper();
+                    ?>
+                    </label>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+          
+    <div id="idContentAjaxPerf" class="left">
+        <?php echo $this->partial(
+                'perfiles/lista-perfiles.phtml',
+                array('perfiles'=> $this->perfiles, 'nroregistros'=>$this->nroregistros, 'totalitems'=>$this->totalitems)
+            );
+        ?>
+    </div>

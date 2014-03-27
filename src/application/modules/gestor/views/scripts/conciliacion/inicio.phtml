@@ -1,0 +1,59 @@
+<?php echo $this->partial('conciliacion/_menu.phtml',array('selectmenu'=>$this->selectmenu)); ?>
+
+<div class="" id="cntOptionAll">    
+        <div id="adminSearchBox">
+           <form id="formBox" class="right" method="post">
+                <div class="all mB10 mT10" id="cntOptionAll">
+                    <div class="left">
+                        <label class="labelcnciliaR" for="establecimiento">Establecimiento :
+                            <?=$this->frm->establecimiento->setAttribs(array("id"=>"establecimiento", "tabindex"=>"1", "style"=>"width:210px" ))->renderViewHelper();?>
+                        </label>
+                    </div>
+                    <div class="adminConciSearch right block">
+                        <div class="response left block" style="width:90px;">
+                            &nbsp;
+                        </div>
+                        <div class="left">
+                            <label class="labelVCF ml5 mR10 left c3 Trebuchet"> 
+                                Consumido Del :
+                            </label>
+                            <?=$this->frm->fechaini->setAttribs(array("id"=>"fechaini", "class"=>"left FunctiEB", "readonly"=>"true", "size" =>"12"))->renderViewHelper(); ?>
+                            <img class="ui-datepicker-trigger" src="<?= MEDIA_URL ?>/images/calendar.png" alt="Seleccionar Fecha" title="Seleccionar Fecha">
+                        </div>
+
+                        <div class="left">
+                            <label class="labelVCF  ml5 mR10 left c3 Trebuchet"> Al : </label>
+                            <?=$this->frm->fechafin->setAttribs(array("id"=>"fechafin", "class"=>"left FunctiEB", "readonly"=>"true", "size"=>"12"))->renderViewHelper(); ?>
+                            <img class="ui-datepicker-trigger" src="<?= MEDIA_URL ?>/images/calendar.png" alt="Seleccionar Fecha" title="Seleccionar Fecha">
+                        </div>
+                        <button name="buscar" id="btnSearchConsume" type="button" class="btnAll searchbt" label=""></button>
+                    </div>
+                </div>
+            </form>
+            <? if($this->submenu): ?>
+            <fieldset class="all">
+                <div class="all"> 
+                    <div class="right pl20">
+                        <label class="labelVCF ml5 mR10 left c3 Trebuchet">Voucher :</label>
+                        <?=$this->frm->voucher->setAttribs(array("id"=>"voucher", "class"=>"left FunctiEB"))->renderViewHelper();?>
+                    </div>
+
+                    <div class="right pl20">
+                        <label class="labelcnciliaR" for="estado">Estado :</label>
+                        <?=$this->frm->estado->setAttribs(array("id"=>"estado", "tabindex"=>"1", "class"=>"filtros"))->renderViewHelper();?>
+                    </div>
+
+                    <div class="right"> 
+                        <label class="labelcnciliaR" for="promocion">Promoción :
+                            <?=$this->frm->promociones->setAttribs(array("id"=>"promociones", "tabindex"=>"1", "class"=>"filtros", "style"=>"width:350px"))->renderViewHelper();?>
+                        </label>
+                    </div>
+                </div>
+           </fieldset>
+           <? endif; ?>
+        </div>
+</div>
+<div id="result">
+    <?php echo $this->partial('conciliacion/_main-conciliacion.phtml', $this); ?>
+</div>
+ 

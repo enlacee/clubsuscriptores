@@ -1,0 +1,18 @@
+<div id="contEstablecimiento">
+    <h6 class="Titulo980 bold">CATEGORÍAS DE BENEFICIO</h6>
+    <div class="all" id="cntOptionAll">
+        <div id="adminGActivtyBoxLeft">
+            <a href="#loginModalW" class="adminAdBtn left marginCero editCat winModal"></a>
+            <a href="#adminGesCategModal" class="AdGesChangeBtn ml20 left cambEstado winModal disabledModal"></a>
+        </div>
+        <?= $this->partial('categorias/_filtro_categoria.phtml', array('formFiltroCategoria' => $this->formFiltroCategoria)) ?>
+    </div>
+    <div id="msjError" class="flash-message-small r5 msgRed hide">
+    </div>
+    <div id="categoriaContentBox" class="all">
+    </div>
+
+    <div id="boxes">
+        <div id="mask"> </div>
+    </div>
+</div>

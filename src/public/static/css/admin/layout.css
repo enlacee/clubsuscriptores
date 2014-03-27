@@ -1,0 +1,382 @@
+/*
+layout
+*/
+#outHeader{ background: white url(../../images/bgLineHead.png) left bottom repeat-x; padding-bottom: 4px }
+#header{ margin:0 auto; padding:0 0 20px; overflow: hidden }
+#outContent{ margin:20px auto; width:978px; overflow: hidden; background-color:white }
+#contentGrid{ padding:9px; width:960px; overflow: hidden }
+#outMainNav{ background-image:none; padding-bottom:0; border:0 none }
+#mainNav{ padding-top:0 }
+#footer{ height:0 }
+.anchoCorto #outContent{ 
+    width:478px; 
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.25), 0 1px 5px 3px rgba(0, 0, 0, 0.05), 0 5px 4px -3px rgba(0, 0, 0, 0.06);
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .25), 0 1px 5px 3px rgba(0, 0, 0, .05), 0 5px 4px -3px rgba(0, 0, 0, .06);
+}
+.anchoCorto #contentGrid{ width:460px; padding:9px }
+#adminMainContent{
+    background: white url(../../images/lineLoginAdmin.png) center no-repeat;
+    margin:0 0 20px;
+    padding:10px 0 0;
+    width:960px;
+    overflow: hidden
+}	
+#adminLeftContent{ width:480px }
+#adminRightContent{width:450px }
+#AdminDate{
+    display:block;
+    padding-right:10px;
+    margin-top:40px;
+    height:15px;
+    text-align:right            
+}	
+#loginAdminBtn{
+    background-position: 0 0;
+    border: 0 none;
+    margin: 20px 0 0;
+    width: 98px;
+    height: 35px;
+    left: 0;
+    cursor: pointer;    
+}
+#loginAdminBtn:hover {
+    background-position:-103px 0;
+    border: 0 none;
+    cursor: pointer;
+    height: 35px;
+    left: 0;
+    margin: 20px 0 0;
+    width: 98px;
+}
+#MictaMainNav{ margin:0 0 10px }
+#ForgotPcontainerAdmin{ width:360px }
+#adminTopClient{ padding:10px 0 0 }
+#descTopClient{ width:810px; margin:0 0 0 10px }
+#adminformSearch { margin:0 0 10px }
+#adminActivtyBoxL{ height:45px; width:190px }
+#adminSearchBox{ overflow:hidden; margin:0 0 20px; width:790px }	
+#btnUpdate{ border:0 none; cursor: pointer }
+#mictaNbeneficio{ width:580px; margin-left:20px; height:auto }
+#MictaBeneficio{ width:380px; height:20px }
+#blueArrows{ width:14px }
+#adminSaveNbene{ margin-top:20px; height:45px; padding-left:495px }
+#EstablecimientoP, #nomBeneficioP, #beneficioVigenteP, 
+#infoEditableP{ padding:0 0 5px; margin:5px 0 0 20px; width:550px; color:#585858 }
+#formEB { margin-top:10px; width:550px }
+#FunctiEB { margin: 0 5px 0 0; width:85px }
+#photoBeneficoEB {
+    width:150px;
+    height:150px;
+    position:absolute;
+    top:65px;
+    padding:0 0 0 10px;
+    right:110px;
+}
+#photoBenEB{ position: relative; width:250px; height: 140px }
+#adminbtnbenef{ height:45px; width:250px; margin-top: 20px }
+#lboxEB { width:580px; height:370px; margin:0 auto; padding:10px }
+#editBene { margin: 0 0 0 -295px; top:20px; width:590px; height:510px }
+#editConciliacion { margin: 0 0 0 -295px; top:20px; width:590px; height:510px }
+#selecEB{ width:290px }
+#lboxEBnovigente { position:relative; width:680px; margin:0 auto; padding:10px }
+#photoEBnovigentes{
+    width:150px;
+    height:150px;
+    position:absolute;
+    top:90px;
+    padding:0 0 0 10px;
+    left:470px;
+}
+#editarboxbeneficio{ width:640px; margin-left:20px; height:auto }
+#adminSaveCancEB{ margin: 0 auto; width: 250px; overflow: hidden }
+#vcont{ width:490px }
+#result{ width:100%; overflow: hidden }
+#estaMainContentBox { background-color: white; margin: 100px 0 0; overflow: hidden; height: auto }
+
+#mictaInnerContent{ margin-top:0; width:960px; overflow: hidden }	
+#adminEstaContentBox{ margin-bottom: 15px; width:960px }
+#adminEsCupon{ margin:0 0 15px; width:960px; height:auto; background-color:#F5F5F5 }
+#adminEscuponVbtn{ margin-left:60px}
+#adminCuponActive{
+    padding:0 0 0 30px;
+    width:928px;
+    background-color:#F2F9EC;
+    background-position:-50px -475px;
+    border: 1px solid #C4E1A6;
+    margin:0 0 10px;
+    cursor:default
+}
+#adminUserActive{ 
+    width:958px;
+    background-color:#F2F9EC;
+    border: 1px solid #C4E1A6;
+    margin:0 0 10px 0;
+    cursor:default
+}
+#adminCuponInactive{ 
+    padding:0 0 0 30px;
+    width:928px;
+    background-color:#FFE6E6;
+    background-position:10px -415px;
+    border: 1px solid #FF8080;
+    margin:0 0 10px;
+    color:#C00;
+    cursor:default
+}
+#adminUserInactive{
+    background:#FFE6E6 url(../../images/icoNoFound.png) 9px 7px no-repeat;
+    border: 1px solid #FF8080;
+    margin:0 0 10px;
+    padding:0 0 0 30px;
+    width:928px;
+    color:#C00
+}
+#adminEsCliente{ border:1px solid #CCC; width:128px; height:87px }
+#userAdmin{ margin-top:30px }
+#AdminEsCsContacto{ margin-top:30px }
+#adminUserAlert{ 
+    background-position:-110px -520px;    
+    background-color:#FFFFE8;
+    border: 1px solid #FFCC33;
+    padding:0 0 0 30px;
+    margin:0 0 10px;
+    width:928px;
+    cursor:default
+}
+#adminUserNoActive{ 
+    padding:0 0 0 30px;
+    width:928px;
+    background-position:-50px -475px;     
+    background-color:#F2F9EC;
+    border: 1px solid #C4E1A6;
+    margin:0 0 10px 0;
+    cursor:default
+}
+#adminESredimir{ color:#585858; padding:0 0 10px; margin:5px 0 10px 20px; overflow: hidden }
+#adminESredimirform{ padding:0 0 5px; margin:5px 0 0 20px; color:#585858 }
+#formESredimir { margin-top:10px; width:550px; height:210px }
+#lboxESredimir{ position:relative; height:300px; margin:0 auto; padding:0 }
+#adminbtnredimir{ border-top:1px solid #ccc }
+#cntOptionAll{ position:relative }
+#cntOptionAll #adminActivtyBoxL{ position:absolute; left:0; top:10px; z-index: 2 }
+#adminEsContentMisD{ width:960px}
+#bgmiAdminClave{ background-color:#EFEFEF; width:440px; margin:20px 20px 0 0 }	
+#mainContentAdminEC{ height:320px}
+#winChangePassE{ margin: -230px 0 0 -270px; }
+#estaContentgestor{ background-color:white; margin:20px 0 0; overflow: hidden; height:auto }	
+#formgestorEsta { margin:0 0 0 23px; width:960px }
+#adminActivty2{ height:55px; width:250px }
+#elimEstablecimiento{ width:498px }
+#lboxnuevoES { position:relative; height:320px; margin:0 auto; padding:0 }
+#lboxnuevoES2 { position:relative; height:540px; margin:0 auto; padding:0 }
+#formEstableadmin { margin-top:10px; width:100%; overflow: hidden }
+#caja_establecadmin{ color:#585858; padding:0 0 5px; margin:5px 0 0 }
+.FunctiEB { margin: 0 5px 0 0; width:85px }
+#mictBenContent, #tableCatGe, #ctaTableE { width: 958px }
+#lboxeditarinfoES { position:relative; height:540px; margin:0 auto; padding:0 }
+#eIPhotoadmin { width: 248px }
+#imglogoadmin{ height:88px; overflow:hidden; width:130px; margin: 0 }
+#flogoadmin{ width:97px; text-indent:0px; margin:28px 0 0 }
+#btnSearchConsume{ vertical-align: top }
+.heightGA { height: 55px }
+#adminActivtyBoxR { /*height: 55px*/ }
+#adminActivtyBoxR #estado{ width:100px; margin:0 10px 0 0 }
+#adminActivtyBoxR select{ padding: 6px 5px; width:120px }
+#adminActivtyBoxR #vigencia{ width:110px }
+.labelAdminR select{ width:130px }
+#lightboxcentroBtn{ width:220px; margin-top:20px; height:40px; margin-left: 140px }
+#lboxEstablecimiento {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    width:100%;
+    overflow: hidden
+}
+#lboxclaveusuarioES { position:relative; height:250px; margin:0 auto; padding:0 }
+#claveusuarioCentroBtn { height: 51px; margin-left: 128px; margin-top: 10px; width: 237px }
+#nuevaclave_usuario { height: 25px; margin-left: 20px; margin-top: 20px; width: 225px }
+#nuevaclave_email { height: 25px; margin-left: 20px; margin-top: 20px; width: 225px }
+#BtnesEditarinfo{ width:240px; margin-top:20px; height:40px; margin-left: 140px }
+#loginMLS{ margin: 0 auto; width: 420px }
+#contentForgotMLS{ position:relative }
+#backLogMLS{ position:absolute; right:0; top:10px; z-index:2 }
+.contentForgotMLS #textForgotP{ width:400px }
+#loginMLS .TitleLoginEs,
+#contentForgotMLS .TitleLoginEs,
+.blockFieldMLS #loginAdminBtn{ margin-top:0 }
+#contentForgotMLS #formrecupClave{ padding:0 10px }
+#up_logo {
+    position: relative;
+    background-position: 0 -902px;
+    margin:88px 0 0;
+    width:122px; 
+    height:28px
+}
+#up_logo:hover{ background-position: -125px -902px }
+#imgEstaLogo #up_logo{ margin-top:60px }
+#path_logo, #path_imagen {
+    position: absolute;
+    left:437px;
+    top:80px;
+    z-index: 3;
+    height: 30px;
+    width: 122px
+}
+#imgEstaLogo #path_logo, 
+#imgEstaLogo #path_imagen{ left: 354px; top: 52px }
+#cClaveCP span.response{ width: 230px }
+#iEditBene{ width:538px; overflow: hidden }
+#iEditConciliacion{ width:538px; overflow: hidden }
+#beneVencer{ /*top: 105px; left: 400px; width: 560px*/ }
+#inputChapa, #chapita{ 
+    margin:23px 0 0 10px; 
+    padding:0; 
+    width:50px; 
+    text-align: center; 
+    font-size: 24px 
+}
+#previewChapa .shadowOut{ 
+    background-color: transparent;
+    border:0 none;
+    color:white; 
+    text-shadow: 2px 2px 2px black 
+}
+#previewChapa{ height: 90px }
+#outPreview{ margin:0 20px 0 0 }
+#outPreview, #iPreview{ width:80px; height: 80px }
+#iPreview{ position:relative; background-repeat:no-repeat; background-position:0 0 }
+#titleFI{ 
+    background-color: black; 
+    padding: 4px 0; 
+    width:173px; 
+    color: white; 
+    text-align: center;
+    font-size: 14px
+}
+#ulColorCh{ width:150px; overflow: hidden }
+#winRedimirCupon .labelEC{ display: block; margin:7px 0 0; width:125px }
+#winRedimirCupon .medidaCP{ display: block; margin:7px 0 0; width:23px }
+#winRedimirCupon .responseT { display: block; margin:7px 0 0 10px; width:100px }
+#linkVolver,
+#backToProcess{ margin-top:10px; height:45px; width:56px; font-size: 14px }
+#galeria, #contentImgs{ width:450px; overflow: hidden }
+#query{ vertical-align: top }
+.formUsuarioB #query{ margin:0 10px 0 0 }
+.formUsuarioB .labelAdmin{ float: right!important; margin:0 0 0 20px!important; }
+.boxVS #formBoxAdminG{ width:440px }
+#lboxEusuarioEdicion{ margin:30px 0 0 -290px; top:0; height:300px; width:580px }
+#winEditarUsuarioAdm{ margin:30px 0 0 -290px; top:0; height:300px; width:580px }
+/***/
+#cntOptionAll #adminActivConBoxL { left: 0; position: absolute; z-index: 2; width: 400px }
+#cogFormpromocion{ 
+    border: 1px solid #FDE766; 
+    height: 48px; 
+    margin: 0 0 25px; 
+    padding:10px 20px; 
+    width: 920px
+}
+/***/
+#frmPhonesEstable select{ padding: 6px 5px; width: 100px }
+#divAddNumbersPhone { height: 380px; margin: -230px 0 0 -260px; width: 540px }
+
+#dataFormNBF{ padding: 0 25px; width: 910px }
+
+#adminEsDatConten{ width:960px}
+#adEsTopClient {
+    margin: 0 0 0 10px;
+    width: auto;
+}
+#adminEsTopClient {
+    padding: 10px 0 0;
+    width:auto;
+}
+#adEsDatosTable{
+    width: 480px;
+}
+
+
+#adEsCambLogo{ width:290px}
+
+#borderAll{ border:1px #CCC solid}
+
+#adminEsDatRight{ width:460px}
+#adEsbtnActualizar{ width:200px }
+#misDatospagination {
+    height: 25px;
+    width: 460px;
+}
+#img_avatar_estMisDatos {
+    height: 87px;
+    width: 128px;
+    margin: 0 10px 0 0;
+}
+#adEsCambLogo #adminEsCliente #path_imagen {
+    left: 455px;
+    top: 291px;
+}
+#divAddNumbersPhone { height: 380px; margin: -230px 0 0 -260px; width: 540px }
+
+#winAdminPerfil{ margin:-225px 0 0 -290px; height:450px; width:580px; }
+#adEsDatosTabConten {
+    width: 482px;
+}
+#lboxEeditarOp {
+    height: 450px;
+    margin: -225px 0 0 -290px;
+    width: 580px;
+}
+#dataLoad2{ 
+    position: absolute; 
+    z-index: 99999; 
+    left:999999px; 
+    bottom:0;
+    margin:0; 
+    padding:0;  
+    width:660px;
+    overflow: hidden;
+    font-size:12px; 
+    font-family:Trebuchet MS, Tahoma, Arial, sans-serif, Garuda      
+}
+#dataLoad2 table td,
+#dataLoad2 table th{ border:1px solid black }
+#divNewBen #respEditor{ width: 600px; padding: 10px 0 0 205px }
+
+/*AGREGADO PARA USUARIOS : MOMENTANEO*/
+#adminActivtyBoxL{ width:auto; }
+#lboxReasigClaveUser{ margin: -265px 0 0 -260px; width: 502px; }
+/* 16-03-2012 */
+#cntPdfUpList{ position:relative; width:121px; height:28px; overflow:hidden }
+#cntPdfInfoUpList{ position:relative; width:87px; height:28px; overflow:hidden }
+#upPdfLsit{ 
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:2;
+	display:block;
+	background:url(../../images/btnListPdf.png) 0 0 no-repeat; 
+	width:121px; 
+	height:28px
+}
+#upPdfInfoLsit{ 
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:2;
+	display:block;
+	background:url(../../images/btnSubirPdf.png) 0 0 no-repeat; 
+	width:87px; 
+	height:28px
+}
+#dataUpPdf{ margin:0 0 0 5px; padding:7px 5px 5px; width:220px; overflow:hidden }
+#dataUpPdfInfo{ margin:0 0 0 5px; padding:7px 5px 5px; width:220px; overflow:hidden }
+#divNewBen #resultado{ display:none }
+#pdf_resultado{ position:absolute; left:0; top:0; z-index:3 }
+#pdf_info{ position:absolute; left:0; top:0; z-index:3 }
+#tipoPromocion{
+	display:block;
+	background:url(../../images/add1.png) right center no-repeat;	
+	width:190px;
+	padding:4px 0 6px;
+	line-height:1
+}
+#dataOLRes{ list-style-type: decimal  }

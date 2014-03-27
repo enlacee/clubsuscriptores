@@ -1,0 +1,30 @@
+<?=$this->partial("beneficio/_catalogodetalle.phtml",
+        array(
+            "nombre"             => $this->nombre,
+            "itemsSeleccionados" => $this->itemsSeleccionados,
+            "titulo_detalle"     => $this->titulo_detalle,
+            "beneficio"          => $this->beneficio,
+            "elementsUrl"        => $this->elementsUrl,
+            "tipobeneficio"      => $this->tipobeneficio,
+            "maximo_permitido"   => $this->maximo_permitido,
+            "titulo_relacionados"=> $this->titulo_relacionados,
+            "mediaUrl"           => $this->mediaUrl,
+            "beneficios_relacionados" => $this->beneficios_relacionados,
+            "totalitems"         => $this->totalitems,
+            "mostrando"          => $this->mostrando,
+            'routeSearch'        => $this->routeSearch,
+            'MostrandoN'         => $this->MostrandoN,
+            'MostrandoDe'        => $this->MostrandoDe,
+            'ord'                => $this->ord,
+            'col'                => $this->col,
+            'id'                 => $this->id,
+            'slug'               => $this->slug,
+            'cadenaconsulta'     => $this->cadenaconsulta,
+            'tipo'               => 'lista',
+            'sufixmedium'        => $this->sufixmedium,
+            'sufixlittle'        => $this->sufixlittle,
+            'catbenef'           => $this->catbenef,
+            'cadenabusqueda'     => "/lista".$this->cadenabusqueda
+        )
+   );
+?>

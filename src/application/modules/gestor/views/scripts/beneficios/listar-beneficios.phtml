@@ -1,0 +1,16 @@
+<h6 class="Titulo980 bold">BENEFICIOS</h6>     
+<!--
+<div id="adminActivtyBoxR" class="right">
+</div>
+-->
+<div class="all" id="cntOptionAll">
+<div id="adminActivtyBoxL">
+    <a href="<?= $this->url(array('action' => 'nuevo-beneficio', 'controller' => 'beneficios', 'module' => 'gestor'), 'default', true) ?>" class="adminAdBtn left"></a>
+    <a href="#modalInfo" class="adminVenBtn winModal modalConfirmacion left"></a>
+    <div class="hide msjDialogo">¿Estás seguro que deseas vencer estos beneficios?</div>
+</div>
+<?= $this->partial('beneficios/_filtro_beneficio.phtml', array('formFiltroBeneficio' => $this->formFiltroBeneficio, 'csrf' => $this->csrf)) ?>
+</div>
+<div id="result">
+    <!--ajax result-->
+</div>

@@ -1,0 +1,18 @@
+<div id="MictaSideBarNavBox" class="grid3 left">
+  <div id="mainNavMicta">
+    <ul id="mainNavMictaInner">
+      <li class="<?= $this->menu_sel_side == App_Controller_Action_Suscriptor::MENU_POST_SIDE_MIS_DATOS ? 'active' : '' ?> liMictanMenu">
+        <a href="<?php echo $this->url(array('action'=>'mis-datos','controller'=>'mi-cuenta','module'=>'suscriptor'),'default',true); ?>" class="aMenuMictaMain">Mis datos</a>
+      </li>
+      <li class="<?= $this->menu_sel_side == App_Controller_Action_Suscriptor::MENU_POST_SIDE_CAMBIOCLAVE ? 'active' : '' ?> liMictanMenu "> 
+        <a href="<?php echo $this->url(array('action'=>'cambio-de-clave','controller'=>'mi-cuenta','module'=>'suscriptor'),'default',true); ?>" class="aMenuMictaMain ">Cambio de Clave</a>
+      </li>
+      <li class="<?= $this->menu_sel_side == App_Controller_Action_Suscriptor::MENU_POST_SIDE_REDESSOCIALES ? 'active' : '' ?> liMictanMenu "> 
+        <a href="<?php echo $this->url(array('action'=>'redes-sociales','controller'=>'mi-cuenta','module'=>'suscriptor'),'default',true); ?>" class="aMenuMictaMain ">Redes Sociales</a>
+      </li>
+      <li class="<?= $this->menu_sel_side == App_Controller_Action_Suscriptor::MENU_POST_SIDE_ALERTAS ? 'active' : '' ?> liMictanMenu "> 
+        <a href="<?php echo $this->url(array('action'=>'mis-alertas','controller'=>'mi-cuenta','module'=>'suscriptor'),'default',true); ?>" class="aMenuMictaMain  bbSolid">Mis alertas</a>
+      </li>
+    </ul>
+  </div>
+</div>

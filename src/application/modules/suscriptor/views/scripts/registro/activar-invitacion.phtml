@@ -1,0 +1,14 @@
+<div id="registrateForm" class="gridS20DOS grayborder2 r5">
+    <h6 class="Titulo980 titleFix bold">Invitación para acceder a los beneficios del Club Suscriptor</h6>
+    <div id="lCajatext" class="TextoInputreg">
+        Para activar la invitación solo tienes que darle clic al botón Activar.
+    </div>
+    <div id="quieroLaPromoContentbox" class="grid20">
+        <form action="" method="post" id="registrarse" enctype="multipart/form-data">
+            <input type="hidden" name="token" value="<?= $this->token ?>" />
+            <fieldset id="formregistro">                
+                <input type="submit" class="btnAll btnRegistro <?= $this->isAuth? '':' winModal' ?>" <?= $this->isAuth? '':'href="#loginModalW"' ?> value="" id="btnActInv"/>
+            </fieldset>
+        </form>
+    </div>
+</div>

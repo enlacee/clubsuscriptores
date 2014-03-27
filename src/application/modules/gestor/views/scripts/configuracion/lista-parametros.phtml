@@ -1,0 +1,43 @@
+<div class="all cntPagFix">
+    <div class="left m5all"><?php echo $this->mostrando; ?></div>
+    <?php echo $this->paginationControl($this->parametros,'Sliding','configuracion/_page.phtml'); ?>
+</div>
+<div class="adminGestorContet grayborder2 r3 mB20">
+    <table id="mictBenContent">
+        <thead id="mictaBenTitle">
+            <tr>
+                <th width="15%" class="mictBenTiTH ml5 mictbRight bold">Párametro</th>
+                <th width="20%" class="mictBenTiTH ml5 mictbRight bold">Descripción</th>
+                <th width="37%" class="mictBenTiTH ml5 mictbRight bold">Valor</th>
+                <th width="10%" class="mictBenTiTH ml5 mictbRight bold">Tipo</th>
+                <th width="10%" class="mictBenTiTH ml5 mictbRight bold">Categoría</th>
+<!--                <th width="10%" class="mictBenTiTH ml5 mictbRight bold">Fecha Actualización</th>-->
+<!--                <th width="8%" class="mictBenTiTH ml5 bold">Acciones</th>-->
+            </tr>
+        </thead>
+        <tbody>
+            <?php $contreg = 0;
+                foreach ($this->parametros as $param): $contreg++; ?>
+                <tr class="<?php echo ($contreg%2==0?'':'even'); ?>">
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $param['nombre']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $param['descripcion']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $param['valor']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $param['tipo']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $param['categoria']; ?></td>
+<!--                    <td class="mictBenFluTd mictbRight mictbTop"><?php //echo $this->DateFormatOpen($param['fecha_actualizacion']);//,"dd'-'MMM'-'y"); ?></td>-->
+<!--                    <td class="mictBenFluTd mictbTop">
+                        <a href="#divEditParameter" class="winModal noScrollTop editParameterG" rel="<?php //echo $param['id']; ?>">Editar</a>
+                    </td>-->
+                </tr>
+            <?php endforeach; 
+                if($contreg<=0){
+                    echo '<tr class="even"><td class="mictBenFluTd mictbRight mictbTop" colspan="8" style="text-align:center;"> - No se encontraron registros - </td></tr>';
+                }
+            ?>
+        </tbody>
+    </table>
+</div>
+<div class="all cntPagFix">
+    <div class="left m5all"><?php echo $this->nroregistros; ?></div>
+    <?php echo $this->paginationControl($this->parametros,'Sliding','configuracion/_page.phtml'); ?>
+</div>

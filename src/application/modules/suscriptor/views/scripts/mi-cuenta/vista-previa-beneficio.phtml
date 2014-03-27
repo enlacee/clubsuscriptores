@@ -1,0 +1,56 @@
+<h6 class="TilutoLightbox">Vista Previa Beneficio</h6>
+
+<div id="quieroLaPromoDetalle">
+    <form action="" method="post" name="frmquieropromo" id="frmquieropromo">
+        <h6 class="TilutoDetallePromo">Detalle de la Promo : <?= $this->beneficio['titulo']?></h6>
+        <div id="DetalleEstCont">
+            <div id="DetalleEstContFoto" class="fotoSombra">
+                <img src="<?= $this->elementsUrl ?>/images/beneficios/<?= $this->ImgName($this->beneficio['path_logo'], $this->sufixlittle) ?>" id="fotoEstable" width="325" height="182">
+                <div class="Qtipodeoferta2">
+                    <h2 class="promostexto3 left">Promo</h2>
+                </div>
+                <div id="promoflujo2" class="QtextoPromoChico <?=$this->beneficio['chapita_color']?> Tshadow"><?=$this->beneficio['chapita']?></div>
+            </div>
+         </div>
+
+        <div id="DetalleEstContText">
+            <div id="NombredeEstaP" class="bbdotted">
+                <h6 class="TitulodeEstaP"><?=$this->escape($this->beneficio['nombre'])?></h6>
+                <?php if (!empty($this->beneficio['descripcion'])): ?>
+                <span class="DescripdeEstaP"><?php echo $this->escape($this->beneficio['descripcion']); ?></span>
+                <?php endif; ?>
+            </div>
+            <?php if (!empty($this->beneficio['valor'])): ?>
+            <div id="ValorEstaP" class="bbdotted mT10">
+                <h6 class="TitulodeEstaP2 mB2 bold">Valor:</h6>
+                <span class="DescripdeEstaP"><?=$this->escape($this->beneficio['valor'])?></span>
+            </div>
+            <?php endif; ?>
+            <?php if (!empty($this->beneficio['direccion'])): ?>
+            <div id="DondeEstaP" class="bbdotted mT10">
+                <h6 class="TitulodeEstaP2 mB2 bold">Dónde:</h6>
+                <span class="DescripdeEstaP"><?=$this->escape($this->beneficio['direccion'])?></span>
+            </div>
+            <?php endif; ?>
+            <?php if (!empty($this->beneficio['cuando'])): ?>
+            <div id="CuandoEstaP"class="right bbdotted mT10">
+                <h6 class="TitulodeEstaP2 mB2 bold">Cúando:</h6>
+                <span class="DescripdeEstaP">
+                    <?php echo $this->escape($this->beneficio['cuando']); ?>
+                </span>
+            </div>
+            <?php endif; ?>
+            <?php if (!empty($this->beneficio['telefono_info']) || !empty($this->beneficio['email_info'])): ?>
+            <div id="MasinfoEstaP" class="bbdotted mT10">
+                <h6 class="TitulodeEstaP2 mB2 bold">Más información:</h6>
+                <?php if (!empty($this->beneficio['telefono_info'])): ?>
+                <span class="DescripdeEstaP">Teléfono: <?=$this->beneficio['telefono_info']?></span>
+                <?php endif; ?>
+                <?php if (!empty($this->beneficio['email_info'])): ?>
+                <a href="mailto:<?=$this->beneficio['email_info']?>"> <?=$this->beneficio['email_info']?></a>
+                <?php endif; ?>
+            </div>
+            <?php endif; ?>
+        </div>        
+    </form>
+</div>

@@ -1,0 +1,66 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="<?php echo MEDIA_URL; ?>/css/main.css" media="all" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    .rptConciliado{
+        font-family: Arial;
+    }
+    body{
+        background-color: #FFF;
+    }
+</style>
+<div class="rptConciliado">
+<div style="margin-bottom: 15px;">
+<!--<div style="margin-bottom: 8px;">Fecha: <?php //echo date('d/m/Y h:i:s');?></div>-->
+<h5 align="center">
+    Conciliación Club del Suscriptores
+    <?php echo $this->cad_fecha; ?>
+</h5>
+<div align="center">
+    <?php echo 'Promoción : '.$this->name_promo.'<br/>'; ?>
+    <?php echo 'Establecimiento : '.$this->name_establecimiento; ?>
+</div>
+</div>
+<div class="grayborder2 r3 all">
+<table width="100%">
+    <thead id="mictaBenTitle">
+        <tr>
+            <th width="19%" class="mictBenTiTH ml5 mictbRight bold">Promoción</th>
+            <th width="9%" class="mictBenTiTH ml5 mictbRight bold">Fecha de consumo</th>
+            <th width="8%" class="mictBenTiTH ml5 mictbRight bold ">Documento</th>
+            <th width="15%" class="mictBenTiTH ml5 mictbRight bold">Cliente</th>
+            <th width="9%" class="mictBenTiTH ml5 mictbRight bold">Voucher</th>
+            <th width="8%" class="mictBenTiTH ml5  bold">Descuento S/.</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $contreg = 0; $mntoTotCon = 0;
+            foreach ($this->redimidos as $redimido): $contreg++; ?>
+            <tr bgcolor="<?php echo ($contreg%2==0?'#FFF':'#ECF7FF'); ?>">
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $redimido['titulo']; ?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $this->DateFormatOpen($redimido['fecha_consumo']); //,"dd'-'MMM'-'y"); ?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $redimido['tipo_documento'].' '.$redimido['numero_documento']; ?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $redimido['names']; ?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $redimido['numero_comprobante']; ?></td>
+                <td class="mictBenFluTd mictbTop montoConcili"><?php echo $redimido['monto_descontado']; ?></td>
+            </tr>
+        <?php 
+                $mntoTotCon += $redimido['monto_descontado'];
+            endforeach; 
+            if($contreg<=0){
+                echo '<tr class="even"><td class="mictBenFluTd mictbRight mictbTop" colspan="6" style="text-align:center;"> - No se encontraron registros - </td></tr>';
+            }
+        ?>
+        <tr></tr>
+    </tbody>
+</table>
+</div>
+<?php echo '<div style="text-align:right;color: #333;font-size: 13px;padding:10px;background-color: #FFF;">Nro de Registos: '.count($this->redimidos).'</div><br/>'; ?>
+<table style="border: 0px solid #FDE766;background-color: #FFFFE1;padding: 10px 20px;">
+    <tr>
+        <td><span class="Trebuchet16 bold">Total de Conciliación&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        <td>
+            <span id="divMontoConcilia" class=" Trebuchet24 black right">S/. <?php echo number_format($mntoTotCon,2); ?></span>
+        </td>
+    </tr>
+</table>
+</div>

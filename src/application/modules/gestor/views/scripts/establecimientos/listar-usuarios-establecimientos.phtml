@@ -1,0 +1,9 @@
+<!--<a id="linkVolver" class="right" href="#">« Volver</a>-->
+<a id="backToProcess" class="right" href="#">« Volver</a>
+<h6 class="Titulo980 bold">Usuarios de "<?=$this->escape($this->nombre); ?>"</h6>
+<div id="adminActivtyBoxR" class="all">
+    <?= $this->partial('establecimientos/_filtro_usuario.phtml', array('formFiltroUsuario' => $this->formFiltroUsuario,'idEst'=>$this->idEst)) ?>
+</div>
+
+<div id="listaUsuContentBox" class="all">
+</div>

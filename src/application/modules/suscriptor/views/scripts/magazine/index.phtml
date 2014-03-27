@@ -1,0 +1,159 @@
+<table border="0" align="center" cellpadding="0" cellspacing="0" style=" width:826px" >
+    <tr>
+        <td>
+            <table width="826" align="center" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+<!--                    <td style=" width:124px; height:22px; background-image:url(<?= $this->mediaUrl ?>/images/logoGrupoComercio.jpg); background-repeat:no-repeat;background-color:#343434; border-bottom:#FC0 solid 3px; padding-bottom:2px;">&nbsp;</td>-->
+                    <td style="background-color:#343434; width:368px;  border-bottom:#FC0 solid 3px; padding-bottom:2px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:16px; color:#FFF">&nbsp;www.clubsuscriptores.pe</td>
+                    <td style=" width:251px; border-bottom:#FC0 solid 3px; background-color:#343434; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#CCC ">&nbsp;</td>
+<!--                    Contacto: suscriptores@comercio.com.pe-->
+                    <td style=" width:86px; border-bottom:#FC0 solid 3px; background-color:#343434; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:12px; color:#CCC ">&nbsp;</td>
+<!--                    511-3115100-->
+                </tr>
+            </table>
+        </td> 
+    </tr>
+    <tr>
+        <td style="padding:10px 0  0 310px;"><img src="<?= $this->mediaUrl ?>/images/logocs.png" width="267" height="70" /></td>
+    </tr>
+</table>
+
+
+<!--<table align="center" style=" width:786px;  padding:5px 0 0 0" border="0" cellpadding="0" cellspacing="0">
+    <tr style=" height:40px;">
+        <td style=" background-image:url(<?= $this->mediaUrl ?>/images/verde.jpg); background-repeat:no-repeat;  padding-left: 38px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; color:#333; width:192px;">Protege el medio Ambiente</td>
+        <td style= "width:540px; background-color:#FFF4CC; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; color:#000; padding-left:22px;">Evita imprimir. S&oacute;lo es necesario dar el N&ordm; de cup&oacute;n o tu DNI en el establecimiento. </td>
+    </tr>
+</table>-->
+
+<table align="center" width="786px" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td><div style="height:28px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:18px; font-weight:bold; color:#000; padding-top: 20px; padding-left: 10px;">CATALOGO DE BENEFICIOS</div></td>
+    </tr>
+</table>     
+
+
+<? $nroitm = 3 ?>
+<? $i = 1 ?>
+<? $cat = 'ncat' ?>
+<? foreach ($this->categorias as $categoria => $beneficios) : ?>
+    <table align="center" width="786" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+                <td style=" background-image:url(<?= $this->mediaUrl ?>/images/bgTittle.jpg); background-repeat:no-repeat; color:#FFF; width:786px; height:32px; padding:0  0 0 10px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif;"><?= $categoria ?></td>
+            </tr>
+            <tr>
+                <td> </td>
+            </tr>
+        </tbody>
+    </table>
+    <? $cat = 'ncat' ?>
+    <? foreach ($beneficios as $beneficio) : ?>
+        <div class="brkpag <?= $cat ?>" rel="<?= '::' . $categoria . ' ' . $beneficio['nombre']?>">
+            <? $cat = "" ?>
+            <? ($i >= $nroitm) ? $i = 1 : $i++; ?>
+            <table align="center" width="786" border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                        <td style="width:326px;">
+                            <img onerror="this.src='<?= $this->mediaUrl ?>/images/fcatalogo_grande.jpg'" src="<?= $this->elementsUrl ?>/images/beneficios/<?= $this->ImgName($beneficio['foto'], $this->sufixmedium) ?>" width="325" height="182" style="margin:7px 0 0 2px;" />
+                        </td>
+                        <td style="width:350px; margin-left:5px;">
+                            <table width="350" border="0" cellpadding="0" cellspacing="0" style=" margin:20px 0 0 10px;">
+                                <tbody>
+                                    <tr>
+                                    </tr>
+                                    <tr>
+                                        <td style=" height:35; border-bottom:#CCC solid 1px; border-top:#333 solid 8px;">
+                                            <table style=" width:350px;" border="0" cellpadding="0" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="text-align: center; width:100px; height:35px; background-color:#FC0; font-size:18px; color:#000; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; padding-left:10px;"><?= $beneficio['chapita'] ?></td>
+                                                        <td style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; color:#000; font-size:24px; padding-left:10px;"><?= $beneficio['e_nombre'] ?></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 150px;">
+                                            <table width="350" border="0" cellpadding="0" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="2" style=" font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; color:#000; font-weight:bold; font-size:16px; border-bottom:#CCC 1px dotted; padding:5px 0 5px 5px;"><?= $beneficio['nombre'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style ="width: 100px" rowspan="6"><img style="width: 100px;height: 68px" src="<?= $this->elementsUrl . '/establecimientos/' . $beneficio['e_logo'] ?>" /></td>
+                                                        <td style=" font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; color:#666; font-size:14px; padding-left:10px;"><?= $beneficio['descripcion'] ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <table width="350" border="0" cellpadding="0" cellspacing="0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style=" width:65px; color:#000; font-size:14px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; padding:5px 0 0 10px;">D&oacute;nde</td>
+                                                                        <td style=" font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; color:#333; font-size:14px; padding-top:5px;"><?= $beneficio['donde'] ?></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <table width="350" border="0" cellpadding="0" cellspacing="0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style=" width:65px;color:#000; font-size:14px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; padding:5px 0 0 10px;">C&uacute;ando</td>
+                                                                        <td style=" font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; color:#333; font-size:14px; padding-top:5px;"><?= $beneficio['cuando'] ?></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <table width="350" border="0" cellpadding="0" cellspacing="0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style=" width:65px;color:#000; font-size:14px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; padding:5px 0 0 10px;">Tel&eacute;fono:</td>
+                                                                        <td style=" font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; color:#333; font-size:14px; padding-top:5px;"><?= $beneficio['telefono'] ?></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <table width="350" border="0" cellpadding="0" cellspacing="0">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style=" width:65px;color:#000; font-size:14px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; padding:5px 0 0 10px;">Email:</td>
+                                                                        <td style=" font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; color:#333; font-size:14px; padding-top:5px;"><?= $beneficio['email'] ?></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style=" margin:20px auto 0; width:786px; overflow: hidden" align="center">
+                <table width="786" align="center" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td><?= $beneficio['informacion'] ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    <? endforeach; ?>
+    <? $nroitm = 4 ?>
+<? endforeach; ?>
+

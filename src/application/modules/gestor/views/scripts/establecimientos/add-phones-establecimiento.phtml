@@ -1,0 +1,75 @@
+<h6 class="TilutoLightbox pleft">Teléfonos: <?php echo $this->name; ?></h6>
+<div class="contentedorEditParam">
+    <div id="msjPhones" class="ml20 bad grid8 mB10 hide">Campo obligatorio, debe tener al menos un teléfono registrado.</div>
+    <form id="frmPhonesEstable" name="frmPhonesEstable" method="post" action="">
+      <input name="idEstablecimiento" id="idEstablecimiento" type="hidden" value="<?php echo $this->codigo; ?>"/>
+      <div id="divContenidoPhonesNum">
+          <div id="divContenidoPhonesNum2">
+          <?php 
+                $nrotel = 0;
+                for ($i=1; $i<=$this->nroreg; $i++): $nrotel++; ?>
+              <div class="block left">
+                <label class="bold ml10 mR20" for="txtNumberPhone<?php echo $nrotel; ?>">Teléfono N°<?php echo '&nbsp;&nbsp;';//$i; ?>:</label>
+                <span class="bold error">&nbsp;</span>
+                <?php
+                    echo $this->formPhone->{'txtNumberPhone'.($i)}->setAttribs(
+                            array('class'=>'mR10 tlfNPhone')
+                        )->renderViewHelper();
+                    echo $this->formPhone->{'idphone'.($i)}->renderViewHelper();
+                    echo $this->formPhone->{'operador'.($i)}->setAttribs(
+                            array('class'=>'mR10')
+                        )->renderViewHelper();
+                    echo $this->formPhone->{'chkActivo'.($i)}->setAttribs(
+                            array('class'=>'mR10')
+                        )->renderViewHelper();
+                ?>
+                <a alt="Eliminar" title="Eliminar" class="idDeletePhone">
+                    <img src="<?php echo $this->mediaUrl; ?>/images/delete.jpg" width="26" height="24"/>
+                </a>
+    <!--            <div class="left" style="width: 300px;"><?php //echo ''; ?></div>-->
+                <div class="response bad msjRespELM hide">Teléfono registrado</div>
+              </div>
+          <?php endfor; 
+                $nrotel++;
+          ?>
+          <div id="divContentNews"></div>
+          <a alt="Agregar" title="Agregar" id="idAddPhone">
+              <img src="<?php echo $this->mediaUrl; ?>/images/add.jpg" width="26" height="24"/>
+          </a>
+          </div>
+      </div>
+    </form>
+    <input type="hidden" value="<?php echo $nrotel; ?>" id="idnro"/>
+    <input type="hidden" value="" id="valuesPhonesInsert"/>
+    <input type="hidden" value="" id="idValuesPhonesInsert"/>
+    <div id="divContentNewPhone">
+      <div class="block left">
+        <label class="bold ml10 mR20" for="txtNumberPhone<?php echo $nrotel; ?>">Teléfono N°&nbsp;&nbsp;:</label>
+        <span class="bold error">*</span>
+        <?php
+            echo $this->formPhone->{'txtNumberPhone'.($nrotel)}->setAttribs(
+                        array('class'=>'mR10 tlfNPhone')
+                    )->renderViewHelper();
+            echo $this->formPhone->{'idphone'.($nrotel)}->renderViewHelper();
+            echo $this->formPhone->{'operador'.($nrotel)}->setAttribs(
+                        array('class'=>'mR10')
+                    )->renderViewHelper();
+            echo $this->formPhone->{'chkActivo'.($nrotel)}->setAttribs(
+                        array('class'=>'mR10')
+                    )->renderViewHelper();
+        ?>
+    <!--        <div class="left" style="width: 300px;"></div>-->
+            <a alt="Eliminar" title="Eliminar" class="idDeletePhone">
+                <img src="<?php echo $this->mediaUrl; ?>/images/delete.jpg" width="26" height="24"/>
+            </a>
+            <div class="response bad msjRespELM hide">Teléfono registrado</div>
+      </div>
+    </div>
+    <div class="grid10 left">
+      <div class="adminGeSQ">
+        <input id="adminGSave" type="button" class="btnSavePhoneG ml20 btnAll textHidden left" />
+        <input id="adminGquit" type="button" class="btnQuitPhoneG ml20 btnAll left" />
+      </div>
+    </div>
+</div>
+<?="<div class='hide' id='csrf'>".$this->csrf."</div>"?>

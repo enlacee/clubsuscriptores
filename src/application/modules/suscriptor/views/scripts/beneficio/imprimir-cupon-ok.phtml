@@ -1,0 +1,144 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+    /*table {
+        width: 480px; border:1px dashed black;
+    }*/
+    table tr:first img{
+        width:300px; height:78px; margin-left:100px; text-align:center;
+    }
+</style>
+<?php 
+$cont = 0;
+$totalcupons = count($this->cuponesgenerados);
+foreach ($this->cuponesgenerados as $cupon):
+    $cont++;
+?>
+    <table style="width: 600px; border:1px dashed black;" align="center">
+        <tr>
+            <td align="left" style="padding-top: 15px;" colspan="2">
+                <div style=" float: left">
+                    <img src="<?=MEDIA_URL?>/images/logocs.png"  
+                            style="width:300px; height:78px; margin-left:10px; text-align:left;" />
+                </div>
+                <div style="float: right; margin-right:10px; text-align:center;">
+                    <img src="<?=MEDIA_URL?>/images/cup_codigoDescrip.png"  
+                            style="text-align:center;" /><br>
+                    <table width="238" height="32" style="width: 238px;margin:0;padding:0;height: 32px;" border="0" cellpadding="0" cellspacing="0" align="center">
+                        <tr style="height: 32;">
+                            <td align="center" height="32px" style="
+                                background-image: url(<?=MEDIA_URL?>/images/cup_codigo_fondo.png);
+                                height: 32px;width: 238px;                                
+                                font-family: Arial;font-weight: bold; text-align:center;
+                                font-family:'Trebuchet MS', Arial, Helvetica, sans-serif;font-size:20px;">                                
+                                <div style="color:#DAD9DA; vertical-align: middle;position: relative; text-align: center;">
+                                    <?php echo $cupon['codigo']; ?>
+                                </div>
+                            </td>                            
+                        </tr>    
+                    </table> 
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" style="padding-top: 15px;" colspan="2">
+                <div style="color: black;background-color: black;height: 0.8px;width: 97%;margin: 0 auto;">
+                    &nbsp;</div>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="padding-top: 8px;padding-left: 10px;vertical-align: top;" colspan="2">
+                <div style="font-size: 20px; font-family: Arial, Helvetica, sans-serif;
+                        padding-top: 10px;font-weight: bold;">
+                    <?php echo $this->beneficio['titulo']; ?>
+<!--                        CIERRA PUERTAS SAGA MAMÁ-->
+                    <span style=" color: red">*</span>
+                </div>
+                <div style="padding-top: 10px; font-family: Arial; font-size: 13px;">
+                    <?php echo $this->beneficio['codigo']; ?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px 10px 10px 10px;width: 240px" >
+                <img class="imgflujo" width="240" height="134" 
+                src="<?= $this->elementsUrl; ?>/images/beneficios/<?= $this->ImgName($this->beneficio['path_logo'],$this->sufixmedium); ?>" 
+                />
+            </td>
+            <td style="padding: 10px 10px 10px 10px;line-height:115%" >
+                <div style="font-size: 12px;text-align:justify;word-break: break-all;width: 320px;" >
+                    <?php if(!empty($this->beneficio['descripcion_cupon'])) {
+                            echo $this->beneficio['descripcion_cupon'];
+                        }
+                    ?>
+<!--                        ¡Engríe a Mamá en su día! El Club de Suscriptores y Saga Falabella te invitan 
+                    a un exclusivo Cierra Puertas.-->
+                </div>
+                <div style="font-size: 11px;font-weight: bold;padding-top: 8px;" >
+                    <?php if(!empty($this->beneficio['cuando'])) {
+                            echo "Cuándo: ".$this->beneficio['cuando'];
+                            }
+                    ?>
+<!--                        Viernes 11 de mayo de 2012-->
+                    <br>
+                    <?php if(!empty($this->beneficio['direccion'])) {
+                            echo "Dónde: ".$this->beneficio['direccion'];
+                            }
+                    ?>
+<!--                        Saga Falabella del Jockey Plaza, San Miguel, Miraflores y San Isidro.-->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" style="padding-top: 15px;" colspan="2">
+                <div style="color: black;background-color: black;height: 0.8px;width: 97%;margin: 0 auto;"></div>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="padding: 10px 10px 10px 10px;" colspan="2">
+                Suscriptor:<br>
+                <div style="font-size: 14px;font-weight: bold;float: left;margin-top: 5px;" >
+                    <?php  echo $this->datos_suscriptor; ?>
+<!--                        Ernesto Anaya-->
+                </div>
+                <div style="font-size: 14px;font-weight: bold;float: left;margin-left: 20px;" >
+<!--                        DNI 099999940-->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" style="padding-top: 5px;" colspan="2">
+                <div style="color: black;background-color: black;height: 0.8px;width: 97%;margin: 0 auto;"></div>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="padding: 10px 10px 10px 10px;" colspan="2">
+                <div style="font-size: 9px;word-break: break-all;width: 580px;" >
+                    <span style=" color: red">*</span>
+                    <?php echo $this->beneficio['terminos_condiciones_cupon'];?>
+<!--                        !Ven y Renuévate con Descuentos Exclusivos para tí y tu familia! Acércate con tu DNI al local de tu preferencia, solicita la tarjeta de descuento y preséntala en la caja al momento de pagar para acceder a los beneficios.-->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2" >
+                <center>
+                    <img src="<?=MEDIA_URL?>/images/cup_linkclubNegro.jpg"  
+                            style="text-align:center;margin:0 auto;" />
+                </center>
+                <br>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px 0 5px 0;letter-spacing:1px;font-size: 10px; background-color: #CCCCCC;
+                display: table-cell;vertical-align: middle;" 
+                align="center" colspan="2" >
+                ES INDISPENSABLE IMPRIMIR ESTE CUPÓN
+            </td>
+        </tr>
+    </table>
+
+<br/><br/>
+<?php if($cont<$totalcupons):?>
+<div style="page-break-after: always;"></div>
+<?php endif; ?>
+<?php endforeach;?>

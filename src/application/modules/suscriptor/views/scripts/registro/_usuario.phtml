@@ -1,0 +1,47 @@
+<?php //if ($this->controlador == 'registro') :    ?>
+<div class="block">
+    <label for="fEmail" class="labelNr black Trebuchet"><span class="req">*</span> Email</label>
+    <? $hasError = $this->formUsuario->email->hasErrors(); ?>
+    <?=
+    $this->formUsuario
+    ->email->setAttribs(array(
+        'id' => 'fEmail',
+        'class' => 'required s_usuario inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+        'tabindex' => '9')
+    )->renderViewHelper();
+    ?>
+    <span class="response cajaGray left<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formUsuario->email->errMsg : '' ?></span>
+</div>
+<div class="block">
+    <label for="fClave" class="labelNr black Trebuchet"><span class="req">*</span> Clave</label>
+    <?=
+    $this->formUsuario->
+    pswd->setAttribs(array(
+        'id' => 'fClave',
+        'class' => 'required s_usuario inputNr left',
+        'maxlength' => 32,
+        'type' => 'password',
+        'tabindex' => '10'
+    ))->renderViewHelper();
+    ?>
+    <? $hasError = $this->formUsuario->pswd->hasErrors(); ?>
+    <span class="response cajaGray left<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formUsuario->pswd->errMsg : '' ?> </span> 
+</div>
+<div class="block">
+    <label for="fRepetirclave" class="labelNr black Trebuchet"><span class="req">*</span> Repetir Clave</label>
+    <? $hasError = $this->formUsuario->pswd2->hasErrors(); ?>
+    <?=
+    $this->formUsuario
+        ->pswd2->setAttribs(array(
+            'id' => 'fRClave',
+            'class' => 'required s_usuario inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+            'maxlength' => 32,
+            'type' => 'password',
+            'tabindex' => '11')
+        )
+        ->renderViewHelper();
+    ?>
+    <span class="response cajaGray left<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formUsuario->pswd2->errMsg : '' ?></span>
+</div>
+<?php
+//endif; ?>

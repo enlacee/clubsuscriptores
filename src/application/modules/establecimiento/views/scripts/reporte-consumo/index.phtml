@@ -1,0 +1,68 @@
+<div id="adminEstaContentBox" class="all">
+    <div id="adminActivtyBoxR" class="all">
+        <input type="hidden" name="txturlimageC" id="txturlimageC" value="<?php echo $this->mediaUrl; ?>/images/calendar.png"></input>
+        <form name="frmRptConsumos" id="frmRptConsumos" action="<?php echo $this->url(array('action'=>'imprimir-reporte','controller'=>'reporte-consumo','module'=>'establecimiento'),'default',true); ?>" method="post" target="_blank">
+            <div class="adminActivtyBoxM left">
+                  <div class="left">
+                       <label class="labelVCF ml5 mR10 left c3 Trebuchet"> 
+                          Consumido Del :</label>
+                       <?php echo $this->form->fecha_emision_desde->setAttribs(
+                                array('class'=>'left FunctiEB')
+                           )->renderViewHelper(); ?>
+                  </div> 
+                  <div class="right">
+                       <label class="labelVCF  ml5 mR10 left c3 Trebuchet"> 
+                          Al : </label>
+                       <?php echo $this->form->fecha_emision_hasta->setAttribs(
+                                array('class'=>'left FunctiEB')
+                           )->renderViewHelper(); ?>
+                  </div>
+            </div>
+            <div id="adminActivtyBoxR" class="right">
+                  <label class="labelNEsR left"> 
+                      Situación :
+                      <?php echo $this->form->estado->setAttribs(
+                            array('class'=>'ml5')
+                          )->renderViewHelper(); ?>
+                  </label>
+                  <fieldset id="adminformSearch" class="field left textoinput">
+                    Promoción :
+                    <?php /*echo $this->form->nombre_suscriptor->setAttribs(
+                            array('value'=>'Busca por..','alt'=>'Busca por..','class'=>'cGray grid4')
+                        )->renderViewHelper();*/
+                        echo $this->form->nombre_promo->setAttribs(
+                            array('class'=>'cGray grid4')
+                        )->renderViewHelper();
+                    ?>
+                    <?php echo $this->form->buscar->setAttribs(
+                            array('class'=>'btnAll searchbt','Label'=>'')
+                        )->renderViewHelper(); ?>
+                  </fieldset>
+            </div>
+            <div style="clear: both"></div>
+            <?php if (empty($this->filtroEstablecimiento)): ?>
+            <div class="left">
+                <label class="labelNEsR left"> 
+                    Establecimiento :
+                    <?php echo $this->form->establecimiento->setAttribs(
+                        array('class'=>'ml5')
+                        )->renderViewHelper(); ?>
+                </label>
+            </div>
+            <div style="clear: both"></div>
+            <?php endif; ?>
+            <br>
+    <!--        <div class="adminActivtyBoxL left mT5" style="width: 700px;">
+                <label class="labelNEsR  ml5 mR10 left c3 Trebuchet" for="fdni">Documento :</label>
+                < ?php echo $this->form->tipo_documento->setAttribs(array('class'=>'left'))->renderViewHelper(); ?>
+                < ?php echo $this->form->nro_documento->setAttribs(array('class'=>'left'))->renderViewHelper(); ?>
+                <label class="labelNEsR  ml5 mR10 left c3 Trebuchet" for="fdni">Promoción :</label>
+                < ?php echo $this->form->nombre_promo->setAttribs(array('class'=>'left'))->renderViewHelper(); ?>
+            </div>-->
+        </form>
+    </div>
+    <div id="idContentAjaxConsumos">
+        <?php echo $this->partial('reporte-consumo/filtro-list-consumos.phtml',array('consumos'=> $this->consumos, 'mostrando' => $this->mostrando, 'nroregistros'=>$this->nroregistros, 'totalitems'=>$this->totalitems)); ?>
+    </div>
+    <div class="all"><a id="idReporteConsE" href="javascript:document.frmRptConsumos.submit();" class="adminEsReportBtn right"></a></div>
+</div>

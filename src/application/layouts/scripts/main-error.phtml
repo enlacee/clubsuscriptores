@@ -1,0 +1,36 @@
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <?= $this->headTitle() ?>
+        <?= $this->headLink() ?>
+        <?= $this->headMeta() ?>
+        <? if ($this->layout()->staticCache) {
+               $excepciones = array("jquery");
+               $this->CacheStatic($this->headScript(), $excepciones);
+           }
+        ?>
+        <?= $this->headScript() ?>
+        <?= $this->headStyle() ?>
+    </head>
+    <body>
+        <!--div id="bandTop" class="all">
+            <?php echo $this->render('_band-top.phtml'); ?>
+        </div-->
+        <div id="wrap" class="center">
+            <div id="outHeader">
+                <div id="header" class="grid20 center">
+                    <?php echo $this->render('_header_gestor.phtml'); ?>
+                </div>          
+            </div>  
+
+            <div id="outContent" class="grayborder2 r5">
+                <div id="contentGrid">
+                    <?= $this->layout()->content ?>
+                </div>
+            </div>        
+            <div id="footer">        
+            </div>
+            
+        </div>
+    </body>
+</html>

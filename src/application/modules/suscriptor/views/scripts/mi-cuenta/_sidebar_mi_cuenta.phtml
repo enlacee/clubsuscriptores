@@ -1,0 +1,15 @@
+<div id="MictaSideBarNavBox" class="grid3 left">
+  <div id="mainNavMicta">
+    <ul id="mainNavMictaInner">
+      <li class="<?= $this->menu_sel_side == App_Controller_Action_Suscriptor::MENU_POST_SIDE_MIS_CONSUMOS ? 'active' : '' ?> liMictanMenu">
+        <a href="<?php echo $this->url(array('action'=>'mis-consumos','controller'=>'mi-cuenta','module'=>'suscriptor'),'default',true); ?>" class="aMenuMictaMain">Mis Consumos</a>
+      </li>
+      <li class="<?= $this->menu_sel_side == App_Controller_Action_Suscriptor::MENU_POST_SIDE_MIS_BENEFICIARIOS ? 'active' : '' ?> liMictanMenu "> 
+        <a href="<?php echo $this->url(array('action'=>'mis-beneficiarios','controller'=>'mi-cuenta','module'=>'suscriptor'),'default',true); ?>" class="aMenuMictaMain ">Mis Beneficiarios</a>
+      </li>
+      <li class="<?= $this->menu_sel_side == App_Controller_Action_Suscriptor::MENU_POST_SIDE_CONTACTO ? 'active' : '' ?> liMictanMenu "> 
+        <a href="<?php echo $this->url(array('action'=>'contacto','controller'=>'mi-cuenta','module'=>'suscriptor'),'default',true); ?>" class="aMenuMictaMain ">Contacto</a>
+      </li>
+    </ul>
+  </div>
+</div>

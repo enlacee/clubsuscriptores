@@ -1,0 +1,80 @@
+<form id="establecimiento" action="" method="post" enctype="multipart/form-data">
+    <div class="left" id="adminEsDatRight">
+        <h6 class="adEsDaTilulo">Datos del Establecimiento</h6>
+        <div class="left iWindow r5">
+            <div class="all grid7" id="adminEsTopClient">  
+                <div class="left" id="adEsTopClient">
+                    <h6 class=" mdTitle">
+                        <?= $this->establecimiento['tipestnombre'] . ' ' . $this->establecimiento['nombre'] ?>
+                    </h6>
+                    <ul class="dataItemS ">
+                        <li class="liDataItem gray">RUC: <?= $this->establecimiento['RUC'] ?></li>
+                    </ul>
+                </div>
+                <div id="adEsCambLogo" class="divBenN right">
+                    <div class="left" id="adminEsCliente">
+                        <div class="" id="img_avatar_estMisDatos">
+                            <img class="imgEstaBen" src="<?= (empty($this->establecimiento['path_imagen'])) ? MEDIA_URL . '/images/photoDefault.png' . "?" . time() : ELEMENTS_URL . '/establecimientos/' . $this->establecimiento['path_imagen'] . "?" . time(); ?>" width="128" height="87"/>
+                        </div>
+                        <? $hasError = $this->formEstablecimiento->path_imagen->hasErrors(); ?>
+                        <?= $this->formEstablecimiento->path_imagen->setAttribs(array('id' => 'path_imagen', 'class' => 'left requerido ' . (!$hasError ? " ready " : " ") . ' opacity field', 'tabindex' => '1', 'rel' => $this->establecimiento['id']))->renderFile(); ?>
+                    </div>
+                    <a class="right AdEsDatosLogoC" for="path_imagen"> <span class="hide">Subir</span></a>
+                </div>
+                <? $hasError = $this->formEstablecimiento->path_imagen->hasErrors(); ?>
+                <? if ($this->formEstablecimiento->path_imagen->getMessages() != null) : ?>
+                    <? foreach ($this->formEstablecimiento->path_imagen->getMessages() as $item) : ?>
+                        <? if ($item != null) : ?>
+                            <span class="response bad left"><?= $item ?> </span>
+                        <? endif; ?>
+                    <? endforeach; ?>
+                <? else : ?>
+                    <span class="response left tinyFormResponse"></span>
+                <? endif; ?>
+                <? $error = $this->formEstablecimiento->path_imagen->getMessages(); ?>
+            </div>
+
+            <div class="block ml20 mT20">
+                <label for="fContacto" class="labelesDatos Trebuchet black">
+                    <span class="req">*</span> Contacto: 
+                </label>
+                <? $hasError = $this->formEstablecimiento->contacto->hasErrors(); ?>
+                <?= $this->formEstablecimiento->contacto->setAttribs(array('id' => 'fContacto', 'class' => 'inputesDatos left ml5 ' . (!$hasError ? " ready " : " ") . ' requerido field', 'tabindex' => '4'))->renderViewHelper(); ?>
+                <span class="response left tinyFormResponse<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formEstablecimiento->contacto->errMsg : '' ?></span>
+            </div>
+            <div class="block ml20 mT20">
+                <label for="direccion" class="labelesDatos Trebuchet black">
+                    <span class="req">*</span> Dirección: 
+                </label>
+                <? $hasError = $this->formEstablecimiento->direccion->hasErrors(); ?>
+                <?= $this->formEstablecimiento->direccion->setAttribs(array('class' => 'inputesDatos left ml5 ' . (!$hasError ? " ready " : " ") . ' requerido field', 'tabindex' => '4'))->renderViewHelper(); ?>
+                <span class="response left tinyFormResponse<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formEstablecimiento->direccion->errMsg : '' ?></span>
+            </div>
+            <div class="block ml20 mT20">
+                <label for="fEmail" class="labelesDatos Trebuchet black">
+                    <span class="req">*</span> E-mail: 
+                </label>
+                <?= $this->formEstablecimiento->email_contacto->setAttribs(array('id' => 'fEmail', 'class' => 'inputesDatos left ml5 ' . (!$hasError ? " ready " : " ") . ' requerido field', 'tabindex' => '5'))->renderViewHelper(); ?>
+                <? $hasError = $this->formEstablecimiento->email_contacto->hasErrors(); ?>
+                <?
+                if ($hasError != 0) {
+                    $Error = $this->formEstablecimiento->email_contacto->getErrors();
+                    $errMsg = Application_Form_Establecimiento::$errorsEmail[$Error[0]];
+                } else {
+                    $errMsg = '';
+                }
+                ?>
+                <span class="response left tinyFormResponse<?= $hasError ? ' bad' : '' ?>"><?= $errMsg ?> </span>
+            </div>
+            <div class="block ml20 mT20">
+                <label for="fTelefono" class="labelesDatos Trebuchet black"><span class="req">*</span> 
+                    Teléfono: </label>
+                <? $hasError = $this->formEstablecimiento->telefono_contacto->hasErrors(); ?>
+                <?= $this->formEstablecimiento->telefono_contacto->setAttribs(array('id' => 'fTelefono', "class" => "inputesDatos left ml5 " . (!$hasError ? " ready " : " ") . "requerido field", 'tabindex' => '6'))->renderViewHelper(); ?>
+                <span class="response left tinyFormResponse<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formEstablecimiento->telefono_contacto->errMsg : '' ?></span>
+            </div>   
+            <input type="hidden" name="idEst" id="idEst" value="<?= $this->establecimiento['id'] ?>">
+            <input id="adminSaveBtnbene" type="submit" class="adEsbtnActualizar  left" value="">
+        </div>
+    </div>
+</form>

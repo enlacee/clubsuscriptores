@@ -1,0 +1,75 @@
+<?php 
+//$colors = array('rojo','verde','azul','amarillo');
+$nroreg = 0; 
+$i=0;
+foreach ($this->busqueda_beneficios as $item):
+    $nroreg++;
+    if($i == 0){
+        //echo ((round($this->totalitems/2,0)*2-1)).'=='.$nroreg;
+        echo '<div class="secondLinedestacado"><div class="catalogoLinedestacado '.
+                ((round($this->totalitems/2,0)*2-1)==$nroreg?'':'bbSolid').'">';
+    }
+//    $fecivig = new Zend_Date($item['fecha_inicio_publicacion']);
+//    $fecfvig = new Zend_Date($item['fecha_fin_publicacion']);
+    //$filtros = array('id' => $item['id'], 'slug' => $item['slug'] );
+    //$ruta = $this->url($filtros, 'deta_beneficio', true);
+    $ruta = "/".$item['slug'].'-'.$item['id'];
+?>
+<div itemscope itemtype="http://schema.org/Product" class="secondLineA <?=($i%2==0)?'left':'right'?>">
+    <div class="secondphoto"> 
+        <a href="<?=$ruta?>">
+            <img itemprop="image" class="imgflujo" width="325" height="182" 
+                 src="<?=$this->elementsUrl?>/images/beneficios/<?=$this->ImgName($item['path_logo'], 
+                            $this->sufixmedium)?>"
+                 title="<?=$this->escape($item['titulo'].'-'.$item['cat_nombre'].'-'.$item['abreviado'])?>" 
+                 alt="<?=$this->escape($item['titulo'].'-'.$item['cat_nombre'].'-'.$item['abreviado'].
+                        '-Club De Suscriptores El Comercio Perú.')?>"
+                 onerror="this.src='<?=$this->mediaUrl?>/images/fcatalogo_grande.jpg'"/>
+        </a>
+        <div class="tipodeoferta2">
+            <h2 class="promostexto left"><?=$item['abreviado']?></h2>
+            <h2 class="promostexto2 left">
+                <?php $x = explode("-",$this->escape($item['cat_nombre'])); echo $x[0]; ?>
+            </h2>
+            <?php 
+            $tieneChapita="floatDer";
+            if (!empty($item['chapita'])):
+                $tieneChapita="textAgotado";
+            ?>
+            <div class="promoflujo textoPromoChico <?=$this->escape($item['chapita_color'])?> Tshadow">
+                <?=$item['chapita']?>
+            </div>
+            <?php endif;?>
+        </div>
+    </div>
+    <div class="secondDescription">
+        <?php if($item['tipo_beneficio_id']==Application_Model_Beneficio::TIPO_PROMO):?> 
+        <span class="date">
+            <?=$this->escape($item['cuando'])?>
+            <?php
+                $sinstock = empty($item['stock_actual']);
+                if(!empty($item['sin_stock'])){ $sinstock = false; }
+                echo ($sinstock?'&nbsp;&nbsp;<span class="bold '.$tieneChapita.'">¡Agotado!</span>':'&nbsp;&nbsp;'); 
+            ?>
+        </span>
+        <?php else:?>
+        <span class="date">&nbsp;</span>
+        <?php endif;?>
+        <div class="promoTitle">
+            <h2 class="font18 margin0"><a href="<?=$ruta?>"><?=$this->escape($item['titulo'])?></a></h2>
+        </div>
+        <p itemprop="description" class="promoDescription black">
+            <?=$this->escape($this->ReduceString($item['descripcioncorta'],85,'...'))?>
+        </p>
+    </div>
+    <div class="all"><a href="<?=$ruta?>" class="botonV	erdetalle right"></a></div>
+</div>
+<?php
+    if($i == 1 or $nroreg==$this->totalitems){
+        echo '</div></div>';
+        $i = 0;
+    }else{
+        $i++;
+    }
+endforeach; ?>
+<div class="lineBottom650"></div>

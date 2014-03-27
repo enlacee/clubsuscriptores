@@ -1,0 +1,31 @@
+<?php
+
+    $html='';
+    $arrayTipoMoneda[1]='-';
+    $arrayTipoMoneda[2]='-';
+    foreach($this->consumosAnual as $cupon):
+        $arrayTipoMoneda[$cupon['tipo_moneda_id']]=$cupon['ahorro_anual'];
+    endforeach;
+    $arrayTipoMoneda[1]=($arrayTipoMoneda[1]=='-' || $arrayTipoMoneda[1]=='0.00' )?'-':
+        ('S/. '.( number_format($arrayTipoMoneda[1],2) ));
+    $arrayTipoMoneda[2]=($arrayTipoMoneda[2]=='-' || $arrayTipoMoneda[2]=='0.00')?'-':
+        ('$ '.( number_format($arrayTipoMoneda[2],2) ));
+    $html.= '<div class="textAlingCenter grid13">
+        <span class="MictaAhorroAnual">Ahorro Anual - Soles: <span class="MictaAhorroAnualAhorro">
+                '.$arrayTipoMoneda[1].'</span>';
+    $html.= '<span class="MictaAhorroAnual">Ahorro Anual - Dólares: <span class="MictaAhorroAnualAhorro">
+                '.$arrayTipoMoneda[2].'</span></div>';
+    $html.= '<div style="clear: both"></div><br>';
+    echo $html;
+
+?>
+
+<div class="mictaFiltroDate">
+    <?= $this->frmFiltroDate->cboMes->setAttribs(array('class' => 'marginRight20 marginTop6' ))->renderViewHelper(); ?>
+    <?= $this->frmFiltroDate->cboAnio->setAttribs(array('class' => 'marginRight20 marginTop6' ))->renderViewHelper(); ?>
+    <?= $this->frmFiltroDate->col->renderViewHelper(); ?>
+    <?= $this->frmFiltroDate->ord->renderViewHelper(); ?>
+    <input type="submit" id="btnMisConsumos" class="btnBuscarNegro" value="" >    
+</div>
+<br>
+<span id="responseMictaFiltroDate" class="response cGray2"></span>

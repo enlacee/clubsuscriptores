@@ -1,0 +1,25 @@
+<h6 class="Titulo980 bold">CONFIGURACIÓN DE PARÁMETROS DEL CLUB</h6>
+<input type="hidden" name="nropagePG" id="nropagePG" value="1"/>
+<div id="encuestaContentBox">
+    <div id="adminActivtyBoxR" class="right mR10 mB10">
+        <fieldset id="adminformSearchencues" class="field textoinput mB0">
+            <label class="grid8">
+                <span class="left mT10 mR10">Tipo de Parámetro:</span>
+                <?php 
+                    echo $this->form->tipo_parametro->setAttribs(
+                        array('class'=>'right')
+                    )->renderViewHelper();
+                ?>
+            </label>
+        </fieldset>
+    </div>
+</div>
+<!--    <div class="mctaTittle bold">Parámetros</div>-->
+    <div id="idContentAjaxParam" class="left">
+        <?php 
+            echo $this->partial(
+                'configuracion/lista-parametros.phtml',
+                array('parametros'=> $this->parametros, 'mostrando' => $this->mostrando, 'nroregistros'=>$this->nroregistros)
+            );
+        ?>
+    </div>

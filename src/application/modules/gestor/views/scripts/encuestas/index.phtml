@@ -1,0 +1,41 @@
+    <h6 class="Titulo980 bold">ENCUESTAS</h6>
+      
+    <div id="encuestaContentBox">
+        <div class="left grid3">
+            <a href="#lboxEresultado" rel="" class="adminAdBtn winModal noScrollTop encuestaOperaG"></a>
+        </div>
+        <div id="adminActivtyBoxR" class="right">
+            <form name="frmEncuestas" id="frmEncuestas">
+                <fieldset id="adminformSearchencues" class="field textoinput mB0">
+                    <label class="labelAdminGestEncuesta">
+                        <span class="mT10 left mR10">Estado:</span>
+                        <?php echo $this->form->vigencia->setAttribs(
+                                array('class'=>'right marginCero')
+                            )->renderViewHelper();
+                        ?>
+                    </label>
+                    <label class="left">
+                    <span class="mT10 mR10">Nombre:</span>
+                    <?php echo $this->form->descripcion->setAttribs(
+                            array('value'=>'Busca por..','class'=>'cGray mR10','alt'=>'Busca por..')
+                        )->renderViewHelper(); 
+                    ?>
+                    </label>
+                    <label class="left">
+                    <?php echo $this->form->buscar->setAttribs(
+                            array('class'=>'btnAll searchbtGest','id'=>'btnSearchEnc')
+                        )->renderViewHelper();
+                    ?>
+                    </label>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+          
+    <div id="idContentAjaxEnct" class="left">
+        <?php echo $this->partial(
+                'encuestas/lista-encuestas.phtml',
+                array('encuestas'=> $this->encuestas, 'mostrando' => $this->mostrando, 'nroregistros'=>$this->nroregistros, 'nrofields'=>$this->nrofields, 'totalitems'=>$this->totalitems)
+            );
+        ?>
+    </div>

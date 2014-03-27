@@ -1,0 +1,17 @@
+/* 
+Estilos para IE6, IE7, IE8 
+*/
+input[type=checkbox], input[type=radio]{ border:none } 
+* html .window{ 
+    position: absolute;
+    margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = document.documentElement && document.documentElement.scrollTop || document.body.scrollTop) + 'px') !important;
+}
+* html .flechaG{ background-image: url(../images/flechasG.gif) }
+* html #MictaMainNav{ height:27px }
+*:first-child+html #MictaMainNav{ height:26px }
+.inputEncT{ margin-top: 2px }
+* html #DetalleEstContText{ margin-right:3px }
+* html .anchoTooltip { width: 400px; }
+* html .contentOptionsEncO{ height: 195px; overflow-y: scroll; }
+* html #winVerEncuesta .contentGraphEView{ height: 320px; overflow-y: scroll; }
+* html .heightDeTipB{ height: 126px; overflow-y: scroll; }

@@ -1,0 +1,66 @@
+<?php
+    $fechaFormat='dd/MM/YYYY HH:mm:ss';
+    !empty($this->redimido_por)?($fechaFormat=''):'';
+?>
+<?php if (!empty($this->totalitems)): ?>
+<div class="all cntPagFix">
+    <div class="left m5all"><?php echo $this->mostrando; ?></div>
+    <?php echo $this->paginationControl($this->consumos,'Sliding','cupon/_page.phtml'); ?>
+</div>
+<?php endif; ?>
+<div class="mictaContet grayborder2 r3 mB20 table960Fix">
+    <table id="mictBenContent">
+        <thead id="mictaBenTitle">
+            <tr>
+              <th class="mictBenTiTH ml5 mictbRight bold">Nombre <br/>Promoción</th>
+              <th class="mictBenTiTH ml5 mictbRight bold">Tipo <br/>Beneficio</th>
+              <th class="mictBenTiTH ml5 mictbRight bold">Código Suscriptor</th>
+              <th class="mictBenTiTH ml5 mictbRight bold">Documento <br/>Identidad</th>
+              <th class="mictBenTiTH ml5 mictbRight bold">Cliente</th>
+              <th class="mictBenTiTH ml5 mictbRight bold">Monto<br/>Promoción</th>
+              <th class="mictBenTiTH ml5 mictbRight bold">N°<br/>Voucher</th>
+              <th class="mictBenTiTH  bold mictbRight">Fecha<br/>Consumo</th>
+              <th class="mictBenTiTH mictbRight bold">Eliminado Por</th>
+              <th class="mictBenTiTH mictbRight bold">Fecha<br/>Eliminacion</th>
+              <th class="mictBenTiTH mictbRight bold">Situación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $contreg = 0;
+                foreach ($this->consumos as $consumo): $contreg++; ?>
+                <tr class="<?php echo ($contreg%2==0?'':'even'); ?>">
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?php echo $this->escape($consumo['titulo']); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $consumo['abreviado']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?php echo (!empty($consumo['es_invitado'])?'(invitado)':$consumo['codigo_suscriptor']); ?></td>
+                    <td class="mictBenFluTd mictbTop mictbRight">
+                        <?php echo $consumo['tipo_documento'].'<br/>'.$consumo['numero_documento']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?php echo $consumo['names']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?php echo $consumo['tipmoneda'].' '.$consumo['monto_descontado']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?php echo $this->escape($consumo['numero_comprobante']); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?php echo $this->DateFormatOpen($consumo['fecha_consumo'],$fechaFormat); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $consumo['eliminado_por']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?php echo $this->DateFormatOpen($consumo['fecha_eliminacion'],$fechaFormat); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $consumo['estado']; ?></td>
+                </tr>
+            <?php endforeach; 
+                if($contreg<=0){
+                    echo '<tr class="even"><td class="mictBenFluTd mictbRight mictbTop" colspan="11" style="text-align:center;"> - No se encontraron registros - </td></tr>';
+                }
+            ?>
+            <tr></tr>
+        </tbody>
+    </table>
+</div>
+<?php if(!empty($this->totalitems)): ?>
+<div class="all cntPagFix">
+    <div class="left m5all"><?php echo $this->nroregistros; ?></div>
+    <?php echo $this->paginationControl($this->consumos,'Sliding','cupon/_page.phtml'); ?>
+</div>
+<?php endif; ?>

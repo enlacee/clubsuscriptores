@@ -1,0 +1,15 @@
+<?php
+foreach ($this->options as $ind => $opt):?>
+    <label class="block">
+      <?php
+          echo $this->form->{'chkActivo'.($opt['id'])}->setAttribs(array('class' => 'inputEncT noBdr left'))->renderHelper();
+          echo $this->form->{'idoption'.($opt['id'])}->renderHelper();
+      ?>
+      <span class="right" style="width:178px;"><?php echo $opt['nombreop']; ?></span> 
+    </label>
+<?php
+endforeach;
+if(empty($this->options)){
+    echo '<div class="center" style="text-align:center;">-- Seleccione el modulo<br/>y escoga las opciones<br/> para el perfil --</div>';
+}
+?>

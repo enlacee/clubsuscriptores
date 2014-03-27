@@ -1,0 +1,34 @@
+<?php if ($this->layout()->auth['usuario']->perfil_id != 7): ?>
+    <div id="adminTopClient" class="all <?= $this->ControllerActual() == 'mis-datos'? 'hide':'' ?>" >  
+        <div id="adminEsCliente" class="left">
+            <img class="imgEstaBen" src="<?php echo ELEMENTS_URL; ?>/establecimientos/<?php echo $this->layout()->auth['establecimiento']['path_imagen']; ?>" width="128" height="87"/>
+        </div>
+        <div id="descTopClient" class="left">
+            <h6 class="titleTopClient">
+                <?php echo $this->escape($this->layout()->auth['establecimiento']['tipestnombre'].' '.$this->layout()->auth['establecimiento']['nombre']); ?>
+            </h6>
+            <ul class="dataItemS">
+                <li class="liDataItem gray">Contacto: <?php echo $this->escape($this->layout()->auth['establecimiento']['contacto']); ?></li>
+                <li class="liDataItem gray">Dirección: <?php echo $this->escape($this->layout()->auth['establecimiento']['direccion']); ?></li>
+                <li class="liDataItem gray">Teléfono: <?php echo $this->layout()->auth['establecimiento']['telefono_contacto']; ?></li>
+            </ul>
+        </div>
+    </div>
+<?php else: ?>
+    <div id="adminTopClient" class="all <?= $this->ControllerActual() == 'mis-datos'? 'hide':'' ?>" >  
+        <div id="adminEsCliente" class="left">
+            &nbsp;
+        </div>
+        <div id="descTopClient" class="left">
+            <h6 class="titleTopClient">
+                Establecimiento Master
+            </h6>
+            <ul class="dataItemS">
+                <li class="liDataItem gray"></li>
+                <li class="liDataItem gray"></li>
+                <li class="liDataItem gray"></li>
+            </ul>
+        </div>
+    </div>
+
+<?php endif; ?>

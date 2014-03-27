@@ -1,0 +1,23 @@
+<div id="registrateForm" class="gridS20DOS grayborder2 r5">
+    <h6 class="Titulo980 titleFix bold">REGÍSTRATE</h6>
+    <div id="lCajatext" class="TextoInputreg">
+        Para registrarte sólo tienes que llenar este pequeño formulario. Al terminar te llegará un mail de confirmación a tu correo.
+    </div>
+    <div id="quieroLaPromoContentbox" class="grid20">
+        <form action="" method="post" id="registrarse" enctype="multipart/form-data">
+            <fieldset id="formregistro">
+                <?=
+                $this->partial('registro/_invitado.phtml', array(
+                    'idSuscriptor' => $this->idSuscriptor,
+                    'formSuscriptor' => $this->formSuscriptor,
+                    'formUsuario' => $this->formUsuario,
+                    'modulo' => $this->modulo,
+                    'controlador' => $this->controlador
+                    )
+                );
+                ?>
+                <input type="submit" class="btnAll btnRegistro left" tabindex="14" value="" id="btnRegistro"/>
+            </fieldset>
+        </form>
+    </div>
+</div>

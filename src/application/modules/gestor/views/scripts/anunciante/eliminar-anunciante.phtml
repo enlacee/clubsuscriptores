@@ -1,0 +1,11 @@
+<h6 class="TilutoLightbox"><?=!empty($this->puedeEliminar)?'Eliminar Anunciante':'No se puede eliminar'?></h6>
+<div class="block pl10" id="vcont"> 
+    <span class="Trebuchet14 gray"><?php echo $this->msj; ?></span>
+    <input type="hidden" name="txtidBenef" id="txtidBenef" value="<?php echo $this->id; ?>" />
+</div>
+<div id="adminSaveCancEB" class="marginCero">
+    <? if (!empty($this->puedeEliminar)){?>
+    <a id="aceptEliminarAnuncianteBtn" class="adminAceptBtn left" href="#"></a>
+    <? } ?>
+    <a id="aCloseAnuncianteB" class="adminQuitBtnbene left closeWM" href="#"></a>
+</div>

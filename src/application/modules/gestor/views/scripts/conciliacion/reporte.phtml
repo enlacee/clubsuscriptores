@@ -1,0 +1,77 @@
+<?php echo $this->partial('conciliacion/_menu.phtml',array('selectmenu'=>$this->selectmenu)); ?>
+
+<input type="hidden" name="txturlimageCG" id="txturlimageCG" value="<?php echo $this->mediaUrl; ?>/images/calendar.png" />
+<form id="frmRptRedimidosC" name="frmRptRedimidosC" method="post" action="<?php echo $this->url(array('action'=>'imprimir-reporte','controller'=>'conciliacion','module'=>'gestor'),'default',true); ?>" target="_blank">
+    <div class="all mB10 mT10" id="cntOptionAll">
+        <div id="adminActivConBoxL" class="left"> 
+            <label class="labelcnciliaR">Establecimiento
+                <?php
+                    echo $this->form->establecimiento->setAttribs(
+                        array('tabindex'=>'1')
+                    )->renderViewHelper();
+                ?>
+            </label>
+        </div>
+        <div class="adminConciSearch right">
+            <?php 
+                echo $this->form->buscar->setAttribs(
+                    array('class'=>'btnAll searchbt right')
+                )->renderViewHelper();
+            ?>
+            <div class="right">
+                <label class="labelVCF  ml5 mR10 left c3 Trebuchet"> 
+                      Al : </label>
+                <?php 
+                    echo $this->form->fecha_consumo_hasta->setAttribs(
+                        array('tabindex'=>'3','class'=>'left FunctiEB')
+                    )->renderViewHelper();
+                ?>
+            </div>
+            <div class="right">
+                <label class="labelVCF ml5 mR10 left c3 Trebuchet"> 
+                  Consumido Del :</label>
+                <?php 
+                    echo $this->form->fecha_consumo_desde->setAttribs(
+                        array('tabindex'=>'2','class'=>'left FunctiEB')
+                    )->renderViewHelper();
+                ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="cogregistro r5 Trebuchet9 block" id="cogFormpromocion">
+        <div id="" class=" left mT5"> 
+            <span class="Trebuchet24 bold" id="spNameEstG">Todos</span>
+            <label class="labelcnciliaR">Promoción
+                <?php
+                    echo $this->form->promocion->setAttribs(
+                        array('style'=>'width:320px;')
+                    )->renderViewHelper();
+                ?>
+            </label>
+        </div>
+        <div class="right totalConResult">
+            <div class="left totalConResText" >
+              <span class=" Trebuchet16 bold">Total de Conciliación</span>
+              <span class=" Trebuchet11 gray" id="divMuestraFechas">
+    <!--              De 12/09/2011 al 31/01/2011-->
+              </span>
+            </div>
+            <div ><span class=" Trebuchet24 black right" id="divMontoConcilia">
+                    S/. 00.00
+            </span></div>
+        </div>
+    </div>
+</form>
+<div class="" id="adminEstaContentBox">
+    <div id="idContentAjaxRedimidosC">
+        <?php /*echo $this->partial(
+                'conciliacion/lista-redimidos.phtml',
+                array('redimidos'=> $this->redimidos, 'mostrando' => $this->mostrando, 'nroregistros'=>$this->nroregistros, 'nrofields'=>$this->nrofields, 'totalitems'=>$this->totalitems)
+            );*/
+        ?>
+    </div>
+    <div class="all">
+        <a id="idReporteConcilia" href="javascript:document.frmRptRedimidosC.submit();" class="adminEsReportBtn right"></a>
+    </div>
+</div>

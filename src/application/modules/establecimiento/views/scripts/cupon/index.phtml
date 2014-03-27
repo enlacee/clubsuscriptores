@@ -1,0 +1,36 @@
+<div id="adminEstaContentBox" class="all">
+    <div id="adminActivtyBoxR" class="all">
+        <input type="hidden" name="txturlimageC" id="txturlimageC" value="<?php echo $this->mediaUrl; ?>/images/calendar.png"></input>
+        <form name="frmRptConsumos" id="frmRptConsumos" action="<?php echo $this->url(array('action'=>'imprimir-reporte','controller'=>'cupon','module'=>'establecimiento'),'default',true); ?>" method="post" target="_blank">
+            <div class="adminActivtyBoxM left">
+                  <div class="left">
+                       <label class="labelVCF ml5 mR10 left c3 Trebuchet"> 
+                          Eliminado Del :</label>
+                       <?php echo $this->form->fecha_emision_desde->setAttribs(
+                                array('class'=>'left FunctiEB')
+                           )->renderViewHelper(); ?>
+                  </div> 
+                  <div class="right">
+                       <label class="labelVCF  ml5 mR10 left c3 Trebuchet"> 
+                          Al : </label>
+                       <?php echo $this->form->fecha_emision_hasta->setAttribs(
+                                array('class'=>'left FunctiEB')
+                           )->renderViewHelper(); ?>
+                  </div>
+            </div>
+            <div id="adminActivtyBoxR" class="right">
+                  <fieldset id="adminformSearch" class="field left textoinput">
+                    Promoción :
+                    <?= $this->form->nombre_promo->setAttribs(array('class'=>'cGray grid4'))->renderViewHelper();?>
+                    <?php echo $this->form->buscar->setAttribs(
+                            array('class'=>'btnAll searchbt','Label'=>'')
+                        )->renderViewHelper(); ?>
+                  </fieldset>
+            </div>
+        </form>
+    </div>
+    <div id="idContentAjaxConsumos">
+        <?php echo $this->partial('cupon/filtro-list-consumos.phtml',array('consumos'=> $this->consumos, 'mostrando' => $this->mostrando, 'nroregistros'=>$this->nroregistros, 'totalitems'=>$this->totalitems)); ?>
+    </div>
+    <div class="all"><a id="idReporteConsE" href="javascript:document.frmRptConsumos.submit();" class="adminEsReportBtn right"></a></div>
+</div>

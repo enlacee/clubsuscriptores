@@ -1,0 +1,7 @@
+<div class="grid10 r10" id="lboxEstablecimiento">
+    <a id="linkVolver" class="right" href="/gestor/establecimientos/">« Volver</a>
+    <h6 class="Titulo980 bold"><?= $this->idEst!=null? 'Editar ':'Nuevo ' ?> Establecimiento</h6>
+    <div id="divNewBen" class="all">
+	<?= $this->partial('establecimientos/_establecimiento.phtml', array('formEstablecimiento' => $this->formEstablecimiento, 'idEst'=>$this->idEst, 'imgPhoto' => $this->imgPhoto)) ?>
+    </div>
+</div>

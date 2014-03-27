@@ -1,0 +1,19 @@
+<h1 id="logo" class="sptAll left"> 
+    <a href="/" id="logoA" class="hideIndent">Club Suscriptor</a>
+</h1>
+<div id="inputPortada" class="grid10 right">
+    
+    <ul id="fechacabecera">
+        <li class="linkLog inline pipeN">
+            <span>
+               <?=$this->FormatoFecha("now"); ?>
+            </span>
+        </li>
+        <li class="linkLog inline">
+            <? if($this->layout()->isAuth && isset($this->layout()->auth["admin"])): ?>
+                <a href="/logout?next=admin">Salir</a>
+                <div class="alignR mT5"><a href="#winChangePassE" class="winModal">Cambiar Contraseña</a></div>
+            <? endif; ?>
+        </li>
+    </ul>
+</div>

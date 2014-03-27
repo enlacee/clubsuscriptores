@@ -1,0 +1,29 @@
+<div id="contentLoginMLS" class="left">
+    <h6 class="TitleLoginEs">Administrador del Portal</h6>
+    <form id="loginMLS" method="post" action="<?= $this->baseUrl('/auth/login')?>">
+        <fieldset class="blockFieldMLS">
+            <div class="block">
+                <label for="usuarioMLS" class="TextoInputLogin left fnormal">Usuario</label>
+                <?= $this->frmadmin->userEmail->setAttribs(array('alt' => 'Ingresa tu e-mail', 'id' => 'femail', 'class' => 'sizeInputLogin placeH cGray left', 'tabindex' => '1', 'value' => 'Ingresa tu e-mail'))->renderViewHelper(); ?>
+            </div>
+            <div class="respW"></div>
+            <div class="block">
+                <label for="passMLS" class="TextoInputLogin left fnormal">Contraseña</label>
+                <?= $this->frmadmin->userPass->setAttribs(array('id' => 'fpassword', 'class' => 'sizeInputLogin left', 'tabindex' => '1'))->renderViewHelper(); ?>
+            </div>
+            <div class="block">
+                <input type="submit" id="loginAdminBtn" value="" class="btnAlladmin"/>
+                <label class="forgotP">
+                    <span class="AdminRecuperarClave">
+                        <a href="#" id="linkLoginMLS" class="ml5">Recuperar contraseña</a>
+                    </span>
+                </label>
+            </div>
+            <div class="respW"></div>
+        </fieldset>
+        <?= $this->frmadmin->return->renderViewHelper(); ?>
+        <?= $this->frmadmin->tipo->renderViewHelper(); ?>
+        <?= $this->frmadmin->auth_token->renderViewHelper(); ?>
+    </form>
+</div>
+<?php echo $this->partial('/home/_recuperar-contrasenia.phtml'); ?>

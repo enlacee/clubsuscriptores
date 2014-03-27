@@ -1,0 +1,77 @@
+<h6 class="Titulo980 bold">VIDA SOCIAL</h6>
+<div id="adminGesContentBox" class="boxVS">
+    <div id="adminActivtyBoxR" class=" right">
+        <form id="formBoxAdminG" action="/gestor/vida-social" class="">
+
+            <label class="left Trebuchet black"> 
+                Estado:
+                <?= $this->frm->estado->setAttribs(array("id" => "estado", "class" => "filtroListarArticulos"))->renderViewHelper(); ?>
+            </label>            
+            <fieldset id="adminformSearchGest" class="field textoinput">
+                <?= $this->frm->query->setAttribs(array("id" => "query", "class" => "cGray grid4", "value" => "Busca por descuento, precio, oferta", "alt" => "Busca por descuento, precio, oferta"))->renderViewHelper(); ?>
+                <input type="submit" id="searchbt" value="" class="btnAll searchbtGest"/>
+            </fieldset>
+        </form>
+    </div>
+    <div id="adminActivtyBoxL" class="left">
+        <a href="/gestor/vida-social/nuevo" class="adminAdBtn left"></a>
+    </div>
+</div>
+
+<div class="all cntPagFix">
+    <?php if (!!$this->listaArticulos->getCurrentItemCount()) : ?>
+        <div class="left m5all"><?php echo $this->mostrando; ?></div>
+        <?php echo $this->paginationControl($this->listaArticulos, 'Sliding', 'vida-social/_page.phtml', array("pos" => 1)); ?>
+    <?php endif ?>
+</div>
+
+<div class="mictaContet grayborder2 r3 mB10">
+    <table id="mictBenContent">
+        <thead id="mictaBenTitle">
+            <tr>
+                <th class="mictBenTiTH ml5 mictbRight bold"></th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Título</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Fecha de registro</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Fecha de publicación</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Fecha Fin/vigencia</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Estado</th>
+                <th class="mictBenTiTH ml5 bold">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <? foreach ($this->listaArticulos as $index => $item): ?>
+                <tr class="<?= $index % 2 == 0 ? "even" : "" ?>">
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <img class="mR10" width="80" heigth="80" src="<?= ELEMENTS_URL ?>/images/sociales/thums/<?= $item['imagen']; ?>" />
+                    </td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($item["titulo"]) ?></td>
+                    <? $f = new DateTime($item["fecha_registro"]); ?>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $f->format("d/m/Y") ?></td>
+                    <? $f = new DateTime($item["fecha_inicio_vigencia"]); ?>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $f->format("d/m/Y") ?></td>
+                    <? $f = new DateTime($item["fecha_fin_vigencia"]); ?>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $f->format("d/m/Y") ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $item["activo"] == 1 ? "Vigente" : "No Vigente" ?></td>
+                    <td class="mictBenFluTd mictbTop">
+                        <input type="hidden" value="<?= $item["id"] ?>"/>
+                        <a href="#winVerVidaSocial" class="winModal noScrollTop verDetailArticulo" indice="<?= $item["orden"] ?>">Ver</a>
+                        <br/>
+                        <a href="/gestor/vida-social/editar/id/<?= $item["id"] ?>">Editar</a>
+                        <br/>
+                        <a href="#vidaSocialBaja" class="winModal noScrollTop vidaSocialDarBajaG" rel="<?= $item["id"] ?>">Dar de Baja</a>
+                    </td>
+                </tr>
+            <? endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<div class="all cntPagFix">
+    <?php if (!!$this->listaArticulos->getCurrentItemCount()) : ?>
+        <div class="left m5all"><?php echo $this->nroregistros; ?></div>
+        <?php echo $this->paginationControl($this->listaArticulos, 'Sliding', 'vida-social/_page.phtml', array("pos" => 1)); ?>
+    <?php elseif (!$this->listaArticulos->getCurrentItemCount()) : ?>
+        <div class="paginador all">
+            <div class='pagUl theta alignL'> - No hay datos registrados con esos parámetros </div>
+        </div>
+    <?php endif; ?>
+</div>

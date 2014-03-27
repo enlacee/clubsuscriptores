@@ -1,0 +1,1071 @@
+/*
+Clases modulares
+*/
+.noMenu #mainNav{ display:none}
+.noMenu #inputPortada{ display:none}
+.padding50{ padding:80px 100px 50px 50px;}
+.pad2all{ padding:2px; }
+.TilutoLoginAdmin {
+    font-size:24px;
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    color:#000;
+    display:block;
+    height:45px;
+    padding:0 0 0 20px;
+    margin:20px 0 0 0;
+}
+.btnAlladmin{ 
+    background-image: url(../../images/botonesAdmin.png); 
+    background-repeat: no-repeat;
+    background-color: transparent
+}	
+h6.TiluloCatalogo {
+    background-image:url(../../images/CatalodoLineBottom.png);
+    background-position:bottom left;
+    color:#000;
+    width:979px;
+    height:55px;
+    background-repeat:no-repeat;
+    margin:10px 0 0 10px;
+    padding:10px 0 0 5px;
+}
+.cntPagFix{ padding:0px 0 10px; line-height:1 }
+.cntPagFix .pagination{ padding:0 }
+.grid20TRES{ width:960px }	
+.adminAdBtn{ 
+    display:block;
+    background:url(../../images/botonesAdmin.png) 0 -39px no-repeat;
+    width:87px;
+    height:28px;
+    margin:0;
+}	
+.adminAdBtn:hover{background-position:-92px -39px;}
+.adminVenBtn{ 
+    display:block;
+    background: url(../../images/botonesAdmin.png) 0 -69px no-repeat;
+    width:87px;
+    height:28px;
+    margin:0 0 0 10px
+}			
+.adminVenBtn:hover{background-position:-92px -69px;}
+.labelAdmin,
+.labelAdminR{ margin: 0 20px 0 0; padding: 0 0 0 10px; color: #333; font-weight: bold }
+.labelAdmin{ float: left }
+.labelAdminR{ float: right }
+.formBenefH .labelAdminR{ display: block; width:140px }
+.lastLabelR{ margin-right:0; padding-right: 0 }
+.adminbloque{ margin:10px 0 20px; overflow:hidden }
+/*
+NUEVO BENEFICIO
+*/
+.bloqueNbeneficio{ position:relative; margin-top:18px; overflow:hidden }
+.labelNbeneficio{ margin:0 20px 0 0; font-weight:normal; color:black; font-size:14px }
+.fieldsBen{ width:810px; padding:0 75px }
+.selectBenN{ width:365px }
+.inputBenN{ width:352px }
+.divBenN{ width:364px }
+#divNewBen .response{ width:200px }
+#divNewBen .labelGestorBeneficio{ margin-right:20px }
+.labelTwoGestorBeneficio { width: 130px }
+#divNewBen .labelTwoGestorBeneficio{ margin-right:20px;padding-left: 110px; }
+.mlcien{ margin-left:130px}
+.btnSaveBene{ 
+    background: url(../../images/botonesAdmin.png) no-repeat;
+    display:block;
+    background-position:1px -100px;
+    width:90px;
+    height:32px;
+    margin:0
+}			
+.btnSaveBene:hover{ background-position:-99px -100px }		
+.inputNbeneImg{ margin-top:2px }	
+.mlselectM{ margin-left:138px }
+.mlcero{ margin-left:0 }
+.mR20{ margin-right:20px }
+.inputNbene{ width:368px }
+.inputNbeneImg{ width:268px }		
+.inputNbeneDesc{ width:360px }
+.btnArrowBlueRight{ 
+    background:white url(../../images/botonesAdmin.png) -16px -139px no-repeat;
+    position:absolute;
+    top:80px;
+    left:388px;
+    width:10px;
+    height:14px;
+    border:0;
+    cursor:pointer
+}
+.btnArrowBlueLeft{ 
+    background: white url(../../images/botonesAdmin.png) -1px -139px no-repeat;
+    position:absolute;
+    top:60px;
+    width:10px;
+    left:388px;
+    height:14px;
+    border:0;
+    
+    
+    
+    cursor:pointer
+}
+.inputNbeneStock{ width:50px }
+.inputNbeneFechas{ width:135px; margin-left:60px }	
+.inputNbeneFechas2{ width:135px; margin-left:77px }	
+.adminSaveBtnbene{ 
+    background:url(../../images/botonesAdmin.png) no-repeat;
+    border:0 none;
+    display:block;
+    background-position:0 -102px;
+    width:90px;
+    height:28px;
+    margin:10px 0 0;
+    cursor:pointer
+}	
+.adminSaveBtnbene:hover{background-position:-100px -102px;}			
+/*beneficios editar vigente*/
+.labelTPB{ padding:8px 10px 0 0 }
+.inputEB { width:59px }
+.labelEB,
+.labelEC { margin:0 5px 0 0; width:100px; font-weight:bold }
+.labelEB{ float:left }
+.responseT{ background-repeat:no-repeat }
+.btnGuardar{
+    background-position:0px -100px;
+    background-repeat:no-repeat;
+    width:88px;
+    height:30px;
+    border:0;
+    margin:10px 0 0 10px;
+    cursor:pointer
+}
+.btnGuardar:hover{ background-position:-91px -100px }
+.btnCancelar{	
+    background-position:-0px -130px;
+    background-repeat:no-repeat;
+    border:0;
+    margin:10px 0 0 10px;
+    width:88px;
+    height:32px;
+    cursor:pointer
+}
+.btnCancelar:hover{ background-position:-92px -130px }
+.responseadmin{
+    display:block;
+    background-repeat: no-repeat;
+    background-position: left 3px;
+    margin:0 0 0 20px;
+    padding:0; 
+    width:130px; 
+    overflow: hidden;
+    line-height: 1.2;
+    text-align: left
+}
+.inputEBdesc{ width:280px; height:45px }
+.labelNEB { margin:0 10px 0 0; float:left; width:130px; font-weight:bold }
+.btnArrowBlueRightEB{ 
+    background:white url(../../images/botonesAdmin.png) -16px -139px no-repeat;
+    position:absolute;
+    top:39px;
+    left:280px;
+    width:10px;
+    height:14px;
+    border:0;
+    cursor:pointer
+}
+.btnArrowBlueLeftEB{ 
+    background:white url(../../images/botonesAdmin.png) -1px -139px no-repeat;
+    position:absolute;
+    top:23px;
+    width:10px;
+    left:280px;
+    height:14px;
+    border:0;
+    cursor:pointer
+}
+.divLeftBen, .divRightBen{ width:265px; overflow: hidden }
+.titleImgRel{ 
+    position: absolute;
+    bottom:0;
+    left:0;
+    z-index: 2;
+    background-color: black;
+    padding: 5px 15px;
+    color: white;
+}
+.titleH2Rel{ margin:0; padding:0; font-size: 12px }
+.labelBen{ display:block; margin:5px 10px 0 0; width:110px }
+.spanBen{ display: block; margin:5px 0 0 10px }
+.inputBenShort{ margin-right: 10px; width:50px }
+.selectBenShort{ width:200px }
+.comboMulti{ width:160px; height: 130px }
+.bloqueNbeneficio .hasDatepicker{ width:100px }
+/*ADMIN ESTABLECIMIENTO, SUSCRIPTOR ACTIVO*/
+.AdminEsTittle{ font-size:24px; color:black; margin-bottom:10px }	
+.AdEsRedimirBtn,
+#outContent .AdEsRedimirBtnInactive{
+    background-image:url(../../images/botonesAdmin.png); 
+    background-repeat: no-repeat;
+    display:block;
+    width:90px;
+    height:29px
+}
+.AdEsRedimirBtn{ background-position: 0 -270px }
+.AdEsRedimirBtn:hover{ background-position:-97px -270px }	
+#outContent .AdEsRedimirBtnInactive{ background-position:-196px -270px; cursor:default }
+.btn_consumir,
+.btn_consumirInactive,
+.Btnredimir{
+    background-image:url(../../images/btn_consumir.png);
+    background-repeat: no-repeat;
+    display:block;
+    width:95px;
+    height:29px
+}
+.btn_consumir{ background-position: 0 -13px }
+.btn_consumir:hover{ background-position: -104px -13px }
+.btn_consumirInactive{ background-position: -202px -13px }
+.adminEsnav .amiCtaBtn{ float:right}
+.esblueArrow, .esblueArrowDown{ 
+    background:url(../../images/botonesAdmin.png) no-repeat; 
+    display:block;
+    width:12px;
+    height:9px;
+}
+.esblueArrow{ background-position:0 -402px; }
+.esblueArrowDown{ background-position:-21px -402px; }
+.adminEsTitle{ 
+    display:block;
+    border-bottom:solid 1px #FFF;
+    padding:5px 0 5px 10px;
+    font-size:24px;
+    color:#333
+}
+.AdEsValidarBtn{
+    background:url(../../images/botonesAdmin.png) 1px -237px no-repeat;
+    display:block;
+    border:0;
+    width:90px;
+    height:30px
+}
+.AdEsValidarBtn:hover{ background-position:-89px -237px }
+.textoActivo{ color:#009933 }
+.adminEsclienteTitle{ margin:0; width:300px; height:auto; font-size:24px }
+.titleTopClient{ padding:0; margin:0 0 5px; font-size:24px; line-height: 1 }
+.AdminEsBienve{ display:block; padding-right:10px }
+.labelBNM{ 
+    display:block; 
+    margin:8px 0 0; 
+    color:black; 
+    font-weight:bold; 
+    font-size:14px; 
+    line-height: 1 
+}
+/*ADMIN ESTABLECIMIENTO, SUSCRIPTOR inactivo*/
+.textoInactivo{ color:#CC0000 }
+.AdEsCuponNo{
+    background-image:url(../../images/botonesAdmin.png);
+    background-position:3px -422px;
+    background-repeat:no-repeat;
+    display:block;
+    width:250px;
+    height:24px;
+    border:0;
+    padding: 5px 0 0 10px;
+}
+.AdEsCuponSi{
+    background-image:url(../../images/botonesAdmin.png);
+    background-position:-55px -481px;
+    background-repeat:no-repeat;
+    display:block;
+    width:500px;
+    height:24px;
+    border:0;
+    padding: 5px 0 0 10px;
+}
+.pl20{ padding-left:20px;}
+.AdEsCuponAlert{
+    background-image:url(../../images/botonesAdmin.png);
+    background-position:-105px -527px;
+    background-repeat:no-repeat;
+    display:block;
+    width:700px;
+    height:24px;
+    border:0;
+    padding: 5px 0 0 40px;
+}
+/*lightbox redimir cupon*/
+.inputRcupon {width:80px;}
+.Trebuchet18 { font-size:18px }
+.Txtverde { color:#006633 }
+.contFormredimir { display:block; margin:0 }
+.Btnredimir{ margin:10px 0 0 150px;background-position: 0 -13px }
+.Btnredimir:hover{ background-position: -104px -13px }
+/*.Btnredimir{ 
+    background:url(../../images/botonesAdmin.png) 0 -269px no-repeat;
+    display:block;
+    margin:10px 0 0 150px;
+    width:92px;
+    height:29px
+}	
+.Btnredimir:hover{ background-position:-97px -269px }	*/
+/*ADMIN ESTABLECIMIENTO, PROMOCIONES ACTIVAS*/	
+.labelAdminEs { margin-top:10px; float: left; color: #333; font-weight: bold }
+.adminActivtyBoxL{ height:45px; width:360px }
+.labelNEsR { float: left; font-weight: bold }
+.adminEsReportBtn{
+    background:url(../../images/botonesAdmin.png) 0 -299px no-repeat;
+    display:block;
+    margin:10px 0 0 440px;
+    width:131px;
+    height:30px;
+    bottom:0;
+    left:0
+}	
+.adminEsReportBtn:hover{ background-position:-140px -299px }
+.bgWhite{ background-color:white }
+.TilutoLightboxES {
+    display:block;
+    border-bottom:#ccc solid 1px;
+    width:430px;
+    height:35px;
+    font-size:24px;
+    color:black;
+}
+.titleLBS {
+    background: url(../../images/IngresoLineBottom.jpg) center bottom no-repeat;
+    display:block;
+    font-size:24px;
+    color:black;
+    line-height: 1;
+    height: 54px;
+    padding: 0 0 0 20px;
+    margin: 0;
+}
+.adminEslabelN{
+    float: left;
+    margin: 0 20px 0 0;
+    padding: 20px 0 0 10px;
+    width: 130px;
+    font-weight: bold;
+    color: #333    
+}
+.adminCclaveTi { display: block; margin: 20px 0 0; font-size: 14px; color: black }
+/*ADMIN establecimeinto - gestor*/
+h6.adminEsgestorTitle {
+    background-image:url(../../images/CatalodoLineBottom.png);
+    background-position:bottom left;
+    color:#000;
+    width:979px;
+    height:55px;
+    background-repeat:no-repeat;
+    margin:10px 0 0 10px;
+    padding:10px 0 0 5px;
+    font-size:24px;
+}
+.labelVCF{ padding:5px 0 0; font-weight:bold }
+.adminElimiBtn{ 
+    background: url(../../images/botonesAdmin.png) 0 -632px no-repeat;
+    display:block;
+    margin:10px 0 0 10px;
+    width:89px;
+    height:28px;
+}			
+.adminElimiBtn:hover{ background-position:-97px -633px }
+/*.ligthboxESta{ width:430px; margin-top:10px; overflow:hidden }*/
+.ligthboxESta{ width:528px; margin-bottom:10px; overflow:hidden }
+.mictaContet { padding:0 }
+.bgbodyE { background: url("../../images/bgheader2.png") repeat-x }
+.TitleLoginEs {
+    background: url("../../images/AdmiEstabloginLine.png") center bottom no-repeat;
+    margin: 10px 0 0;
+    padding: 0;
+    height: 55px;
+    font-size: 24px
+}
+.iWindowAdminEsLogin {
+    background-color: white;
+    border: 1px solid #CCC;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.25), 0 1px 5px 3px rgba(0, 0, 0, 0.05), 0 5px 4px -3px rgba(0, 0, 0, 0.06);
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .25), 0 1px 5px 3px rgba(0, 0, 0, .05), 0 5px 4px -3px rgba(0, 0, 0, .06);
+    margin: 10px 10px 0 0;
+    overflow: hidden;
+}
+.pbwhite20{ background-color:white; border-bottom:#FC0 3px solid; padding-bottom:20px }
+/* IDS*/
+#mainContentAdminEC{ height:320px }
+#adminEsLoginContent{ 
+    background-color:white;
+    margin:40px 0 0 450px;
+    padding-bottom:20px;
+    width:480px;
+    height:auto    
+}
+/* Admin admin */
+.adminUsuarioBar{
+    background:url(../../images/CatalodoLineBottom.png) bottom left no-repeat;
+    margin:0 0 0 10px;
+    padding:0;
+    width:679px;
+    height:20px;
+    color:black;
+}
+h6.adminUsuarioTitle { margin:10px 0 0 15px; width: 200px; font-size:24px; color:black }
+/*ADMIN clave usuario establecimeinto - gestor*/
+.cajaUsuarioEmail{ background-color:#eee; width:490px; height: 60px; overflow:hidden }
+.txtUsuarioEmail{ height: 30px; width:300px; overflow:hidden; text-align: center }
+.admincrearcontraseniaBtn{ 
+    background:url(../../images/botonesAdmin.png) 0 -597px no-repeat;
+    display:block;
+    margin:10px 0 0;
+    border:none;
+    width:240px;
+    height:27px;
+}
+.admincrearcontraseniaBtn:hover{background-position:-244px -597px;}
+.EinfoguardarBtn{ 
+    background:url(../../images/botonesAdmin.png) 0 -100px no-repeat;
+    display:block;
+    margin:10px 0 0;
+    border:none;
+    width:98px;
+    height:32px
+}
+.EinfoguardarBtn:hover{ background-position:-100px -100px }
+.EinfocancelarBtn{ 
+    background:url(../../images/botonesAdmin.png) 0 -170px no-repeat;
+    display:block;
+    margin:10px 0 0;
+    border:0 none;
+    width:103px;
+    height:32px
+}
+.EinfocancelarBtn:hover{background-position:-103px -170px;}
+.blockFieldMLS .TextoInputLogin{ width:120px }
+/* angie 17/11/2011 */
+h6.TilutoAdminGesVs {
+    background: url(../../images/CatalodoLineBottom.png) left bottom no-repeat;
+    color: black;
+    height: 45px;
+    width: 979px;
+}
+.labelAdminGest, .labelGestorVidaS {
+    color: #333;
+    float: left;
+    font-weight: bold;
+    padding: 0 0 0 10px;
+    margin: 0 5px 0 0;
+    width:120px;
+}
+.labelGestorVidaS { width:160px }
+.searchbtGest {
+    background-position: 0 -261px;
+    border: 0 none;
+    cursor: pointer;
+    height: 30px;
+    margin: 0;
+    width: 83px;
+}
+.labeldateGest { float: left; font-weight: bold }
+.inputEdateGest{ width: 59px }
+.inputAdminG { width: 350px }
+.admindateGestCont { height: 45px; width: 480px }
+#adminGesContentBox{ width:960px }
+#adminformSearchGest { margin: 0 0 10px }
+#MictaMainBox { overflow: hidden; padding: 9px; width: 960px }
+.respW { margin: -5px 0 10px 125px; line-height: 1; text-align: left }
+/* 18-11-2011 Angie */
+.AdGesAddBtn{
+    background: url(../../images/botonesAdmin.png) 0px -698px no-repeat;
+    border: 0 none;
+    display: block;
+    height: 28px;
+    width: 66px;
+}
+.AdGesAddBtn:hover{ background-position: -77px -698px }
+.aGesImgBig{ width:190px; min-height:125px; display:inline; position:relative }
+.aGesImgLittle{
+    display: block;
+    float: left;
+    height: 97px;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    width: 129px;
+    overflow: hidden;
+}
+.imgPrev{ /*cursor: pointer; border:6px solid #CCC*/ }
+.aGesImgLittle .imgPrev{ /*cursor: pointer;*/ cursor: move; border:1px dashed #D4D4D4 /*border:3px solid #CCC*/ }
+.aGesImgLittle .imgPrev:hover{ border:1px dashed #111 /*border:3px solid ghostwhite*/ }
+.admiGeCrossBig{
+    background:url(../../images/botonesAdmin.png) 0px -736px;
+    width:19px;
+    height:20px;
+    z-index:2;
+    position:absolute;
+    left:158px;
+    top:-4px
+}	
+.admiGeCrossLittle {
+    background:url(../../images/botonesAdmin.png) 0px -736px;
+    width:20px;
+    height:20px;
+    z-index:2;
+    position:absolute;
+    right:0px;
+    top: 0px;
+    cursor:pointer;
+}
+.admiGeCrossLittle2 {
+    /*background:url(../../images/icono_principal.png) 0px 0px;*/
+    background-color: black;
+    filter: alpha(opacity=80);
+    opacity: .8;
+    -moz-opacity: 80;
+    color: white;
+    width: 121px;
+    height: 17px;
+    z-index: 2;
+    position: absolute;
+    right: 13px;
+    top: 90px;
+    cursor: pointer;
+    font-size: 11px;
+    font-family: Verdana;
+    padding: 2px;
+    margin-left: 5px;
+    text-align: center;
+}
+#adminGestImg{
+    overflow: hidden;
+    width:642px;
+    background:#EFEFEF url(../../images/lineImgB.png) 210px top repeat-y;
+    margin-left:185px;
+    padding:20px;
+}
+#adminGesContentBox{ width:960px;}
+#adminSearchBox { margin: 10px auto 20px; overflow: hidden; width: 960px }
+#formBoxAdminG { overflow: hidden; padding: 0 }
+#MictaMainBox { overflow: hidden; padding: 9px; width: 960px }
+.fields { margin-top: 20px; }
+.adminActivtyBoxM { height: 45px; width: 400px }
+
+.hide, .close { display:none }
+.labelGestorBeneficio { width: 200px }
+.ui-datepicker-trigger{ cursor: pointer }
+.editBene { margin: 0 5px 0 0; width:85px }
+
+/* 22-11-2011 Lhyz */
+h6.adminencuestatitu {
+    background:url(../../images/CatalodoLineBottom2.png) left bottom no-repeat;
+    margin-top:20px;
+    height: 45px;
+    width: 979px;
+    color: black;
+}
+#adminformSearchencues { margin: 0 }
+#formBoxAdminG { overflow: hidden; padding: 0 }
+.admintituLightbox {
+    background: url(../../images/IngresoLineBottom.jpg) right bottom no-repeat;
+    display:block;
+    height:54px;
+    padding:0;
+    font-size:24px;
+    color:black;
+}
+.admintituLightbox2 {
+    background: url(../../images/IngresoLineBottom.jpg) right bottom no-repeat;
+    display:block;
+    padding:0;
+    height:80px;
+    font-size:24px;
+    color:black;    
+}
+/*admin gestor encuesta lista*/
+.labelAdminGest {
+    float: left;
+    margin: 10px 5px 0 0;
+    padding: 0 0 0 10px;
+    font-weight: bold;
+    color: #333
+}
+.searchbtGest {
+    background-position: 0 -261px;
+    border: 0 none;
+    cursor: pointer;    
+    margin: 0;
+    width: 83px;
+    height: 30px
+}
+.adminGestorContet { background-color:#FCFCFC; width:958px; overflow: hidden }
+.labelAdminGestEncuesta { float: left; font-weight: bold; margin: 0 5px 0 0; width:164px }
+.inputAdminG { width:350px }
+.contenidoAdminG{ width:350px; height:150px }
+#encuestaContentBox{ width:960px; overflow: hidden }
+#adminSearchBox { margin: 10px auto 20px; overflow: hidden; width: 960px }
+/*admin gestor lightbox encuesta resultado*/
+.enculabelRE{ color: black; font-size:13px }
+#lboxEresultado{ margin:-250px 0 0 -290px; height:300px; width:580px }
+.cajaResultado{ width:460px; overflow:hidden; padding:0 0 0 22px }
+#txtResultadolb{ width:460px; overflow:hidden; padding: 10px 0 20px 32px }
+#txtResultado2{ width:460px; overflow:hidden; padding: 19px 0 20px }
+/*admin gestor lightbox encuesta editar*/
+#lboxEeditar{ margin:-225px 0 0 -290px; height:450px; width:580px }
+.labelAdminGestEE {
+    color: black;
+    float: left;
+    margin: 10px 5px 0 0;
+    padding:0 0 0 20px;
+    font-size: 13px;
+}
+.inputAdminGEE { width:300px }
+.inputAdminGEE2 { width:231px }
+.camposEncuesta{ padding:0 0 0 70px; width:430px; overflow:hidden }
+.BtnesPublicarEE{ width:384px; height:40px }
+.BtnesPublicarU{ margin: 0 auto; width:320px; height:40px }
+.EEPublicarBtn{
+    background-image:url(../../images/botonesAdmin.png);
+    background-repeat: no-repeat;
+    display:block;
+    background-position:0px -795px;
+    width:91px;
+    height:28px;
+    margin:10px 3px 0 0;
+    padding:10px
+}	
+.EEPublicarBtn:hover{background-position:-97px -795px;}
+.EEguardarBtn{
+    background-image:url(../../images/botonesAdmin.png);
+    background-repeat: no-repeat;
+    display:block;
+    background-position:0 -102px;
+    width:89px;
+    height:28px;
+    margin:10px 3px 0 0;
+    padding:10px
+}
+.EEguardarBtn:hover{background-position:-100px -102px;}
+.EEcancelarBtn{
+    background:url(../../images/botonesAdmin.png) 0 -171px no-repeat;
+    display:block;
+    margin:9px 3px 0 10px;
+    padding:10px;
+    width:102px;
+    height:30px
+}	
+.EEcancelarBtn:hover{background-position:-104px -171px;}
+/*admin gestor USUARIO*/
+
+.GUagregarusuarioBtn{
+    background:url(../../images/botonesAdmin.png) 0 -332px no-repeat;
+    display:block;
+    margin:9px 3px 0 0; 
+    width:140px;
+    height:30px
+}
+.GUagregarusuarioBtn:hover{background-position:0 -332px}
+/*#lboxEusuarioeditar{ margin:-225px 0 0 -290px; height:300px; width:580px }*/
+#lboxEusuarioeditar{ margin:30px 0 0 -290px; top:0; height:300px; width:580px }
+.camposusuEditar{ /*width:480px;*/ width:528px; overflow:hidden; padding:0 }
+#formUsuarioA .inputAdminGEE2{ margin-left: 0  }
+#formUsuarioA .labelAdminUsurio{ margin-right:10px; width:150px }
+#formUsuarioA .response{ margin-left: 10px; width:95px }
+#formencuesta .response{ margin-left: 10px; width:95px }
+#formUsuarioA .fields{ margin-top: 0 }
+#formUsuarioA .BtnesPublicarU{ width:210px }
+.formUsuarioB #adminActivtyBoxR{ width:700px; height:auto; overflow: hidden }
+.divBlockU{ width:243px; overflow:hidden }
+.divBlockU label{ display: block; float: left; margin: 0 10px 0 0 }
+#formUsuarioA #saveBtnUsuario{ margin-right: 10px }
+.labelAdminUsurio {
+    color: black;
+    float: left;
+    margin: 10px 5px 0 0;
+    /*padding:0 0 0 20px;*/
+    padding:0;
+    font-size: 13px;
+    width:140px;
+}
+.inputAdminGEE3 { width:245px }
+/*admin gestor USUARIO agregar perfiles*/
+.GUagregarperfilBtn{
+    background-image:url(../../images/botonesAdmin.png);
+    background-repeat: no-repeat;
+    display:block;
+    background-position:0px -364px;
+    width:130px;
+    height:30px;
+    margin:9px 3px 0 0;
+}	
+.GUagregarperfilBtn:hover{background-position:-134px -364px;}
+#path_logo_preview {
+    height: 30px;
+    margin-left: -80px;
+    opacity: 0;
+    position: absolute;
+    filter: alpha(opacity=0); 
+    opacity: .0; 
+    -moz-opacity: 0;
+    width: 90px;
+    z-index: 300;
+}
+/* angie 23/11/2011 */
+.adminElimiBtn {
+    background: url(../../images/botonesAdmin.png) 0 -631px no-repeat;
+    display: block;
+    margin: 0 0 0 10px;
+    height: 30px;
+    width: 91px;
+}
+.adminElimiBtn:hover { background-position: -96px -631px }	
+#AdminGestorEsEdit{ margin: -250px 0 0 -295px; width: 540px }
+#formEstableadmin { width:100%; overflow: hidden }
+#uploadBrandInner{ width:230px; margin-left:181px }
+.uploadBrand{ 
+    background-image: url(../../images/botonesAdmin.png);
+    background-position: 0 -663px;
+    background-repeat: no-repeat;
+    display: block;
+    height:29px;
+    margin: 10px 0 0 10px;
+    width: 105px;
+    margin-top:50px
+}		
+.uploadBrand:hover{ background-position: -120px -663px; }		
+.bloqueAdminGbtn{ margin:10px 0 30px 130px }
+#AdminGestorEsEditUser{ margin:-166px 0 0 -286px; width:572px; height:312px }
+#AdminGestorEsEditPasw{ margin:-166px 0 0 -286px; width:572px; height:312px }
+#AdminGestorEsNew{ margin:-166px 0 0 -286px; width:572px; height:312px }
+/*CATEGORIAS*/
+.AdGesChangeBtn{
+    background: url(../../images/botonesAdmin.png) 0px -763px no-repeat;
+    border: 0 none;
+    display: block;
+    height: 27px;
+    width: 138px;
+}
+#adminGActivtyBoxLeft{ width:360px}
+.marginCero{ margin:0 }
+.ml130{ margin-left:138px }
+.TilutoLightboxCatG {
+    background: url(../../images/CategoriaLiLineBottom.png) right bottom no-repeat;
+    color: black;
+    display: block;
+    font-size: 24px;
+    height:50px;
+}
+#adminGesCategModal,
+#adminGesCategModal2{ top:105px; left:400px; width:560px }
+.adminGesCatIco{ 
+    background:url(../../images/adminCateCheck.png) no-repeat;
+    display:block;
+    padding:0 0 2px 20px;
+    height:19px 
+}
+.adminCambList{ width:150px; height:20px }
+.displayBlock{ display:block }
+.pintar{ background-color: #EBFAFC !important; }
+.iptDisabled{ background-color:#EBEBE4 }
+.aColorCh{ display:block; margin:0 2px 5px; width:15px; height:15px }
+.aColorCh:hover,
+.active .aColorCh{ width:18px; height:18px; border:1px solid black }
+.active .aColorCh{ cursor: default }
+.liColorCh{ display: block; height: 25px; overflow: hidden }
+.redChapita{ background-color: #CC0200 }
+.greenChapita{ background-color: #009966 }
+.blueChapita{ background-color: #0066CC }
+.yellowChapita{ background-color: #FFCC00 }
+.labelCh{ display:block; margin:0 0 5px; font-size: 14px }
+#galeria {  }
+#preloader { float: right; width: 220px; }
+.newCatB .response{ clear: both; margin: 5px 0 0 145px}
+.labelIptD{ display:block }
+.anchoIptD1{ width: 105px }
+.anchoIptD2{ width: 130px }
+.icoCalendar{ background: url(../../images/calendar.png) right center no-repeat }
+/*chapita*/
+.labelIptD{ display:block }
+.anchoIptD1{ width: 105px }
+.anchoIptD2{ width: 130px }
+.icoCalendar{ background: url(../../images/calendar.png) right center no-repeat }
+#galeria {  }
+#preloader { float: right; width: 220px; }
+.newCatB .response{ clear: both; margin: 5px 0 0 145px}
+.loadingMail { background: url(../../images/ajax-loading.gif) no-repeat 410px 4px }
+#formNueEst .loadingMail { background-color:white; background-position:343px 6px }
+.errorvidasocial { width:200px; margin-left:10px }
+.contentedorEditParam { overflow: hidden; }
+/***/
+.cntTituloC{ position:relative; margin:10px 0 0 }
+.cntTituloC h6{ position:absolute; left:0; top:0; z-index:2 }
+.adminGLabelConci{ float: left; margin: 0 0 0 20px; width: 150px; color: black; font-size: 14px }
+.montoConcili{ text-align: right }
+.centerConcili{ text-align:center }
+.textboxConcili{ width:230px; height:50px }
+/**/
+.labelcnciliaR { 
+    margin: 0 20px 0 0; 
+    padding: 0 0 0 10px; 
+    width:150px; 
+    color: #333; 
+    font-weight: bold 
+}
+.adminConciSearch { height: 45px; width: 609px }
+.Trebuchet24{ font-size:24px; color:#000 }
+.totalConResult{ width:360px }
+.totalConResText{ width:172px }
+
+.bad, .errors li { color:#c33 }
+.block .bad, .block .good{ padding-left: 15px; background-position:left 3px }
+.block .good { background-image: url(../../images/check.png) }
+.block .bad, .bloque .bad { background-image: url(../../images/icoError.png) }
+.tlfNPhone{ background-position: right center; width:140px; height: 18px }
+.msjRespELM{ clear:both; margin-left: 125px; font-size: 12px }
+.fielserEncuesta .right{ line-height: 1.2 }
+
+.mictBenFluTd input,
+.mictBenTiTH input{ border:0 none }
+
+/*editor html*/
+.cntEditHTML{ width:665px; overflow: hidden }
+.cleditorMain {border:1px solid #CFCFD0; padding:0 1px 1px; background-color:white}
+.cleditorMain iframe {border:none; margin:0; padding:0}
+.cleditorMain textarea {border:none; margin:0; padding:0; overflow-y:scroll; font:10pt Arial,Verdana; resize:none; outline:none /* webkit grip focus */}
+.cleditorToolbar {background: url('../../images/editor/toolbar.gif') repeat}
+.cleditorGroup {float:left; height:26px}
+.cleditorButton {float:left; width:24px; height:24px; margin:1px 0 1px 0; background: url('../../images/editor/buttons.gif')}
+.cleditorDisabled {opacity:0.3; filter:alpha(opacity=30)}
+.cleditorDivider {float:left; width:1px; height:23px; margin:1px 0 1px 0; background:#CCC}
+.cleditorPopup {border:solid 1px #999; background-color:white; position:absolute; font:10pt Arial,Verdana; cursor:default; z-index:10000}
+.cleditorList div {padding:2px 4px 2px 4px}
+.cleditorList p,
+.cleditorList h1,
+.cleditorList h2,
+.cleditorList h3,
+.cleditorList h4,
+.cleditorList h5,
+.cleditorList h6,
+.cleditorList font {padding:0; margin:0; background-color:Transparent}
+.cleditorColor {width:150px; padding:1px 0 0 1px}
+.cleditorColor div {float:left; width:14px; height:14px; margin:0 1px 1px 0}
+.cleditorPrompt {background-color:#F6F7F9; padding:4px; font-size:8.5pt}
+.cleditorPrompt input,
+.cleditorPrompt textarea {font:8.5pt Arial,Verdana;}
+.cleditorMsg {background-color:#FDFCEE; width:150px; padding:4px; font-size:8.5pt}
+
+
+/* 09-01-2012 */
+.inputAdmin_mPerfil { width:170px }
+.descripAdmin_mPerfil { height: 150px; width:170px }
+.labelAdmin_mPerfil {
+    color: #333;
+    float: left;
+    font-weight: bold;
+    margin:10px 5px 0 0;
+    width:85px;
+}
+.conte_Nperfil { width:200px }
+.titu_listaO {
+    width:200px;
+    background-color:black;
+    color:white;
+    padding:10px;
+    height:auto;
+}
+
+.AdEsDatosLogoC {
+    background: url("../../images/botonesAdmin.png") no-repeat scroll 0px -901px transparent;
+    border: 0 none;
+    display: block;
+    height: 30px;
+    width: 127px; 
+    margin:60px 15px 0 0;
+    cursor:pointer;
+	
+}
+.AdEsDatosLogoC:hover { background: url("../../images/botonesAdmin.png") no-repeat scroll -132px -901px transparent; }
+.adEsDatosTabConten{ width:460px }
+.pT10{ padding-top:10px}
+
+.adEsDaTilulo{
+    color: black;
+    display: block;
+    font-size: 24px;
+    line-height: 1;
+}
+.adEsbtnActualizar {
+    background: url("../../images/botonesAdmin.png") no-repeat scroll -1px -936px transparent;
+    border: 0;
+    margin: 10px 0 10px 316px;
+    width: 107px;
+    height: 29px;
+    cursor: pointer;
+    border-image: initial
+}
+
+.adEsbtnActualizar:hover { background: url("../../images/botonesAdmin.png") no-repeat scroll -118px -936px transparent;
+}
+
+.inputesDatos{ width: 260px }
+.labelesDatos { float: left; font-weight: bold; margin: 0 20px 0 0; width: 100px }
+.tinyFormResponse { width: 280px; margin-left: 125px }
+.mdTitle { width: 125px }
+/* 10-01-2012 */
+#lboxEeditarOp { height: 450px; margin: -225px 0 0 -290px; width: 580px }
+.blockAdmPf .response{ margin-left: 125px }
+.marginPf{ margin:10px 0 0; padding-left:0 }
+.inputAdmin_mPerfil {
+    width:170px;
+}
+.descripAdmin_mPerfil {
+    height: 150px;
+    width:170px;
+}
+.labelAdmin_mPerfil {
+    color: #333333;
+    float: left;
+    font-weight: bold;
+    margin:10px 5px 0 0;
+    width:85px;
+}
+.conte_Nperfil {
+    width:200px;
+}
+.titu_listaO {
+    width:200px;
+	background-color:#000;
+	color:#FFF;
+	padding:10px;
+	height:auto;
+}
+.blockAdmPf .response{ margin-left: 125px; }
+.marginPf{ margin:10px 0 0; padding-left:0 }
+.newPerfAd .response{ clear: both; margin: 0 0 0 96px; }
+.mictTdRedimido {
+    color: #333333;
+    font-size: 12px;
+    padding: 5px;
+}
+/*AGREGADO PARA USUARIOS : MOMENTANEO*/
+.formUsuarioB #adminActivtyBoxR{ width:auto; }
+.GUreasignaclaveBtn{
+    background:url(../../images/botonesAdmin.png) -232px -937px no-repeat;
+    display:block;
+    margin:9px 3px 0 0; 
+    width:140px;
+    height:30px
+}
+.GUreasignaclaveBtn:hover{ background-position: -377px -937px; }
+.clsContainerTP{ width: 600px}
+.anchoTooltip {
+    max-width: 400px;
+}
+.widthCbo{
+    width: 118px;
+}
+/* 16-03-2012 */
+.rowCont{ 
+	background-color:#ECF7FF; 
+	border:1px solid #e1e1e1; 
+	padding:5px 10px 5px 20px;
+	list-style-type: decimal
+}
+.deleteTD{ 
+	background:url(../../images/icoError.png) right center no-repeat; 
+	margin:0 0 0 5px;
+	padding:0 15px 0 0
+}
+.contentOptionsEncO{
+    max-height: 195px;
+    overflow-y: scroll;
+}
+.heightDeTipB{
+    max-height: 126px;
+    overflow-y: scroll;
+}
+.BrowserBtn{
+    background: url(../../images/botonesAdmin.png) 0px -1012px no-repeat;
+    border: 0 none;
+    display: block;
+    height: 28px;
+    width: 66px;
+}
+.BrowserBtn:hover{ background-position: -77px -1012px }
+.image-description {
+    color: #333333;
+    cursor: pointer;
+    font-family: Verdana;
+    font-size: 10px;
+    height: 25px;
+    margin-left: 5px;
+    opacity: 0.8;
+    overflow: hidden;
+    padding: 2px;
+    position: absolute;
+    right: 13px;
+    text-align: center;
+    top: 82px;
+    width: 121px;
+    z-index: 2;
+}
+#SecondImagen{
+    width: 173px;
+    word-wrap: break-word;
+    display: block;
+}
+
+
+#admi-star {
+    background: url("../../images/star.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    height: 20px;
+    position: absolute;
+    right: 40px;
+    top: 0;
+    width: 20px;
+    z-index: 2;
+}
+#admi-edit {
+    background: url("../../images/edit.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    width: 20px;
+    z-index: 2;
+}
+div#admi-edit a.winModal{
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    display: block;
+}
+
+#edit-image-desc{
+    display: block;
+    margin: 10px 0 5px 5px;
+    width: 405px;
+}
+
+#saveChangesBt2 {
+    background-position: 1px -457px;
+    border: 0 none;
+    cursor: pointer;
+    height: 29px;
+    margin: 10px 0 10px 270px;
+    width: 152px;
+}
+
+div#edit-picture.window div.innerWin div.iWindow div.bLB3 span.adminCclaveTi{
+    /*text-align:center;*/
+}
+
+#error_sinstructions{
+    display: none;
+    color: red;
+}
+#error_sinstructions2 {
+    margin: 6px 0 0 !important;
+    text-align: left;
+    width: 221px;
+}

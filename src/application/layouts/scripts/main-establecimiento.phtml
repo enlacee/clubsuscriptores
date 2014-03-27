@@ -1,0 +1,43 @@
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <?= $this->headTitle() ?>
+        <?= $this->headLink() ?>
+        <?= $this->headMeta() ?>
+        <? if ($this->layout()->staticCache) {
+               $excepciones = array("jquery");
+               $this->CacheStatic($this->headScript(), $excepciones);
+           }
+        ?>
+        <?= $this->headScript() ?>
+        <?= $this->headStyle() ?>
+<!--        <script type="text/javascript" src="http://s.devel.clubsc.info/js/establecimiento/cambio_clave.js"></script>-->
+    </head>
+    <body <?php echo ($this->layout()->isAuth && !empty($this->layout()->auth['establecimiento'])?'':'class="anchoCorto"');?>>
+        <!--div id="bandTop" class="all">
+            <?php echo $this->render('_band-top.phtml'); ?>
+        </div-->
+        <div id="wrap" class="center">
+        	<div id="outHeader">
+                <div id="header" class="grid20" >
+                    <?php echo $this->render('_header_establecimiento.phtml'); ?>
+                </div>
+            </div>
+            <?=$this->partial('_partials/_messages_admin.phtml',array("flashMessages"=>$this->layout()->flashMessages))?>
+            <div id="outContent" class="grayborder2 r5">
+                <div id="contentGrid">
+                <?php 
+                    if($this->layout()->isAuth && !empty($this->layout()->auth['establecimiento'])) {
+                        echo $this->partial('_datos_establecimiento.phtml');
+                        echo $this->partial('_menu_establecimiento.phtml');
+                    }
+                ?>
+                <?= $this->layout()->content ?>
+                </div>
+            </div>
+        <div id="footer">
+        </div>
+      </div>
+      <?= $this->partial('_boxes_establecimiento.phtml', array('modulo' => $this->layout()->modulo, 'mediaUrl' => $this->mediaUrl)); ?>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<div id="mainContentInvitar" class="window">
+    <div class="innerWin"> 
+        <a href="#Cerrar" class="sptAll closeWM icoCWM"><span class="hide">Cerrar</span></a>
+        <div class="iWindow r5">
+            <div class="bLB3 r5 inWindow">
+                <h6 class="TilutoLightbox">Nuevo Invitado</h6>
+                <form id="registrarInvitado" method="post" action="<?= $this->url(array('action' => 'invitar-beneficiario', 'controller' => 'mi-cuenta'), 'default', true) ?>">
+                    <fieldset id="beneficiariosInv" class="field textoinput">
+                        <div class="block">
+                            <label class="labelN" for="fAmaterno"> 
+                                <span class="req" title="Requerido">*</span> 
+			                    Email: </label>
+                            <?= $this->formBeneficiario->email->setAttribs(array('id' => 'fmail', 'maxlength' => 32, 'class' => 'required fields inputNmicta left', 'tabindex' => 1))->renderViewHelper(); ?>
+                            <? $hasError = $this->formBeneficiario->email->hasErrors(); ?>
+                            <span class="response cajaGray right<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formBeneficiario->email->errMsg : '' ?></span>
+                        </div>
+                        <div class="block">
+                            <label class="labelN" for="fname"> 
+                                <span class="noReq" title="Requerido">&nbsp;</span>
+			                    Nombre: </label>
+                            <?= $this->formBeneficiario->nombres->setAttribs(array('id' => 'fname', 'maxlength' => 32, 'class' => 'fields inputNmicta left', 'tabindex' => 2))->renderViewHelper(); ?>
+                            <? $hasError = $this->formBeneficiario->nombres->hasErrors(); ?>
+                        </div>
+                        <div class="block">
+                            <label class="labelN" for="fname">
+                                <span class="noReq" title="Requerido">&nbsp;</span>
+			                    Mensaje: </label>
+                            <?= $this->formBeneficiario->invitacion->setAttribs(array('id' => 'fname', 'maxlength' => 32, 'class' => 'inputBenN left', 'tabindex' => 3 , 'rows' => '3', 'cols' => 50))->renderViewHelper(); ?>
+                            <? $hasError = $this->formBeneficiario->nombres->hasErrors(); ?>
+                        </div>
+                    </fieldset>
+                    <div id="mictaBeneInvit" class="bTsolid all"> <input id="btnRegistroInvitado" type="submit" class="mictaBeneInvit" value="" /></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

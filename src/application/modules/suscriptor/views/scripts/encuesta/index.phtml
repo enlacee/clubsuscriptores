@@ -1,0 +1,680 @@
+<div id="MictaMainContentBox" class="gridS20DOS grayborder2 r5">
+    <div id="MictaMainBox" class="grid20">
+        <form action="" method="post" id="frmEncuestaSuscriptor" enctype="multipart/form-data">
+            <h1 class="Titulo980 bold font18">Encuesta Club suscriptores</h1>
+            <fieldset>
+                <div class="question">
+                    <h5><span class="vineta">1.</span> ¿Cómo calificaría los beneficios del Club de Suscriptores El Comercio en comparación con otros planes de beneficios a los cuáles <br/> pertenece o conoce?</h5>
+                    <div class="answer block">
+                        <div class="wrapper-control-group">
+                            <div class="control-group">
+                                <label for="clasificacion_beneficio_club" class="labelNr black noReq Trebuchet"><span class="req"></span> Calificación:</label>
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmEncuesta->clasificacion_beneficio_club->setAttribs(array(
+                                            'id' => 'clasificacion_beneficio_club',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <h5><span class="vineta">2.</span> En una escala de 1 a 5 indíquenos cuál es su interés por los siguientes beneficios (1 es nada interesante y 5 es muy interesante).</h5>
+                    <div class="answer block">
+                        <div class="wrapper-control-group">
+                            <div class="control-group fix-title">
+                                <label>Beneficios</label>
+                                <div class="controls">Calificación</div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_conciertos" class="labelNr black noReq Trebuchet"><span class="req"></span> Conciertos:</label>
+                                <div class="controls">
+                                     <?php
+                                            echo $this->frmInteresBeneficioClup->beneficio_conciertos->setAttribs(array(
+                                                'id' => 'beneficio_conciertos',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                      ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_teatro" class="labelNr black noReq Trebuchet"><span class="req"></span> Teatro:</label>
+                                <div class="controls">
+                                     <?php
+                                            echo $this->frmInteresBeneficioClup->beneficio_teatro->setAttribs(array(
+                                                'id' => 'beneficio_teatro',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                      ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_opera" class="labelNr black noReq Trebuchet"><span class="req"></span> Ópera:</label>
+                                <div class="controls">
+                                     <?php
+                                            echo $this->frmInteresBeneficioClup->beneficio_opera->setAttribs(array(
+                                                'id' => 'beneficio_opera',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                     ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_ballet" class="labelNr black noReq Trebuchet"><span class="req"></span> Ballet:</label>
+                                <div class="controls">
+                                        <?php
+                                            echo $this->frmInteresBeneficioClup->beneficio_ballet->setAttribs(array(
+                                                'id' => 'beneficio_ballet',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_shows_ninos" class="labelNr black noReq Trebuchet"><span class="req"></span> Show para niños:</label>
+                                <div class="controls">
+                                        <?php
+                                            echo $this->frmInteresBeneficioClup->beneficio_shows_ninos->setAttribs(array(
+                                                'id' => 'beneficio_shows_ninos',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_deportes" class="labelNr black noReq Trebuchet"><span class="req"></span> Deportes:</label>
+                                <div class="controls">
+                                        <?php
+                                            echo $this->frmInteresBeneficioClup->beneficio_deportes->setAttribs(array(
+                                                'id' => 'beneficio_deportes',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_avantpremiere" class="labelNr black noReq Trebuchet"><span class="req"></span> Avant Premire(Estrenos):</label>    
+                                <div class="controls">
+                                        <?php
+                                            echo $this->frmInteresBeneficioClup->beneficio_avantpremiere->setAttribs(array(
+                                                'id' => 'beneficio_avantpremiere',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_cines" class="labelNr black noReq Trebuchet"><span class="req"></span> Cines:</label>
+                                <div class="controls">
+                                        <?php
+                                            echo $this->frmInteresBeneficioClup->beneficio_cines->setAttribs(array(
+                                                'id' => 'beneficio_cines',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_seminarios_cursos" class="labelNr black noReq Trebuchet"><span class="req"></span> Seminarios, cursos y capacitaciones:</label>
+                                <div class="controls">
+                                        <?php
+                                            echo $this->frmInteresBeneficioClup->beneficio_seminarios_cursos->setAttribs(array(
+                                                'id' => 'beneficio_seminarios_cursos',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_ferias" class="labelNr black noReq Trebuchet"><span class="req"></span> Ferias (Tecnología, gastronomía, automotriz, etc.):</label> 
+                                <div class="controls">
+                                        <?php
+                                            echo $this->frmInteresBeneficioClup->beneficio_ferias->setAttribs(array(
+                                                'id' => 'beneficio_ferias',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_paquetes_turisticos" class="labelNr black noReq Trebuchet"><span class="req"></span> Paquetes turísticos nacionales e internacionales:</label>    
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmInteresBeneficioClup->beneficio_paquetes_turisticos->setAttribs(array(
+                                            'id' => 'beneficio_paquetes_turisticos',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_boletos_aereos_nacionales" class="labelNr black noReq Trebuchet"><span class="req"></span>Boletos aéreo nacionales e internacionales:</label>    
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmInteresBeneficioClup->beneficio_boletos_aereos_nacionales->setAttribs(array(
+                                            'id' => 'beneficio_boletos_aereos_nacionales',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_cierra_puertas" class="labelNr black noReq Trebuchet"><span class="req"></span>Cierrapuertas (Moda tecnología, decoración, etc.):</label>    
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmInteresBeneficioClup->beneficio_cierra_puertas->setAttribs(array(
+                                            'id' => 'beneficio_cierra_puertas',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficio_vinos" class="labelNr black noReq Trebuchet"><span class="req"></span>Vinos:</label>    
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmInteresBeneficioClup->beneficio_vinos->setAttribs(array(
+                                            'id' => 'beneficio_vinos',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                <div class="question">
+                    <h5><span class="vineta">3.</span> ¿En el último año participó en alguna promoción del Club de Suscriptores?</h5>
+                    <div class="answer block">
+                        <div class="control-group radio-inline-ltr">
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmEncuesta->participacion_promocion_club->setAttribs(array(
+                                            'id' => 'participacion_promocion_club',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                    <label for="participacion_promocion_club" class="labelNr black noReq Trebuchet">Si la respuesta es NO, conteste la pregunta 3.1. Si la respuesta es SI, conteste la pregunta 3.2</label>
+                                </div>
+                        </div>
+                    </div>
+                </div>    
+                <div class="question level-a children-3-1">
+                    <h5><span class="vineta">3.1</span> ¿Por qué?</h5>
+                    <div class="answer block">
+                        <div class="control-group check-list last-check-float">
+                            <div class="controls">
+                                <?php
+                                    /*
+                                    echo $this->frmEncuesta->noparticipo_porque->setAttribs(array(
+                                        'id' => 'noparticipo_porque_2',
+                                        //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                        //'class' => 'required inputNr left',
+                                        'tabindex' => '1'
+                                    ))->renderViewHelper();
+                                    echo $this->frmEncuesta->noparticipo_otros_comentario->setAttribs(array(
+                                        'id' => 'noparticipo_otros_comentario',
+                                        //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                        'placeholder'=>'-- Indique aqui su motivo --',
+                                        'class' => 'text',
+                                        'maxlength' => '50',
+                                        'tabindex' => '1'
+                                    ))->renderViewHelper();*/
+                                ?>
+                                 <?php                            
+                                        echo  $this->partial('encuesta/_participa_promo.phtml');
+                                 ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question level-a children-3-2" style="display:none;">
+                    <h5><span class="vineta">3.2</span> ¿Qué tan satisfecho se encuentra con los beneficios ofrecidos por el Club de Suscriptores El Comercio? Condiserando que 1 es nada satisfecho y 5 es muy satisfecho.</h5>
+                    <div class="answer block">
+                        <div class="wrapper-control-group">
+                            <div class="control-group fix-title">
+                                <label>Beneficios</label>
+                                <div class="controls">Calificación</div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_conciertos" class="labelNr black noReq Trebuchet"><span class="req"></span> Conciertos:</label>
+                                <div class="controls">
+                                     <?php
+                                            echo $this->frmSatisfechoBeneficiosClup->beneficioclup_conciertos->setAttribs(array(
+                                                'id' => 'beneficioclup_conciertos',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                     ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_teatro" class="labelNr black noReq Trebuchet"><span class="req"></span> Teatro:</label>
+                                <div class="controls">
+                                     <?php
+                                        echo $this->frmSatisfechoBeneficiosClup->beneficioclup_teatro->setAttribs(array(
+                                            'id' => 'beneficioclup_teatro',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                     ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_opera" class="labelNr black noReq Trebuchet"><span class="req"></span> Ópera:</label>
+                                <div class="controls">
+                                     <?php
+                                            echo $this->frmSatisfechoBeneficiosClup->beneficioclup_opera->setAttribs(array(
+                                                'id' => 'beneficioclup_opera',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                     ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_ballet" class="labelNr black noReq Trebuchet"><span class="req"></span> Ballet:</label>
+                                <div class="controls">
+                                     <?php
+                                            echo $this->frmSatisfechoBeneficiosClup->beneficioclup_ballet->setAttribs(array(
+                                                'id' => 'beneficioclup_ballet',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                     ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_shows_ninos" class="labelNr black noReq Trebuchet"><span class="req"></span> Show para niños:</label>  
+                                <div class="controls">
+                                     <?php
+                                            echo $this->frmSatisfechoBeneficiosClup->beneficioclup_shows_ninos->setAttribs(array(
+                                                'id' => 'beneficioclup_shows_ninos',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                     ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_deportes" class="labelNr black noReq Trebuchet"><span class="req"></span> Deportes:</label>
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmSatisfechoBeneficiosClup->beneficioclup_deportes->setAttribs(array(
+                                            'id' => 'beneficioclup_deportes',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_avantpremiere" class="labelNr black noReq Trebuchet"><span class="req"></span> Avant Premire(Estrenos):</label>
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmSatisfechoBeneficiosClup->beneficioclup_avantpremiere->setAttribs(array(
+                                            'id' => 'beneficioclup_avantpremiere',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_cines" class="labelNr black noReq Trebuchet"><span class="req"></span> Cines:</label>
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmSatisfechoBeneficiosClup->beneficioclup_cines->setAttribs(array(
+                                            'id' => 'beneficioclup_cines',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_seminarios_cursos" class="labelNr black noReq Trebuchet"><span class="req"></span> Seminarios, cursos y capacitaciones:</label>
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmSatisfechoBeneficiosClup->beneficioclup_seminarios_cursos->setAttribs(array(
+                                            'id' => 'beneficioclup_seminarios_cursos',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_ferias" class="labelNr black noReq Trebuchet"><span class="req"></span> Ferias (Tecnología, gastronomgía, automotriz, etc.):</label>
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmSatisfechoBeneficiosClup->beneficioclup_ferias->setAttribs(array(
+                                            'id' => 'beneficioclup_ferias',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_paquetes_turisticos" class="labelNr black noReq Trebuchet"><span class="req"></span> Paquetes turísticos nacionales e internacionales:</label>
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmSatisfechoBeneficiosClup->beneficioclup_paquetes_turisticos->setAttribs(array(
+                                            'id' => 'beneficioclup_paquetes_turisticos',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_boletos_aereos_nacionales" class="labelNr black noReq Trebuchet"><span class="req"></span>Boletos aéreo nacionales e internacionales:</label>
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmSatisfechoBeneficiosClup->beneficioclup_boletos_aereos_nacionales->setAttribs(array(
+                                            'id' => 'beneficioclup_boletos_aereos_nacionales',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_cierra_puertas" class="labelNr black noReq Trebuchet"><span class="req"></span>Cierrapuertas (Moda tecnología, decoración, etc.):</label> 
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmSatisfechoBeneficiosClup->beneficioclup_cierra_puertas->setAttribs(array(
+                                            'id' => 'beneficioclup_cierra_puertas',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="beneficioclup_vinos" class="labelNr black noReq Trebuchet"><span class="req"></span>Vinos:</label>
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmSatisfechoBeneficiosClup->beneficioclup_vinos->setAttribs(array(
+                                            'id' => 'beneficioclup_vinos',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <h5><span class="vineta">4.</span> ¿Qué otro tipo de beneficios le interesaría recibir como socio del Club de Suscriptores?</h5>
+                    <div class="answer block">
+                        <div class="wrapper-control-group">
+                            <div class="control-group">
+                                <div class="controls">
+                                     <?php
+                                        echo $this->frmEncuesta->otro_beneficio_club->setAttribs(array(
+                                            'id' => 'otro_beneficio_club',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'class' => 'inputNr',
+                                            'placeholder'=>'-- Escriba aqui los beneficios que le gustaría recibir --',
+                                            'tabindex' => '1',
+                                            'maxlength' => '50'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <h5><span class="vineta">5.</span> ¿Se entera oportunamente de los beneficios ofrecidos por el Club de Suscriptores?</h5>
+                    <div class="answer block">
+                        <div class="control-group radio-inline-ltr">
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmEncuesta->oportunamente_beneficios_ofrecidos->setAttribs(array(
+                                            'id' => 'oportunamente_beneficios_ofrecidos',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                                <label for="beneficio_vinos" class="labelNr black noReq Trebuchet">Si la respuesta es SI, conteste la pregunta 5.1</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="question level-a children-5-1" style="display: none;">
+                    <h5><span class="vineta">5.1</span> ¿A través de qué medio se entera de los beneficios ofrecidos por el Club de Suscriptores?</h5>
+                    <div class="answer block">
+                       <div class="control-group check-list">
+                            <div class="controls">
+                                <?php
+                                    echo $this->frmEncuesta->oportunamente_beneficios_elegir->setAttribs(array(
+                                        'id' => 'oportunamente_beneficios_elegir',
+                                        //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                        //'class' => 'required inputNr left',
+                                        'tabindex' => '1'
+                                    ))->renderViewHelper();
+                                ?>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </fieldset>
+            <h1 class="Titulo980 bold font18">Encuesta club del vino</h2>
+            <fieldset>
+                    <div class="question">
+                        <h5><span class="vineta">1.</span> ¿Qué tan interesado estaría usted en esta propuesta?(1 es nada interesado y 5 es muy interesado)</h5>
+                        <div class="answer block">
+                            <div class="wrapper-control-group">
+                                <div class="control-group">
+                                    <label for="interesado_propuesta_cv" class="labelNr black noReq Trebuchet"><span class="req"></span> Calificación:</label>
+                                    <div class="controls">
+                                        <?php
+                                            echo $this->frmEncuesta->interesado_propuesta_cv->setAttribs(array(
+                                                'id' => 'interesado_propuesta_cv',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php                            
+                           echo  $this->partial('encuesta/_compras_vino.phtml');
+                    ?>
+                    <div class="question">
+                        <h5><span class="vineta">3.</span> Al comprar un vino ¿Qué importancia le concede a los siguientes atributos? Califique del 1 al 5, indicando 5 el máximo nivel de importancia.</h5>
+                        <div class="answer block">
+                            <div class="wrapper-control-group">
+                                <div class="control-group fix-title">
+                                    <label>Atributos</label>
+                                    <div class="controls">Calificación</div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="importacion_atributos_tipovino_cv" class="labelNr black noReq Trebuchet"><span class="req"></span> Tipo de vino:</label>
+                                    <div class="controls">
+                                        <?php
+                                            echo $this->frmEncuesta->importacion_atributos_tipovino_cv->setAttribs(array(
+                                                'id' => 'importacion_atributos_tipovino_cv',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="importacion_atributos_marca_cv" class="labelNr black noReq Trebuchet"><span class="req"></span> Marca:</label>
+                                    <div class="controls">
+                                        <?php
+                                            echo $this->frmEncuesta->importacion_atributos_marca_cv->setAttribs(array(
+                                                'id' => 'importacion_atributos_marca_cv',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="importacion_atributos_origen_cv" class="labelNr black noReq Trebuchet"><span class="req"></span> Origen:</label>
+                                    <div class="controls">
+                                        <?php
+                                            echo $this->frmEncuesta->importacion_atributos_origen_cv->setAttribs(array(
+                                                'id' => 'importacion_atributos_origen_cv',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="importacion_atributos_prestigio_cv" class="labelNr black noReq Trebuchet"><span class="req"></span> Prestigio:</label>
+                                    <div class="controls">
+                                        <?php
+                                            echo $this->frmEncuesta->importacion_atributos_prestigio_cv->setAttribs(array(
+                                                'id' => 'importacion_atributos_prestigio_cv',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="importacion_atributos_eddadvino_cv" class="labelNr black noReq Trebuchet"><span class="req"></span> Edad del vino:</label>
+                                    <div class="controls">
+                                        <?php
+                                            echo $this->frmEncuesta->importacion_atributos_eddadvino_cv->setAttribs(array(
+                                                'id' => 'importacion_atributos_eddadvino_cv',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="importacion_atributos_precio_cv" class="labelNr black noReq Trebuchet"><span class="req"></span> Precio:</label>
+                                    <div class="controls">
+                                        <?php
+                                            echo $this->frmEncuesta->importacion_atributos_precio_cv->setAttribs(array(
+                                                'id' => 'importacion_atributos_precio_cv',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <?php
+                                            echo $this->frmEncuesta->importacion_atributos_otros->setAttribs(array(
+                                                'id' => 'importacion_atributos_otros',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'tabindex' => '1'
+                                            ))->renderViewHelper();
+                                        ?>
+                                        Otros
+                                        <?php
+                                            echo $this->frmEncuesta->importacion_atributos_otroscomentario_cv->setAttribs(array(
+                                                'id' => 'importacion_atributos_otroscomentario_cv',
+                                                //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                                //'class' => 'required inputNr left',
+                                                'class' => 'inputNr',
+                                                'placeholder' =>'-- Indique los lugares de compra --',
+                                                'tabindex' => '1',
+                                                'maxlength' => '50'
+                                            ))->renderViewHelper();
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h5><span class="vineta">4.</span> ¿Cuánto estaría dispuesto a pagar por un vino?</h5>
+                        <div class="answer block">
+                            <div class="control-group check-list">
+                                <label for=""></label>
+                                <div class="controls">
+                                    <?php
+                                        echo $this->frmEncuesta->dispuesto_pagar_cv->setAttribs(array(
+                                            'id' => 'dispuesto_pagar_cv',
+                                            //'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                                            //'class' => 'required inputNr left',
+                                            'tabindex' => '1'
+                                        ))->renderViewHelper();
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Titulo980"></div>
+                    <div class="form-btns tcenter">
+                        <input type="submit" class="btnAll" tabindex="21" value="" id="MictaSendbtn" name="btnEnviar"/>    
+                    </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

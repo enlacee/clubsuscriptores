@@ -1,0 +1,92 @@
+<h6 class="TilutoLightbox">Editar Beneficio</h6>
+<div class="all">
+    <div class="left divLeftBen">
+        <div class="block">
+            <p class="mB2 bold">Establecimiento</p>
+            <p class="mB2">
+                <?=
+                $this->escape($this->beneficio['nombre']);
+                ?>
+            </p>
+        </div>
+        <div class="block">
+            <p class="mB2 bold">Nombre Beneficio</p>
+            <p class="mB2">
+                <?=
+                $this->escape($this->beneficio['titulo']);
+                ?>
+            </p>
+        </div>
+        <div class="block">
+            <p class="mB2 bold">Beneficio vigente desde</p>
+            <p class="mB2"><?= date("d \d\e F \d\e\l Y", strtotime($this->beneficio['version']['fecha_inicio_vigencia'])) ?></p>
+        </div>
+    </div>
+    <div class="right divRightBen">
+        <div id="photoBenEB">
+            <img width="250" height="140" src="<?= $this->elementsUrl ?>/images/beneficios/<?= $this->ImgName($this->beneficio['path_logo'], "") ?>" />
+            <div class="titleImgRel">
+                <h2 class="titleH2Rel"><?=$this->escape($this->beneficio['tipo'])?></h2>
+            </div>
+        </div>        
+    </div>
+</div>
+    
+<div class="all">
+    <p class="mB2 bold">Información editable</p>
+    <form id="formBeneficioVersion" metod="post">
+        <fieldset id="formEB">
+            <input type="hidden" name="vigente" id="vigente" value="<?= $this->beneficio['activo'] ?>" />
+            <input type="hidden" name="id" id="id" value="<?= $this->beneficio['id'] ?>" />
+            <input type="hidden" name="v_stock" id="v_stock" value="<?= $this->beneficio['version']['stock'] ?>" />
+            <input type="hidden" name="v_fin" id="v_fin" value="<?= $this->beneficio['version']['fecha_fin_vigencia'] ?>" />
+            <div class="block">
+                <label for="fEstado" class="labelBen bold left"><?=$this->formBeneficio->estado->getLabel();?></label>
+                <?=
+                //$this->formBeneficio->estado->setAttribs(array('id' => 'activo', 'class' => 'inputEB left editBene'))->renderHelper();
+                $this->formBeneficio->estado->renderHelper();
+                ?>
+            </div>
+            <div class="block">
+                <label class="labelBen bold left" for="destacado">Destacado</label>
+                <?=
+                $this->formBeneficio->destacado->setAttribs(array('id' => 'es_destacado', 'class' => ''))->renderHelper();
+                ?>
+            </div>
+            <div class="block">
+                <label for="fecha_fin_vigencia" class="labelBen bold left">Fin de vigencia</label>
+                <?= $this->formBeneficioVersion->fecha_fin_vigencia->setAttribs(array('id' => 'fecha_fin_vigencia', 'class' => 'inputEB left editBene'))->renderHelper() ?>
+            </div>
+            <?php if(!empty($this->tipPromoBen)): ?>
+            <p class="mB2 bold">Tipos de Descuento :</p>
+            <div id="containerTP" class="clsContainerTP left mB10 heightDeTipB">
+           	<ol id="dataOLRes">
+                    <?php foreach ($this->tipPromoBen as $ind => $tpromob): ?>
+                    <li class="rowCont">
+                        <div class="mR10 left f14"><?php echo ($ind+1).'&deg;'; ?></div>
+                        <input type="hidden" name="h_codigo[]" class="placeH inputNbeneStock cGray" value="<?php echo $tpromob['codigo']; ?>">
+                        <input type="text" name="d_codigo[]" class="placeH inputNbeneStock cGray" value="<?php echo $tpromob['codigo']; ?>" maxlength="9" alt="Código" disabled>
+                        <input type="text" name="d_descuento[]" class="money placeH inputNbeneStock cGray" value="<?php echo $tpromob['descuento']; ?>" maxlength="8" alt="Monto" disabled>
+                        <input type="text" name="d_descripcion[]" class="placeH cGray" value="<?php echo $tpromob['descripcion']; ?>" maxlength="250" alt="Descripción" disabled>                        
+                        <input type="text" name="d_cantidad[]" class="money inputQty placeH inputNbeneStock" value="<?php echo $tpromob['cantidad']; ?>" maxlength="5" alt="Cantidad">
+<!--                        <a id="del198650" class="deleteTD" href="#">Elimnar</a>-->
+                    </li>
+                    <?php endforeach; ?>
+                </ol>    
+            </div>
+            <?php else: ?>
+            <!-- PARA BENEFICIOS QUE NO TIENEN DETALLE -->
+            <div class="block">
+                <label for="stock" class="labelBen bold left">Stock</label>
+                <?= $this->formBeneficioVersion->stock->setAttribs(array('id' => 'stock', 'class' => 'inputEB left'))->renderHelper() ?>
+                <span class="spanBen bold left">Cupones</span>
+            </div>
+            <!-- -->
+            <?php endif; ?>
+            <div id="adminbtnbenef" class="center">
+                <a id="btnUpdate" class="adminSaveBtnbene left" href="#"></a>
+                <a id="btnCancel"class="adminQuitBtnbene left closeWM" href="#"></a>
+            </div>
+        </fieldset>
+    </form>
+</div>

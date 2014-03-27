@@ -1,0 +1,44 @@
+<? if ($this->ActivaError<1) : ?>
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Zend Framework Default Application</title>
+</head>
+<body id="pageError"> -->
+  <h1>An error occurred</h1>
+  <h2><?php echo $this->message ?></h2>
+
+  <?php if (isset($this->exception)): ?>
+  
+  <h3>Exception information:</h3>
+  <p>
+      <b>Message:</b> <?php echo $this->exception->getMessage() ?>
+  </p>
+
+  <h3>Stack trace:</h3>
+  <pre><?php echo $this->exception->getTraceAsString() ?>
+  </pre>
+
+  <h3>Request Parameters:</h3>
+  <pre><?php echo $this->escape(var_export($this->request->getParams(), true)) ?>
+  </pre>
+
+  <?php endif ?>
+
+
+<!--</body>
+</html>-->
+<? else: ?>
+    <div class="iPageError">
+        <h6 class="Titulo980 titleError">La página que intentas solicitar no esta en el servidor!</h6>
+        <div class="inPageError">
+            <p class="f18">Prueba ingresando a estos links</p>
+            <ul>
+                <li><a href="/" class="f18">Inicio</a></li>
+                <li><a href="/catalogo/" class="f18">Catálogo</a></li>
+<!--                <li><a href="/servicios-al-suscriptor/" class="f18">Servicios al suscriptor</a></li>-->
+            </ul>
+        </div>
+    </div>
+<? endif; ?>

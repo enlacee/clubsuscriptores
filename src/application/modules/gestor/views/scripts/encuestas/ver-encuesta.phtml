@@ -1,0 +1,28 @@
+<h6 class="admintituLightbox2">Resultados Encuesta "<?php echo $this->escape($this->encuesta['nombre']); ?>"</h6>
+
+<div id="txtResultadolb">
+    <span class="bold">A la pregunta:</span> <?php echo $this->escape($this->encuesta['pregunta']); ?>
+</div>
+
+<div class="cajaResultado">
+    <?php foreach ($this->resultado_encuesta as $opciones):
+            $cant = (!empty($this->total_votos['tvotos'])?$this->total_votos['tvotos']:1);
+      		$porcent = round((($opciones['votos']*100)/$cant),0);
+    ?>
+    <div class="left">
+        <div class="gray grid4 left mT5 ml10"><?php echo $this->escape($opciones['opcion']); ?></div>
+        <div class="grid4 blSolidfirstBlockTest left mT5 ml10">
+            <div class="firstBlockTest" style="width: <?php echo $porcent.'%'; ?>;">&nbsp;&nbsp;<?php echo $porcent.'%'; ?></div>
+        </div>
+        <div class="left mT5 bold ml10"><?php echo $opciones['votos'].' voto'.($opciones['votos']==1?'':'s'); ?></div>
+    </div>    
+    <?php endforeach;?>
+    <div id="txtResultado2">
+        <span class="bold right mT5 ml10">
+            <?php echo $this->escape($this->cadElegidos); ?>
+        </span>
+        <span class="gray mT5 ml10 right">
+            Encuesta <?php echo (!empty($this->encuesta['activo'])?'aún vigente':'no vigente'); ?><?php echo (!empty($this->encuesta['activo'])?', resultado al '.$this->DateFormatOpen('',"dd'-'MMM'-'y"):''); ?>
+        </span>
+    </div>
+</div>

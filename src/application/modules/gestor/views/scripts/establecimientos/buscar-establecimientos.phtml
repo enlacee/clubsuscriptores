@@ -1,0 +1,61 @@
+<div id="mictBeneBtnBox" class="mB20 all">
+    <?php if (!!$this->establecimientos->getCurrentItemCount()) : ?>
+        <div class="alignR left"><?php echo $this->mostrando; ?></div>
+        <?= $this->paginationControl($this->establecimientos, 'Sliding', '_partials/_pag.phtml') ?>
+    <?php endif ?>
+</div>
+
+<div class="mictaContet grid17 grayborder2 r3 all">
+    <table id="mictBenContent">
+        <thead id="mictaBenTitle">
+            <tr>
+                <th width="19%" class="mictBenTiTH ml5 mictbRight bold">Nombre</th>
+                <th width="9%" class="mictBenTiTH ml5 mictbRight bold">RUC</th>
+                <th width="8%" class="mictBenTiTH ml5 mictbRight bold ">Estado</th>
+                <th width="15%" class="mictBenTiTH ml5 mictbRight bold">Contacto </th>
+                <th width="9%" class="mictBenTiTH ml5 mictbRight bold">Teléfono</th>
+                <th width="8%" class="mictBenTiTH ml5 mictbRight bold">Usuarios</th>
+                <th width="9%" class="mictBenTiTH mictbRight bold">Fecha registro</th>
+                <th width="12%" class="mictBenTiTH mictbRight bold">Fecha actualización</th>
+                <th width="11%" class="mictBenTiTH  bold">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <? $class = array(0 => 'even', 1 => '');
+            $i = 0; ?>
+            <? foreach ($this->establecimientos as $establecimiento) : ?>
+                <tr class="<?= $class[$i++ % 2] ?>">
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($establecimiento['nombre']) ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $establecimiento['RUC'] ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $establecimiento['activo'] ? 'Activo' : 'No activo' ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($establecimiento['contacto']) ?></td>
+                    <td class="mictBenFluTd mictbTop mictbRight"><?= $establecimiento['telefono_contacto'] ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $establecimiento['numero_usuarios'] != null ? $establecimiento['numero_usuarios'] : '0' ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= date('d/m/Y', strtotime($establecimiento['fecha_registro'])) ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= date('d/m/Y', strtotime($establecimiento['fecha_actualizacion'])) ?></td>
+                    <td class="mictBenFluTd mictbTop">
+                        <ul>
+                            <li><a class="modalEsta" href="<?= $this->url(array('action' => 'editar-establecimiento', 'controller' => 'establecimientos', 'module' => 'gestor', 'idEst' => $establecimiento['id']), 'default', true) ?>" >Editar</a></li>
+                            <?php if ($establecimiento['numero_usuarios'] == null && $establecimiento['numero_beneficio'] == null) { ?>
+                                <li><a rel="<?= $establecimiento['id'] ?>" href="#winAlertEstablecimiento" class="winModal elimina" >Eliminar</a></li>
+                            <?php } ?>
+                            <li><a rel="<?= $establecimiento['id'] ?>" class="listarUsuarios" >Listar Usuarios</a></li>
+                            <li><a rel="<?= $establecimiento['id'] ?>" class="winModal noScrollTop editTelefEstab" href="#divAddNumbersPhone">Teléfonos</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            <? endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<div id="mictBeneBtnBox" class="mT20 all">
+    <?php if (!!$this->establecimientos->getCurrentItemCount()) : ?>
+        <div class="alignR left"><?php echo $this->nroregistros; ?></div>
+        <?= $this->paginationControl($this->establecimientos, 'Sliding', '_partials/_pag.phtml') ?>
+    <?php elseif (!$this->establecimientos->getCurrentItemCount()) : ?>
+        <div class="paginador all">
+            <div class='pagUl theta alignL'> - No hay datos registrados con esos parámetros </div>
+        </div>
+    <?php endif; ?>
+
+</div>

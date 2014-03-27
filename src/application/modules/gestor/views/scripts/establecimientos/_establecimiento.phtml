@@ -1,0 +1,111 @@
+<form id="formNueEst" action="" method="post" class="all" enctype="multipart/form-data">
+<fieldset class="fieldsBen all" >
+
+    <div class="bloqueNbeneficio" id="imgEstaLogo">
+        <label for="path_imagen" class="labelGestorBeneficio left"><span class="req">*</span> Imagen: </label>
+        <div class= "divBenN left">
+            <div class="left" id="img_avatar">
+                <img src="<?= ($this->imgPhoto == '') ? MEDIA_URL . '/images/photoDefault.png' . "?" . time() : ELEMENTS_URL . '/establecimientos/' . $this->imgPhoto . "?" . time(); ?>" width="128" height="87"/>
+    	    </div>
+    	    <? $hasError = $this->formEstablecimiento->path_imagen->hasErrors(); ?>
+            <?=$this->formEstablecimiento->path_imagen->setAttribs(array('id' => 'path_imagen', 'class' => 'left requerido '.($this->idEst!=null? " ready ":" ").' opacity field', 'tabindex' => '1', 'rel'=> $this->idEst))->renderFile(); ?>
+       		<a class="btnAdminAll left" id="up_logo" for="path_imagen"> <span class="hide">Subir</span></a>
+   		</div>
+        <? $hasError = $this->formEstablecimiento->path_imagen->hasErrors(); ?>
+        <?php if ($this->formEstablecimiento->path_imagen->getMessages() != null) {?>
+            <?php foreach($this->formEstablecimiento->path_imagen->getMessages() as $item) { ?>
+                <?php if ($item != null) { ?>
+                <span class="response bad left"><?= $item ?> </span>
+                <?php }  ?>
+            <?php }  ?>
+        <?php } else {?>
+            <span class="response left"></span>
+        <?php } ?>
+        <?php $error = $this->formEstablecimiento->path_imagen->getMessages(); ?>
+    </div>
+    
+    <div class="bloqueNbeneficio">
+         <label for="fnombre" class="labelGestorBeneficio left"><span class="req">*</span> 
+         Nombre de la Empresa: </label>
+         <?$hasError = $this->formEstablecimiento->nombre->hasErrors(); ?>
+         <?= $this->formEstablecimiento->nombre->setAttribs(array('id' => 'fnombre', 'class' => 'inputBenN left '.($this->idEst!=null? " ready ":" ").' requerido field', 'tabindex' => '1'))->renderViewHelper();?>
+         <span class="response left<?=$hasError?' bad':''?>"><?=$hasError?$this->formEstablecimiento->nombre->errMsg:''?></span>
+    </div>
+    
+    <div class="bloqueNbeneficio">
+        <label for="fRuc" class="labelGestorBeneficio left"><span class="req">*</span> 
+        RUC:</label>
+        <?= $this->formEstablecimiento->RUC->setAttribs(array('id'=>'fRuc','class'=>'inputBenN left '.($this->idEst!=null? " ready ":" ").' requerido field','tabindex'=>'2','rel'=>$this->idEst))->renderViewHelper(); ?>
+        <? $hasError = $this->formEstablecimiento->RUC->hasErrors(); ?>
+        <?  if ($hasError != 0){
+                $Error= $this->formEstablecimiento->RUC->getErrors();
+                
+                $errMsg = Application_Form_Establecimiento::$errorsRuc[$Error[0]];
+            } else{
+                $errMsg ='';
+            }    
+        ?>
+        <span class="response left<?=$hasError?' bad':''?>"><?=$errMsg?> </span>
+    </div>
+    
+    <div class="bloqueNbeneficio">
+    	<label for="fTipoEstabl" class="labelGestorBeneficio left"><span class="req">*</span>
+        Tipo Establecimiento: </label>
+        <? $hasError = $this->formEstablecimiento->tipo_establecimiento->hasErrors(); ?>
+        <?= $this->formEstablecimiento->tipo_establecimiento->setAttribs(array('id' => 'fTipoEstabl', 'class' => 'selectBenN left '.($this->idEst!=null? " ready ":" ").' requerido field', 'tabindex' => '3'))->renderViewHelper() ?>
+        <span class="response left<?=$hasError?' bad':''?>"><?=$hasError?$this->formEstablecimiento->tipo_establecimiento->errMsg:''?></span>
+    </div>
+    
+    <div class="bloqueNbeneficio">
+        <label for="direccion" class="labelGestorBeneficio left"><span class="req">*</span> 
+        Dirección: </label>
+        <?$hasError = $this->formEstablecimiento->direccion->hasErrors(); ?>
+        <?= $this->formEstablecimiento->direccion->setAttribs(array('class'=> 'inputBenN left '.($this->idEst!=null? " ready ":" ").' requerido field', 'tabindex'=>'4'))->renderViewHelper();?>
+        <span class="response left<?=$hasError?' bad':''?>"><?=$hasError?$this->formEstablecimiento->direccion->errMsg:''?></span>
+    </div>
+    <div class="bloqueNbeneficio">
+        <label for="fContacto" class="labelGestorBeneficio left"><span class="req">*</span> 
+        Contacto: </label>
+        <?$hasError = $this->formEstablecimiento->contacto->hasErrors(); ?>
+        <?= $this->formEstablecimiento->contacto->setAttribs(array('id'=>'fContacto', 'class'=> 'inputBenN left '.($this->idEst!=null? " ready ":" ").' requerido field', 'tabindex'=>'4'))->renderViewHelper();?>
+        <span class="response left<?=$hasError?' bad':''?>"><?=$hasError?$this->formEstablecimiento->contacto->errMsg:''?></span>
+    </div>
+    
+    <div class="bloqueNbeneficio">
+        <label for="fEmail" class="labelGestorBeneficio left"><span class="req">*</span> 
+        E-mail: </label>
+        <?= $this->formEstablecimiento->email_contacto->setAttribs(array('id'=>'fEmail', 'class'=> 'inputBenN left'.($this->idEst!=null? " ready ":" ").' requerido field', 'tabindex' => '5'))->renderViewHelper(); ?>
+        <? $hasError = $this->formEstablecimiento->email_contacto->hasErrors(); ?>
+        <?  if ($hasError != 0){
+                $Error= $this->formEstablecimiento->email_contacto->getErrors();
+                $errMsg = Application_Form_Establecimiento::$errorsEmail[$Error[0]];
+            } else{
+                $errMsg ='';
+            }    
+        ?>
+        <span class="response left<?=$hasError?' bad':''?>"><?=$errMsg?> </span>
+    </div>
+    
+    <div class="bloqueNbeneficio">
+        <label for="fTelefono" class="labelGestorBeneficio left"><span class="req">*</span> 
+        Teléfono: </label>
+        <?$hasError = $this->formEstablecimiento->telefono_contacto->hasErrors(); ?>
+        <?= $this->formEstablecimiento->telefono_contacto->setAttribs(array('id'=>'fTelefono', "class"=> "inputBenN left".($this->idEst!=null? " ready ":" ")."requerido field" , 'tabindex' => '6'))->renderViewHelper(); ?>
+        <span class="response left<?=$hasError?' bad':''?>"><?=$hasError?$this->formEstablecimiento->telefono_contacto->errMsg:''?></span>
+    </div>   
+    
+    <div class="bloqueNbeneficio">
+        <label for="fEstado" class="labelGestorBeneficio left"> 
+        Estado: </label>
+        <?= $this->formEstablecimiento->activo->setAttribs(array('id' => 'fEstado', 'class' => 'selectBenN left requerido ready field', 'tabindex' => '7'))->renderViewHelper() ?>
+    </div>
+    
+    <div class="bloqueNbeneficio">
+        <input type="hidden" name="idEst" id="idEst" value="<?= $this->idEst ?>">
+    </div>
+             
+    <div id ="adminSaveNbene">
+        <input id="adminSaveBtnbene" type="submit" class="adminSaveBtnbene" value="">
+    </div>
+</fieldset>
+</form>

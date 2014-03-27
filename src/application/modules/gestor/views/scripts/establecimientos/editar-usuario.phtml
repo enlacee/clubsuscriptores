@@ -1,0 +1,79 @@
+<div id="lboxnuevoES" data-error="<?= $this->data ?>">
+    <h6 class="TilutoLightbox">Editar información de usuario</h6>
+
+    <div id="caja_establecadmin">
+        <form id="FormEditUsu" action="" method="post" enctype="multipart/form-data" > 
+            <fieldset id="formEstableadmin">
+                <div class="divLI block">
+                    <label for="fNom" class="labelLI left"><span class="req">*</span> Nombre:</label>
+                    <? $hasError = $this->formBeneUsuario->nombres->hasErrors(); ?>
+                    <?=
+                    $this->formBeneUsuario->nombres->setAttribs(
+                        array(
+                            'id' => 'fNom',
+                            'class' => 'left inputLI' . ($this->idUsu != null ? " ready " : " "),
+                            'tabindex' => '1'
+                    ))->renderViewHelper();
+                    ?>
+                    <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formBeneUsuario->nombres->errMsg : '' ?></span>
+                </div>
+                <div class="divLI block">
+                    <label for="fApellP" class="labelLI left"><span class="req">*</span> Apellido Paterno:</label>
+                    <? $hasError = $this->formBeneUsuario->apellido_paterno->hasErrors(); ?>
+                    <?=
+                    $this->formBeneUsuario->apellido_paterno->setAttribs(
+                        array(
+                            'id' => 'fApellP',
+                            'class' => 'left inputLI' . ($this->idUsu != null ? " ready " : " "),
+                            'tabindex' => '2'
+                    ))->renderViewHelper();
+                    ?>
+                    <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formBeneUsuario->apellido_paterno->errMsg : '' ?></span>
+                </div>
+                <div class="divLI block">
+                    <label for="fApellM" class="labelLI left"><span class="req">*</span> Apellido Materno:</label>
+                    <? $hasError = $this->formBeneUsuario->apellido_materno->hasErrors(); ?>
+                    <?=
+                    $this->formBeneUsuario->apellido_materno->setAttribs(
+                        array(
+                            'id' => 'fApellM',
+                            'class' => 'left inputLI' . ($this->idUsu != null ? " ready " : " "),
+                            'tabindex' => '3'
+                    ))->renderViewHelper();
+                    ?>
+                    <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formBeneUsuario->apellido_materno->errMsg : '' ?></span>
+                </div>
+                <div class="divLI block">
+                    <label for="email" class="labelLI left"><span class="req">*</span> E-mail: </label>
+                    <?=
+                    $this->formBeneUsuario->email->setAttribs(
+                        array(
+                            'id' => 'email',
+                            'class' => 'left inputLI' . ($this->idUsu != null ? " ready " : " "),
+                            'tabindex' => '4',
+                            'rel' => $this->idUsu
+                    ))->renderViewHelper();
+                    ?>
+                    <? $hasError = $this->formBeneUsuario->email->hasErrors(); ?>
+                    <?
+                    if ($hasError != 0) {
+                        $Error = $this->formBeneUsuario->email->getErrors();
+                        $errMsg = Application_Form_BeneficioUsuario::$errorsEmail[$Error[0]];
+                    } else {
+                        $errMsg = '';
+                    }
+                    ?>
+                    <span class="response left <?= $hasError ? ' bad' : '' ?>"><?= $errMsg ?></span>
+                </div>
+                <div class="divLI block">
+                    <label for="fEstado" class="labelLI left">Estado: </label>
+<?= $this->formBeneUsuario->activo->setAttribs(array('id' => 'fEstado', 'class' => 'left selectLI ready'))->renderViewHelper() ?>
+                </div>
+                <div id="BtnesEditarinfo">
+                    <a type="submit" class="btnAll EinfoguardarBtn left" rel="<?= $this->idUsu ?>"></a>
+                    <a type="submit" class="btnAll EinfocancelarBtn left" value=""></a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

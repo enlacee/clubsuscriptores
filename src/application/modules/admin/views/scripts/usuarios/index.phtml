@@ -1,0 +1,89 @@
+<h6 class="Titulo980 bold">USUARIO</h6>
+<div id="encuestaContentBox" class="mB10 formUsuarioB">
+    <div id="adminActivtyBoxR" >
+        <form action="/admin/usuarios" method="get" id="formAdmFields">
+            <fieldset id="adminformSearchencues" class="field textoinput">
+                <div id="adminActivtyBoxL" class="left">
+                    <a href="#lboxEusuarioEdicion" id="GUagregarusuarioBtn" class="GUagregarusuarioBtn left winModal"></a>
+                    <a href="#lboxReasigClaveUser" id="GUreasignaclaveBtn" class="GUreasignaclaveBtn left winModal"></a>
+                </div>
+                <div class="mB10 right">
+                    <input id="searchbt" type="submit" class="btnAll searchbtGest right" value="" />
+                    <input name="query" id="query" type="text " alt="Busca por descuento, precio, oferta" class=" cGray m10all right" value="<?= $this->query ?>" />
+                    <label class="right bold labelTPB" for="nombre">Nombre del Usuario:</label>
+                </div>
+                <div style="clear:both;"></div>
+                <div>
+                    <label class="labelAdmin right" for="estado"> 
+                        Estado:
+                        <?= $this->filtros->estado->setAttribs(array("id" => "estado", "class" => "ml5 filtroListarUsuarios"))->renderViewHelper() ?>
+                    </label>
+                    <label class="labelAdmin right" for="tipoEstablecimiento"> 
+                        Sub Perfil:
+                        <?= $this->filtros->subPerfil->setAttribs(array("id" => "subTipo", "class" => "ml5 filtroListarUsuarios"))->renderViewHelper() ?>
+                    </label>
+                    <label class="labelAdmin right" for="tipo"> 
+                        Perfil:
+                        <?= $this->filtros->perfil->setAttribs(array("id" => "tipo", "class" => "ml5 filtroListarUsuarios"))->renderViewHelper() ?>
+                    </label>
+                    <label class="labelAdmin right" for="establecimiento"> 
+                        Establecimiento:
+                        <?= $this->filtros->establecimiento->setAttribs(array("id" => "idEstablecimiento", "class" => "ml5 filtroListarUsuarios"))->renderViewHelper() ?>
+                    </label>
+                </div>
+            </fieldset>
+        </form>
+    </div>                
+</div>
+<div id="mictBeneBtnBox" class="">
+    <?php if (!!$this->listaUsuarios->getCurrentItemCount()) : ?>
+    <div class="left m5all"><?php echo $this->mostrando; ?></div>
+    <?php echo $this->paginationControl($this->listaUsuarios, 'Sliding', 'usuarios/_page.phtml', array("pos" => 1)); ?>
+    <?php endif ?>
+</div>
+<div class="adminGestorContet grayborder2 r3 ">
+    <table id="mictBenContent">
+        <thead id="mictaBenTitle">
+            <tr>
+                <th class="mictBenTiTH ml5 mictbRight bold">Nombre</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Email</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Perfil</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Establecimiento</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Estado</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <? foreach ($this->listaUsuarios as $item) : ?>
+                <tr>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($item["apellidos"]) . ', ' . $this->escape($item["nombres"]) ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $item["email"] ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $item['nombre_perfil']//$item["rol"] ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($item["nombreEstablecimiento"]) ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $item["estado"] == 1 ? "Activo" : "Inactivo" ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?php if ($item["rol"]!='suscriptor') { ?>
+                            <a href="#winEditarUsuarioAdm" class="editarListaUsuario winModal" 
+                               rel="<?= $item["id"] ?>" tip="A">Editar</a>
+                            <a href="#winModClaveAdm" class="cambiarClaveListaUsuario winModal" 
+                               rel="<?= $item["id"] ?>">Cambiar Clave</a>
+                        <?php } else { ?>
+                            <a href="#winEditarUsuarioAdm" tip="S"class="editarListaUsuario winModal" 
+                               rel="<?= $item["id"] ?>">Editar</a>
+                        <?php } ?>
+                    </td>
+                </tr>
+            <? endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<?php if (!!$this->listaUsuarios->getCurrentItemCount()) : ?>
+<div id="mictBeneBtnBox" class="mT20">
+    <div class="left m5all"><?php echo $this->nroregistros; ?></div>
+    <?php echo $this->paginationControl($this->listaUsuarios, 'Sliding', 'usuarios/_page.phtml', array("pos" => 1)); ?>
+</div>
+<?php elseif (!$this->listaUsuarios->getCurrentItemCount()) : ?>
+    <div class="paginador all">
+        <div class='pagUl theta alignL'> - No hay datos registrados con esos parámetros </div>
+    </div>
+<?php endif; ?>

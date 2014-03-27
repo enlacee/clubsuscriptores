@@ -1,0 +1,22 @@
+<div id="MictaMainContentBox" class="grayborder2 r5">
+    <div id="MictaMainBox" class="all">
+        <?= $this->partial('mi-cuenta/_menu.phtml', array('menu_post_sel' => $this->menu_post_sel)) ?>
+        <div id="mictaInnerContent" class="all">
+            <?= $this->partial('mi-cuenta/_sidebar_mi_cuenta.phtml', array('menu_sel_side' => $this->menu_sel_side)) ?>
+            <div id="MictaContentBox" class="right">
+                <?=
+                $this->partial(
+                    'mi-cuenta/_mis-beneficiarios.phtml', 
+                    array(
+                        'beneficiarios' => $this->beneficiarios,
+                        'csrf' => $this->csrf,
+                        'maximoInvitados' => $this->maximoInvitados
+                    )
+                )
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?= $this->partial('mi-cuenta/_invitar_beneficiario.phtml', array("formBeneficiario" => $this->formBeneficiario)) ?>

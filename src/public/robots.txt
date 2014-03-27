@@ -1,0 +1,188 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /establecimiento/
+Disallow: /gestor/
+Disallow: /services/
+User-agent: BlackWidow
+Disallow: /
+User-agent: Bot\ mailto:craftbot@yahoo.com
+Disallow: /
+User-agent: ChinaClaw
+Disallow: /
+User-agent: Custo
+Disallow: /
+User-agent: DISCo
+Disallow: /
+User-agent: Download\ Demon
+Disallow: /
+User-agent: eCatch
+Disallow: /
+User-agent: EirGrabber
+Disallow: /
+User-agent: EmailSiphon
+Disallow: /
+User-agent: EmailWolf
+Disallow: /
+User-agent: Express\ WebPictures
+Disallow: /
+User-agent: ExtractorPro
+Disallow: /
+User-agent: EyeNetIE
+Disallow: /
+User-agent: FlashGet
+Disallow: /
+User-agent: GetRight
+Disallow: /
+User-agent: GetWeb!
+Disallow: /
+User-agent: Go!Zilla
+Disallow: /
+User-agent: Go-Ahead-Got-It
+Disallow: /
+User-agent: GrabNet
+Disallow: /
+User-agent: Grafula
+Disallow: /
+User-agent: HMView
+Disallow: /
+User-agent: HTTrack
+Disallow: /
+User-agent: Image\ Stripper
+Disallow: /
+User-agent: Image\ Sucker
+Disallow: /
+User-agent: Indy\ Library
+Disallow: /
+User-agent: InterGET
+Disallow: /
+User-agent: Internet\ Ninja
+Disallow: /
+User-agent: JetCar
+Disallow: /
+User-agent: JOC\ Web\ Spider
+Disallow: /
+User-agent: larbin
+Disallow: /
+User-agent: LeechFTP
+Disallow: /
+User-agent: lwp::
+Disallow: /
+User-agent: lwp-
+Disallow: /
+User-agent: Mass\ Downloader
+Disallow: /
+User-agent: MIDown\ tool
+Disallow: /
+User-agent: Mister\ PiX
+Disallow: /
+User-agent: Navroad
+Disallow: /
+User-agent: NearSite
+Disallow: /
+User-agent: NetAnts
+Disallow: /
+User-agent: NetSpider
+Disallow: /
+User-agent: Net\ Vampire
+Disallow: /
+User-agent: NetZIP
+Disallow: /
+User-agent: Octopus
+Disallow: /
+User-agent: Offline\ Explorer
+Disallow: /
+User-agent: Offline\ Navigator
+Disallow: /
+User-agent: PageGrabber
+Disallow: /
+User-agent: Papa\ Foto
+Disallow: /
+User-agent: pavuk
+Disallow: /
+User-agent: pcBrowser
+Disallow: /
+User-agent: RealDownload
+Disallow: /
+User-agent: ReGet
+Disallow: /
+User-agent: SiteSnagger
+Disallow: /
+User-agent: SmartDownload
+Disallow: /
+User-agent: Schmozilla
+Disallow: /
+User-agent: SuperBot
+Disallow: /
+User-agent: SuperHTTP
+Disallow: /
+User-agent: Surfbot
+Disallow: /
+User-agent: tAkeOut
+Disallow: /
+User-agent: Teleport\ Pro
+Disallow: /
+User-agent: VoidEYE
+Disallow: /
+User-agent: Web\ Image\ Collector
+Disallow: /
+User-agent: Web\ Sucker
+Disallow: /
+User-agent: WebAuto
+Disallow: /
+User-agent: WebCopier
+Disallow: /
+User-agent: webcollage
+Disallow: /
+User-agent: WebFetch
+Disallow: /
+User-agent: WebGo\ IS
+Disallow: /
+User-agent: WebLeacher
+Disallow: /
+User-agent: WebReaper
+Disallow: /
+User-agent: WebSauger
+Disallow: /
+User-agent: Website\ eXtractor
+Disallow: /
+User-agent: Website\ Quester
+Disallow: /
+User-agent: WebStripper
+Disallow: /
+User-agent: WebWhacker
+Disallow: /
+User-agent: WebZIP
+Disallow: /
+User-agent: Wget
+Disallow: /
+User-agent: Widow
+Disallow: /
+User-agent: WWWOFFLE
+Disallow: /
+User-agent: Xaldon\ WebSpider
+Disallow: /
+User-agent: UbiCrawler
+Disallow: /
+User-agent: zao
+Disallow: /
+User-agent: sitecheck.internetseer.com
+Disallow: /
+User-agent: Zealbot
+Disallow: /
+User-agent: MSIECrawler
+Disallow: /
+User-agent: linko
+Disallow: /
+User-agent: Microsoft.URL.Control
+Disallow: /
+User-agent: libwww
+Disallow: /
+User-agent: ZyBORG
+Disallow: /
+User-agent: grub-client
+Disallow: /
+User-agent: k2spider
+Disallow: /
+User-agent: NPBot
+Disallow: /
+Sitemap: http://clubsuscriptores.pe/sitemap.xml

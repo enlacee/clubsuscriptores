@@ -1,0 +1,234 @@
+<div id="QBuscadorPromo" class="bbSolid mB10">
+    <div class="Qp2leftt left">
+        <span class="Qpromo fnormal gray ml5">
+            <form id="frmnpaginadodetalle" 
+                  action="/<?=$this->slug."-".$this->id?>/<?=($this->ActionActual()=="ver-lista"?"lista/":"")?><?=
+                            !empty($this->routeSearch)?($this->routeSearch."/"):""?>"
+                  method="post">
+            <? 
+                $select = "<select name='np' id='npaginadodetalle' mostrandode='$this->MostrandoDe'>";
+                for($i=$this->MostrandoDe;$i>0;$i--) {
+                    $select.="<option ".($i==$this->MostrandoN?"selected='selected'":"").
+                            " value='".($i)."'>".($i)."</option>";
+                }
+                $select.= "</select>";
+                echo "Mostrando ".$select." de ".$this->MostrandoDe;
+            ?>
+            </form>
+        </span>
+    </div>
+    <div class="Qp1right right">
+        <?php
+            $tipo = $this->tipo == "imagenes";
+            $urlImagenes = $urlLista = "/".$this->slug."-".$this->id;
+            $urlLista .= "/lista";
+//            $urlImagenes = $this->url(array('action' => 'index', 'controller' => 'catalogo-detalle'), 'default', true);
+//            $urlLista = $this->url(array('action' => 'lista', 'controller' => 'catalogo-detalle'), 'default', true);
+        ?>
+        <span class="QverComo gray mR10 Trebuchet" >Ver como</span>
+        <a <? if(!$tipo): ?> href="<?=$tipo?"#":($urlImagenes."#ac")?>" <? endif; ?>
+           class="QshowImag mR10 Trebuchet <?=($tipo?"linkstatic bold":"")?>" >
+            Imágenes
+        </a>
+        <a <? if($tipo): ?> href="<?=$tipo?($urlLista."/".$this->routeSearch."#ac"):"#" ?>" <? endif; ?>
+           class="Qlista Trebuchet <?=($tipo?"":"linkstatic bold")?>" >
+            Lista
+        </a>
+    </div>
+</div>
+
+<? if($this->tipo=="imagenes"): ?>
+    <div id="QpMainContent">
+    <?php 
+    $classpos = array('Qboxleft','Qboxleft','Qboxright');
+//    $colors = array('rojo','verde','azul','amarillo');
+    $nrofilas = round($this->totalitems/3,2);
+    $nroreg = 0; 
+    $i=0; $nrof = 0;
+    foreach ($this->beneficios_relacionados as $item):
+        $nroreg++;
+        if($i == 0){
+            $nrof++;
+            echo '<div class="QuieroMainBox '.($nrofilas>$nrof?'bbSolid':'').' mT20">';
+        }
+        $fecivig = new Zend_Date($item['fecha_inicio_vigencia']);
+        $fecfvig = new Zend_Date($item['fecha_fin_vigencia']);
+
+        //$filtros = array('id' => $item['id'], 'slug' => $item['slug'] );
+        //$ruta = $this->url($filtros, 'deta_beneficio', true);
+        $ruta = "/".$item['slug'].'-'.$item['id'];
+    ?>
+        <div itemscope itemtype="http://schema.org/Product" class="<?=$classpos[$i]; ?> left">
+            <div class="QPhoto">
+                <a href="<?=$ruta; ?>">
+                    <img itemprop="image"
+                         src="<?=$this->elementsUrl; ?>/images/beneficios/<?=$this->ImgName($item['path_logo'],
+                            $this->sufixlittle); ?>" width="210" height="115" 
+                         title="<?=$this->escape($item['titulo'].' - '.$item['est_nombre']); ?>"
+                         alt="<?=$this->escape($item['titulo'].' - '.$item['est_nombre']).
+                            ' - Club De Suscriptores El Comercio Perú.'; ?>"
+                         onerror="this.src='<?=$this->mediaUrl; ?>/images/fcatalogo_chica.jpg'"/>
+                </a>
+                <div class="Qtoferta2">
+                    <h3 class="Qpromotexto left bold"><?=$this->escape($item['abreviado']); ?></h3>
+                <?php if(!empty($item['chapita'])):?>
+                    <div class="Qpromoflujo3 QtextoPromoChico <?=$this->escape($item['chapita_color'])?> 
+                            Tshadow">
+                        <?=$item['chapita']; ?>
+                    </div>
+                <?php endif;?>
+                </div>
+            </div>
+            <div class="Qdescription">
+            <? if($item['tipo_beneficio_id']==Application_Model_Beneficio::TIPO_PROMO):?> 
+                <span class="Qdate">
+                    Válido de <?=$fecivig->toString('dd/MM/YY'); ?> al <?=$fecfvig->toString('dd/MM/YY'); ?>
+                </span>
+            <? else: ?>
+                <span class="Qdate">&nbsp;</span>
+            <? endif ?>
+                <div class="QpromoTitle">
+                    <a href="<?=$ruta; ?>">
+                        <h3 itemprop="name" class="font16">
+                            <?=$this->escape($this->ReduceString($item['titulo'],18,'...')); ?>
+                        </h3>
+                    </a>
+                </div>
+                <p itemprop="description" class="QpromoDescription">
+                    <?=$this->escape($this->ReduceString($item['descripcion'],55,'...'))?>
+                </p>
+            </div>
+            <div class="all">
+                <a class="QbotonVerdetalle right mT10" href="<?=$ruta; ?>" 
+                   title="Ver más de &QUOT;<?=$this->escape($item['titulo'])?>&QUOT;"></a>
+            </div>
+        </div>
+    <?php
+        if($i == 2 or $nroreg==$this->totalitems){
+            echo '</div>';
+            $i = 0;
+        }else{
+            $i++;
+        }
+    endforeach; ?>
+
+    <?php 
+    //exit;
+    ?>
+    </div>
+    <div class="lineBottom650"></div>
+<? else: //LISTA -------?>
+
+
+<div id="topListaresultados">
+	<div class="titleLinkV topListaresultados"> 
+    <? $base = array('module' => 'suscriptor', 'controller' => 'catalogo-detalle', 'action' => 'lista');
+       $col = 'titulo';
+       $ord = ($this->col == $col && $this->ord == 'ASC') ? 'DESC': 'ASC';
+       $url = $this->url($base, 'default', false)."/".$this->id."/".$this->slug.'/col/'.$col.'/ord/'.$ord."#ac";
+    ?>
+    <a href="#<?//=$url?>" class="titu1L bold block left linkstatic">Nombre</a>
+    <? $base = array('module' => 'suscriptor', 'controller' => 'catalogo-detalle', 'action' => 'lista');
+       $col = 'descripcion';
+       $ord = ($this->col == $col && $this->ord == 'ASC') ? 'DESC': 'ASC';
+       $url = $this->url($base, 'default', false)."/".$this->id."/".$this->slug.'/col/'.$col.'/ord/'.$ord."#ac";
+    ?>
+    <a href="#<?//=$url?>" class="titu2L bold  block left linkstatic">Oferta</a>
+    <? // $base = array('module' => 'suscriptor', 'controller' => 'catalogo-detalle', 'action' => 'lista');
+//       $col = 'abreviado';
+//       $ord = ($this->col == $col && $this->ord == 'ASC') ? 'DESC': 'ASC';
+//       $url = $this->url($base, 'default', false)."/".$this->id."/".$this->slug.'/col/'.$col.'/ord/'.$ord."#ac";
+       $col = 'tipo';
+       $ord = ($this->col == $col && $this->ord == 'a-z') ? 'z-a': 'a-z';
+       $url = $urlLista."/$col/$ord#ac";
+    ?>
+    <a href="<?=$url?>" class="titu3L bold block left linkstatic <?= 
+       ($this->col == $col && $this->ord == 'a-z') ? 'flechasOrdenASC': 'flechasOrdenDSC' ?>">Tipo</a>
+    <? $base = array('module' => 'suscriptor', 'controller' => 'catalogo-detalle', 'action' => 'lista');
+       $col = 'catnombre';
+       $ord = ($this->col == $col && $this->ord == 'ASC') ? 'DESC': 'ASC';
+       $url = $this->url($base, 'default', false)."/".$this->id."/".$this->slug.'/col/'.$col.'/ord/'.$ord."#ac";
+    ?>
+    <a href="#<?//=$url?>" class="titu4L bold block left linkstatic">Categoría(s)</a>
+    <? // $base = array('module' => 'suscriptor', 'controller' => 'catalogo-detalle', 'action' => 'lista');
+//       $col = 'fechafinv';
+//       $ord = ($this->col == $col && $this->ord == 'ASC') ? 'DESC': 'ASC';
+//       $url = $this->url($base, 'default', false)."/".$this->id."/".$this->slug.'/col/'.$col.'/ord/'.$ord."#ac";
+       $col = 'fecha';
+       $ord = ($this->col == $col && $this->ord == 'a-z') ? 'z-a': 'a-z';
+       $url = $urlLista."/$col/$ord#ac";
+    ?>
+    <a href="<?=$url?>" class="titu5L bold block left linkstatic <?= 
+       ($this->col == $col && $this->ord == 'a-z') ? 'flechasOrdenASC': 'flechasOrdenDSC' ?>">Fecha</a>
+		</div>
+    <? $colors = array('rojo','verde','azul','amarillo'); ?>
+    <? foreach ($this->beneficios_relacionados as $index => $item): ?>
+    <?
+        $fecinivig = new Zend_Date($item['fecha_inicio_vigencia']);
+        $fecfinvig = new Zend_Date($item['fecha_fin_vigencia']);
+
+        //$filtros = array('id' => $item['id'], 'slug' => $item['slug'] );
+        //$ruta = $this->url($filtros, 'deta_beneficio', true);
+        $ruta = "/".$item['slug'].'-'.$item['id'];
+    ?>
+    <div itemscope itemtype="http://schema.org/Product" class="textVistaL left bbSolid <?=($index%2==0)?"":"seleccPromoBenef"?>">
+        <div class="conte1L left">
+            <div class="QPhoto2 center">
+                <a href="<?=$ruta; ?>">
+                    <img itemprop="image" height="102" width="180" 
+                         src="<?=$this->elementsUrl?>/images/beneficios/<?=$item['path_logo']?>" 
+                         title="<?=$this->escape($item['titulo'].' - '.$item['est_nombre']); ?>"
+                         alt="<?=$this->escape($item['titulo'].' - '.$item['est_nombre']).
+                            ' - Club De Suscriptores El Comercio Perú.'; ?>"
+                         onerror="this.src='<?=$this->mediaUrl; ?>/images/fcatalogo_chica.jpg'"/>
+                </a>
+                <div class="Qtoferta">
+                    <? if($item['chapita']!=""): ?>
+                        <div class="Qpromoflujo QtextoPromoChico <?=$this->escape($item['chapita_color']);//$colors[rand(0, count($colors)-1)]; ?> Tshadow">
+                            <? echo $item['chapita']; ?>
+                        </div>
+                    <? endif; ?>
+                </div>
+            </div>
+
+
+            <div class="Qdescription center">
+                <a itemprop="name" href="<?=$ruta?>"><?=$this->escape($item['titulo'])?></a>
+                <span class="Qdate"><?=$item['cuando']?></span>
+            </div>
+
+
+        </div>
+
+        <div class="conte2L left Trebuchet11 textalign" style="padding: 5px">
+            <ul>
+                <li itemprop="description" class="linkstatic Qdate">
+                    <? echo $this->escape($this->ReduceString($item['descripcion'],150,'...')); ?>
+                </li>
+            </ul>
+        </div>
+
+        <div class="conte3L left Trebuchet11 textalign">
+            <h2 class="Qpromotexto left r2 bold"><?=$this->escape($item['abreviado']); ?></h2>
+        </div>
+
+        <div class="conte4L left Trebuchet11 textalign">
+            <ul>
+                <li class="linkstatic Qdate"><?=$this->escape($this->catbenef->getCadsCategoriasPorBeneficio($item['id']));//echo $item['cat_nombre']; ?></li>
+            </ul>
+        </div>
+
+        <div class="conte5L left Trebuchet11 textalign">
+            <ul>
+                <li class="linkstatic Qdate"><?=$fecfinvig->toString('dd/MM/YYYY'); ?></li>
+            </ul>
+        </div>
+    </div>
+    <? endforeach; ?>
+
+
+</div>
+<?php endif; ?>
+<?=$this->paginationControl($this->beneficios_relacionados,'Sliding','beneficio/_page.phtml',
+                  array("cadenabusqueda"=>$this->cadenabusqueda,"slug"=>$this->slug,"id"=>$this->id)); ?>
+

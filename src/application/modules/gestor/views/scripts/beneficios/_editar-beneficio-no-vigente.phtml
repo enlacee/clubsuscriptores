@@ -1,0 +1,109 @@
+<h6 class="TilutoLightbox">Editar Beneficio</h6>
+<form id="formBeneficio">
+    <input type="hidden" name="vigente" id="vigente" value="<?= (!$this->beneficio['activo'])&&$this->beneficio['publicado']? 1:0 ?>" />
+    <input type="hidden" name="id" id="id" value="<?= $this->beneficio['id'] ?>" />
+    <input type="hidden" name="v_stock" id="v_stock" value="<?= $this->beneficio['version']['stock'] ?>" />
+    <input type="hidden" name="v_inicio" id="v_inicio" value="<?= $this->beneficio['version']['fecha_inicio_vigencia'] ?>" />
+    <input type="hidden" name="v_fin" id="v_fin" value="<?= $this->beneficio['version']['fecha_fin_vigencia'] ?>" />
+
+    <fieldset id="editarboxbeneficio" class="field textoinput pl10 mT20 grid8">
+        <div class="block">
+            <label for="" class="labelNEB left Trebuchet c3">Establecimeinto:</label>
+            <?=
+            $this->formBeneficio->establecimiento_id->setAttribs(
+                array('id' => 'establecimiento_id', 'class' => 'left requerido', 'tabindex' => '1'))->renderViewHelper();
+            ?>
+        </div>
+        <div class="block">
+            <label for="" class="labelNEB left c3 Trebuchet">Tipo de Beneficio:</label>
+            <?=
+            $this->formBeneficio->tipo_beneficio_id->setAttribs(
+                array('id' => 'tipo_beneficio_id', 'class' => 'left requerido', 'tabindex' => '2'))->renderViewHelper();
+            ?>
+        </div>
+        <div class="block">
+            <label for="" class="labelNEB left c3 Trebuchet">Nombre del  Beneficio:</label>
+            <?=
+            $this->formBeneficio->titulo->setAttribs(
+                array('id' => 'titulo', 'class' => 'left requerido', 'tabindex' => '3'))->renderViewHelper();
+            ?>
+        </div>
+        <div class="block bloqueNbeneficio">
+            <label class="labelNEB c3 Trebuchet left" for="fEmail">
+                Categoría:
+            </label>
+            <?=
+            $this->formBeneficio->categorias_disponibles->setAttribs(
+                array('id' => 'cat_disponibles', 'class' => 'labelNEB Trebuchet left c3', 'tabindex' => '7', 'size' => '5'))->renderViewHelper();
+            ?>
+            <input type="button" class="btnArrowBlueRightEB" id="cat_right" />
+            <input type="button" class="btnArrowBlueLeftEB" id="cat_left" /> 
+            <?=
+            $this->formBeneficio->categorias_seleccionadas->setAttribs(
+                array('id' => 'cat_seleccionadas', 'class' => ' ml20 grid3 requerido', 'tabindex' => '8', 'size' => '5'))->renderViewHelper();
+            ?>
+        </div>
+        <div class="block">
+            <label class="labelNEB  ml5 left c3 Trebuchet" for="fdni">
+                Descripción:
+            </label>
+            <?=
+            $this->formBeneficio->descripcion->setAttribs(
+                array('id' => 'descripcion', 'class' => 'inputEBdesc left requerido', 'tabindex' => '9', 'rows' => '4'))->renderViewHelper();
+            ?>
+        </div>
+        <div class="block">
+            <label for="" class="labelNEB left c3 Trebuchet">Stock:</label>
+            <?=
+            $this->formBeneficioVersion->stock->setAttribs(
+                array('id' => 'stock', 'class' => 'left requerido', 'tabindex' => '20'))->renderViewHelper();
+            ?>
+            <span class="Trebuchet11 black m10all ">Cupones</span>
+            <?=
+            $this->formBeneficio->sin_stock->setAttribs(
+                array('id' => 'sin_stock', 'class' => 'ml20 mT10', 'tabindex' => '21'))->renderViewHelper();
+            ?>
+            <span class="Trebuchet11 black m10all ">Sin stock</span>
+        </div>
+        <div class="block">
+            <label class="labelNEB  ml5 left c3 Trebuchet" for="fdni">
+                Inicio de Vigencia:
+            </label>
+            <?=
+            $this->formBeneficioVersion->fecha_inicio_vigencia->setAttribs(
+                array('id' => 'fecha_inicio_vigencia', 'class' => 'inputEB left requerido', 'tabindex' => '22', 'readonly' => 'readonly'))->renderViewHelper();
+            ?>
+            <?=
+            $this->formBeneficio->publicar->setAttribs(
+                array('id' => 'publicar', 'class' => 'ml20 mT10', 'tabindex' => '23'))->renderViewHelper();
+            ?>
+            <span class="Trebuchet11 black">Publicar Ahora</span> 
+        </div>
+        <div class="block">
+            <label class="labelNEB  ml5 left c3 Trebuchet" for="fdni">
+                Fin de Vigencia:
+            </label>
+            <?=
+            $this->formBeneficioVersion->fecha_fin_vigencia->setAttribs(
+                array('id' => 'fecha_fin_vigencia', 'class' => 'inputEB left requerido', 'tabindex' => '24', 'readonly' => 'readonly'))->renderViewHelper();
+            ?>
+            <?=
+            $this->formBeneficio->es_destacado->setAttribs(
+                array('id' => 'es_destacado', 'class' => 'ml20 mT10', 'tabindex' => '25'))->renderViewHelper();
+            ?>
+            <span class="Trebuchet11 black">Destacado</span> 
+        </div>
+        <div id="adminSaveCancEB" class="pT20Z">
+            <a id="btnUpdate" class="adminSaveBtnbene left" href="#"></a>
+            <a id="btnCancel" class="adminQuitBtnbene left closeWM" href="#"></a>
+        </div>
+    </fieldset>
+<!--    <div id="photoEBnovigentes">
+        <div class="QPhoto"> 
+            <img src="<?= $this->elementsUrl ?>/beneficios/<?= $this->SufijoImagen($this->beneficio['path_logo'], $this->sufixlittle) ?>"/>
+            <div class="Qtoferta">
+                <h2 class="Qpromotexto left bold">Promo</h2>
+            </div>
+        </div>
+    </div>-->
+</form>

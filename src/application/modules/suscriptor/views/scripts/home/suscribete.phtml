@@ -1,0 +1,146 @@
+<!--CONTENT-->
+<div id="main-content2" class="grid20">
+    <div id="content" class="grid14 left">
+        <div id="TopboxBack">
+            <div id="topBox" class="grayborder2 mB20 r5">
+                <div class="flowWAll">
+                    <h1 class="Titulo680 bold font18">SOLICITAR SUSCRIPCI&Oacute;N</h1>
+                    <div id="cajaContacto" class="mictaContet grayborder2 r3">
+                        <p class="mctaDescription"> Proporciónanos tus datos de contacto y en breve un representante comercial se
+							comunicará contigo para proporcionarte mayor información sobre nuestros planes
+							de suscripción y puedas disfrutar de las múltiples ventajas de ser un suscriptor
+							de El Comercio.</p>
+                        <form id="formSuscribete" action="" method="post">
+                            <fieldset class="all">
+                                <div class="block">
+                                    <label class="labelFC left" for="nombres"> <span class="req" title="Requerido">*</span> Nombre: </label>
+                                    <?php
+                                    $errors = $this->form_contacto->nombres->hasErrors();
+                                    echo $this->form_contacto->nombres->setAttribs(array('id' => 'nombres', 'class' => 'fields inputFC left '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '1'))->renderViewHelper();
+                                    ?>
+                                    <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                    <?php echo($errors ? $this->form_contacto->nombres->errMsg : ''); ?>
+                                    </span>
+                                </div>
+<!--                                <div class="block">
+                                    <label class="labelFC left" for="apellidos"> <span class="req" title="Requerido">*</span> Apellidos: </label>
+                                    < ?php
+                                    $errors = $this->form_contacto->apellidos->hasErrors();
+                                    echo $this->form_contacto->apellidos->setAttribs(array('id' => 'apellidos', 'class' => 'fields inputFC left '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '2'))->renderViewHelper();
+                                    ?>
+                                    <span class="response left < ?php echo ($errors)?'bad':'' ?>">
+                                    < ?php echo($errors ? $this->form_contacto->apellidos->errMsg : ''); ?>
+                                    </span>
+                                </div>-->                                
+                                <div class="block">
+                                    <label class="labelFC left" for="apellido_paterno"> <span class="req" title="Requerido">*</span> Apellido Paterno: </label>
+                                    <?php
+                                    $errors = $this->form_contacto->apellido_paterno->hasErrors();
+                                    echo $this->form_contacto->apellido_paterno->setAttribs(array('id' => 'apellido_paterno', 'class' => 'fields inputFC left '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '2'))->renderViewHelper();
+                                    ?>
+                                    <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                    <?php echo($errors ? $this->form_contacto->apellido_paterno->errMsg : ''); ?>
+                                    </span>
+                                </div>
+                                <div class="block">
+                                    <label class="labelFC left" for="apellido_materno"> <span class="req" title="Requerido">*</span> Apellido Materno: </label>
+                                    <?php
+                                    $errors = $this->form_contacto->apellido_materno->hasErrors();
+                                    echo $this->form_contacto->apellido_materno->setAttribs(array('id' => 'apellido_materno', 'class' => 'fields inputFC left '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '3'))->renderViewHelper();
+                                    ?>
+                                    <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                    <?php echo($errors ? $this->form_contacto->apellido_materno->errMsg : ''); ?>
+                                    </span>
+                                </div>
+                                <div class="block">
+                                    <label class="labelFC left" for="nro_documento"> <span class="req" title="Requerido">*</span> Documento: </label>
+                                    <div class="divFC left">
+                                    <?php
+                                    $errors = $this->form_contacto->tipo_documento->hasErrors();
+                                    $properties = array('id' => 'tipo_documento', 'class' => 'left selectSFC', 'tabindex' => '5');
+                                    echo $this->form_contacto->tipo_documento->setAttribs($properties)->renderViewHelper();
+                                    ?>
+                                    <?php
+                                    $errors = $this->form_contacto->nro_documento->hasErrors();
+                                    $properties = array('id' => 'nro_documento', 'class' => 'right fields inputSFC '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '6');
+                                    echo $this->form_contacto->nro_documento->setAttribs($properties)->renderViewHelper();
+                                    ?>
+                                    </div>
+                                    <span class="response left <?php echo ($errors)?'bad':'' ?>"> 
+                                    <?php echo($errors ? $this->form_contacto->nro_documento->errMsg : ''); ?>
+                                    </span>
+                                </div>
+                                <div class="block">
+                                    <label class="labelFC left" for="telefonos"> <span class="req" title="Requerido">*</span> Teléfonos: </label>
+                                    <?php
+                                    $errors = $this->form_contacto->telefonos->hasErrors();
+                                    echo $this->form_contacto->telefonos->setAttribs(array('id' => 'telefonos', 'class' => 'fields inputFC left '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '6'))->renderViewHelper();
+                                    ?>
+                                    <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                    <?php echo($errors ? $this->form_contacto->telefonos->errMsg : ''); ?>
+                                    </span>
+                                </div>
+                                <div class="block">
+                                    <label class="labelFC left" for="email"> <span class="req" title="Requerido">*</span> Email: </label>
+                                    <?php
+                                    $errors = $this->form_contacto->email->hasErrors();
+                                    echo $this->form_contacto->email->setAttribs(array('id' => 'email', 'class' => 'fields inputFC left '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '7'))->renderViewHelper();
+                                    ?>
+                                    <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                    <?php echo($errors ? $this->form_contacto->email->errMsg : ''); ?>
+                                    </span>
+                                </div>
+                                <div class="block">
+                                    <label class="labelFC left" for="mensaje"> <span class="req" title="Requerido">*</span> Mensaje: </label>
+                                    <?php
+                                    $errors = $this->form_contacto->mensaje->hasErrors();
+                                    echo $this->form_contacto->mensaje->setAttribs(array('id' => 'mensaje', 'class' => 'textareaFC fields left '.(!$errors && $this->ispost?'ready':''), 'tabindex' => '8'))->renderViewHelper();
+                                    ?>
+                                    <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                    <?php echo($errors ? $this->form_contacto->mensaje->errMsg : ''); ?>
+                                    </span>
+                                </div>
+                                <div class="block">
+                                    <div class="emptyFC">
+                                    <?php echo $this->form_contacto->challenge; ?>
+                                    </div>
+                                </div>
+                                <div class="block">
+                                    <div class="emptyFC">
+                                    <?php
+                                    echo $this->form_contacto->enviar->setAttribs(array('id' => 'MictaSendbtn', 'class' => 'btnAll marginBS'))->renderViewHelper();
+                                    ?>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--SIDEBAR -->
+    <div id="sidebar" class="grid6 right">
+        <div id="socialifeBox" class="grayborder2 mB20 r5">
+            <h6 class="mbgray bold">ATENCIÓN TELEFÓNICA</h6>
+            <p class="vidaSocialBajada Trebuchet">
+				Para cualquier consulta sobre el servicio de suscripciones no dudes en contactarte con la Central Telefónica.
+            </p>
+            <div id="horarioAtencion" class=" Trebuchet">
+                <span class="cshrTitle mbgray Trebuchet14 bold">Horario de atención:</span>
+                <p class=" Trebuchet11 c3">
+					Lunes a Viernes: <br/> 7:00 a.m. - 2:00 p.m.
+                    <br /><br />
+					Sábados, Domingos y Feriados:<br/> 7:00 a.m. - 1:00 p.m.
+                </p>
+            </div>
+            <div id="horarioAtencion" class=" Trebuchet">
+                <span class="cshrTitle mbgray Trebuchet14 bold">Central telefónica</span>
+                <p class=" Trebuchet11 c3">
+					311-5100
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer -->

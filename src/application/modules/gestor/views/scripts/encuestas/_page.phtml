@@ -1,0 +1,50 @@
+<div id="paginacion" class="pagination right" >
+    <?php if ($this->pageCount) { ?>
+        <ul class="pagUl grid8 alignR right">
+            <?php
+            if (isset($this->previous)) {
+                $params = array('page' => $this->first);
+                //' . $this->url($params) . '
+                echo '<li class="itemPag firstNextP">« <a rel="'.$this->first.'" class="encuestpage linkPag firstP" href="#anclaPag">Primero</a></li>';
+            }
+
+            if (isset($this->previous)) {
+                $params = array('page' => $this->previous);
+                //' . $this->url($params) . '
+                echo '<li class="itemPag"><a rel="'.$this->previous.'" class="encuestpage linkPag first" href="#anclaPag">Anterior</a></li>';
+            }
+            ?>
+
+            <? foreach ($this->pagesInRange as $page): ?>
+                <? if ($page != $this->current):
+                    //$this->url(array('page' => $page));
+                ?>
+                <li class="itemPag"><a rel="<?= $page; ?>" class="encuestpage" href="#anclaPag"><?= $page; ?></a></li>
+                    <?= $this->last == $page ? '' : '' ?>
+                <? else: ?>
+                    <li class="itemPag"><a class="linkPag active"><?= $page; ?> <?= $this->last == $page ? '' : '' ?></a></li>
+                <? endif; ?>
+            <? endforeach; ?>
+
+            <?
+            if (isset($this->next)) {
+                $params = array('page' => $this->next);
+                //' . $this->url($params) . '
+                echo '<li class="itemPag"><a rel="'.$this->next.'" class="encuestpage linkPag next" href="#anclaPag">Siguiente</a></li>';
+            }
+
+            if (isset($this->next)) {
+                $params = array('page' => $this->last);
+                //' . $this->url($params) . '
+                echo '<li class="itemPag lastNext"><a rel="'.$this->last.'" class="encuestpage linkPag nextLastP" href="#anclaPag">Último</a> »</li>';
+            }
+            ?>
+        </ul>
+    <?php
+    } else {
+        echo '<div class="paginador all">';
+        echo '<div class="pagUl grid8 theta alignR left mT10 mB10"> - No hay registros </div>';
+    	echo '</div>';
+    }
+    ?>
+</div>

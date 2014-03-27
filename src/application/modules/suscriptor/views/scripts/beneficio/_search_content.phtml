@@ -1,0 +1,120 @@
+<div id="quieroLaPromoSearch1" class="grayborder2 r5">
+    <div class="queBuscasBox">
+        <h3 class="queBuscasTexto sptAll font18"> ¿Qué buscas?</h3>
+        <?
+           $url = "/catalogo-virtual/";
+           $actualQuebuscas = $this->itemsSeleccionados["quebuscas"]["slug"]."/";
+           $actualBeneficios = empty($this->itemsSeleccionados["beneficios"]["slug"])?"todos/":
+               $this->itemsSeleccionados["beneficios"]["slug"]."/";
+           $actualCategoria = (is_array($this->itemsSeleccionados["categoria"]["slug"]))
+                                ?implode("--", $this->itemsSeleccionados["categoria"]["slug"])
+                                :'';
+
+           if ($this->itemsSeleccionados["quebuscas"]["slug"]=="") $actualQuebuscas="";
+           //if ($this->itemsSeleccionados["beneficios"]["slug"]=="") $actualBeneficios="";
+           if (empty($this->itemsSeleccionados["categoria"]["slug"][0])) $actualCategoria="";           
+        ?>
+
+        <? $quebuscas = $this->itemsSeleccionados["quebuscas"]; ?>
+        <fieldset class="queBuscasOp">
+            <label class="block itemSearchBeneficios">
+                <input value="0" type="radio" name="rbtnqbusca" <?=$quebuscas["valor"]==0?"checked='checked'":""?> />
+                <span link="<?=$url."nuevo/".$actualBeneficios.$actualCategoria?>" class="ml5 fnormal">
+                    Lo Nuevo
+                </span>
+            </label>
+            <label class="block itemSearchBeneficios">
+                <input value="1" type="radio" name="rbtnqbusca" <?=$quebuscas["valor"]==1?"checked='checked'":""?>/>
+                <span link="<?=$url."mas-visto/".$actualBeneficios.$actualCategoria?>" class="ml5 fnormal">
+                    Lo más visto
+                </span>
+            </label>
+            <label class="block itemSearchBeneficios">
+                <input value="1" type="radio" name="rbtnqbusca" <?=$quebuscas["valor"]==2?"checked='checked'":""?>/>
+                <span link="<?=$url."mas-consumido/".$actualBeneficios.$actualCategoria?>" class="ml5 fnormal">
+                    Lo más consumido
+                </span>
+            </label>
+        </fieldset>
+    </div>
+    <div class="LineQuebuscas"></div>
+    <div class="Beneficios">
+        <h3 class="queBeneficiosTexto sptAll font18">Beneficios</h3>
+        <?php 
+            $beneficios = $this->itemsSeleccionados["beneficios"];
+            
+            $categorias = $this->itemsSeleccionados["categoria"]["valor"];
+            $boleanSD = array_search($this->idCategorias['idDisponible'], $categorias)!==false;
+            $boleanSR = array_search($this->idCategorias['idResultado'], $categorias)!==false;
+        ?>
+        <fieldset class="queBuscasOp">
+            <label class="block itemSearchBeneficios">
+                <input <?=(($beneficios["valor"]==""||$beneficios["valor"]==0)?"checked='checked'":"")?> 
+                    class="left" type="radio" name="rbtntipob"/>
+                <span link="<?=$url.$actualQuebuscas.'todos/'.$actualCategoria?>" class="ml5 fnormal">
+                    <h3 class="rdbBeneficio">Todo</h3>
+                </span>
+            </label>
+            <?php
+                foreach ($this->layout()->tipos_beneficio as $value): 
+                    $id = $value["id"];
+                    $slug = $value["slug"];
+                    $tipo = $value["nombre"];
+                ?>
+                <label class="block itemSearchBeneficios">
+                    <input type="radio" name="rbtntipob" class="left" value="<? echo $id; ?>" 
+                    <?php if((($boleanSD || $boleanSR) && count($categorias)==1) 
+                                   || ($boleanSD && $boleanSR && count($categorias)==2)){
+                               echo ($id=='5' && ($beneficios["valor"]=='' || $beneficios["valor"]=='5')?
+                                       "checked='checked'":($id==$beneficios["valor"]?"checked='checked'":""));
+                          } else {
+                               echo ($id==$beneficios["valor"]?"checked='checked'":""); 
+                          } ?>/>
+                    <span link="<?=$url.$actualQuebuscas.$slug."/".$actualCategoria?>" class="ml5 fnormal">
+                        <h3 class="rdbBeneficio"><?=$tipo?></h3>
+                    </span>
+                </label>
+            <? endforeach; ?>
+        </fieldset>
+    </div>
+</div>
+<div id="quieroLaPromoSearch2" class="grayborder2 r5">
+    <div class="Categorias">
+        <h3 class="queCategoriasTexto sptAll font18">Categorías</h3>
+        <? //array_splice($x,array_search($item["slug"],$x),1);
+            $categorias = $this->itemsSeleccionados["categoria"]["slug"];               
+        ?>
+            <form id="formCategoria"></form>
+            <fieldset class="queBuscasOp">
+                <?php foreach ($this->layout()->categorias as $id => $cat):
+                        if (!empty($id)):
+                ?>
+                            <label class="block itemSearchBeneficiosRadio">
+                                <input class="chkboxcate left" type="checkbox" name="chkboxcate" value="<?=$id?>" 
+                                    <?=(array_search(
+                                            $id, 
+                                            (is_array($categorias)?$categorias:array())
+                                            )!==false?"checked='checked'":"")?> />
+                                <?
+                                    $ruta = (is_array($categorias))?implode("--", $categorias):'';
+                                    if ($this->ExistePalabra($id, $ruta, "--")) {
+                                        $ncategorias = $categorias;
+                                        array_splice($ncategorias,array_search($id,$categorias),1);
+                                        $ruta = implode("--", $ncategorias);
+                                    } else {
+                                        if($ruta!="") $ruta.="--".$id;
+                                        else $ruta.=$id;
+                                    }
+                                ?>
+                                <span url="<?=$url.$actualQuebuscas.$actualBeneficios?>"
+                                    link="<?=($ruta!=""?$ruta:"")?>"
+                                    class="ml5 fnormal">
+                                        <h3 class="chkCategoria"><?=$this->escape($cat)?></h3>
+                                </span>
+                            </label>
+                <?php    endif;
+                        endforeach;
+                ?>
+            </fieldset>
+    </div>
+</div>

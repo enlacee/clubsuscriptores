@@ -1,0 +1,15 @@
+<div id="tesTBox" class="grayborder2 r5 grid6 center">
+  <h6 class="mbgray bold">ENCUESTAS</h6>
+  <form id="formencuesta" name="formencuesta" action="" method="post">
+    <input type="hidden" name="encuesta_id" id="encuesta_id" value="<?php echo $this->escape($this->encuesta['id']); ?>"/>
+    <p class="textoEncuesta fnormal"><?php echo $this->escape($this->encuesta['pregunta']); ?></p>
+    <fieldset class="fielserEncuesta">
+    <?php foreach ($this->opciones as $op):?>
+    <label class="block"> 
+    	<input type="radio" class="inputEncT noBdr left" name="rbtnop" value="<?php echo $this->escape($op['id']);?>"/>
+        <span class="right" style="width: 250px;"><?php echo $this->escape($op['opcion']); ?></span><!--spanEncT-->
+    </label>
+    <?php endforeach; ?>
+    </fieldset>
+  </form>
+</div>

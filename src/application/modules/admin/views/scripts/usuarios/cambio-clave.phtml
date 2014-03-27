@@ -1,0 +1,19 @@
+<div id="lboxclaveusuarioES" data-error="<?=$this->data ?>" >
+    <h6 class="TilutoLightbox">Generar nueva clave de usuario</h6>
+    
+    <div id="caja_establecadmin">
+        <div class="cajaUsuarioEmail r5 ">
+        	<div class=" black Trebuchet left bold" id="nuevaclave_usuario">Usuario: <?= $this->escape($this->nombres.' '.$this->apellidos) ?></div>
+            <div class=" Trebuchet left black bold" id="nuevaclave_email">E-mail: <?= $this->escape($this->email) ?></div>
+        </div>
+        
+        <div id="claveusuarioCentroBtn">
+            <a class=" admincrearcontraseniaBtn" rel="<?=$this->idUsu ?>"></a>
+        </div>
+        <div class="txtUsuarioEmail center">
+        Se generará una nueva clave  de usuario y se enviará
+        automaticamente al correo registrado del mismo.
+        </div>
+    </div>
+</div>
+<div id="csrf" class="hide"><?=$this->csrf?></div>

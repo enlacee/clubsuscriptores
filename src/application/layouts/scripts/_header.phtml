@@ -1,0 +1,47 @@
+<h1 id="logo" class="sptAll left"> 
+    <a href="/" id="logoA" title="El portal exclusivo de los suscriptores de El Comercio" class="hideIndent">
+        Club De Suscriptores El Comercio Perú
+    </a>
+</h1>
+<div id="inputPortada" class="grid12 right">
+    <ul id="user">
+    <? if (!empty($this->layout()->auth['suscriptor'])): ?>
+        <li class="linkLog inline pipeN">
+            <?php
+            echo ($this->layout()->auth['suscriptor']['sexo'] == 'M') ? 'Bienvenido ' : 'Bienvenida '; 
+            echo '<span class="bold">'.$this->escape(
+                ucfirst($this->layout()->auth['suscriptor']['nombres']) . " " . 
+                ucfirst($this->layout()->auth['suscriptor']['apellido_paterno']) . ' ' . 
+                ucfirst($this->layout()->auth['suscriptor']['apellido_materno'])). '</span>';
+            ?>
+        </li>
+        <li class="linkLog inline"><a href="<?=$this->url(array(),'logout',true)?>">Salir</a></li>
+    <? else: ?>
+        <li class="linkLog inline pipeN">
+            <a class="winModal noScrollTop" href="#loginModalW" id="idIngresoPortal">Ingresar</a>
+        </li>
+        <li class="linkLog inline pipeN"> 
+            <a href="<?= $this->url(array('controller' => 'registro'), 'default', true) ?>">Regístrate</a>
+        </li>
+        <li class="linkLog inline"> 
+            <a href="<?= $this->url(array('controller' => 'suscribete'), 'default', true) ?>">Suscríbete al Diario</a>
+        </li>
+    <? endif; ?>
+    </ul>
+    <form id="formBox" class="right" action="/buscar" method="post">
+        <input type="submit" id="searchbt" value="" class="btnAll right searchbt"/>
+        <select id="categorias" class="cGray right categorias" name="categoria_id">
+            <option value="0" <?=($this->layout()->categoria=='0'?"selected='selected'":"")?>>
+                Todas las Categorías
+            </option>
+        <?php foreach ($this->layout()->categorias as $id => $cat): ?>
+            <option value="<?=$id?>" <?=($this->layout()->categoria===$id?"selected='selected'":"")?>>
+                <?=$this->escape($cat)?>
+            </option>
+        <?php endforeach; ?>
+        </select>
+        <input name="search" id="search" type="text" 
+               value="<?=$this->layout()->query!=""?$this->layout()->query:"Busca por descuento, precio, oferta"?>" 
+               alt="Busca por descuento, precio, oferta" class="cGray right placeH"/>
+    </form>
+</div>

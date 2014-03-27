@@ -1,0 +1,40 @@
+<h6 class="adEsDaTilulo">Usuarios del Establecimiento</h6>
+<? if (count($this->usuarios) > 0) : ?>
+    <div class="all cntPagFix">
+        <? if (!!$this->usuarios->getCurrentItemCount()) : ?>
+            <div class="left m5all"><?php echo $this->mostrando; ?></div>
+        <? endif; ?>
+    </div>
+    <div class=" mictaContet grayborder2 r3 mB20 table482Fix">
+        <table id="adEsDatosTable" class=" borderAll ">
+            <thead id="mictaBenTitle">
+            <th class="mictBenTiTH ml5 mictbRight bold">Nombres y Apellidos</th>
+            <th class="mictBenTiTH ml5 bold">Cuenta</th>
+            </thead>
+            <tbody>
+                <?
+                $class = array(0 => 'even', 1 => '');
+                $i = 0;
+                foreach ($this->usuarios as $key => $usuario) :
+                    ?>
+                    <tr class="<?= $class[$i++ % 2] ?>">
+                        <td class="mictBenFluTd mictbRight mictbTop"><?= $usuario['nombres'] . ' ' . $usuario['apellido_paterno'] . ' ' . $usuario['apellido_materno'] ?></td>
+                        <td class="mictBenFluTd  mictbTop"><?= $usuario['email'] ?></td>
+                    </tr>
+                <? endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <? if (!!$this->usuarios->getCurrentItemCount()) : ?>
+        <div class="all cntPagFix">
+            <div class="left m5all"><?php echo $this->nroregistros; ?></div>
+            <?= $this->paginationControl($this->usuarios, 'Sliding', '_partials/_pag.phtml') ?>
+        </div>
+    <? elseif (!$this->usuarios->getCurrentItemCount()) : ?>
+        <div class="paginador all">
+            <div class='pagUl theta alignL'> - No hay datos registrados con esos parámetros </div>
+        </div>
+    <? endif; ?>
+<? else : ?>
+    NO HAY USUARIOS REGISTRADOS
+<? endif; ?>

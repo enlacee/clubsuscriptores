@@ -1,0 +1,61 @@
+<div id="MictaMainContentBox" class="grayborder2 r5">
+    <div id="MictaMainBox" class="gridOpt">
+        <?= $this->partial('mi-cuenta/_menu.phtml', array('menu_post_sel' => $this->menu_post_sel)) ?>
+        <div id="mictaInnerContent" class="all">
+            <?= $this->partial('mi-cuenta/_sidebar_datos_personales.phtml', array('menu_sel_side' => $this->menu_sel_side)) ?>
+	        <div id="MictaContentBox" class="right">
+	            <div class="mctaTittle bold">Redes Sociales</div>
+	            <div class="mictaContet grayborder2 r3"> 
+	            	<p class="mctaDescriptionRedes">Ingresa al Club utilizando tu cuenta de Facebook o Gmail. Asocia tu cuenta a redes sociales.</p>
+	                <div id="mictaRedes">
+	
+	                    <div id="facebookLog" class="left">
+	                        <?php if ($this->isFacebook === true) : ?>
+	                                <img src="<?= $this->mediaUrl ?>/images/facebookOff.png"/>
+	                        <? else : ?>
+	                            <a href="http://www.facebook.com/dialog/oauth?client_id=<?=$this->facebookAppId?>&redirect_uri=<?=$this->urlFacebook?>">
+	                                <img src="<?= $this->mediaUrl ?>/images/facebookOn.png"/>
+	                            </a>
+	                        <? endif ?>
+	                    </div>
+	                    <div id="googleLog" class="right"> 
+	                        <?php if ($this->isGoogle === true) : ?>
+	                            <img src="<?= $this->mediaUrl ?>/images/googleOff.png"/>
+	                        <? else : ?>
+	                            <a href="<?=$this->openUrl?>">
+	                                <img src="<?= $this->mediaUrl ?>/images/googleOn.png"/>
+	                            </a>
+	                        <? endif ?>
+	                    </div>
+	
+	                </div> 
+	                <table summary="Sincronización con redes sociales" class="grid11" id="mictaNoRedesInner">
+	                    <?php if (count($this->redes) > 0) : ?>
+	                        <thead>
+	                            <tr>
+	                                <th colspan="2" class="titleRedSoc bold">Nombre</th>
+	                            </tr>
+	                        </thead>
+	                    <?php endif; ?>
+	                    <?php if (count($this->redes) > 0) : ?>
+	                        <tbody>
+	                            <?php foreach ($this->redes as $red): ?>
+	                                <tr>
+	                                    <td class="bFieldRS c6 <?= $red['rs'] == 'facebook' ? 'bFacebook' : 'bGoogle' ?>"><span class="nTwitter"><?= $red['screenname'] ?></span></td>
+	                                    <td class="bDelete"><a href="<?= $this->baseUrl('mi-cuenta/eliminar-cuenta-' . $red['rs']) ?>">Eliminar</a></td>
+	                                </tr>
+	                            <?php endforeach; ?>
+	                        </tbody>
+	                    <?php else : ?>
+	                        <tbody>
+	                            <tr>
+	                                <td class="mictaNoRedes">Aún no has asociado ninguna cuenta</td>
+	                            </tr>
+	                        </tbody>
+	                    <?php endif; ?>
+	                </table>
+	            </div>
+	        </div>
+        </div>
+    </div>
+</div>

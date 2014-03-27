@@ -1,0 +1,55 @@
+<? $activo = 'active'; ?>
+<div id="outMainNav">
+    <ul id="mainNav" class="grid20 center">
+        <?php
+        if(!empty($this->layout()->auth['opciones'])){
+            $options = $this->layout()->auth['opciones'];
+            foreach ($options as $opt):
+        ?>
+            <li class="<?= ($this->layout()->active == $opt['controlador'] ? $activo : ''); ?> liMianMenu left">
+                <a href="<?= $this->url(array(
+                        'action' => 'index', 
+                        'controller' => $opt['controlador'], 
+                        'module' => $opt['nombremod']), 
+                    'default', true); ?>" 
+                    class="aMenuMain aMenuMainPaddingGestor left"><?php echo $opt['nombreop']; ?></a>
+            </li>
+        <?php
+            endforeach;?>
+<!--            <li class="liMianMenu left">
+                <a href="< ?= $this->url(array('action' => 'index', 'controller' => 'usuarios', 'module' => 'admin'), 'default', true); ?>" class="aMenuMain left">Usuarios</a>
+            </li>-->
+        <?php }else{
+        ?>
+        <li class="<?= ($this->layout()->active == App_Controller_Action_Gestor::MENU_NAME_INICIO ? $activo : ''); ?> liMianMenu left">
+            <a href="<?= $this->url(array('action' => 'index', 'controller' => 'home', 'module' => 'gestor'), 'default', true); ?>" class="aMenuMain aMenuMainPaddingGestor left">Inicio</a>
+        </li>
+        <li class="<?= ($this->layout()->active == App_Controller_Action_Gestor::MENU_NAME_ESTABLECIMIENTOS ? $activo : ''); ?> liMianMenu left">
+            <a href="<?= $this->url(array('action' => 'index', 'controller' => 'establecimientos', 'module' => 'gestor'), 'default', true); ?>" class="aMenuMain aMenuMainPaddingGestor left">Establecimientos</a>
+        </li>
+        <li class="<?= ($this->layout()->active == App_Controller_Action_Gestor::MENU_NAME_BENEFICIOS ? $activo : ''); ?> liMianMenu left">
+            <a href="<?= $this->url(array('action' => 'index', 'controller' => 'beneficios', 'module' => 'gestor'), 'default', true); ?>" class="aMenuMain aMenuMainPaddingGestor left">Beneficios</a>
+        </li>
+        <li class="<?= ($this->layout()->active == App_Controller_Action_Gestor::MENU_NAME_VIDA_SOCIAL ? $activo : ''); ?> liMianMenu left">
+            <a href="<?= $this->url(array('action' => 'index', 'controller' => 'vida-social', 'module' => 'gestor'), 'default', true); ?>" class="aMenuMain aMenuMainPaddingGestor left">Vida Social</a>
+        </li>
+        <li class="<?= ($this->layout()->active == App_Controller_Action_Gestor::MENU_NAME_CONCILIACION ? $activo : ''); ?> liMianMenu left">
+            <a href="<?= $this->url(array('action' => 'index', 'controller' => 'conciliacion', 'module' => 'gestor'), 'default', true); ?>" class="aMenuMain aMenuMainPaddingGestor left">Conciliación</a>
+        </li>
+        <li class="<?= ($this->layout()->active == App_Controller_Action_Gestor::MENU_NAME_ENCUESTAS ? $activo : ''); ?> liMianMenu left">
+            <a href="<?= $this->url(array('action' => 'index', 'controller' => 'encuestas', 'module' => 'gestor'), 'default', true); ?>" class="aMenuMain aMenuMainPaddingGestor left">Encuestas</a>
+        </li>
+        <li class="<?= ($this->layout()->active == App_Controller_Action_Gestor::MENU_NAME_CATEGORIAS ? $activo : ''); ?> liMianMenu left">
+            <a href="<?= $this->url(array('action' => 'index', 'controller' => 'categorias', 'module' => 'gestor'), 'default', true); ?>" class="aMenuMain aMenuMainPaddingGestor left">Categorías</a>
+        </li>
+        <li class="<?= ($this->layout()->active == App_Controller_Action_Gestor::MENU_NAME_CONFIGURACION ? $activo : ''); ?> liMianMenu left">
+            <a href="<?= $this->url(array('action' => 'index', 'controller' => 'configuracion', 'module' => 'gestor'), 'default', true); ?>" class="aMenuMain aMenuMainPaddingGestor left">Configuración</a>
+        </li>
+        <li class="<?= ($this->layout()->active == App_Controller_Action_Gestor::MENU_NAME_ANUNCIANTE ? $activo : ''); ?> liMianMenu left">
+            <a href="<?= $this->url(array('action' => 'index', 'controller' => 'anunciantes', 'module' => 'gestor'), 'default', true); ?>" class="aMenuMain aMenuMainPaddingGestor left">Anunciantes</a>
+        </li>
+        <?php
+        }
+        ?>
+    </ul>
+</div>

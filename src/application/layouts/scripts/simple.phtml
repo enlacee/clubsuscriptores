@@ -1,0 +1,29 @@
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	    <?= $this->headMeta() ?>
+	    <?= $this->headTitle() ?>
+	    <?= $this->headLink() ?>
+	    <?= $this->headScript() ?>
+	    <?= $this->headStyle() ?>
+	</head>
+	<body class="simplePage">
+		<!--div id="bandTop" class="all">
+			<?php echo $this->render('_band-top.phtml'); ?>
+		</div-->
+		<div id="wrap" class="center">
+		  <div id="outHeader">  
+		    <div id="header" class="grid20 center">
+		    	<h1 id="logo" class="sptAll left"> <a href="/" id="logoA" class="hideIndent">Club Suscriptor</a></h1>
+		    </div>
+		  </div>  
+			<div id="outContent" class="grayborder2 r5">
+		    <div id="contentGrid">
+		      <?php echo $this->layout()->content ?>
+		    </div>
+			</div>
+			<div id="footer">        
+			</div>
+		</div>
+	</body>
+</html>

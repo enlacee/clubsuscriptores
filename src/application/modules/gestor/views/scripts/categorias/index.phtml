@@ -1,0 +1,29 @@
+<h3>Categorías:</h3>
+<a href="<?=$this->url(array('action'=>'nuevo','controller'=>'categorias','module'=>'gestor'),'default',true)?>">Nuevo</a> <br />
+<a href="<?php echo $this->url(array('action'=>'index','controller'=>'home','module'=>'gestor')); ?>">Regresar</a>
+<br />
+<br />
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <? if (count($this->categorias)): ?>
+            <? foreach ($this->categorias as $row): ?>
+                <tr>
+                    <td><?=$row->nombre?></td>
+                    <td><?=$row->descripcion?></td>
+                    <td><?=$row->id?></td>
+                </tr>
+            <? endforeach; ?>
+        <? else: ?>
+            <tr>
+                <td colspan="3">No hay categorías</td>
+            </tr>
+        <? endif; ?>
+    </tbody>
+</table>

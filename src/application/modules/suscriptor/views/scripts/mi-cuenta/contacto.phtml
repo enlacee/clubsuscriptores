@@ -1,0 +1,101 @@
+<div id="MictaMainContentBox" class="grayborder2 r5">
+    <div id="MictaMainBox" class="all">
+        <?= $this->partial('mi-cuenta/_menu.phtml', array('menu_post_sel' => $this->menu_post_sel)) ?>
+        <div id="mictaInnerContent" class="all">
+            <?= $this->partial('mi-cuenta/_sidebar_mi_cuenta.phtml', array('menu_sel_side' => $this->menu_sel_side)) ?>
+		        <div id="MictaContentBox" class="grid17 right">
+		            <div class="mctaTittle bold">Contacto</div>
+		            <div class="mictaContet grayborder2 r3">
+		                <p class="mctaDescription">
+		                    Si tienes alguna duda o pregunta, o simplemente, quieres brindarnos un consejo; puedes escribirnos señalando el asunto.  Te responderemos a la brevedad posible. 
+		                </p>
+		                
+		                <?php //echo $this->form_contacto; ?>
+		                
+		                <form id="formContactCta" action="" method="post">
+		                    <fieldset class="all">
+		                        <div class="block">
+		                            <label class="labelFC left" for="categoria"> 
+		                               <span class="req" title="Requerido">*</span> 
+		                                Categoria: </label>
+		                            <?php 
+		                                $errors = $this->form_contacto->categoria->hasErrors();
+		                                $properties = array('id'=>'categoria','tabindex'=>'1','class'=>'fields selectFC left '.(!$errors && $this->ispost?'ready':''));
+		                                echo $this->form_contacto->categoria->setAttribs($properties)->renderViewHelper();
+		                            ?>
+		                            <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                                <?php echo ($errors?$this->form_contacto->categoria->errMsg:''); ?>
+                                            </span>
+		                        </div>
+		                        <div class="block">
+		                            <label class="labelFC left" for="titulo_consulta"> 
+		                               <span class="req" title="Requerido">*</span> 
+		                                Título de consulta: </label>
+		                            <?php 
+		                                $errors = $this->form_contacto->titulo_consulta->hasErrors();
+		                                echo $this->form_contacto->titulo_consulta->setAttribs(
+		                                    array('id'=>'titulo_consulta','class'=>'fields inputFC left '.(!$errors && $this->ispost?'ready':''),'tabindex'=>'2')
+		                                )->renderViewHelper();
+		                            ?>
+		                            <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                                <?php echo ($errors?$this->form_contacto->titulo_consulta->errMsg:''); ?>
+                                            </span>
+		                        </div>
+		                        <div class="block">
+		                            <label class="labelFC left" for="mensaje"> 
+		                               <span class="req" title="Requerido">*</span> 
+		                                Mensaje: </label>
+		                            <?php 
+		                                $errors = $this->form_contacto->mensaje->hasErrors();
+		                                echo $this->form_contacto->mensaje->setAttribs(
+		                                    array('id'=>'mensaje','class'=>'textareaFC fields left '.(!$errors && $this->ispost?'ready':''),'tabindex'=>'3')
+		                                )->renderViewHelper();
+		                            ?>
+		                            <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                                                <?php echo ($errors?$this->form_contacto->mensaje->errMsg:''); ?>
+                                            </span>
+		                        </div>
+		                        <div class="block">
+                                            <div class="emptyFC">
+                                                <div class="divFC left hide">
+                                                    <?php 
+                                                     echo $this->form_contacto->chkcondi->setAttribs(
+                                                         array('class'=>'mictaContacto noBdr', 'checked'=>'checked')
+                                                     )->renderViewHelper();
+                                                    ?>
+                                                    <!-- href="<?php echo $this->url(array(),'condiciones',true); ?> -->
+                                                    <label class="fnormal black" for="chkcondi">He leído y Acepto las <a  href="#" >Condiciones.</a></label>
+                                                    
+                                                </div>
+                                                <span class="response left bad">
+                                                        <?php echo ($this->ispost && !$this->form_contacto->chkcondi->isChecked()?$this->form_contacto->chkcondi->errMsg:''); ?>
+                                                </span>
+                                            </div>
+		                        </div>
+		                        <div class="block" >
+                                            <div class="emptyFC">
+		<!--                            <span class="fnormal black Trebuchet">Por favor, escribe el código de seguridad tal como se muestra en la imagen</a></span>-->
+		                            <?php //echo $this->form_contacto->imgcaptcha; ?>
+		                            <?php echo $this->form_contacto->challenge; ?>
+                                            </div>    
+                                        </div>    
+		                        <div class="block">
+                                            <div class="emptyFC">
+		<!--                            <input type="submit" id="MictaSendbtn" value="" class="btnAll MictaSendbtn"/>-->
+		                            <?php
+		                                echo $this->form_contacto->enviar->setAttribs(
+		                                    array('id'=>'MictaSendbtn', 'class'=>'btnAll')
+		                                )->renderViewHelper();
+		                            ?>
+                                            </div>
+		                        </div>
+		
+		
+		                    </fieldset>
+		                </form>
+		
+		            </div>
+		        </div>
+		    </div>
+        </div>
+</div>

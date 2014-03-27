@@ -1,0 +1,47 @@
+<?php if(!empty($this->nrofields)):?>
+<div class="all cntPagFix">
+    <div class="left m5all"><?php echo $this->mostrando; ?></div>
+    <?php echo $this->paginationControl($this->redimidos,'Sliding','conciliacion/_page.phtml'); ?>
+</div>
+<?php endif; ?>
+<div class="mictaContet  grayborder2 r3 all mB20">
+    <table id="mictBenContent">
+        <thead id="mictaBenTitle">
+            <tr>
+                <th width="19%" class="mictBenTiTH ml5 mictbRight bold">Promoción</th>
+                <th width="9%" class="mictBenTiTH ml5 mictbRight bold">Fecha de consumo</th>
+                <th width="8%" class="mictBenTiTH ml5 mictbRight bold ">Documento</th>
+                <th width="15%" class="mictBenTiTH ml5 mictbRight bold">Cliente</th>
+                <th width="9%" class="mictBenTiTH ml5 mictbRight bold">Voucher</th>
+                <th width="8%" class="mictBenTiTH ml5  bold">Descuento S/.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $contreg = 0; $mntoTotCon = 0;
+                foreach ($this->redimidos as $redimido): $contreg++; ?>
+                <tr class="<?php echo ($contreg%2==0?'':'even'); ?>">
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $redimido['titulo']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $this->DateFormatOpen($redimido['fecha_consumo']); //,"dd'-'MMM'-'y"); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $redimido['tipo_documento'].' '.$redimido['numero_documento']; ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $redimido['names']; ?></td>
+                    <td class="mictBenFluTd mictbTop mictbRight"><?php echo $redimido['numero_comprobante']; ?></td>
+                    <td class="mictBenFluTd  mictbTop montoConcili"><?php echo $redimido['monto_descontado']; ?></td>
+                </tr>
+            <?php 
+                    $mntoTotCon += $redimido['monto_descontado'];
+                endforeach; 
+                if($contreg<=0){
+                    echo '<tr class="even"><td class="mictBenFluTd mictbRight mictbTop" colspan="6" style="text-align:center;"> - No se encontraron registros - </td></tr>';
+                }
+            ?>
+        </tbody>
+    </table>
+</div>
+<input type="hidden" id="txtMntoTotConcilia" name="txtMntoTotConcilia" value="<?php echo $mntoTotCon; ?>"/>
+<input type="hidden" id="txtFechaCadsConcilia" name="txtFechaCadsConcilia" value="<?php echo (!empty($this->cad_fecha)?$this->cad_fecha:''); ?>"/>
+<?php if(!empty($this->nrofields)):?>
+<div class="all cntPagFix">
+    <div class="left m5all"><?php echo $this->nroregistros; ?></div>
+    <?php echo $this->paginationControl($this->redimidos,'Sliding','conciliacion/_page.phtml'); ?>
+</div>
+<?php endif; ?>

@@ -1,0 +1,34 @@
+<form action="" method="POST" id="modalCategoria" data-error="<?=$this->data ?>">
+    <h6 class="TilutoLightbox"><?= $this->idCat!=null? 'Editar ':'Nueva ' ?> Categoría</h6>
+    <div class="block newCatB ">
+	        <label for="fnom" class="labelAdminGest Trebuchet"><span class="req">*</span> Nombre:</label>
+        <?$hasError = $this->formCategoria->nombre->hasErrors(); ?>
+        <?= $this->formCategoria->nombre->setAttribs(array('id' => 'fnom', 'class' => 'inputAdminG '.($this->idCat!=null? 'ready':'').' left'))->renderViewHelper() ?>
+        <?php if ($this->formCategoria->nombre->getMessages() !=null ) {?>
+        <?php foreach($this->formCategoria->nombre->getMessages() as $item) {
+        		echo "<span class="."'response left bad'"." >".$item."</span>"; 
+        }  ?>
+        <?php } else {?>
+                <span class="response left"></span>
+        <?php } ?>
+
+    </div>
+    <div class="block newCatB">
+        <label for="fdescripcion" class="labelAdminGest">Descripción:</label>
+        <?$hasError = $this->formCategoria->descripcion->hasErrors(); ?>
+        <?= $this->formCategoria->descripcion->setAttribs(array('id' => 'fdescripcion', 'class' => 'contenidoAdminG left'))->renderViewHelper() ?>
+        <span class="response <?=$hasError?' bad':''?> left"><?=$hasError?$this->formCategoria->descripcion->errMsg:''?></span>
+    </div> 
+    <div class="block newCatB" > 
+        <label for="fcategorias" class="labelAdminGest">Estado:</label>
+        <?= $this->formCategoria->activo->setAttribs(array('id' => 'fcategorias', 'class' => 'selectEB'))->renderViewHelper() ?>
+    </div>
+    
+    <div class="hide">
+    	<input type="hidden" name="idCat" id="idCat" value="<?=$this->idCat?>">
+    </div>
+    <div style="margin-top: 10px; margin-left: 183px;" class="marginCero" id="adminSaveCancEB">
+        <input id="btnSubmitED" type="submit" class="adminSaveBtnbene left" value=""/>
+        <a class="adminQuitBtnbene left" href="#"></a>
+    </div>
+</form>

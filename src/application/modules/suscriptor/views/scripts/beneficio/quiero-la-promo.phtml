@@ -1,0 +1,111 @@
+<div id="quieroLaPromoMainContentbox" class="gridS20DOS grayborder2 r5"> 
+  <div id="cajaLegendlink" class="legendLink">
+   <a class="Trebuchet" href="<?php echo $this->url(array('action'=>'index', 'controller'=>'home'), 'default', true); ?>">Inicio</a> » 
+   <a class="Trebuchet" href="<?php echo $this->url(array(), 'catalogo', true); ?>">  Catálogo</a> »
+   <span class="Trebuchet black"> Promo</span>
+ </div>
+ <!--mensaje de agradecimiento-->   
+ <div id="cajaAgradecimiento" class="r5 cajaAgrade">
+ 	<h2 class="c3 bold">¡Cupón generado con éxito!</h2>
+ 	<form method="post" action="<?php echo $this->url(array(),'imprimircupon',true); ?>" name="frmimprimeCupon" id="frmimprimeCupon" target="_blank">	 
+ 		<p class="Trebuchet f16 c3">Este cupón ha sido enviado a tu e-mail para que puedas imprimirlo. Si deseas, también 
+     puedes imprimirlo desde aquí.
+	     <input type="hidden" name="beneficio_id" id="beneficio_id" value="<?php echo $this->beneficio['id']; ?>"/>
+	     <a class="f16 Trebuchet" href="#" onclick="document.frmimprimeCupon.submit();">Ver Cupón</a>
+	 	</p>
+	</form>
+
+  <div class="lineAgradecim "></div>
+  
+  <div class="all" id="cuponSuccess">
+  	<!-- imagen -->
+		<div class="QPhoto left">
+			<img width="210" height="115" 
+                 src="<?= $this->elementsUrl; ?>/images/beneficios/<?=$this->beneficio['path_logo']?>" onerror="this.src='<?php echo $this->mediaUrl; ?>/images/fcatalogo_chica.jpg'"/>
+    	<div class="Qtoferta2">
+      	<h2 class="Qpromotexto bold"><?php echo $this->beneficio['abreviado']; ?></h2>
+				<?php if(!empty($this->beneficio['chapita'])):?>
+        <div class="Qpromoflujo3 QtextoPromoChico <?php echo $this->beneficio['chapita_color']; ?> Tshadow"><?php echo $this->beneficio['chapita']; ?></div>
+        <?php endif;?>      	
+     	</div>
+    </div>   
+		<!-- /imagen -->
+    <!--detalle impreso--> 
+    <div id="detalleImpreso2" class="Trebuchet right">
+        <div class="block">
+            <h6 class="TitulodeEstaP"><?php echo $this->escape($this->beneficio['est_nombre']); ?></h6>
+            <span class="DescripdeEstaP"><?php echo $this->escape($this->beneficio['descripcion']); ?></span>
+        </div>
+        <?php if(!empty($this->beneficio['valor'])):?>
+        <div class="block">
+            <h6 class="titleProB bold">Valor:</h6>
+            <span class="DescripdeEstaP"><?php echo $this->escape($this->beneficio['valor']); ?></span>
+        </div>
+        <?php endif;?>
+        <?php if(!empty($this->beneficio['direccion'])):?>
+        <div class="block">
+          <h6 class="titleProB bold">Dónde:</h6>
+          <span class="DescripdeEstaP"><?php echo $this->escape($this->beneficio['direccion']); ?></span>
+        </div>
+        <?php endif;?>
+        <?php if(!empty($this->beneficio['cuando'])):?>
+        <div class="block">
+          <h6 class="titleProB bold">Cúando:</h6>
+          <span class="DescripdeEstaP"><?php echo $this->escape($this->beneficio['cuando']);?></span>
+        </div>
+        <?php endif;?>
+        <?php if(!empty($this->beneficio['telefono_info']) || !empty($this->beneficio['email_info'])):?>
+        <div class="block">
+            <h6 class="titleProB bold">Más información:</h6>
+            <span class="DescripdeEstaP">
+                <?php if(!empty($this->beneficio['telefono_info'])):?>
+                Teléfono: <?php echo $this->beneficio['telefono_info']; ?>
+                <?php endif;?>
+                <?php if(!empty($this->beneficio['email_info'])):?>
+                <a href=mailto:<?php echo $this->beneficio['email_info']; ?> > <?php echo $this->beneficio['email_info']; ?></a>
+                <?php endif;?>
+            </span> 
+        </div>
+        <?php endif;?>
+    </div>          
+		<!--fin detalle impreso-->
+    
+      	 	
+  </div>	
+  	
+ </div> 
+ <div id="QseguirCatalogo" class="btnAll"><a href="<?php echo $this->previous; ?>" style="height: 34px;width: 195px;position: absolute;"></a></div> 
+<!--    <table class="mictaConsTableInner">
+       <thead>
+           <tr>
+               <th class="mictaTitFiltro bold">Cupon</th>
+               <th class="mictaTitFiltro bold">Codigo</th>
+               <th class="mictaTitFiltro bold">Estado</th>
+               <th class="mictaTitFiltro bold">Fecha Emisión</th>
+               <th class="mictaTitFiltro bold">Fecha Inicio Vigencia</th>
+               <th class="mictaTitFiltro bold">Fecha Fin Vigencia</th>
+               <th class="mictaTitFiltro bold">Ver</th>
+           </tr>
+       </thead>
+       <tbody>
+           <?php
+                $cont = 1;
+                foreach ($this->cuponesgenerados as $cupon):
+                    $fecvigini = new Zend_Date($cupon['fecha_inicio_vigencia']);
+                    $fecvigfin = new Zend_Date($cupon['fecha_fin_vigencia']);
+                    $fecemi = new Zend_Date($cupon['fecha_emision']);
+                    ?>
+           <tr class="mictaConsBlock <?php echo (($cont%2==0)?'':'even'); ?>">
+               <td class="mictaptLr gray"><?php echo 'Cupon Nro.'.$cont; ?></td>
+               <td class="mictaptLr"><?php echo $cupon['codigo']; ?></td>
+               <td class="mictaptLr"><?php echo $cupon['estado']; ?></td>
+               <td class="mictaptLr"><?php echo $fecemi->toString(Zend_Date::DATES); ?></td>
+               <td class="mictaptLr"><?php echo $fecvigini->toString(Zend_Date::DATES); ?></td>
+               <td class="mictaptLr"><?php echo $fecvigfin->toString(Zend_Date::DATES); ?></td>
+               <td class="mictaptLr"><?php echo $cupon['id']; ?></td>
+           </tr>
+           <?php	$cont++; 
+                endforeach;?>
+       </tbody>
+    </table>-->
+</div>

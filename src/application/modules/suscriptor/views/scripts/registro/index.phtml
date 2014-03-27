@@ -1,0 +1,35 @@
+<div id="regisFormS" class="gridS20DOS grayborder2 r5">
+    <h1 class="Titulo980 titleFix bold font18">Completar suscripci&oacute;n</h1>
+    <div id="lCajatext" class="TextoInputreg">
+        Para registrarte sólo tienes que llenar este pequeño formulario. Al terminar te llegará un mail de confirmación a tu correo.
+    </div>
+    <div id="quieroLaPromoContentbox" class="grid20">
+        
+        <form action="" method="post" id="registrarse" enctype="multipart/form-data">
+            <fieldset id="formregistro">
+                <?=
+                $this->partial('registro/_suscriptor.phtml', array(
+                    'idSuscriptor' => $this->idSuscriptor,
+                    'formSuscriptor' => $this->formSuscriptor,
+                    'formUsuario' => $this->formUsuario,
+                    'modulo' => $this->modulo,
+                    'controlador' => $this->controlador,
+                    'invitado' => $this->invitado,
+                    'hash' => $this->hash,
+                    'isPost' => $this->isPost
+                    )
+                );
+                ?>
+                <?=
+                $this->partial('registro/_categorias.phtml', array(
+                    'formCategorias' => $this->formCategorias
+                ));
+                ?>
+                <span class="span_suscriptorForm" <?= empty($this->invitado) && empty($this->hash)?"style='display:none;'":"";?> >
+                    <input type="submit" class="btnAll btnRegistro left" tabindex="21" value="" id="btnSuscribe"/>
+                </span>
+            </fieldset>
+        </form>
+        
+    </div>
+</div>

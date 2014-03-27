@@ -1,0 +1,11 @@
+<div class="grid10 r10" id="lboxEstablecimiento">
+    <a id="linkVolver" class="right" href="/gestor/anunciante/">« Volver</a>
+    <h6 class="Titulo980 bold"><?= $this->idEst!=null? 'Editar ':'Nuevo ' ?> Anunciante</h6>
+    <div id="divNewBen" class="all">
+	<?= $this->partial('anunciante/_anunciante.phtml', 
+                       array(
+                           'formAnunciante' => $this->formAnunciante, 
+                           'idEst'=>$this->idEst, 
+                           'imgPhoto' => $this->imgPhoto)) ?>
+    </div>
+</div>

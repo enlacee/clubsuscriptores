@@ -1,0 +1,76 @@
+<?php 
+$html=''; 
+    $html.= '<div id ="idtablaSuscriptorSol" class="miCtaTable r3" >';
+    
+if(!empty($this->consumos)){    
+    $html.= '<div class="grayborder2"><table width="100%">
+        <thead class="mictaBenTitle">
+            <tr>
+                <th class="mictBenTiTH mictbRight bold titu1L">Beneficio</th>
+                <th class="mictBenTiTH mictbRight bold">';
+                $col='tipo';$class=($this->col == $col && $this->ord == 'ASC') ? 'flechasOrdenASC': 'flechasOrdenDSC';
+                    $html.= '<a class="aLinkSusTable titu6L bold block left linkstatic '.$class.'"
+                       col="tipo" moneda="1">
+                        Tipo
+                    </a>                
+                </th>
+                <th class="mictBenTiTH mictbRight bold">';
+                $col='fecha'; $class=($this->col == $col && $this->ord == 'ASC') ? 'flechasOrdenASC': 'flechasOrdenDSC';
+                    $html.= '<a class="aLinkSusTable titu7L bold block left linkstatic '.$class.'"
+                       col="fecha" moneda="1">
+                        Fecha
+                    </a>
+                </th>
+                <th class="mictBenTiTH mictbRight bold titu6L">Monto Pagado</th>
+                <th class="mictbRight bold titu6L">Ahorro</th>
+            </tr>
+        </thead>
+        <tbody>';
+        $cont = 0;$totalS=0;$ahorroS=0;$totalD=0;$ahorroD=0;
+        foreach($this->consumos as $cupon):
+            $cont++;$class='even';//$class=$cont%2==0?'':'even';
+            $html.= '<tr class="mictaConsBlock '.$class.'">
+                <td class="mictBenFluTd mictbRight mictbTop">'.$cupon['titulo'].'</td>
+                <td class="mictBenFluTd mictbRight mictbTop">'.$cupon['nombre'].'</td>
+                <td class="mictBenFluTd mictbRight mictbTop">'.$this->DateFormatOpen($cupon['fecha_consumo']).'</td>';
+            if ($cupon['tipo_moneda_id']==1) {
+                $totalS=$totalS+$cupon['precio_suscriptor'];
+                $ahorroS=$ahorroS+$cupon['monto_descontado'];
+            } 
+            elseif ($cupon['tipo_moneda_id']==2) {
+                $totalD=$totalD+$cupon['precio_suscriptor'];
+                $ahorroD=$ahorroD+$cupon['monto_descontado'];
+            }
+            $precio_suscriptor=(empty($cupon['precio_suscriptor']) || $cupon['precio_suscriptor']=='0.00')?'-'
+                :($cupon['tip_moneda'].' '.$cupon['precio_suscriptor']);
+            $monto_descontado=(empty($cupon['monto_descontado']) || $cupon['monto_descontado']=='0.00')?'-'
+                :($cupon['tip_moneda'].' '.$cupon['monto_descontado']);
+            $html.= '<td class="mictBenFluTd mictbRight mictbTop textAlingRight">'.
+                    $precio_suscriptor.'</td>
+                <td class="mictBenFluTd mictbTop mictbRight textAlingRight">'.
+                    $monto_descontado.'</td>';
+                       
+            $html.= '</tr>';
+        endforeach;
+            $totalS=($totalS==0)?'-':('S/. '.( number_format($totalS,2) ));
+            $ahorroS=($ahorroS==0)?'-':('S/. '.( number_format($ahorroS,2) ));
+            $totalD=($totalD==0)?'-':('$ '.( number_format($totalD,2) ));
+            $ahorroD=($ahorroD==0)?'-':('$ '.( number_format($ahorroD,2) ));
+            $html.= '<tr>
+                <td colspan=3><div class="right mi-titleTotal titu7L">TOTAL en NUEVOS SOLES</div></td>
+                <td><div class="mi-titleTotal titu7L textAlingRight">'.$totalS.'</div></td>
+                <td><div class="mi-titleTotal titu7L textAlingRight">'.$ahorroS.'</div></td>
+            <tr>
+                <td colspan=3><div class="right mi-titleTotal titu7L">TOTAL en DÓLARES</div></td>
+                <td><div class="mi-titleTotal titu7L textAlingRight">'.$totalD.'</div></td>
+                <td><div class="mi-titleTotal titu7L textAlingRight">'.$ahorroD.'</div></td>
+            </tr>
+        </tbody>
+    </table></div>';
+} else {
+    $html.= '<br><br><span class="bad">No ha realizado consumos en la fecha seleccionada.</span>';
+}
+    $html.= '</div>';
+echo $html;
+?>
+<?php //echo $this->paginationControl($this->consumos,'Sliding','mi-cuenta/_page.phtml'); ?>

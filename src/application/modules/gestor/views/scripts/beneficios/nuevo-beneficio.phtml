@@ -1,0 +1,15 @@
+<div id="mictaInnerContent" class="grid20"> 
+    <a id="linkVolver" class="right" href="/gestor/beneficios/" class=" Trebuchet14">« Volver</a>
+    <h6 class="Titulo980 bold">NUEVO BENEFICIO</h6>
+    <div id="divNewBen" class="all">
+        <?= $this->partial(
+            'beneficios/_nuevo-beneficio.phtml', 
+            array(
+                'formBeneficio' => $this->formBeneficio, 
+                'formBeneVersion' => $this->formBeneVersion, 
+                'ImgPhoto' => $this->imgPhoto,
+                'isPost' => $this->isPost
+            )
+        ) ?>
+    </div>
+</div>

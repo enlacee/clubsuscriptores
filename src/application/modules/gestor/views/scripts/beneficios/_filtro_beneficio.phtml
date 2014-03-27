@@ -1,0 +1,52 @@
+<form id="formBox" class="formBenefH">
+    <div id="adminSearchBox">
+        <fieldset id="adminformSearch" class="field textoinput">
+<!--            <input type="text left " value="Busca por.." alt="Busca por descuento, precio, oferta" class="cGray  grid4 m10all" />-->
+            <input type="submit" id="searchbt" value="" class="btnAll searchbt right"/>
+            <?=
+            $this->formFiltroBeneficio->nombre->setAttribs(
+                array('id' => 'nombre', 'class' => 'field textoinput right', 'tabindex' => '1'))->renderViewHelper();
+            ?>
+            <label for="nombre" class="right bold labelTPB">Nombre del Beneficio:</label>
+        </fieldset>
+        <fieldset class="all">
+            <div class="all">
+<!--                <label class="labelAdminR" for="vigencia"> 
+                    <div>Vigencia:</div>
+                    <?=
+                    $this->formFiltroBeneficio->vigencia->setAttribs(
+                        array('id' => 'vigencia', 'class' => '', 'tabindex' => '1'))->renderViewHelper();
+                    ?>
+                </label>-->
+                <label class="labelAdminR" for="estado">
+                    Estado:
+                    <?=
+                    $this->formFiltroBeneficio->estado->setAttribs(
+                        array('id' => 'estado', 'class' => '', 'tabindex' => '1'))->renderViewHelper();
+                    ?>
+                </label>
+                <label class="labelAdminR" for="categoria">
+                    Categoría:
+                    <?=
+                    $this->formFiltroBeneficio->categoria->setAttribs(
+                        array('id' => 'categoria', 'class' => '', 'tabindex' => '1'))->renderViewHelper();
+                    ?>
+                </label>
+                <label class="labelAdminR" for="establecimiento"> 
+                    Establecimiento:
+                    <?=
+                    $this->formFiltroBeneficio->establecimiento->setAttribs(
+                        array('id' => 'establecimiento', 'class' => '', 'tabindex' => '1'))->renderViewHelper();
+                    ?>
+                </label>
+                <label class="labelAdminR" for="tipo_beneficio">
+                    Tipo de Beneficio:
+                    <?=
+                    $this->formFiltroBeneficio->tipo_beneficio->setAttribs(
+                        array('id' => 'tipo_beneficio', 'class' => '', 'tabindex' => '1'))->renderViewHelper();
+                    ?>
+                </label>
+            </div>
+        </fieldset>
+    </div>
+</form>

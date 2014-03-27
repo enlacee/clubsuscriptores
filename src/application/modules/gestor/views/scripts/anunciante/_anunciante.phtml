@@ -1,0 +1,54 @@
+<form id="formNueEst" action="" method="post" class="all" enctype="multipart/form-data">
+    <fieldset class="fieldsBen all" >
+
+        <div class="bloqueNbeneficio">
+            <label for="frazon_social" class="labelGestorBeneficio left">
+                <span class="req">*</span> Nombre de la Empresa: 
+            </label>
+            <?$hasError = $this->formAnunciante->razon_social->hasErrors(); ?>
+            <?= $this->formAnunciante->razon_social->setAttribs(array(
+                'id' => 'frazon_social', 
+                'class' => 'inputBenN left '.($this->idEst!=null? " ready ":" ").' requerido field', 
+                'tabindex' => '1'))->renderViewHelper();?>
+            <span class="response left<?=$hasError?' bad':''?>">
+                    <?=$hasError?$this->formAnunciante->razon_social->errMsg:''?>
+            </span>
+        </div>
+
+        <div class="bloqueNbeneficio">
+            <label for="fRuc" class="labelGestorBeneficio left">
+                <span class="req">*</span> RUC:
+            </label>
+            <?= $this->formAnunciante->ruc->setAttribs(array(
+                'id'=>'fRuc',
+                'class'=>'inputBenN left '.($this->idEst!=null? " ready ":" ").' requerido field',
+                'tabindex'=>'2',
+                'rel'=>$this->idEst))->renderViewHelper(); ?>
+            <? $hasError = $this->formAnunciante->ruc->hasErrors(); ?>
+            <?  if ($hasError != 0){
+                    $Error= $this->formAnunciante->ruc->getErrors();
+                    $errMsg = $Error[0];//Application_Form_Establecimiento::$errorsRuc[$Error[0]];
+                } else{
+                    $errMsg ='';
+                }    
+            ?>
+            <span class="response left<?=$hasError?' bad':''?>"><?=$errMsg?> </span>
+        </div>
+
+        <div class="bloqueNbeneficio">
+            <label for="fEstado" class="labelGestorBeneficio left"> Estado: </label>
+            <?= $this->formAnunciante->activo->setAttribs(array(
+                'id' => 'fEstado', 
+                'class' => 'selectBenN left requerido ready field', 
+                'tabindex' => '7'))->renderViewHelper() ?>
+        </div>
+
+        <div class="bloqueNbeneficio">
+            <input type="hidden" name="idEst" id="idEst" value="<?= $this->idEst ?>">
+        </div>
+
+        <div id ="adminSaveNbene">
+            <input id="adminSaveBtnbene" type="submit" class="adminSaveBtnbene" value="">
+        </div>
+    </fieldset>
+</form>

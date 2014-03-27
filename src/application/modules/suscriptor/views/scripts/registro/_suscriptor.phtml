@@ -1,0 +1,159 @@
+<?= $this->formSuscriptor->es_suscriptor->renderViewHelper(); ?>
+    <div id="cogFormregistro" class="cogregistro r5 Trebuchet11 block" 
+         <?= empty($this->invitado) && empty($this->hash)?"":"style='display:none'";?> >
+        <h6 id="h6SCS">Soy suscriptor</h6>
+        <div class="block">                    
+            <? $hasError = $this->formSuscriptor->documento_suscriptor->hasErrors(); ?>
+            <label id="docCS" for="fNDoc2" class="labelFCS left">Documento de Identidad:</label>
+            <?= $this->formSuscriptor->tipo_documento_suscriptor->setAttribs(array(
+                    'class' => 'left',
+                    'tabindex' => '1'
+                ))->renderViewHelper(); ?>
+            <?= $this->formSuscriptor->documento_suscriptor->setAttribs(array(
+                    'class' => 's_usuario left ' . 
+                        (((!$hasError && $this->isPost) || !empty($this->hash)) ? ' ready' : ''),
+                    'tabindex' => '2'
+                ))->renderViewHelper(); ?>
+            <label id="labelDRCS" for="distrito_entrega" class="labelFCS left">Distrito de reparto:</label>            
+            <?= $this->formSuscriptor->distrito_entrega->setAttribs(array(
+                    'class' => 's_usuario selectN left ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+                    'tabindex' => '3'
+                ))->renderViewHelper(); ?>
+            <button id="searchRCS" class="btnAll left"></button>
+        </div>
+        <span id="responseFCS" class="response <?= $hasError ? ' bad' : '' ?>">
+            <?= $hasError ? $this->formUsuario->email->errMsg : '' ?>
+        </span>
+    </div>
+
+<span class="span_suscriptorForm" <?= empty($this->invitado) && empty($this->hash)?"style='display:none;'":"";?> >
+<div class="block">
+    <label for="fNombres" class="labelNr Trebuchet black"><span class="req">*</span> Nombres</label>
+    <? $hasError = $this->formSuscriptor->nombres->hasErrors(); ?>
+    <?=
+    $this->formSuscriptor->
+    nombres->setAttribs(array(
+        'id' => 'fNames',
+        'class' => 'required inputNr left ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+        'tabindex' => '4'
+    ))->renderViewHelper();
+    ?>
+    <span class="response left<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formSuscriptor->nombres->errMsg : '' ?></span>
+</div>
+<div class="block">
+    <label for="fSurnameP" class="labelNr noReq Trebuchet black"><span class="req">*</span> Apellido Paterno</label>
+    <? $hasError = $this->formSuscriptor->apellido_paterno->hasErrors(); ?>
+
+    <?=
+    $this->formSuscriptor->
+    apellido_paterno->setAttribs(array(
+        'id' => 'fSurnameP',
+        'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+        'tabindex' => '5'
+    ))->renderViewHelper();
+    ?>
+    <span class="response left<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formSuscriptor->apellido_paterno->errMsg : '' ?></span>
+</div>
+<div class="block">
+    <label for="fSurnameM" class="labelNr noReq Trebuchet black"><span class="req">*</span> Apellido Materno</label>
+    <? $hasError = $this->formSuscriptor->apellido_materno->hasErrors(); ?>
+
+    <?=
+    $this->formSuscriptor->
+    apellido_materno->setAttribs(array(
+        'id' => 'fSurnameM',
+        'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+        'tabindex' => '6'
+    ))->renderViewHelper();
+    ?>
+    <span class="response left<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formSuscriptor->apellido_materno->errMsg : '' ?></span>
+</div>
+<div class="block">
+    <label for="fNDoc" class="labelNr black noReq Trebuchet"><span class="req">*</span> Documento de Identidad:</label>
+    <? $hasError = $this->formSuscriptor->tipo_documento->hasErrors(); ?>
+    <?=
+    $this->formSuscriptor
+    ->tipo_documento->setAttribs(array(
+        'id' => 'fSelDoc',
+        'class' => 'selectMN maxLenghtN rSizeInput inputN left ',
+        'tabindex' => '7'
+    ))->renderViewHelper();
+    ?>
+    <?=
+    $this->formSuscriptor
+    ->numero_documento->setAttribs(array(
+        'id' => 'fNDoc',
+        'class' => 'required rSizeInput inputN left ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+        'tabindex' => '8'
+    ))->renderViewHelper();
+    ?>
+    <? $hasError = $this->formSuscriptor->numero_documento->hasErrors(); ?>
+    <?
+    if ($hasError != 0) {
+        $Error = $this->formSuscriptor->numero_documento->getErrors();
+        $errMsg = Application_Form_Suscriptor::$errors[$Error[0]];
+    } else {
+        $errMsg = '';
+    }
+    ?>
+    <span class="response left<?= $hasError ? ' bad' : '' ?>"><?= $errMsg ?> </span> 
+</div>
+
+<!-- INFORMACION DE USUARIO -->
+<?= $this->partial('registro/_usuario.phtml', array('formUsuario' => $this->formUsuario, 'modulo' => $this->modulo, 'controlador' => $this->controlador, 'isPost' => $this->isPost)); ?>
+
+<div class="block">
+    <label for="fFechadenacimiento" class="labelNr black noReq Trebuchet"><span class="req">*</span> Fecha de nacimiento</label>
+    <? $hasError = $this->formSuscriptor->fecha_nacimiento->hasErrors(); ?>
+    <?
+    if ($hasError != 0) {
+        $ErrorFecNac = $this->formSuscriptor->fecha_nacimiento->getErrors();
+        $errMsg = Application_Form_Suscriptor::$errorsFechaNac[$ErrorFecNac[0]];
+    } else {
+        $errMsg = '';
+    }
+    ?>
+    <?=
+    $this->formSuscriptor->
+    fecha_nacimiento->setAttribs(array(
+        'id' => 'fBirthDate',
+        'class' => 'required rSizeInput inputN right iDateP datepicker ' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+//        'tabindex' => '7',
+        'readonly' => 'readonly'
+    ))->renderViewHelper();
+    ?>
+    <select id="dayjFunctions" tabindex="12" class="left" <?= empty($this->hash)? "":"disabled=1"?>></select> 
+    <select id="monthjFunctions" tabindex="13" class="left" <?= empty($this->hash)? "":"disabled=1"?>></select>  
+    <select id="yearjFunctions" tabindex="14" class="left" <?= empty($this->hash)? "":"disabled=1"?>></select> 
+    <span class="response left<?= $hasError ? ' bad' : '' ?>"><?= $errMsg ?> </span> 
+</div>
+
+<div class="block">
+    <label class="Trebuchet labelNr noReq black"><span class="req">*</span> Sexo:</label>
+        <? $hasError = $this->formSuscriptor->sexoMF->hasErrors(); ?>
+    <label class="labelCheck black ">
+        <?=
+        $this->formSuscriptor->
+        sexoMF->setAttribs(array(
+            'class' => 'checkN noBdr Trebuchet',
+            'tabindex' => '15'
+        ))->renderViewHelper();
+        ?>
+    </label>
+    <span class="response left<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formSuscriptor->sexoMF->errMsg : '' ?> </span>
+</div>
+<div class="block">
+    <label for="fTlfFC" class="labelNr black noReq Trebuchet"><span class="req">*</span> Tel&eacute;fono:</label>
+    <? $hasError = $this->formSuscriptor->telefono->hasErrors(); ?>
+    <?=
+    $this->formSuscriptor
+    ->telefono->setAttribs(array(
+        'id' => 'fTlfFC',
+        'class' => 'required inputNr left' . ((!$hasError && $this->isPost) ? ' ready' : ''),
+        'tabindex' => '16'
+    ))->renderViewHelper();
+    ?>
+    <span class="response left<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formSuscriptor->telefono->errMsg : '' ?> </span>
+</div>
+
+</span>

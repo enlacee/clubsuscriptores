@@ -1,0 +1,148 @@
+<div id="main-content2" class="grid20">
+    <!-- breadcrumb -->
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a> <span class="divider">&#62;</span></li>
+        <li class="active">Vida social</li>
+    </ul>
+    <!-- ## VIDA SOCIAL ## -->
+    <div id="content" class="left grid14">
+        <div id="bottomBox" class="grayborder2 r5">
+            <h1 class="Titulo680 titleFix bold font18">VIDA SOCIAL</h1>
+            
+            <div id="destacadosContainer">
+                <div id="secondLinedestacado">
+
+                <?php 
+                    
+                    echo $this->paginationControl($this->articulos, 'Sliding', 'vida-social/_page.phtml');
+                    $position = array('left', 'right');
+                    $class = array('secondLineA', 'secondLineB');
+                    $nroreg = 0;
+                    $i = 0;
+                    foreach ($this->articulos as $articulo):
+                        $nroreg++;
+                        if ($i == 0) {
+                            echo '<div class="secondLineVidasocial all bbSolid">';
+                        }
+                        //$fecivig = new Zend_Date($articulo['fecha_inicio_vigencia']);
+                        //$fecfvig = new Zend_Date($articulo['fecha_fin_vigencia']);
+
+                        $filtros = array(
+                                    'id' => $articulo['id'], 
+                                    'slug' => $articulo['slug'], 
+                                    'idimg' => $articulo['orden']
+                                   );
+                        $ruta = $this->url($filtros, 'deta_articulo', true);
+                ?>
+                        <!---->
+                        <div class="secondLineA <?=($i % 2 == 0) ? 'mR10S' : ''?> left">
+                            <span class="date"><?=ucwords($this->CadenaFecha($articulo['fecha_inicio_evento']))?></span> 
+                            <h2 class="vsTitle">
+                                <input type="hidden" value="<?php echo $articulo['id']; ?>"/>
+                                <a href="#winVerVidaSocial" 
+                                   class="winModal noScrollTop verDetailArticulo" 
+                                   title="N/A"
+                                   indice="<?=$articulo['orden']?>">
+                                       <?=$this->escape($this->ReduceString($articulo['titulo'], '34', '...'))?>
+                                </a>
+                            </h2> 
+                            <div id="secondDescription">
+                                <p class="vsDescription Trebuchet14">
+                                    <?=$this->escape($this->ReduceString($articulo['contenido'], '80', '...'))?>
+                                </p>
+                            </div>
+                            <div class="secondphoto">
+                                <input type="hidden" value="<?php echo $articulo['id']; ?>"/>
+                                <a href="#winVerVidaSocial" 
+                                   class="winModal noScrollTop verDetailArticulo" 
+                                   indice="<?=$articulo['orden']?>">
+                                    <img class="imgFlujoVidaSocial" 
+                                         src="<?=$this->elementsUrl?>/images/sociales/<?=$articulo['imagen']?>"
+                                         onerror="this.src='<?=$this->mediaUrl?>/images/vida_social_g.jpg'"
+                                         width="242" 
+                                         height="182" 
+                                         title='Imágenes de acontecimientos: &quot;<?=$this->escape($articulo['titulo'])?>&quot;'
+                                         alt='Imágenes de acontecimientos: &quot;<?=$this->escape($articulo['titulo'])?> - Club De Suscriptores El Comercio Perú.&quot;'
+                                         />
+                                </a>
+                            </div>
+                            <div id="compartirL" class="Trebuchet11  right">
+                                <ul>
+                                    <li class="itemL left mT5 c3">Comparte esta galería</li>
+                                    <li class="itemL left">
+                                        <a class="btnesL winModal left mensajeI noScrollTop aShareArticulo" 
+                                           href="#shareMail" 
+                                           rel="<?=$ruta?>">
+                                        </a>
+                                    </li>
+                                    <li class="itemL left">
+                                        <a target="_blank" 
+                                           class="facebookI btnesL left" 
+                                           href="http://www.facebook.com/sharer.php?u=<?=$this->siteUrl.$ruta?>#">
+                                        </a>
+                                    </li>
+                                    <li class="itemL left">
+                                        <a target="_blank" 
+                                           class="btnesL twitterI left" 
+                                           href="http://twitter.com/home?status=<?=$this->siteUrl.$ruta?>#">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!---->
+                <?php
+                        if ($i == 1 or $nroreg == $this->totalitems) {
+                            echo '</div>';
+                            $i = 0;
+                        } else {
+                            $i++;
+                        }
+                    endforeach;
+                    
+                    echo $this->paginationControl($this->articulos, 'Sliding', 'vida-social/_page.phtml'); 
+                ?>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--SIDEBAR -->
+    <div id="sidebar" class="grid6 right">
+        
+        <?php //echo $this->partial('home/_siguenos.phtml',array('cuentas'=> $this->cuentas)); ?>
+        
+        <div id="content-viewproducts">
+            <div id="viewproducts" class="grayborder2 mB20 r5">
+                <h6 class="mbgray bold">CATÁLOGO</h6>
+                <div id="catalogoImg"></div>
+                <a id="print-products" 
+                   class="btnAll" 
+                   target="_blank" 
+                   href="<?=$this->siteUrl?>/magazine/mostrar-catalogo/">
+                </a>
+            </div>
+        </div>
+
+        <!-- <div id="giftBox" class="grayborder2 mB20 r5">
+          <div id="Sorteoscontent" class="mbgray all mB10">
+            <h6 class="bold left anchoSorteos">SORTEOS </h6>
+            <div class="SorteosPager right"> <a href="#" class="linkstatic">1</a> <a class="fnormal" href="#">2</a> <a class="fnormal"href="#">3</a> </div>
+          </div>
+          <div id="imgGift"><img src="< ?php echo $this->mediaUrl; ?>/images/sorteos.png" />
+            <h3 class="detalleSorteo"><a id="sorteoTitulo" href>Gana un paquete doble a punta Cana</a></h3>
+          </div>
+        </div> -->
+        <?php echo $this->partial('home/_encuesta.phtml', 
+                array(
+                    'encuesta' => $this->encuesta, 
+                    'opciones' => $this->opciones, 
+                    'existe_voto' => $this->existe_voto)); 
+        ?>
+    </div>      
+</div>
+
+<?php if (!empty($this->showarticulo)): ?>
+    <input type="hidden" value="<?php echo $this->showarticulo; ?>"/>
+    <a href="#winVerVidaSocial" class="winModal noScrollTop verDetailArticulo" id="idarticuloshow"></a>
+<?php endif; ?>

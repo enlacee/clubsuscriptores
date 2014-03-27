@@ -1,0 +1,86 @@
+<div id="divRContentPerfilAd" rel="<?php echo $this->state; ?>" class="<?php echo ($this->state==1?'hide':''); ?>">
+    <form method="post" id="formPerfilA" name="formPerfilA" action="">
+    <div class="all">
+      <h6 class="TilutoLightbox" data-error="<?=$this->data ?>">
+        <?php echo $this->titulo; ?> Perfil
+      </h6>
+        <input type="hidden" value="<?php echo $this->opera; ?>" name="opera" id="opera"/>
+        <input type="hidden" value="<?php echo $this->idperfil; ?>" name="idperfil" id="idperfil" />
+      <div class="grid6 left">
+        <div class="block newPerfAd">
+          <label class="labelAdmin_mPerfil Trebuchet" for="fnom"><span class="req">*</span> Nombre:</label>
+        <?php
+            $errors = $this->form->nombre->hasErrors();
+            echo $this->form->nombre->setAttribs(array('class' => 'inputAdmin_mPerfil ready left gray', 'tabindex' => 1))->renderHelper();
+        ?>
+        <span class="response left <?php echo ($errors)?'bad':'' ?>">
+            <?php echo ($errors?$this->form->nombre->errMsg:''); ?>
+        </span>
+        <?php if(!empty($this->alertName)):?>
+          <span class="response left bad"><?php echo $this->alertName;?></span>
+        <?php endif; ?>
+        </div>
+        <div class="block newPerfAd">
+          <label class="labelAdmin_mPerfil" for="fdescripcion"><span class="req">*</span> Descripción:</label>
+        <?php
+            $errors = $this->form->descripcion->hasErrors();
+            echo $this->form->descripcion->setAttribs(array('class' => 'descripAdmin_mPerfil left gray Trebuchet11', 'tabindex' => 2, 'cols'=>'18', 'rows'=>'3'))->renderHelper();
+        ?>
+        <span class="response left <?php echo ($errors)?'bad':'' ?>">
+            <?php echo ($errors?$this->form->descripcion->errMsg:''); ?>
+        </span>
+        </div>
+        <div class="block newPerfAd">
+            <label class="labelAdmin_mPerfil" for="fcategorias"><span class="req"></span> Módulo</label>
+            <div class="Trebuchet14 bold mT10"><?php echo ($this->opera=='E'?$this->nombreModulo:''); ?></div>
+            <?php
+                $errors = $this->form->modulo->hasErrors();
+                echo $this->form->modulo->setAttribs(array('class' => 'selectEB', 'tabindex' => 3))->renderHelper();
+            ?>
+            <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                <?php echo ($errors?$this->form->modulo->errMsg:''); ?>
+            </span>
+        </div>
+      </div>
+        
+      <div class="titu_listaO right r5 Trebuchet14">Lista de opciones</div>
+      <div id="tesTBox" class=" mB10 mT10 conte_Nperfil grayborder2 r5 right">
+        <h6 class="mbgray bold"><span id="spNameModule"><?php echo $this->nombreModulo; ?></span></h6>
+        <div class="block <?php echo (!empty($this->msjOpt))?'':'hide'; ?>">
+            <span class="response left <?php echo (!empty($this->msjOpt))?'bad':'' ?>">
+                <?php echo $this->msjOpt; ?>
+            </span>
+            <?php //echo $this->result; ?>
+        </div>
+        <div id="divContentOptModule">
+            <?php
+            foreach ($this->options as $ind => $opt):?>
+            <label class="block">
+              <?php
+                  //$this->form->setCheckboxState($ind+1, $opt['activo']);
+                  echo $this->form->{'chkActivo'.($opt['id'])}->setAttribs(array('class' => 'inputEncT noBdr left'))->renderHelper();
+                  //$this->form->setCheckboxState($ind+1, $opt['activo']);
+                  echo $this->form->{'idoption'.($opt['id'])}->renderHelper();
+              ?>
+              <span class="right" style="width:178px;"><?php echo $opt['nombreop']; ?></span> 
+            </label>
+            <?php
+            endforeach;
+            if(empty($this->options)){
+                echo '<div class="center" style="text-align:center;">-- Seleccione el modulo<br/>y escoga las opciones<br/> para el perfil --</div>';
+            }
+            ?>
+        </div>
+      </div>
+  </div>
+<!--  <div id="adminSaveCancEB" class="marginCero" style="margin-top:10px; margin-left:145px;">
+    <input type="submit" value="" class="adminSaveBtnbene left" id="btnSubmitED">
+    <a href="#" class="adminQuitBtnbene left"></a>
+  </div>-->
+    <div class="block btnMsjModal">
+        <input type="submit" id="btnSavePA" value="" class="btnAll EEguardarBtn left"/>
+        <input id="btnClosePA" type="button" value="" class="btnAll EEcancelarBtn right closeWM"/>
+    </div>
+    </form>
+</div>
+<?="<div class='hide' id='csrf2'>".$this->csrf."</div>"?>

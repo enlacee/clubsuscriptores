@@ -1,0 +1,29 @@
+<?php $invitacion = $this->url(array('token' => $this->urlToken), 'registro_invitado', true) ?>
+<br/>
+<p align=center>
+    <font size=3>
+    <b style="color:black"><?= $this->nombre ?>, has sido invitado(a) por <?= $this->anfitrion ?> como "Socio Invitado" de nuestro Club</b>
+    </font>
+</p>
+<br/>
+<span style="color:black"><?= $this->anfitrion ?> te invita a unirte al Club de Suscriptores.</span>
+<?if(isset($this->invitacion) && trim($this->invitacion) != '') : ?>
+<p>
+    <blockquote style="background-color:#FDF4D7; border:1px solid #FC6; margin:0; padding:15px">
+        <span style="color:black">" <?= $this->invitacion ?> "</span>
+    </blockquote>
+</p>
+<? endif ?>
+<span style="color:black">Para aceptar la invitación deberás ingresar haciendo click en el siguiente enlace:</span>
+<br/><br/>
+<span style="color:#3366ff">
+    <b><a style="color:#06C" href="<?= SITE_URL ?><?= $invitacion ?>" alt="URL Token"><?= SITE_URL ?><?= $invitacion ?></a></b>
+</span>
+<br/><br/>
+<span style="color:black">Como socio invitado podrás tener acceso a todas nuestras promociones y descuentos en un cientos de establecimientos asociados a nuestro club. Entérate ingresando a nuestro portal:</span><br/><br/>
+<p align=center style="color:#3366ff"><a href="http://ClubSuscriptores.pe" style="color:#06C"><b>ir al Club de Suscriptores</b></a></p>
+<br/>
+¡Te esperamos!
+<br/><br/>
+<b>Administrador del Club</b>
+<br/><br/>

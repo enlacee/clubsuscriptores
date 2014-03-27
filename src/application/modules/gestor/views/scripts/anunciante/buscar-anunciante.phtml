@@ -1,0 +1,73 @@
+<div id="mictBeneBtnBox" class="mB20 all">
+    <?php if (!!$this->anunciante->getCurrentItemCount()) : ?>
+        <div class="alignR left"><?php echo $this->mostrando; ?></div>
+        <?= $this->paginationControl($this->anunciante, 'Sliding', '_partials/_pag.phtml') ?>
+    <?php endif ?>
+</div>
+
+<div class="mictaContet grayborder2 r3 mB20 table960Fix">
+    <table id="mictBenContent">
+        <thead id="mictaBenTitle">
+            <tr>
+                <th width="19%" class="mictBenTiTH ml5 mictbRight bold">Nombre</th>
+                <th width="9%" class="mictBenTiTH ml5 mictbRight bold">RUC</th>
+                <th width="8%" class="mictBenTiTH ml5 mictbRight bold ">Estado</th>
+                <th width="9%" class="mictBenTiTH mictbRight bold">Fecha registro</th>
+                <th width="12%" class="mictBenTiTH mictbRight bold">Fecha actualización</th>
+                <th width="11%" class="mictBenTiTH  bold">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <? $class = array(0 => 'even', 1 => '');
+            $i = 0; ?>
+            <? foreach ($this->anunciante as $anunciante) : ?>
+                <tr class="<?= $class[$i++ % 2] ?>">
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?= $this->escape($anunciante['razon_social']) ?>
+                    </td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?= $anunciante['ruc'] ?>
+                    </td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?= $anunciante['activo'] ? 'Activo' : 'No activo' ?>
+                    </td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?= date('d/m/Y', strtotime($anunciante['fecha_registro'])) ?>
+                    </td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?= date('d/m/Y', strtotime($anunciante['fecha_actualizacion'])) ?>
+                    </td>
+                    <td class="mictBenFluTd mictbTop">
+                        <ul>
+                            <li><a class="modalEsta" href="<?= $this->url(array(
+                                        'action' => 'editar-anunciante', 
+                                        'controller' => 'anunciante', 
+                                        'module' => 'gestor', 
+                                        'idEst' => $anunciante['id']), 
+                                    'default', true) ?>" >
+                                    Editar
+                                </a>
+                            </li>
+                            <li>
+                                <a rel="<?= $anunciante['id'] ?>" 
+                                   href="#eliminarAnunciante" 
+                                   class="winModal aEliminarAnunciante">Eliminar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            <? endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<div id="mictBeneBtnBox" class="mT20 all">
+    <?php if (!!$this->anunciante->getCurrentItemCount()) : ?>
+        <div class="alignR left"><?php echo $this->nroregistros; ?></div>
+        <?= $this->paginationControl($this->anunciante, 'Sliding', '_partials/_pag.phtml') ?>
+    <?php elseif (!$this->anunciante->getCurrentItemCount()) : ?>
+        <div class="paginador all">
+            <div class='pagUl theta alignL'> - No hay datos registrados con esos parámetros </div>
+        </div>
+    <?php endif; ?>
+
+</div>

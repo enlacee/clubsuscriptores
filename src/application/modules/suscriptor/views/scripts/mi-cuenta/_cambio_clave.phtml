@@ -1,0 +1,30 @@
+<form action="" method="post" id="cClaveCP">
+  <fieldset id="mictaCambioClave" class="field textoinput pl10">
+    <div class="bloque block">
+      <label for="fACtns" class="labelN">
+        <span class="req" title="Requerido">*</span> Contraseña actual:
+      </label>
+      <?= $this->formCambioClave->oldpswd->setAttribs(array('id' => 'fACtns', 'class' => 'fields inputNmicta inputN left', 'tabindex' => 1))->renderViewHelper(); ?>
+      <? $hasError = $this->formCambioClave->oldpswd->hasErrors(); ?>
+      <span class="response cGray2 right<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formCambioClave->oldpswd->errMsg : '' ?></span>
+    </div>
+    <div class="bloque block left">
+      <label for="fClave" class="labelN">
+        <span class="req" title="Requerido">*</span> 
+        Nueva contraseña:
+      </label>
+      <?= $this->formCambioClave->pswd->setAttribs(array('id' => 'fClave', 'maxlength' => 32, 'class' => 'fields inputNmicta inputN left', 'tabindex' => 2))->renderViewHelper(); ?>
+      <? $hasError = $this->formCambioClave->pswd->hasErrors(); ?>
+      <span class="response cGray2 right <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formCambioClave->pswd->errMsg : '' ?></span>
+    </div>
+    <div class="block mB0">
+      <label for="fRClave" class="labelN"><span class="req" title="Requerido">*</span> Confirmar contraseña:</label>
+      <?= $this->formCambioClave->pswd2->setAttribs(array('id' => 'fRClave', 'maxlength' => 32, 'class' => 'fields inputNmicta inputN left', 'tabindex' => 3))->renderViewHelper(); ?>
+      <? $hasError = $this->formCambioClave->pswd2->hasErrors(); ?>
+      <span class="response cGray2 right <?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formCambioClave->pswd2->errMsg : '' ?> </span>
+    </div>
+    <div class="bloque">
+      <input type="submit" id="saveChangesBt" value="" class="btnAll saveChangesBt" tabindex="4"/>
+    </div>
+  </fieldset>
+</form>

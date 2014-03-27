@@ -1,0 +1,45 @@
+<div class="bbSolid" id="adminEsCupon">     
+  <h6 class="adminEsTitle">Suscriptor</h6>      
+  <div class="all mB10" id="adminEsCuponinner">
+    <div class=" grid11 ml10 left" id="">
+    	<label class="labelBNM left" for="fNDoc">N° Documento</label>
+<!--        <select id="tipodoc" class="left ml10 maxLenghtN">
+            <option value="DNI#8">DNI</option>
+            <option value="CEX#9">Carnet Extranjería</option>
+        </select>-->
+      <?=$this->formRediBeneIni->tipodoc->setAttribs(
+        array(
+            'class' => 'left ml10 maxLenghtN'
+        ))->renderViewHelper();
+      ?>
+      <?=$this->formRediBeneIni->numero_documento->setAttribs(
+        array(
+            'id' => 'fNDoc',
+            'class' => 'left ml10 ',
+            'tabindex' => '1'
+        ))->renderViewHelper();
+      ?>
+      <button id="addValidateDni" class="AdEsValidarBtn left ml10 validar dni"></button>
+      <div id="errorValidarDni" class="error block hide" style="margin-left: 256px; margin-bottom: 0px; padding-top: 8px;">
+                    </div>
+    </div>
+      
+    <div class=" grid7 ml10 left" id="adminEscuponVbtn">
+  		<label class="labelBNM black bold left Trebuchet14" for="fNCupon" >N° de Cupón</label>
+  		<?=$this->formRediBeneIni->numero_cupon->setAttribs(
+          array(
+              'id' => 'fNCupon',
+              'class' => 'left ml10 ',
+              'tabindex' => '2',
+              'size' => '15'
+          ))->renderViewHelper();
+      ?> 
+    	<button id="addValidateCupon" class="AdEsValidarBtn left ml10 validar cupon "></button>
+        <div id="errorValidarCupon" class="error block hide" style="margin-left: 95px; margin-bottom: 0px; padding-top: 8px;">
+                    </div>
+  	</div>
+	</div>
+</div>
+<div class="hide" id="adminEstaContentBox">
+    <!-- resultado Ajax -->
+</div>

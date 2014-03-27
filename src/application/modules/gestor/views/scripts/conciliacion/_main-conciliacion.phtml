@@ -1,0 +1,52 @@
+<div class="all cntPagFix">
+    <div class="left m5all"><?php echo $this->nroregistros; ?></div>
+    <?php echo $this->paginationControl($this->cupones,'Sliding','conciliacion/_page.phtml'); ?>
+</div>
+<div class="mictaContet grayborder2 r3">
+    <table id="mictBenContent" idestablecimiento="<?=$this->idEstablecimiento?>"
+           fechaini="<?=$this->fechaini?>"
+           fechafin="<?=$this->fechafin?>"
+           page="<?=$this->page?>"
+           ord="<?=$this->ord?>"
+           col="<?=$this->col?>"
+    >
+        <thead id="mictaBenTitle">
+            <tr>
+                <th width="100" class="mictBenTiTH ml5 mictbRight bold">Promoción</th>
+                <th width="159" class="mictBenTiTH ml5 mictbRight bold">
+                    <a campo="fecha_redencion" class="<?=$this->ord=="ASC"?"esblueArrow":"esblueArrowDown"?> right mR10 mT5 validar ordenarFecha"></a>
+                    Fecha de Consumo
+                </th>
+                <th width="101" class="mictBenTiTH ml5 mictbRight bold">Documento</th>
+                <th width="106" class="mictBenTiTH ml5 mictbRight bold">
+                    <a campo="s.nombres" class="<?=$this->ord=="ASC"?"esblueArrow":"esblueArrowDown"?> right mR10 mT5 validar ordenarFecha"></a>
+                    Cliente
+                </th>
+                <th width="81" class="mictBenTiTH ml5 mictbRight bold">Voucher</th>
+                <th width="156" class="mictBenTiTH ml5 mictbRight bold">Descuento S/.</th>
+                <th width="131" class="mictBenTiTH ml5 mictbRight bold centerConcili">Conciliados</th>
+                <th width="88" class="mictBenTiTH ml5 bold">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <? foreach ($this->cupones as $index=>$item): ?>
+            <tr class="<?=$index%2==0?"":"even"?>">
+                <td class="mictBenFluTd mictbRight mictbTop"><?=$item["promocion"]?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?=$item["fechaconsumo"]?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?=$item["numerodocumento"]?> <?=$item["tipodocumento"]?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?=$item["nombres"]?> <?=$item["apellidos"]?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?=$item["numerocomprobante"]?></td>
+                <td class="mictBenFluTd mictbRight mictbTop montoConcili"><?=$item["descuento"]?></td>
+                <td class="mictBenFluTd mictbRight mictbTop centerConcili"><input <?=$item["estado"]=="conciliado"?"checked='checked'":""?> class="conciliar" id="<?=$item["idcupon"]?>" type="checkbox"/></td>
+                <td class="mictBenFluTd mictbTop">
+                    <a class="winModal editarconciliacion" href="#editConciliacion" rel="<?=$item["idcupon"]?>">Editar</a>
+                </td>
+            </tr>
+            <? endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<?="<div class='hide' id='csrf'>".$this->csrf."</div>"?>
+<div class="all block">
+    <?php echo $this->paginationControl($this->cupones,'Sliding','conciliacion/_page.phtml'); ?>
+</div>

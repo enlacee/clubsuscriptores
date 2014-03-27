@@ -1,0 +1,146 @@
+<div id="boxes">
+    <!-- Ventana de Prueba : Ver Encuesta -->
+    <div id="winVerEncuesta" class="window">
+        <div class="innerWin"> 
+            <a href="#Cerrar" class="sptAll closeWM icoCWM"><span class="hide">Cerrar</span></a>
+            <div class="iWindow r5">
+                <div class="bLB3 r5 inWindow">
+                    <div id="content-winVerEncuesta" class="all" >
+                        <!--verProceso-->
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+    <!-- Ventana : Confirmar Pedido de Cupones -->
+    <div id="winConfirmPedidoCupones" class="window modalInfo">
+        <div class="innerWin">
+            <a href="#Cerrar" class="sptAll closeWM icoCWM"><span class="hide">Cerrar</span></a>
+            <div class="iWindow r5">
+                <div class="bLB3 r5 inWindow">
+                        <h6 class="TilutoLightbox">Stock de la Promo</h6>
+                        <form action="" method="post" id="frmconfirmcupones" name="frmconfirmcupones">
+                            <div class="infoDialog">
+                                <p class="text1 f18 alignC">Sólo es posible generar <span id="sp_cantidad">#</span> cupones</p>
+                                <p class="text2 nBold alignC">¿Quieres acceder a la Promo de todas maneras?</p>
+                            </div>
+                            <input type="hidden" value="" id="hdcantidad" name="hdcantidad">
+                            <input type="hidden" value="" id="hdbeneficio_id" name="hdbeneficio_id">
+                            <input type="hidden" value="" id="hdslug" name="hdslug">
+                            <div class="btnMsjModal">
+                                <input type="submit" value="" class="btnAll btnLovePromo">
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ventana de Ver Vida Social : Ver Vida Social -->
+    <div id="winVerVidaSocial" class="window">
+        <div class="innerWin"> 
+            <a href="#Cerrar" class="sptAll closeWM icoCWM"><span class="hide">Cerrar</span></a>
+            <div class="iWindow r5">
+                <div class="bLB3 r5 inWindow">
+                    <div id="content-winVerVidaSocial" class="all"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <? if (empty($this->layout()->auth['suscriptor'])) : ?>
+        <?= $this->partial('_box_login.phtml', array('loginForm' => $this->loginForm, 'recuperarClaveForm' => $this->recuperarClaveForm, 'AppFacebook' => $this->layout()->AppFacebook, 'urlAuthAppFacebook' => $this->layout()->urlAuthAppFacebook)); ?>
+    <? endif; ?>
+
+    <div id="winMessages" class="window modalInfo">
+        <div class="innerWin">
+            <a href="#Cerrar" class="sptAll closeWM icoCWM"><span class="hide">Cerrar</span></a>
+            <div class="iWindow r5">
+                <div class="bLB3 r5 inWindow">
+                    <h6 id="title-winMessages" class="TilutoLightbox">Mensaje</h6>
+                    <div id="content-winMessages" class="infoDialog"></div>
+<!--                    <div id="content-winMessages" style="color: #7A7A7A;">
+                         all type messages 
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php if (isset($this->layout()->compartirPorMail)) : ?>
+        <?php $compartirAviso = $this->layout()->compartirPorMail; ?>
+        <div id="shareMail" class="window">
+            <div class="innerWin"> <a href="#Cerrar" class="sptAll resetBtnClose closeWM icoCWM"><span class="hide">Cerrar</span></a>
+                <div class="iWindow r5">
+                    <div class="bLB3 r5 inWindow">
+                        <div id="iEscpF" class="all">  
+                            <h6 class="TilutoLightbox">Comparte por e-mail</h6>
+                            <form id="formShareCA" class="formShareCA all" action="<?= SITE_URL . $compartirAviso->getAction(); ?>" method="post">
+                                <?= $compartirAviso->hdnOculto->renderViewHelper() ?>
+                                <fieldset class="all">
+                                    <div class="blockWM left">
+                                        <div class="block mB10">
+                                            <label for="fCAName" class="mB5 c3 labelOpt">Tu nombre</label>
+                                            <?php if ($this->layout()->auth == null): ?>
+                                                <?= $compartirAviso->nombreEmisor->setAttribs(array('id' => 'fCAName', 'class' => 'inputSm inputReset', 'maxlength' => '100'))->renderViewHelper() ?>
+                                            <?php else: ?>
+                                                <?= $compartirAviso->nombreEmisor->setAttribs(array('id' => 'fCAName', 'class' => 'inputSm ready', 'maxlength' => '100'))->renderViewHelper() ?>
+                                            <?php endif; ?>
+                                            <span class="response"> </span>
+                                        </div>
+                                        <div class="block mB10">
+                                            <label for="fCAMail" class="mB5 c3 labelOpt">Tu e-mail</label>
+                                            <?php if ($this->layout()->auth == null): ?>
+                                                <?= $compartirAviso->correoEmisor->setAttribs(array('id' => 'fCAMail', 'class' => 'inputSm inputReset', 'maxlength' => '100'))->renderViewHelper() ?>
+                                            <?php else: ?>
+                                                <?= $compartirAviso->correoEmisor->setAttribs(array('id' => 'fCAMail', 'class' => 'inputSm ready', 'maxlength' => '100'))->renderViewHelper() ?>
+                                            <?php endif; ?>
+                                            <span class="response"> </span>
+                                        </div>
+                                    </div>
+                                    <div class="blockWM right">
+                                        <div class="block mB10">
+                                            <label for="fCANameDes" class="mB5 c3 labelOpt">Nombre de destinatario</label>
+                                            <?= $compartirAviso->nombreReceptor->setAttribs(array('id' => 'fCANameDes', 'class' => 'inputSm inputReset', 'maxlength' => '100'))->renderViewHelper() ?>
+                                            <span class="response"> </span>
+                                        </div>
+                                        <div class="block mB10">
+                                            <label for="fCAMailDes" class="mB5 c3 labelOpt">E-mail del destinatario</label>
+                                            <?= $compartirAviso->correoReceptor->setAttribs(array('id' => 'fCAMailDes', 'class' => 'inputSm inputReset', 'maxlength' => '100'))->renderViewHelper() ?>
+                                            <span class="response"> </span>
+                                        </div>
+                                    </div>
+                                    <div class="block mB10">
+                                        <label for="fCACustomMsg" class="mB5 c3 labelOpt">Personaliza tu e-mail con un mensaje:</label>
+                                        <?= $compartirAviso->mensajeCompartir->setAttribs(array('id' => 'fCACustomMsg', 'class' => 'areaN areaWM inputReset', 'cols' => '75', 'rows' => '8'))->renderViewHelper() ?>
+                                        <!--textarea id="fCACustomMsg" class="areaN areaWM"></textarea-->
+                                        <span class="response"> </span>
+                                    </div>
+                                </fieldset>
+                                <fieldset class="all alignR">
+                                    <div id="cntNCaracterP" class="left">Te quedan <span class="bold" id="nCaracterP">300</span> caracteres.</div>
+                                    <?= $compartirAviso->Submit->setAttribs(array('id' => 'fSendCA', 'class' => 'btnAll right', 'rel' => $compartirAviso->getAction()))->renderViewHelper() ?>
+                                    <a id="btnCancelCA" class="btnAll resetBtn closeWM right" href="#Cancelar"><span class="hide">Cancelar</span></a> 
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+    
+    <!-- Vista previa : Beneficio -->
+    <div id="previewBenefS" class="window initModal">
+        <div class="innerWin"> <a href="#Cerrar" class="sptAll closeWM icoCWM"><span class="hide">Cerrar</span></a>
+            <div class="iWindow r5">
+                <div class="bLB3 r5 inWindow">
+                    <div id="content-previewBenefS" class="all"></div>
+                </div>
+            </div>
+        </div>     
+    </div>
+    
+    <div id="mask"> </div>
+</div>

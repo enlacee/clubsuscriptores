@@ -1,0 +1,28 @@
+<div id="contentLoginMLS">
+    <h6 class="TitleLoginEs">Administrador de Gestor</h6>
+    <form id="loginMLS" action="<?= $this->baseUrl('/auth/login') ?>" method="post">
+        <?= $this->layout()->loginForm->auth_token->renderViewHelper() ?>
+        <?= $this->layout()->loginForm->tipo->renderViewHelper() ?>
+        <fieldset class="blockFieldMLS">
+            <div class="block">
+                <label for="usuarioMLS" class="TextoInputLogin left fnormal">Usuario</label>
+                <?= $this->layout()->loginForm->userEmail->setAttribs(array('alt' => 'Ingresa tu e-mail', 'id' => 'usuarioMLS', 'class' => 'sizeInputLogin placeH cGray left'))->renderViewHelper() ?>
+            </div>
+            <div class="respW"></div>
+            <div class="block">
+                <label for="passMLS" class="TextoInputLogin left fnormal">Contraseña</label>
+                <?= $this->layout()->loginForm->userPass->setAttribs(array('id' => 'passMLS', 'class' => 'sizeInputLogin left'))->renderViewHelper() ?>
+            </div>
+            <div class="block">
+                <input type="submit" id="loginAdminBtn" value="" class="btnAlladmin"/>
+                <label class="forgotP">
+                    <span class="AdminRecuperarClave">
+                        <a href="#" id="linkLoginMLS" class="ml5">Recuperar contraseña</a>
+                    </span>
+                </label>
+            </div>
+             <div class="respW"></div>
+        </fieldset>
+    </form>
+</div>
+<?php echo $this->partial('/home/_recuperar-contrasenia.phtml'); ?>

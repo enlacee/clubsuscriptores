@@ -1,0 +1,32 @@
+<h6 class="TilutoLightbox mT20 pleft">Editar Parámetro</h6>
+<div class="contentedorEditParam">
+    <form id="frmParamtroG" name="frmParametroG" method="post" action="">
+        <input name="idParam" id="idParam" type="hidden" value="<?php echo $this->codigo; ?>"/>
+      <div class="grid10 left">
+        <label class="adminGLabelEdit" for="fNombre">Parámetro:</label>
+        <div class="left" style="width: 300px;"><?php echo $this->param['nombre']; ?></div>
+      </div>
+      <div class="grid10 mT10 left">
+        <label class="adminGLabelEdit" for="fNombre">Descripción:</label>
+        <div class="left" style="width: 300px;"><?php echo $this->param['descripcion']; ?></div>
+      </div>
+      <div class="grid10 mT10 left">
+        <label class="adminGLabelEdit" for="fNombre">Valor:</label>
+        <textarea maxlength="300" name="valor" id="valor" <?php echo ($this->edit?'':'disabled'); ?> style="width: 290px;height: 100px;font-size: 12px;"><?php echo $this->param['valor']; ?></textarea>
+      </div>
+      <?php if($this->edit): ?>
+      <div class="grid10 mT10 left">
+        <div class="right" style="width: 300px;">
+            <input type="checkbox" name="chkupdatep" id="chkupdatep" value="1" <?php echo (empty($this->param['actualizar'])?'checked':''); ?> />
+            Actualizar instantáneamente
+        </div>
+      </div>
+      <div class="grid10 mT10 left">
+          <div class="adminGeSQ">
+            <input id="adminGSave" type="button" class="ml20 btnAll textHidden left"  />
+            <input id="adminGquit" type="button" class="ml20 btnAll left">
+          </div>
+      </div>
+      <?php endif; ?>
+    </form>
+</div>

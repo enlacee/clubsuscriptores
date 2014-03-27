@@ -1,0 +1,115 @@
+<div class="mctaTittle bold">Mis beneficiarios</div>
+<div class="miCtaTable grayborder2 r3">
+    <? $nroB = count($this->beneficiarios) ?>
+    <? if ($nroB) : ?>
+        <table id="tableMiCta">
+            <thead id="mictaBenTitle">
+                <tr>
+                    <th class="mictBenTiTH mictbRight bold">Nro.</th>
+                    <th class="mictBenTiTH mictbRight bold">Nombres y Apellidos</th>
+                    <th class="mictBenTiTH mictbRight bold">E-mail</th>
+                    <th class="mictBenTiTH mictbRight bold">Invitado desde</th>
+                    <th class="mictBenTiTH ml5 bold">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <? $col = array(0 => "", 1 => "even");
+                $i = 1; ?>
+                <? foreach ($this->beneficiarios as $beneficiario) : ?>
+                    <tr class="<?= $col[$i % 2] ?>">
+                        <td class="mictBenFluTd mictbRight mictbTop"><?= $i++ ?></td>
+                        <td class="mictBenFluTd mictbRight mictbTop"><?= $beneficiario['nombres'] ?> <?= $beneficiario['apellidos'] ?></td>
+                        <td class="mictBenFluTd mictbRight mictbTop"><?= $beneficiario['email'] ?></td>
+                        <td class="mictBenFluTd mictbRight mictbTop"><?= empty($beneficiario['fecha_invitacion'])? (empty($beneficiario['fecha_registro'])?"":$this->FechaEspanol($beneficiario['fecha_registro'])):$this->FechaEspanol($beneficiario['fecha_invitacion']) ?></td>
+                        <td class="mictBenFluTd mictbTop">
+                            <a class="winModal" href="#info<?= $i ?>">Ver</a><br/><a class="winModal" href="#qinvi<?= $i ?>">Quitar Invitacion</a>
+
+                            <div id="qinvi<?= $i ?>" class="window modalCtaBen">
+                                <div class="innerWin"> 
+                                    <a href="#Cerrar" class="sptAll closeWM icoCWM"><span class="hide">Cerrar</span></a>
+                                    <div class="iWindow r5">
+                                        <div class="bLB3 r5 inWindow">
+                                            <h6 class="TilutoLightbox">Quitar Invitación</h6>
+                                            <div class="grid10 mictaBeneQuitarDesc">
+                                                La invitación hecha a <strong><?= $beneficiario['nombres'] . ' ' . $beneficiario['apellidos'] ?></strong>, 
+                                                será quitada y ya no tendrá acceso a los beneficios del Club Suscriptor.
+                                            </div>
+                                            <div class="mictaBeneQuitarQuest warning">
+                                                ¿Está seguro de quitar la invitación?
+                                            </div>
+                                            <div class="miCtaQuitarBtn grid6">
+                                                <form name="frmeliminabeneficiario<?=$i?>" method="post" action="<?= $this->url(array('module' => 'suscriptor', 'controller' => 'mi-cuenta', 'action' => 'eliminar-beneficiario'), 'default', true); ?>">
+                                                    <input type="hidden" name="inv_id"  value="<?=$beneficiario['id']?>" />
+                                                    <input type="hidden" name="csrf" value="<?=$this->csrf?>" />
+                                                    <a href="#" class="mictaBeneBtnSi left" value="" onclick="document.frmeliminabeneficiario<?=$i?>.submit();" ></a>
+                                                </form>
+                                                <a href="#" class="mictaBeneBtnNo left ml5 closeWM"></a>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div>                             
+
+
+                            <div id="info<?= $i ?>" class="window modalCtaBen">
+                                <div class="innerWin"> 
+                                    <a href="#Cerrar" class="sptAll closeWM icoCWM"><span class="hide">Cerrar</span></a>
+                                    <div class="iWindow r5">
+                                        <div class="bLB3 r5 inWindow">
+                                            <div id="content-winVerEncuesta">
+                                                <h6 class="TilutoLightbox">Información del Invitado</h6>
+                                                <div class="bloque grid8 left mT10">
+                                                    <label class="labelInfoInvitado" for="fNombre">Nombre:</label>
+                                                    <span class="Trebuchet16 left black ml5"><?= $beneficiario['nombres'] ?></span>
+                                                </div>
+                                                <div class="bloque grid8 left mT10">
+                                                    <label class="labelInfoInvitado" for="fNombre">Apellidos:</label>
+                                                    <span class="Trebuchet16 left black ml5"><?= $beneficiario['apellidos'] ?></span>
+                                                </div>
+                                                <div class="bloque grid8 left mT10">
+                                                    <label class="labelInfoInvitado" for="fNombre">DNI:</label>
+                                                    <span class="Trebuchet16 left black ml5"><?= $beneficiario['numero_documento'] ?></span>
+                                                </div>
+                                                <div class="bloque grid8 left mT10">
+                                                    <label class="labelInfoInvitado" for="fNombre">Email:</label>
+                                                    <span class="Trebuchet16 left black ml5"><?= $beneficiario['email'] ?></span>
+                                                </div>
+                                                <div class="bloque grid8 left mT10 mB20">
+                                                    <label class="labelInfoInvitado" for="fNombre">Fecha de Nacimiento:</label>
+                                                    <span class="Trebuchet16 left black ml5"><?= empty($beneficiario['fecha_nacimiento'])? '':$this->FechaEspanol($beneficiario['fecha_nacimiento']) ?></span>
+                                                </div>
+                                                <div class="optCuentaBtn all bTsolid"><a href="#Cerrar" class="btnCloseAdm btnAll closeWM"></a></div>
+
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div>                            
+                        </td>
+                    </tr>
+                <? endforeach; ?>
+            </tbody>
+        </table>
+    <? else : ?>
+        <span class="gray ctaVacio cntVacio">No tiene beneficiarios</span>
+    <? endif; ?>
+</div>
+<div id="mictBeneBtnBox" class="mT20">
+    <div id="InSomeonelse" class="r3">
+        <? if ($this->layout()->auth['suscriptor']['es_suscriptor'] == 1 && $this->layout()->auth['suscriptor']['activo'] == 1): ?>
+            <span class="InSomeonelseT left">
+                <?
+                $dif = $this->maximoInvitados - $nroB;
+                if($dif > 0) {
+                    echo "Tienes opción a invitar a " . $dif . " persona" . ($dif==1? '':'s') . " más.";
+                } else {
+                    echo "Ya completaste el número máximo de beneficiarios.";
+                }
+                ?>
+            </span>
+            <a href="#mainContentInvitar" class="<?= $nroB < $this->maximoInvitados? 'winModal':'' ?> mictaBtnIvit right"></a>
+        <? else : ?>
+            <span class="InSomeonelseT left">Sólo si eres un suscriptor de El Comercio puedes hacer invitaciones</span>
+        <? endif ?>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div id="secondLineVidasocial" class="all">
+  <div id="vidaSlbox">
+  	<div class="all">
+    <span class="date left"><?php echo ucwords($this->CadenaFecha($this->articulo['fecha_inicio_evento'])); ?></span>
+    <ul class="compartirL right">
+        <li class="itemL liTwitter right"><a id="twitterUrl" target="_blank" class="btnesL twitterI right" href="http://twitter.com/home?status=<?= SITE_URL; ?>"></a></li>
+        <li class="itemL liFacebook right"><a id="facebookUrl" target="_blank" class="facebookI btnesL right" href="http://www.facebook.com/sharer.php?u=<?= SITE_URL; ?>"></a></li>
+        <li class="itemL textChareF right c3">Compartir</li>
+    </ul>
+   </div>
+    <h2 class="vsTitle"><?php echo $this->escape($this->articulo['titulo']); ?></h2>  
+    <div id="secondDescription">
+        <p class="vsDescription c3"><?php echo $this->escape($this->articulo['contenido']); ?></p>
+    </div>                 
+	  <div id="slide-dos">
+
+			<div id="vsphotoLbox">
+
+			  <div class="slider hide">
+			      <img indice="<?=$this->indice?>" class="imgflujo" width="495" height="371"
+                       src="<?=$this->elementsUrl?>/images/sociales/<?=$this->imgindice?>" 
+                       onerror="this.src='<?php echo $this->mediaUrl; ?>/images/vida_social_g.jpg'"/>
+			  </div>
+
+
+			</div>
+
+			<div id="cntOptGallery" class="all">
+		    <div id="carruselvs" class="">
+			    <div id="cntGallery">
+				    <ul id="listGallery">
+                        <?php foreach($this->imagenes as $imagen):?>
+                        <li class="liListG left">
+                            <a class="aListG" 
+                               url="/images/sociales/" 
+                               rel="<?=$this->elementsUrl; ?>/images/sociales/<?=$imagen['path_imagen']?>" 
+                               href="#<?=$imagen['orden']?>" lang="<?=$imagen['titulo']?>">
+                                <img indice="<?=$imagen['orden']?>" class="imgListG" width="117" height="76" 
+                                     src="<?=$this->elementsUrl?>/images/sociales/thums/<?=$imagen['path_imagen']?>"
+                                     onerror="this.src='<?php echo $this->mediaUrl; ?>/images/vida_social_c.jpg'"/>
+                            </a>
+                        </li>
+                        <?php endforeach;?>
+				    </ul>
+			    </div>
+		   </div>
+		   <a id="prevG" class="flechaG" href="#Prev"><span class="hide">Anterior</span></a>
+		   <a id="nextG" class="flechaG" href="#Next"><span class="hide">Siguiente</span></a> 
+	    </div>
+		</div>				 
+	</div>
+</div>

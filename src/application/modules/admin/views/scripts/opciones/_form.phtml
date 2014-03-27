@@ -1,0 +1,27 @@
+<form id="modalOpcion" method="POST" action="">
+    <input type="hidden" value="<?= $this->opcion['id'] ?>" name="id">
+    <div class="all">
+        <h6 class="TilutoLightbox">Editar Opción</h6>
+        <div class="grid9 left">
+            <div class="block ml10 blockAdmPf mT10">
+                <label class="labelesDatos black" for="nombreop"><span class="req">*</span> Nombres</label>        
+                <?= $this->formOpcion->nombreop->setAttribs(array('class' => 'required field ready inputesDatos left ml5'))->renderViewHelper() ?>
+                <span class="response left tinyFormResponse"></span>
+            </div>                
+            <div class="block ml10 blockAdmPf mT10">
+                <label class="labelesDatos Trebuchet black" for="descripop"><span class="req">*</span> Descripción</label>
+                <?= $this->formOpcion->descripop->setAttribs(array('class' => 'required field ready descripAdmin_mPerfil left gray Trebuchet11 grid8 ml5', 'rows' => 3, 'cols' => '18'))->renderViewHelper() ?>
+                <span class="response left tinyFormResponse"></span> 
+            </div>
+            <div class="block ml10 blockAdmPf mT10">
+                <label class="labelesDatos Trebuchet black" for="modulo_id"><span class="req">*</span> Módulo</label>
+                <strong><?= $this->opcion['modulo'] ?></strong>
+                <span class="response left tinyFormResponse"></span>
+            </div>
+        </div>
+    </div>
+    <div id="adminSaveCancEB" class="marginPf">
+        <input type="submit" value="" class="adminSaveBtnbene left" id="btnSubmitED">
+        <a href="#" class="adminQuitBtnbene left" id="cancelEditOpcion"></a> 
+    </div>
+</form>

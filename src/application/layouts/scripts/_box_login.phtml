@@ -1,0 +1,79 @@
+<div id="loginModalW" class="window r10">
+    <div class="innerWin"> 
+        <a href="#Cerrar" class="sptAll closeWM icoCWM"><span class="hide">Cerrar</span></a>
+        <div  class="iWindow r10">
+            <div class="bLB3 r5 inWindow">
+                <div id="mainContentLogin" class="loginVM">
+	                <div id="cntLoginWM">
+	                    <h6 class="TilutoLightbox">Ingresa</h6>
+	                    <form id="loguearme" action="<?= $this->baseUrl('/auth/login') ?>" method="post">
+	                        <?= $this->loginForm->auth_token->renderViewHelper() ?>
+	                        <?= $this->loginForm->tipo->renderViewHelper() ?>
+	                        <fieldset id="formLogin">
+	                            <label class="TextoInputLogin fnormal">Tu correo electr&oacute;nico</label>
+	                            <?= $this->loginForm->userEmail->setAttribs(array('alt' => 'Ingresa tu e-mail', 'id' => 'wmMail', 'class' => 'sizeInputLogin f11 placeH cGray'))->renderViewHelper() ?>
+	                            <div class="hide f11 mB5 mL5 respW">&nbsp;</div>
+	                            <label class="TextoInputLogin Trebuchet  fnormal">Tu contrase&ntilde;a</label>
+	                            <?= $this->loginForm->userPass->setAttribs(array('alt' => 'Ingresa tu password', 'id' => 'wmPass', 'class' => 'sizeInputLogin'))->renderViewHelper() ?>
+	                            <div class="hide f11 mB5 mL5 respW">&nbsp;</div>
+	                        </fieldset>
+	                        <fieldset>
+	                          <div class="ForgotPcontainer">
+	                            <?= $this->loginForm->Submit->setAttribs(array('id' => 'logueobtn', 'class' => 'btnAll left logueobtn btnLoginEPA'))->renderViewHelper() ?>
+	                            <div id="optsLogin" class="right">
+	                            	<label for="saveKeyWM" class="forgotP"> 
+	                              	<?= $this->loginForm->save->setAttribs(array('id' => 'saveKeyWM', 'class' => 'checkboxlogin noBdr'))->renderViewHelper() ?>
+	                              	No cerrar sesi&oacute;n  
+	                            	</label>
+	                            	<a href="#olvidasteClave" id="forgotPass" class="OlvidasteClave">Olvidaste tu clave</a>
+	                          	</div>
+	                          </div>
+	                        </fieldset>
+	                        <br/>
+	                        <div id="RegistrateLogin"><span class="bold">¿No est&aacute;s registrado?</span> <a href="<?= $this->url(array('controller' => 'registro'), 'default', true) ?>">Reg&iacute;strate</a></div>
+	                        <?= $this->loginForm->return; ?>
+	                    </form>
+	                    <div id="msgLoadReturnPP" class="msgLRAll hide all"></div>
+	                    <div id="ConnectSocial">
+	                        <div class="textoConectSocial">
+	                            <div id="ConectRedesContent">
+	                                <p class="linkstatic TextoConect">Si ya asociaste tu cuenta del Club a las redes sociales, conéctate a través de:</p>
+	                                <div id="ConectRedesfb" class="r3"> 
+	                                    <a href="http://www.facebook.com/dialog/oauth?client_id=<?= $this->layout()->AppFacebook->appid ?>&redirect_uri=<?= $this->layout()->urlAuthAppFacebook ?>" class="AnclaFacebook sptAll"></a>
+	                                    <p class="loginRedes linkstatic">Ingresar con Facebook</p>
+	                                </div>
+	                                <!--<div id="ConectRedes" class="r3">
+	                                    <a href="#" class="Anclatwitter sptAll"></a>
+	                                    <p class="loginRedes linkstatic">Ingresar con Twitter</p>
+	                                </div>-->
+	                                <div id="ConectRedes" class="r3"> 
+	                                    <a href="<?= $this->layout()->urlAuthAppGoogle ?>" class="AnclaGoogle sptAll"></a>
+	                                    <p class="loginRedes linkstatic">Ingresar con Google</p>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+							    <div id="mainContentrecuperar" class="hide">
+							        <a href="#Login" id="backLogWM">&laquo; Volver a Login</a>
+							        <h6 class="TilutoLightbox">Recupera tu clave</h6>
+							        <p class="Recuperarclave">Ingresa tu  dirección de e-mail y te enviaremos un mensaje con un enlace para que puedas cambiar tu contraseña.</p>
+							        <form id="recuperar" action="<?= $this->baseUrl('/auth/recuperar-clave') ?>" method="post">
+							            <fieldset id="formrecupClave">
+					                    <label class="bold all" for="textForgotP">Dirección de email </label>
+					                    <?= $this->recuperarClaveForm->recuperar_token->renderViewHelper() ?>
+							                <?= $this->recuperarClaveForm->email->setAttribs(array('id' => 'textForgotP', 'class' => 'inputrecupClave inputN'))->renderViewHelper() ?>
+							                <div id="responseFP" class="f11 respRC hide"></div>
+							                <div class="cajaBtcambiar">
+							                	<?= $this->recuperarClaveForm->Submit->setAttribs(array('id' => 'cambiarBtn', 'class' => 'active btnAll btncambiar', 'value' => ' '))->renderViewHelper() ?>
+							                </div>
+							            </fieldset>
+							        </form>
+							        <div id="errorCmp" class="hide"></div>
+							        <div id="loadingCFP" class="all hide"></div>
+							    </div>
+						    </div>                                              
+            </div>
+        </div>
+    </div>
+</div>		

@@ -1,0 +1,14 @@
+<div id="contEstablecimiento">
+    <h6 class="Titulo980 bold">ESTABLECIMIENTOS ASOCIADOS</h6>
+    <div id="adminActivtyBoxR" class="right">
+        <?= $this->partial('establecimientos/_filtro_establecimiento.phtml', array('formFiltroEstablecimiento' => $this->formFiltroEstablecimiento)) ?>
+    </div>
+    <div id="adminActivty2" class="">
+        <a href="<?= $this->url(array('action' => 'nuevo-establecimiento', 'controller' => 'establecimientos', 'module' => 'gestor'), 'default', true) ?>" class="adminAdBtn left"></a>
+<!--        <a href="#" class="adminElimiBtn  left"></a>-->
+    </div>
+    <div id="adminEstaContentBox" class="grid17 right">
+    </div>
+</div>
+<div id="ajax-loading" class="loading hide" style="width: 100%;"></div>
+<div id="csrf_base" class="hide"><?=$this->csrf?></div>

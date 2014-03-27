@@ -1,0 +1,84 @@
+<div id="divRContentPerfilAd" rel="<?php echo $this->state; ?>" class="<?php echo ($this->state==1?'hide':''); ?>">
+    <h6 class="admintituLightbox" data-error="<?=$this->data ?>">
+        <?php echo $this->titulo; ?> Perfil
+    </h6>
+    <form method="post" id="formPerfilA" name="formPerfilA" action="">
+        <input type="hidden" value="<?php echo $this->opera; ?>" name="opera" id="opera"/>
+        <input type="hidden" value="<?php echo $this->idperfil; ?>" name="idperfil" id="idperfil" />
+        <fieldset class="left grid9">
+            <div class="block">
+                <label class="labelAdminUsurio" for="nombres">
+                    <span class="req" title="Requerido">*</span> 
+                    Nombre:</label>
+                <?php
+                    $errors = $this->form->nombre->hasErrors();
+                    echo $this->form->nombre->setAttribs(array('class' => 'inputAdminGEE2 left', 'tabindex' => 1))->renderHelper();
+                ?>
+                <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                    <?php echo ($errors?$this->form->nombre->errMsg:''); ?>
+                </span>
+            </div>
+            <div class="block">
+                <label class="labelAdminUsurio" for="descripcion">
+                    <span class="req" title="Requerido">*</span> 
+                    Descripción:</label>
+                <?php
+                    $errors = $this->form->descripcion->hasErrors();
+                    echo $this->form->descripcion->setAttribs(array('class' => 'left', 'tabindex' => 2, 'cols'=>'27', 'rows'=>'5'))->renderHelper();
+                ?>
+                <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                    <?php echo ($errors?$this->form->descripcion->errMsg:''); ?>
+                </span>
+            </div>
+            <div class="block">
+                <label class="labelAdminUsurio" for="modulo">
+                    <span class="req" title="Requerido">*</span> 
+                    Módulo:</label>
+                <div style="font-size: 14px;"><?php echo ucfirst($this->nombreModulo); ?></div>
+                <?php
+                    $errors = $this->form->modulo->hasErrors();
+                    echo $this->form->modulo->setAttribs(array('class' => 'inputAdminGEE3 ready left', 'tabindex' => 3))->renderHelper();
+                ?>
+                <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                    <?php echo ($errors?$this->form->modulo->errMsg:''); ?>
+                </span>
+            </div>
+            <br/>
+            <div class="block btnMsjModal">
+                <input type="submit" id="btnSavePA" value="" class="btnAll EEguardarBtn left"/>
+                <input id="btnClosePA" type="button" value="" class="btnAll EEcancelarBtn right closeWM"/>
+            </div>
+        </fieldset>
+        <fieldset class="right grid6">
+            <div class="block">
+                <span class="response left <?php echo (!empty($this->msjOpt))?'bad':'' ?>">
+                    <?php echo $this->msjOpt; ?>
+                </span>
+                <?php //echo $this->result; ?>
+            </div>
+            <div class="mb10">Lista de Opciones: 
+                <b><span id="spNameModule"><?php echo $this->nombreModulo; ?></span></b></div><br/>
+            <div id="divContentOptModule">
+                <?php
+                foreach ($this->options as $ind => $opt):?>
+                <div class="mT5" style="overflow: hidden;">
+                        <div class="grid5 left">
+                            <?php echo $opt['nombreop']; ?>
+                        </div>
+                    <?php
+                        //$this->form->setCheckboxState($ind+1, $opt['activo']);
+                        echo $this->form->{'chkActivo'.($opt['id'])}->setAttribs(array('class' => 'left'))->renderHelper();
+                        //$this->form->setCheckboxState($ind+1, $opt['activo']);
+                        echo $this->form->{'idoption'.($opt['id'])}->renderHelper();
+                    ?>
+                    </div>
+                <?php
+                endforeach;
+                if(empty($this->options)){
+                    echo '<div class="center" style="text-align:center;">-- Seleccione el modulo<br/>y escoga las opciones<br/> para el perfil --</div>';
+                }
+                ?>
+            </div>
+        </fieldset>
+    </form>
+</div>

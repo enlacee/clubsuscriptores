@@ -1,0 +1,15 @@
+<?php $recuperarClave = $this->url(array('module' => 'suscriptor', 'controller' => 'auth', 'action' => 'generar-clave', 'key' => $this->urlToken), 'default', true) ?>
+<br><p align=center><font size=3>
+<b>Cambio de Contraseña en el Club de Suscriptores</b></font></P>
+<br>
+<?= $this->nombre ?>, para cambiar tu contraseña en el Club Suscriptor haz click en el siguiente enlace: 
+<br/><br/>
+<span style="color:#3366ff"><b><a href="<?= SITE_URL ?><?= $recuperarClave ?>" alt="URL Token"><?= SITE_URL ?><?= $recuperarClave ?></a></b></span>
+
+<br/><br/><br/>   
+No dejes de visitar el portal para que estés al tanto de las promociones y descuentos que tenemos para los socios del Club. 
+<br/><br/><br/>
+¡Esperamos tu visita!
+<br/><br/>
+<b>Administrador del Club</b>
+<br><br>

@@ -1,0 +1,40 @@
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <?= $this->headTitle() ?>
+        <?= $this->headLink() ?>
+        <?= $this->headMeta() ?>
+        <? if ($this->layout()->staticCache) {
+               $excepciones = array("jquery");
+               $this->CacheStatic($this->headScript(), $excepciones);
+           }
+        ?>
+        <?= $this->headScript() ?>
+        <?= $this->headStyle() ?>
+    </head>
+    <body <?php echo ($this->layout()->isAuth && !empty($this->layout()->auth['admin']) ? '' : 'class="anchoCorto"'); ?>>
+        <!--div id="bandTop" class="all">
+            <?php echo $this->render('_band-top.phtml'); ?>
+        </div-->
+        <div id="wrap" class="center">
+            <div id="outHeader">
+                <div id="header" class="gridS20 center">
+                    <?php echo $this->render('_header_admin.phtml'); ?>
+                </div>
+                <?
+                if ($this->layout()->isAuth && isset($this->layout()->auth["admin"])) {
+                    echo $this->partial('_menu_admin.phtml');
+                }
+                ?>
+            </div>
+                <?= $this->partial('_partials/_messages_admin.phtml', array("flashMessages" => $this->layout()->flashMessages)) ?>
+            <div id="outContent" class="grayborder2 r5">
+                <div id="contentGrid">
+                    <?= $this->layout()->content ?>
+                </div>
+            </div>
+            <div id="footer"></div>
+        </div>  
+        <?= $this->partial('_boxes_admin.phtml'); ?>
+    </body>
+</html>

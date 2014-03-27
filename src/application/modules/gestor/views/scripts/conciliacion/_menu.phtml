@@ -1,0 +1,10 @@
+<?php
+$activo = 'amiCtaBtnActive';
+?>
+<div id="adminTopClient" class="all cntTituloC">
+    <h6>CONCILIACIÓN POR ESTABLECIMIENTOS </h6>
+    <div id="MictaMainNav" class="adminEsnav mB20">
+        <a href="<?php echo $this->url(array('action'=>'reporte','controller'=>'conciliacion','module'=>'gestor'),'default',true); ?>" class="amiCtaBtn ml2 <?php echo ($this->selectmenu=='reporte'?$activo:''); ?>">REPORTE</a>
+        <a href="<?php echo $this->url(array('action'=>'inicio','controller'=>'conciliacion','module'=>'gestor'),'default',true); ?>" class="amiCtaBtn <?php echo ($this->selectmenu=='inicio'?$activo:''); ?>">INICIO</a>
+    </div>
+</div>

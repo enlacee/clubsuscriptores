@@ -1,0 +1,120 @@
+<h6 class="TilutoLightbox">Vista Previa Beneficio</h6>
+<div id="quieroLaPromoDetalle" style=" overflow-y: scroll;height: 350px;">
+    <form action="" method="post" name="frmquieropromo" id="frmquieropromo">
+        <h6 class="TilutoDetallePromo">Detalle del Beneficio: <?= $this->escape($this->beneficio['titulo']) ?></h6>
+        <div id="DetalleEstCont">
+            <div id="DetalleEstContFoto" class="fotoSombra">
+                <img src="<?= $this->elementsUrl ?>/images/beneficios/<?= $this->beneficio['path_logo'] ?>" id="fotoEstable" width="325" height="182">
+                <div class="Qtipodeoferta2">
+                    <h2 class="promostexto3 left">Promo</h2>
+                </div>
+                <? if (isset($this->beneficio['chapita']) && $this->beneficio['chapita'] != '') : ?>
+                    <div id="promoflujo2" class="QtextoPromoChico <?= $this->beneficio['chapita_color'] ?> Tshadow"><?= $this->beneficio['chapita'] ?></div>
+                <? endif ?>
+            </div>
+            <?php $sinstock = false;
+            if(!$this->beneficio['sorteo']):
+                if (!empty($this->beneficio['generar_cupon'])): 
+            ?>
+                <div id="numeropromos" class="grayborder2 r5">
+                    <?php
+                        $sinstock = empty($this->beneficio['stock_actual']);
+                        if(!empty($this->beneficio['sin_stock'])){ $sinstock = false; }
+
+                        if (empty($this->beneficio['activo'])):
+                    ?>
+                        <span class="npromostexto Trebuchet14 gray bold left ">La promo ya no está disponible</span>
+                    <?php elseif ($sinstock): ?>
+                        <span class="npromostexto Trebuchet14 gray bold left ">Stock Agotado! </span>
+                    <?php elseif ($this->maximo_permitido > 0): ?>
+                        <span class="npromostexto Trebuchet left">Ingresa el número de cupones que quieres</span>
+                        <select id="QnumeroPromos" class="right" name="ctrlnumeropromos">
+                            <?php for ($i = $this->maximo_permitido; $i > 0; $i--): ?>
+                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                            <?php endfor; ?>
+                        </select>
+                    <?php else: echo $this->maximo_permitido;?>
+                        <span class="npromostexto Trebuchet left" style="width: 280px;">Ha consumido el máximo de promos pemitidas.</span>
+                    <?php endif; ?>
+                </div>
+            <?php else: ?>
+                <?php  if(empty($this->beneficio['sin_stock']) && empty($this->beneficio['stock_actual'])){ ?>
+                    <div id="numeropromos" class="grayborder2 r5">
+                        <span class="npromostexto Trebuchet14 gray bold left ">Stock Agotado! </span>
+                    </div>
+                <?php  }elseif(!empty($this->beneficio['maximo_por_subscriptor']) && empty($this->beneficio['sin_limite_por_suscriptor'])){ ?>
+                    <div id="numeropromos" class="grayborder2 r5">
+                        <span class="npromostexto Trebuchet left" style="width: 280px;">Máximo <?php echo $this->beneficio['maximo_por_subscriptor']; ?> consumos por suscriptor.</span>
+                    </div>
+                <?php  } ?>
+            <?php endif;
+                endif;  
+            ?>
+        </div>
+        <div id="DetalleEstContText">
+            <div id="NombredeEstaP" class="bbdotted">
+                <h6 class="TitulodeEstaP"><?= $this->escape($this->beneficio['nombre']) ?></h6>
+                <?php if (!empty($this->beneficio['descripcion'])): ?>
+                    <span class="DescripdeEstaP"><?php echo $this->escape($this->beneficio['descripcion']); ?></span>
+                <?php endif; ?>
+            </div>
+            <?php if (!empty($this->beneficio['pdf_info_file'])): ?>
+                <div id="npdf_info_file" class="right bbdotted mT10">
+                    <h6 class="TitulodeEstaP2 mB2 bold"></h6>
+                    <span class="DescripdeEstaP">
+                        <a href="<?= SITE_URL ?>/resultados/<?= $this->beneficio['codigo']?>" target="_blank" >
+                            <img class="apdf_info_descrip" src="<?php echo $this->mediaUrl; ?>/images/btn_pdf.png" 
+                                 width="20" height="23">
+                            <?= $this->beneficio['pdf_info_descrip']; ?>
+                        </a>
+                    </span>
+                </div>
+            <?php endif; ?>
+            <?php if (!empty($this->beneficio['valor'])): ?>
+                <div id="ValorEstaP" class="bbdotted mT10">
+                    <h6 class="TitulodeEstaP2 mB2 bold">Valor:</h6>
+                    <span class="DescripdeEstaP"><?= $this->escape($this->beneficio['valor']) ?></span>
+                </div>
+            <?php endif; 
+                  if (!empty($this->beneficio['direccion'])):?>
+                <div id="DondeEstaP" class="bbdotted mT10">
+                    <h6 class="TitulodeEstaP2 mB2 bold">Dónde:</h6>
+                    <span class="DescripdeEstaP"><?= $this->escape($this->beneficio['direccion']) ?></span>
+                </div>
+            <?php endif;
+                  if (!empty($this->beneficio['cuando'])): ?>
+                <div id="CuandoEstaP"class="right bbdotted mT10">
+                    <h6 class="TitulodeEstaP2 mB2 bold">Cúando:</h6>
+                    <span class="DescripdeEstaP">
+                        <?php echo $this->escape($this->beneficio['cuando']); ?>
+                    </span>
+                </div>
+            <?php endif; ?>
+            <?php if (!empty($this->beneficio['como'])): ?>
+                <div id="CuandoEstaP"class="right bbdotted mT10">
+                    <h6 class="TitulodeEstaP2 mB2 bold">Cómo:</h6>
+                    <span class="DescripdeEstaP">
+                        <?php echo $this->escape($this->beneficio['como']); ?>
+                    </span>
+                </div>
+            <?php endif; ?>            
+        </div>
+        <div id="MasinfoEstaP" class="mT10">
+            <h6 class="TitulodeEstaP2 mB2 bold">Más información:</h6>
+            <span class="DescripdeEstaP">Teléfono: <?= $this->beneficio['telefono_info'] ?></span>
+            <a href="mailto:<?= $this->beneficio['email_info'] ?>"> <?= $this->beneficio['email_info'] ?></a>
+        </div>
+        <div id="idinfo" style="margin: 0 0 10px 15px;width: 650px;"><?= $this->beneficio['informacion_adicional'] ?></div>
+        <?php if(!empty($this->beneficio["terminos_condiciones_web"])): ?>
+            <div style=" padding-left: 15px">
+                <a id="alinkTerminoCondicion" href="#alinkTerminoCondicion">
+                    Términos y condiciones legales 
+                    <img src="<?php echo $this->mediaUrl; ?>/images/flechaB.png" >
+                </a>
+                <div id="" class="mT10" >
+                    <?=$this->beneficio['terminos_condiciones_web']?>
+                </div>
+            </div>
+        <?php endif; ?>
+    </form>
+</div>

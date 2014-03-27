@@ -1,0 +1,47 @@
+<h6 class="admintituLightbox"><?=$this->cupon["promocion"]?></h6>
+<form>
+    <fieldset id="formencuesta">
+
+        <div class="block">
+            <label class="adminGLabelConci" for="fNombre">Establecimiento:</label>
+            <div class="left Trebuchet14 gray" style="width:300px;"><?=$this->cupon["nombreestablecimiento"]?></div>
+        </div>
+
+        <div class="block mT20">
+            <label class="adminGLabelConci" for="fFconsumo">Fecha de consumo:</label>
+            <div class="left Trebuchet14 gray" style="width:300px;"><?=$this->cupon["fechaconsumo"]?></div>
+        </div>
+
+        <div class="block mT20">
+            <label class="adminGLabelConci" for="fdocumento">Documento:</label>
+            <div class="left Trebuchet14 gray" style="width:300px;"><?=$this->cupon["numerodocumento"]?> <?=$this->cupon["tipodocumento"]?></div>
+        </div>
+
+        <div class="block mT20">
+            <label class="adminGLabelConci"  for="fcliente">Cliente:</label>
+            <div class="left Trebuchet14 gray" style="width:300px;"><?=$this->cupon["nombres"]?> <?=$this->cupon["apellidos"]?></div>
+        </div>
+
+        <div class="block mT20">
+            <label class="adminGLabelConci"  for="fmontodescontado">Monto descontado:</label>
+            <div class="left Trebuchet14 gray" style="width:300px;">S/. <?=$this->cupon["descuento"]?></div>
+        </div>
+
+
+        <div class="block mT20">
+            <label class="adminGLabelConci" for="fboucher">Voucher</label>
+            <input maxlength="45" id="vouchercupon" class="inputAdminGEE2 Trebuchet11 gray left campoeditar" type="text" name="nombres" value="<?=$this->cupon["numerocomprobante"]?>">
+        </div>
+
+        <div class="block mT20 mB20">
+            <label class="adminGLabelConci" for="fcomentario" >Comentario:</label>
+            <textarea maxlength="300" class="gray" id="comentariocupon" style="width: 230px;height:50px;font-size: 12px;" name="valor"><?=$this->cupon["comentario"]?></textarea>
+        </div>
+
+        <div class="adminGeSQ">
+            <input id="adminGSave" idcupon="<?=$this->cupon["idcupon"]?>" class="ml20 btnAll textHidden left" type="button">
+            <input id="adminGquit" class="ml20 btnAll left" type="button">
+        </div>
+
+    </fieldset>
+</form>

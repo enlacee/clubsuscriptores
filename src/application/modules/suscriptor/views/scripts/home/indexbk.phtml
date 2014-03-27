@@ -1,0 +1,449 @@
+<h2 class="textHidden" id="<?=($this->user_activo?'titleDestacados':'unMundoVentajas')?>">
+    <?=($this->user_activo?'Destacados':'Un mundo de ventajas')?>
+</h2>
+    
+<div id="main-content2" class="grid20">
+		<!--< ?php //if(!$this->user_activo):?>
+        < ?php //endif;?>-->
+    <div id="content" class="left grid14">
+        <?php //if(!$this->user_activo):
+            if(!(1)):
+            ?>
+        <div id="TopboxBack">
+            <div id="topBox" class="grayborder2 mB20 r5">
+                <div id="worldOf">
+                    <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="660" height="275" 
+                            id="banner_suscriptores" align="middle">
+                        <param name="movie" 
+                                value="<?=$this->mediaUrl.'/swf/ban660x275_SuscriptoresTodos.swf?20120419' ?>"/>
+                        <param name="quality" value="high" />
+                        <param name="bgcolor" value="#ffffff" />
+                        <param name="play" value="true" />
+                        <param name="loop" value="true" />
+                        <param name="wmode" value="transparent" />
+                        <param name="scale" value="showall" />
+                        <param name="menu" value="true" />
+                        <param name="devicefont" value="false" />
+                        <param name="salign" value="" />
+                        <param name="allowScriptAccess" value="sameDomain" />
+                        <!--[if !IE]>-->
+                        <object type="application/x-shockwave-flash" 
+                                data="<?=$this->mediaUrl.'/swf/ban660x275_SuscriptoresTodos.swf?20120419' ?>" 
+                                width="660" height="275">
+                            <param name="movie" value="ban660x275_SuscriptoresTodos.swf" />
+                            <param name="quality" value="high" />
+                            <param name="bgcolor" value="#ffffff" />
+                            <param name="play" value="true" />
+
+                            <param name="loop" value="true" />
+                            <param name="wmode" value="transparent" />
+                            <param name="scale" value="showall" />
+                            <param name="menu" value="true" />
+                            <param name="devicefont" value="false" />
+                            <param name="salign" value="" />
+                            <param name="allowScriptAccess" value="sameDomain" />
+                        <!--<![endif]-->
+                            <a href="http://www.adobe.com/go/getflash">
+                            <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" 
+                                 alt="Get Adobe Flash player" />
+                            </a>
+                        <!--[if !IE]>-->
+                        </object>
+                        <!--<![endif]-->
+                    </object>
+                </div>
+                <div class="all">
+                   <a href="<?=$this->url(array(),'suscribete',true)?>" id="MainSuscribe" class="btnAll"> </a>
+                </div> 
+            </div>
+        </div>
+        <?php endif;?>
+        <div id="bottomBox" class="grayborder2 r5">
+            <div class="flowWAll">
+                <h2 class="marginTop40 mbgray2 font18">BENEFICIOS DESTACADOS</h2>
+                <div id="destacadosContainer" class="<? //($this->user_activo?'mT20':'')?>">
+                    <?php if(!empty($this->maindestacado)){ ?>
+                        <div id="firstLinedestacado">
+                            <div id="promo1Content">
+                                <div class="promo-slide">
+                                    <?php
+                                    foreach ($this->maindestacado as $arrayMain) {
+//                                    $fechafvig = new Zend_Date($arrayMain['fecha_fin_publicacion']);
+//                                    $fechaivig = new Zend_Date($arrayMain['fecha_inicio_publicacion']);
+                                    //$filtros = array('id' => $arrayMain['id'], 'slug' => $arrayMain['slug'] );
+                                    //$ruta = $this->url($filtros, 'deta_beneficio', true);
+                                    $ruta = "/".$this->TextToUrl($arrayMain['titulo']).'-'.$arrayMain['id'];
+                                    ?>
+                                    <div itemscope itemtype="http://schema.org/Product" class="promo-content">
+                                        <div class="firstphoto">
+                                            <a href="<?=$ruta?>">
+                                                <img itemprop="image" class="imgDestacada" width="660" height="371" 
+                                                     src="<?=$this->elementsUrl?>/images/beneficios/<?=
+                                                       $this->ImgName($arrayMain['path_logo'], $this->sufixdestaqprin)?>" 
+                                                     title="<?=$arrayMain['titulo'].
+                                                                 '-'.$arrayMain['cat_nombre'].
+                                                                 '-'.$arrayMain['abreviado']?>" 
+                                                     alt="<?=$arrayMain['titulo'].
+                                                                 '-'.$arrayMain['cat_nombre'].
+                                                                 '-'.$arrayMain['abreviado'].
+                                                                 '-Club De Suscriptores El Comercio Perú.'?>" 
+                                                     onerror="this.src='<?=$this->mediaUrl?>/images/destacados.jpg'"/>
+                                                <div class="overlay" >
+                                                    <h2 itemprop="name">
+                                                        <?=$this->escape($this->ReduceString($arrayMain['titulo'], 
+                                                                         90, '...')); ?>
+                                                    </h2>
+                                                    <p itemprop="description">
+                                                    <?php 
+                                                    $wDescCorta=100;
+                                                    if(!empty($arrayMain['chapita'])){ $wDescCorta=90;}
+                                                    echo $this->escape(
+                                                                $this->ReduceString(
+                                                                    $arrayMain['descripcion_corta'],$wDescCorta,'...')
+                                                              ); ?>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <?php 
+                                        $tieneChapita="floatDer";
+                                        if(!empty($arrayMain['chapita'])){ 
+                                            $tieneChapita="textAgotado";
+                                        ?>
+                                           <div id="promo1" class="textoPromo <?=$arrayMain['chapita_color']?> Tshadow">
+                                               <?=$arrayMain['chapita']?>
+                                           </div>
+                                        <?php } ?>
+                                    </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+
+                    <!-- LIST DESTACADOS -->
+                    <?php
+                    $nrovueltas = round(count($this->destacados)/2,0);
+                    $fila = 0;
+                    for ($i=0;$i<$nrovueltas;$i++):	
+                        if($i%2==0){ $color1 ='rojo'; $color2 ='verde'; }else{ $color1 = 'azul'; $color2 = 'amarillo'; }
+                    ?>
+                        <div class="secondLinedestacado">
+                            <div class="secondLinedestacadoB all <?= ($i==($nrovueltas - 1))?'lastBLine':'' ?>">
+                                <?php if (array_key_exists($fila, $this->destacados)): 
+                                        $fecfvig = new Zend_Date($this->destacados[$fila]['fecha_fin_publicacion']);
+                                        $fecivig = new Zend_Date($this->destacados[$fila]['fecha_inicio_publicacion']);
+                                        /*$filtros = array(
+                                            'id' => $this->destacados[$fila]['id'], 
+                                            'slug' => $this->destacados[$fila]['slug'] );
+                                        $ruta = $this->url($filtros, 'deta_beneficio', true);*/
+                                        $ruta = "/".$this->TextToUrl($this->destacados[$fila]['titulo']).'-'.
+                                                $this->destacados[$fila]['id'];
+                                ?>
+                                <div itemscope itemtype="http://schema.org/Product" class="secondLineA left">
+                                    <div class="secondphoto">
+                                        <a href="<?=$ruta?>">
+                                            <img itemprop="image" class="imgflujo" width="325" height="182" 
+                                                 src="<?=$this->elementsUrl; ?>/images/beneficios/<?php 
+                                                         echo $this->ImgName($this->destacados[$fila]['path_logo'],
+                                                                                  $this->sufixdestaq); ?>" 
+                                                 title="<?=$this->escape($this->destacados[$fila]['titulo'].
+                                                              '-'.$this->destacados[$fila]['cat_nombre'].
+                                                              '-'.$this->destacados[$fila]['abreviado'])?>" 
+                                                 alt="<?=$this->escape($this->destacados[$fila]['titulo'].
+                                                              '-'.$this->destacados[$fila]['cat_nombre'].
+                                                              '-'.$this->destacados[$fila]['abreviado'].
+                                                              '-Club De Suscriptores El Comercio Perú.')?>" 
+                                                 onerror="this.src='<?=$this->mediaUrl?>/images/fcatalogo_grande.jpg'"/>
+                                        </a>
+                                        <div class="tipodeoferta2">
+                                            <h2 class="promostexto left">
+                                                <?=$this->escape($this->destacados[$fila]['abreviado'])?>
+                                            </h2>
+                                            <h2 class="promostexto2 left">
+                                                <?=$this->escape($this->destacados[$fila]['cat_nombre'])?>
+                                            </h2>
+                                            <?php 
+                                            $tieneChapita="floatDer";
+                                            if (!empty($this->destacados[$fila]['chapita'])):
+                                                $tieneChapita="textAgotado";
+                                            ?>
+                                                <div class="promoflujo textoPromoChico 
+                                                            <?=$this->destacados[$fila]['chapita_color']?> 
+                                                     Tshadow">
+                                                    <?=$this->destacados[$fila]['chapita']?>
+                                                </div>
+                                            <?php endif;?>
+                                        </div>
+                                    </div>
+                                    <div class="secondDescription">
+                                        <span class="date">
+                                            <?php if($this->destacados[$fila]['tipo_beneficio_id']==
+                                                    Application_Model_Beneficio::TIPO_PROMO):
+                                                        echo $this->escape($this->destacados[$fila]['cuando']);?>
+                                            <!--Del < ?php echo $fecivig->toString(Zend_Date::DATES); ?> al 
+                                            < ?php echo $fecfvig->toString(Zend_Date::DATES); ?>-->
+                                            <?php endif;                                            
+                                                  $sinstock = empty($this->destacados[$fila]['stock_actual']);
+                                                     if(!empty($this->destacados[$fila]['sin_stock']))$sinstock = false;
+                                                  
+                                                     echo ($sinstock?'&nbsp;&nbsp;<span class="bold '.$tieneChapita.
+                                                             '" >¡Agotado!</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                             &nbsp;&nbsp;&nbsp;&nbsp;':'&nbsp;&nbsp;'); 
+                                            ?>
+                                        </span>
+                                        <h2 class="promoTitle">
+                                            <a itemprop="name" href="<?=$ruta?>">
+                                                <?=$this->escape($this->destacados[$fila]['titulo'])?>
+                                            </a>
+                                        </h2>
+                                        <p itemprop="description" class="promoDescription">
+                                            <?=$this->escape($this->ReduceString(
+                                                    $this->destacados[$fila]['descripcion_corta'], 90, '...')); ?>
+                                        </p>
+                                    </div>
+                                    <div class="all">
+                                        <a href="<?=$ruta?>" 
+                                           title="Ver más de <?=$this->escape($this->destacados[$fila]['titulo'])?>"
+                                           class="botonVerdetalle right"></a>
+                                    </div>
+                                </div>
+                                <?php 
+                                    $fila++;
+                                    endif;
+                                    if (array_key_exists($fila, $this->destacados)): 
+                                        $fecfvig = new Zend_Date($this->destacados[$fila]['fecha_fin_publicacion']);
+                                        $fecivig = new Zend_Date($this->destacados[$fila]['fecha_inicio_publicacion']);
+                                        /*$filtros = array(
+                                            'id' => $this->destacados[$fila]['id'], 
+                                            'slug' => $this->destacados[$fila]['slug'] );
+                                        $ruta = $this->url($filtros, 'deta_beneficio', true);*/
+                                        $ruta = "/".$this->TextToUrl($this->destacados[$fila]['titulo']).'-'.
+                                                    $this->destacados[$fila]['id'];
+                                ?>
+                                <div itemscope itemtype="http://schema.org/Product" class="secondLineB right">
+                                    <div class="thirdphoto" >
+                                        <a href="<?=$ruta?>">
+                                            <img itemprop="image" class="imgflujo" width="325" height="182"
+                                                 src="<?=$this->elementsUrl?>/images/beneficios/<?php 
+                                                         echo $this->ImgName($this->destacados[$fila]['path_logo'],
+                                                                                  $this->sufixdestaq); ?>" 
+                                                 title="<?=$this->escape($this->destacados[$fila]['titulo'].
+                                                              '-'.$this->destacados[$fila]['cat_nombre'].
+                                                              '-'.$this->destacados[$fila]['abreviado'])?>" 
+                                                 alt="<?=$this->escape($this->destacados[$fila]['titulo'].
+                                                              '-'.$this->destacados[$fila]['cat_nombre'].
+                                                              '-'.$this->destacados[$fila]['abreviado'].
+                                                              '-Club De Suscriptores El Comercio Perú.')?>" 
+                                             onerror="this.src='<?=$this->mediaUrl; ?>/images/fcatalogo_grande.jpg'"/>
+                                        </a>
+                                        <div class="tipodeoferta2">
+                                            <h2 class="promostexto left">
+                                                <?=$this->escape($this->destacados[$fila]['abreviado'])?>
+                                            </h2>
+                                            <h2 class="promostexto2 left">
+                                                <?=$this->escape($this->destacados[$fila]['cat_nombre'])?>
+                                            </h2>
+                                            <?php 
+                                            $tieneChapita="floatDer";
+                                            if (!empty($this->destacados[$fila]['chapita'])):
+                                                $tieneChapita="textAgotado";
+                                            ?>
+                                                <div class="promoflujo textoPromoChico 
+                                                            <?=$this->destacados[$fila]['chapita_color']?> 
+                                                     Tshadow">
+                                                    <?=$this->destacados[$fila]['chapita']?>
+                                                </div>
+                                            <?php endif;?>
+                                        </div>
+                                    </div>
+                                    <div class="secondDescription">
+                                        <span class="date">
+                                            <?php if($this->destacados[$fila]['tipo_beneficio_id']==
+                                                    Application_Model_Beneficio::TIPO_PROMO):
+                                                        echo $this->escape($this->destacados[$fila]['cuando']);
+                                                  endif;
+                                                    $sinstock = empty($this->destacados[$fila]['stock_actual']);
+                                                    if(!empty($this->destacados[$fila]['sin_stock']))$sinstock = false;
+                                                    echo ($sinstock?'&nbsp;&nbsp;<span class="bold '.
+                                                                    $tieneChapita.'">¡Agotado!</span>':'&nbsp;&nbsp;'); 
+                                            ?>
+                                        </span>
+                                            <h2 class="promoTitle">
+                                                <a itemprop="name" href="<?=$ruta?>">
+                                                    <?=$this->escape($this->destacados[$fila]['titulo'])?>
+                                                </a>
+                                            </h2>
+                                            <p itemprop="description" class="promoDescription">
+                                                <?=$this->escape($this->ReduceString(
+                                                        $this->destacados[$fila]['descripcion_corta'], 90, '...')); ?>
+                                            </p>
+                                    </div>
+                                    <div class="all"> 
+                                        <a href="<?=$ruta?>" 
+                                           title="Ver más de <?=$this->escape($this->destacados[$fila]['titulo'])?>"
+                                           class="botonVerdetalle right"></a>
+                                    </div>
+                                </div>
+                                <?php
+                                    $fila++;
+                                    endif; ?>
+                            </div>
+                        </div>
+                    <?php endfor;?>
+                    <!-- ############## -->                       
+                </div>       
+            </div> 
+        </div>
+    </div>
+      
+      <!--SIDEBAR -->
+    <div id="sidebar" class="grid6">
+        <?php  if(!empty($this->zona_publicidad)){ ?>
+            <div class="grayborder2 mB20 r5 bannerHome">
+                <h3 class="mbgray bold font18">SORTEO</h3>
+
+               
+                <a class="linkWhite" target="_blank" href="http://elcomercio.pe/promociones/alejandrosanz">
+                    <img width="258" height="380" alt="Publicidad" 
+                        src="<?=$this->mediaUrl?>/images/publicity/258X380.jpg?1234" >
+                </a>
+                
+
+        <?php } ?>
+
+        <!--<php echo $this->partial('home/_siguenos.phtml',array('cuentas'=> $this->cuentas)); ?>-->
+
+        <?php if(count($this->layout()->sorteos_disponibles)>=1): ?>
+            <div id="giftBox" class="grayborder2 mB20 r5">
+                <div id="Sorteoscontent" class="mbgray all mB10">
+                    <h3 class="bold anchoSorteos font18">SORTEOS </h3>
+                </div>
+                <div id="imgGift">
+                    <div id="slides">
+                        <div class="slides_container">
+                            <?php foreach ($this->layout()->sorteos_disponibles as $promo):
+                                    //$filtros = array('id' => $promo['id'], 'slug' => $promo['slug'] );
+                                    //$ruta = $this->url($filtros, 'deta_beneficio', true);
+                                    $ruta = "/".$this->TextToUrl($promo['titulo']).'-'.$promo['id'];
+                            ?>
+                                <div itemscope itemtype="http://schema.org/Product" class="slide">
+                                    <a class="linkWhite" href="<?=$ruta?>">
+                                        <img width="258" height="160" alt="" 
+                                             itemprop="image"
+                                            src="<?=$this->elementsUrl?>/images/beneficios/<?php 
+                                                echo $this->ImgName($promo['path_logo'],$this->sufixdestaq); ?>"
+                                            title="<?=$promo['titulo']?>" 
+                                            alt="<?=$promo['titulo'].
+                                                        '-Club De Suscriptores El Comercio Perú.'?>"     
+                                            onerror="this.src='<?php 
+                                                echo $this->mediaUrl; ?>/images/fcatalogo_grande.jpg'"/>
+                                    </a>
+                                    <div class="caption">
+                                        <p itemprop="name">
+                                            <?=$this->escape($this->ReduceString($promo['titulo'],27,'...')); ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+                <span class="slides-linea"></span>
+                <div class="slides-vertodos">
+                    <a  href="<?=$this->url(array(
+                            'action'=>'index',
+                            'controller'=>'catalogo-virtual',
+                            'module'=>'suscriptor'),
+                        'default',true)?>/nuevo/todos/sorteos-disponibles#ac">Ver Todos</a>
+                </div>
+
+            </div>
+        <?php endif;?>
+
+        <?php if(count($this->layout()->zona_concurso)>=1): ?>
+            <div id="giftBox" class="grayborder2 mB20 r5">
+                <div id="Sorteoscontent" class="mbgray all mB10">
+                    <h3 class="bold anchoSorteos font18">CONCURSOS  </h3>
+                </div>
+                <div id="imgGift">
+                    <div id="slides-concursos">
+                        <div class="slides-container">
+                            <?php foreach ($this->layout()->zona_concurso as $promo):
+                                    //$filtros = array('id' => $promo['id'], 'slug' => $promo['slug'] );
+                                    //$ruta = $this->url($filtros, 'deta_beneficio', true);
+                                    $ruta = "/".$this->TextToUrl($promo['titulo']).'-'.$promo['id'];
+                            ?>
+                                <div itemscope itemtype="http://schema.org/Product" class="slide-concursos" >
+                                    <a class="linkWhite" href="<?=$ruta?>">
+                                        <img itemprop="image" width="258" height="160" alt="" 
+                                                src="<?=$this->elementsUrl; ?>/images/beneficios/<?php 
+                                                   echo $this->ImgName($promo['path_logo'],$this->sufixdestaq); ?>"
+                                                title="<?=$promo['titulo']?>" 
+                                                alt="<?=$promo['titulo'].
+                                                            '-Club De Suscriptores El Comercio Perú.'?>" 
+                                                onerror="this.src='<?=$this->mediaUrl?>/images/fcatalogo_grande.jpg'"/>
+                                    </a>
+                                    <div class="caption-concursos">
+                                        <p itemprop="name">
+                                            <?=$this->escape($this->ReduceString($promo['titulo'], 25, '...')); ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+                <span class="slides-linea"></span>
+                <div class="slides-vertodos">
+                    <a  href="<?=$this->url(array(
+                            'action'=>'index',
+                            'controller'=>'catalogo-virtual',
+                            'module'=>'suscriptor'),
+                        'default',true); ?>/nuevo/concurso/#ac">Ver Todos</a>
+                </div>  
+            </div>
+        <?php endif;?>
+
+        <?php echo $this->partial('home/_articulo.phtml',array(
+            'portada_articulo'=> $this->vida_social,
+            'imagenes_articulo'=>$this->imagenes_articulo,
+            'elementsUrl'=>$this->elementsUrl,
+            'mediaUrl'=>$this->mediaUrl,
+            'sufixlittle'=>$this->sufixlittle)); ?>
+
+        <?php echo $this->partial('home/_encuesta.phtml',array(
+            'encuesta'=> $this->encuesta,
+            'opciones'=>$this->opciones,
+            'existe_voto'=>$this->existe_voto)); ?>
+
+        <div class="hide">
+            Link: 
+            <a href="<?=$this->url(array(
+                'action'=>'index',
+                'controller'=>'home',
+                'module'=>'establecimiento')); ?>">
+                Acceso a Establecimientos
+            </a>
+        </div>
+
+        <div class="grayborder2 mB20 r5" id="acceso_establecimiento">
+            <h3 class="mbgray bold font18">ESTABLECIMIENTOS</h3>
+            <div id="administradorImg"></div>
+            <a href="<?=$this->url(array(
+                'action'=>'index',
+                'controller'=>'home',
+                'module'=>'establecimiento')); ?>" class="btnAll" id="btn-administradores"></a> 
+        </div>
+
+        <div id="content-viewproducts">
+            <div id="viewproducts" class="grayborder2 mB20 r5">
+                <h3 class="mbgray bold font18">CATÁLOGO VIRTUAL</h3>
+                <div id="catalogoImg"></div>
+                <a id="print-products" class="btnAll" target="_blank" 
+                   href="<?=$this->siteUrl?>/magazine/mostrar-catalogo/"></a>
+            </div>
+        </div>
+          
+    </div>      
+</div>

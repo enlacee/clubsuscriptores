@@ -1,0 +1,21 @@
+<?php 
+$activo = 'active';
+?>
+<div id="outMainNav">
+<ul id="mainNav" class="grid20 center">
+    <li class="<?php echo ($this->layout()->active==App_Controller_Action_Suscriptor::MENU_NAME_INICIO?$activo:''); ?> liMianMenu left"><a href="<?php echo $this->url(array('action'=>'index','controller'=>'home','module'=>'suscriptor'),'default',true); ?>" class="aMenuMain left">Inicio</a></li>
+    <li class="<?php echo ($this->layout()->active==App_Controller_Action_Suscriptor::MENU_NAME_BENEFICIO?$activo:'')?> liMianMenu left"> <a href="<?php echo $this->url(array('action'=>'index','controller'=>'catalogo-virtual','module'=>'suscriptor'),'default',true); ?>" class="aMenuMain left">Catálogo</a></li>
+    <li class="<?php echo ($this->layout()->active==App_Controller_Action_Suscriptor::MENU_NAME_VIDA_SOCIAL?$activo:'')?> liMianMenu left"> <a href="<?php echo $this->url(array('action'=>'index','controller'=>'vida-social','module'=>'suscriptor'),'default',true); ?>" class="aMenuMain left">Vida Social</a></li>  
+    <li class="<?php echo ($this->layout()->active==App_Controller_Action_Suscriptor::MENU_NAME_MI_CUENTA?$activo:'')?> liMianMenu left"> 
+        <?php if(empty($this->layout()->auth['suscriptor'])):?>
+        <a class="winModal noScrollTop aMenuMain left" href="#loginModalW">Mi cuenta</a>
+        <?php else:?>
+        <a href="<?php echo $this->url(array('action'=>'index','controller'=>'mi-cuenta','module'=>'suscriptor'),'default',true); ?>" class="aMenuMain left">Mi cuenta</a>
+        <?php endif;?>
+    </li>
+<!--    <li class="< ?php echo ($this->layout()->active==App_Controller_Action_Suscriptor::MENU_NAME_SERVICIOS_AL_SUSCRIPTOR?$activo:'')?> liMianMenu left"> <a href="< ?php echo $this->url(array(), 'servicios', true); ?>" class="aMenuMain left">Servicios al Suscriptor</a></li>-->
+      
+    <li class="<?php echo ($this->layout()->active==App_Controller_Action_Suscriptor::MENU_NAME_CONTACTO?$activo:'')?> liMianMenu left"> <a href="<?php echo $this->url(array(), 'contacto', true); ?>" class="aMenuMain left">Contacto</a></li>
+</div>
+<? //var_dump($this->flashMessages);?>
+<?=$this->partial('_partials/_messages.phtml',array("flashMessages"=>$this->flashMessages))?>

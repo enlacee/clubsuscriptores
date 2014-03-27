@@ -1,0 +1,78 @@
+<div id="MictaMainContentBox" class="grayborder2 r5">
+    <div id="MictaMainBox" class="all">
+        <?= $this->partial('mi-cuenta/_menu.phtml', array('menu_post_sel' => $this->menu_post_sel)) ?>
+        <div id="mictaInnerContent" class="all">
+            <?= $this->partial('mi-cuenta/_sidebar_datos_personales.phtml', array('menu_sel_side' => $this->menu_sel_side)) ?>
+	        <div id="MictaContentBox" class="right">
+	            <div class="mctaTittle bold">Mis Alertas</div>
+	            <div class="mictaContet grayborder2 r3">
+	                <span class="mctaDescription">¿Sobre qué te gustaría obtener beneficios o información?</span>
+	                <form method="post" id="frmAlertas" class="frmAlertasAM">
+	                    <fieldset id="mictaMisAlertas" class="field textoinput pl10 mT20 grid8">
+	                        <div class="bloqueMicta block">
+	                            <label class="MictalabelMA labelMA left" for="fEmail">Categoría 1: </label>	
+                                    <? $hasError = $this->formCategorias->categoria_1->hasErrors(); ?>
+                                    <span class="response right"></span>
+	                            <?=
+	                            $this->formCategorias
+	                            ->categoria_1->setAttribs(array(
+	                                'id' => 'fCategoria1',
+	                                'class' => 'selectMictaCategia categoriax left' . ((!$hasError && $this->idSuscriptor == null) ? '' : ' ready'),
+	                                'tabindex' => '15')
+	                            )->renderViewHelper();
+	                            ?>
+	                            <?=$this->formCategorias->id_1->renderViewHelper()?>
+	                        </div>
+	                        <div class="bloqueMicta block">
+	                            <label class="MictalabelMA labelMA left" for="fEmail">Categoría 2: </label>
+	
+	                            <? $hasError = $this->formCategorias->categoria_2->hasErrors(); ?>
+                                    <span class="response right"></span>
+	                            <?=
+	                            $this->formCategorias
+	                            ->categoria_2->setAttribs(array(
+	                                'id' => 'fCategoria2',
+	                                'class' => 'selectMictaCategia categoriax left' . ((!$hasError && $this->idSuscriptor == null) ? '' : ' ready'),
+	                                'tabindex' => '15')
+	                            )->renderViewHelper();
+	                            ?>
+	                            <?=$this->formCategorias->id_2->renderViewHelper()?>
+	                        </div>  
+	                        <div class="bloqueMicta block">
+	                            <label class="MictalabelMA labelMA left" for="fEmail">Categoría 3: </label>
+	                            <? $hasError = $this->formCategorias->categoria_3->hasErrors(); ?>
+                                <span class="response right"></span>
+	                            <?=
+	                            $this->formCategorias
+	                            ->categoria_3->setAttribs(array(
+	                                'id' => 'fCategoria3',
+	                                'class' => 'selectMictaCategia categoriax left' . ((!$hasError && $this->idSuscriptor == null) ? '' : ' ready'),
+	                                'tabindex' => '15')
+	                            )->renderViewHelper();
+	                            ?>
+	                            <?=$this->formCategorias->id_3->renderViewHelper()?>
+	                        </div>
+	                        <div class="bloqueMictaCbox" id="fixCLassMA">
+                                    <div class="divMA left">&nbsp;</div>
+                                    <? $hasError = $this->formCategorias->enviar_alertas_email->hasErrors(); ?>
+	                            <?=
+	                            $this->formCategorias
+	                            ->enviar_alertas_email->setAttribs(array(
+	                                'id' => 'enviar_alertas_email',
+	                                'class' => 'mictaSC noBdr left' . ((!$hasError && $this->idSuscriptor == null) ? '' : ' ready'),
+	                                'tabindex' => '18')
+	                            )->renderViewHelper();
+	                            ?>
+	                            <span class="ml5 left fnormal txtChackNM">Quiero que me envíen <br/> la información a mi e-mail.</span>
+	                        </div>
+	                        <div class="bloqueMicta">
+	                            <input type="submit" id="saveChangesMicta" value="" class="btnAll saveChangesMicta"/>
+	                        </div>
+	                    </fieldset>
+	                </form>
+	
+	            </div>
+	        </div>
+        </div>
+    </div>
+</div>

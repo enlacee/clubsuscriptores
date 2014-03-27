@@ -1,0 +1,51 @@
+<? $activo = 'amiCtaBtnActive'; ?>
+<!--<ul id="mainNav" class="grid20 center">
+    <li class="<? //= ($this->layout()->active ==  App_Controller_Action_Establecimiento::MENU_NAME_INICIO?$activo:'');   ?> liMianMenu left">
+        <a href="<? //= $this->url(array('action'=>'index','controller'=>'home','module'=>'establecimiento'),'default',true);   ?>" class="aMenuMain">Inicio</a>
+    </li>
+    <li class="<? //= ($this->layout()->active == App_Controller_Action_Establecimiento::MENU_NAME_BENEFICIOS_OFERTADOS?$activo:'');   ?> liMianMenu left">
+        <a href="<? //= $this->url(array('action'=>'index','controller'=>'beneficios-ofertados','module'=>'establecimiento'),'default',true);   ?>" class="aMenuMain left">Mis Beneficios Ofertados</a>
+    </li>
+    <li class="<? //= ($this->layout()->active ==  App_Controller_Action_Establecimiento::MENU_NAME_REDENCION_BENEFICIO?$activo:'');   ?> liMianMenu left">
+        <a href="<? //= $this->url(array('action'=>'index','controller'=>'redencion-beneficio','module'=>'establecimiento'),'default',true);   ?>" class="aMenuMain left">Redención de Beneficio</a>
+    </li>
+    <li class="<? //= ($this->layout()->active ==  App_Controller_Action_Establecimiento::MENU_NAME_REPORTE_CONSUMO?$activo:'');   ?> liMianMenu left">
+        <a href="<? //= $this->url(array('action'=>'index','controller'=>'reporte-consumo','module'=>'establecimiento'),'default',true);   ?>" class="aMenuMain left">Reporte de Consumo</a>
+    </li>
+    <li class="<? //= ($this->layout()->active ==  App_Controller_Action_Establecimiento::MENU_NAME_CAMBIAR_CONTRASENIA?$activo:'');   ?> liMianMenu left">
+        <a href="<? //= $this->url(array('action'=>'cambiar-contrasenia','controller'=>'home','module'=>'establecimiento'),'default',true);   ?>" class="aMenuMain left">Cambiar contraseña</a>
+    </li>
+</ul>-->
+
+<div id="MictaMainNav" class="grid20 adminEsnav mB20">
+
+
+    <?php
+    if (!empty($this->layout()->auth['opciones'])) :
+        $options = $this->layout()->auth['opciones'];
+        //foreach ($options as $opt):
+        for ($i = (count($options) - 1); $i >= 0; $i--) {
+            $opt = $options[$i];
+            ?>
+            <a href="<?= $this->url(array(
+                    'action' => 'index', 
+                    'controller' => $opt['controlador'], 
+                    'module' => $opt['nombremod']), 
+                    'default', 
+                    true); ?>" 
+                class="amiCtaBtn ml2 <?=(($this->layout()->active == $opt['controlador'] || 
+                            ($this->layout()->active=='inicio' && $opt['controlador']=='redencion-beneficio'))
+                            ? $activo : ''); ?>">
+                    <?php echo $opt['nombreop']; ?>
+            </a>
+            <?php
+        }
+        //endforeach;
+        ?>
+    <?php else : ?>
+        <a href="<?= $this->url(array('action' => 'index', 'controller' => 'mis-datos', 'module' => 'establecimiento'), 'default', true); ?>" class="amiCtaBtn ml2 <?= ($this->layout()->active == App_Controller_Action_Establecimiento::MENU_NAME_MIS_DATOS ? $activo : ''); ?>">MIS DATOS</a>
+        <a href="<?= $this->url(array('action' => 'index', 'controller' => 'reporte-consumo', 'module' => 'establecimiento'), 'default', true); ?>" class="amiCtaBtn ml2 <?= ($this->layout()->active == App_Controller_Action_Establecimiento::MENU_NAME_REPORTE_CONSUMO ? $activo : ''); ?>">REPORTE</a>
+        <a href="<?= $this->url(array('action' => 'index', 'controller' => 'beneficios-ofertados', 'module' => 'establecimiento'), 'default', true); ?>" class="amiCtaBtn ml2 <?= ($this->layout()->active == App_Controller_Action_Establecimiento::MENU_NAME_BENEFICIOS_OFERTADOS ? $activo : ''); ?>">PROMOCIONES ACTIVAS</a>
+        <a href="<?= $this->url(array('action' => 'index', 'controller' => 'home', 'module' => 'establecimiento'), 'default', true); ?>" class="amiCtaBtn <?= ($this->layout()->active == App_Controller_Action_Establecimiento::MENU_NAME_INICIO ? $activo : ''); ?>">INICIO</a>
+    <?php endif; ?>
+</div>

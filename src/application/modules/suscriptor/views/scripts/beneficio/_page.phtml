@@ -1,0 +1,51 @@
+<?php 
+$cadenabusqueda= "/".(empty($this->slug)?"catalogo-virtual/":$this->slug."-".$this->id).$this->cadenabusqueda;
+?>
+<div id="paginacion" class="pagination right" >
+    <?php if ($this->pageCount) { ?>
+        <ul class="pagUl grid9 theta alignR right mT10 mB10">
+            <?php
+            if (isset($this->previous)) {
+                $params = $cadenabusqueda.$this->first;
+                echo '<li class="itemPag firstNextP">« <a class="linkPag firstP" href="' . $params . '#ac">Primero</a></li>';
+            }
+
+            if (isset($this->previous)) {
+                $params = $cadenabusqueda.$this->previous;
+                echo '<li class="itemPag"><a class="linkPag first" href="' . $params . '#ac">Anterior</a></li>';
+            }
+            ?>
+
+            <? foreach ($this->pagesInRange as $page): ?>
+                <? if ($page != $this->current): 
+                    $params = $cadenabusqueda.$page;
+                    ?>
+                    <li class="itemPag"><a href="<?= $params ?>#ac"><?= $page; ?></a></li>
+                    <?= $this->last == $page ? '' : '' ?>
+                <? else: ?>
+                    <li class="itemPag"><a class="linkPag active"><?= $page; ?> <?= $this->last == $page ? '' : '' ?></a></li>
+                <? endif; ?>
+            <? endforeach; ?>
+
+            <?
+            if (isset($this->next)) {
+                $params = $cadenabusqueda.$this->next;
+                echo '<li class="itemPag"><a class="linkPag next" href="' . $params . '#ac">Siguiente</a></li>';
+            }
+
+            if (isset($this->next)) {
+                $params = $cadenabusqueda.$this->last;
+                echo '<li class="itemPag lastNext"><a class="linkPag nextLastP" href="' . $params . '#ac">Último</a> »</li>';
+            }
+            ?>
+        </ul>
+    <?php
+    } else {
+        if ($this->pos==1) {
+            echo '<div class="paginador all">';
+            echo '<div class="pagUl grid8 theta alignR left mT10 mB10"> - No hay Promos registradas </div>';
+            echo '</div>';
+        }
+    }
+    ?>
+</div>

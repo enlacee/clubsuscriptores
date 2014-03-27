@@ -1,0 +1,14 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"  
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<?php    
+    foreach ($this->urls as $data) {
+?>
+    <url>
+        <loc><?=  SITE_URL . "/" . $data["slug"] . "-" . $data["id"]; ?></loc>
+        <image:image>
+            <image:loc><?=  ELEMENTS_URL . "/images/beneficios/" . $data["path_logo"]; ?></image:loc>
+            <image:title><?=  $data["titulo"]; ?></image:title>
+        </image:image>
+    </url>
+<?php } ?>
+</urlset>

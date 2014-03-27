@@ -1,0 +1,132 @@
+<script type="text/javascript" src="<?php echo $this->mediaUrl; ?>/js/itooltip.js"></script>
+<input type="hidden" id="idNumbLote" name="idNumbLote" value="<?php echo $this->nro; ?>" />
+<table>
+    <thead id="mictaBenTitle">
+        <tr>                      
+            <th class="mictBenTiTH ml5 mictbRight bold">Cupón</th>
+            <?php if(!$this->tipoFlag): $classTipoRedencion = ''; ?>
+            <th class="mictBenTiTH ml5 mictbRight bold grid4">Monto descuento</th>
+            <th class="mictBenTiTH ml5 mictbRight bold grid1">N° Voucher</th>
+            <?php else : if($this->tipo_redencion==0): $classTipoRedencion = 'classNoCierraPuerta';?>
+                <th class="mictBenTiTH ml5 mictbRight bold grid5">Tipo</th>
+                <th class="mictBenTiTH ml5 mictbRight bold grid1">
+                    Precio Regular (<?=$this->monedaArray["tipo_moneda"]?>)
+                </th>
+                <th class="mictBenTiTH ml5 mictbRight bold grid1">
+                    Precio Suscriptor (<?=$this->monedaArray["tipo_moneda"]?>)
+                </th>
+                <th class="mictBenTiTH ml5 mictbRight bold grid1">
+                    Ahorro (<?=$this->monedaArray["tipo_moneda"]?>)
+                </th>
+                <th class="mictBenTiTH ml5 mictbRight bold grid1">N° Voucher</th>
+            <?php else : $classTipoRedencion = 'classCierraPuerta'; ?>
+                <th class="mictBenTiTH ml5 mictbRight bold grid5">Tipo</th>
+                <th class="mictBenTiTH ml5 mictbRight bold grid4">
+                    Monto (<?=$this->monedaArray["tipo_moneda"]?>)
+                </th>
+                <th class="mictBenTiTH ml5 mictbRight bold grid4">
+                    Ahorro (<?=$this->monedaArray["tipo_moneda"]?>)
+                </th>
+                <th class="mictBenTiTH ml5 mictbRight bold grid4">
+                    Monto final a Pagar (<?=$this->monedaArray["tipo_moneda"]?>)
+                </th>
+            <?php endif;endif;?>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $nrotab = 1;
+            for ($i = 0; $i < $this->nro; $i++): $nrotab++; 
+                $nameCtrl = ''; $class = '';
+                if($this->tipoFlag):
+                    $nameCtrl = 'cbotipo'; $class = 'left widthCbo '.$classTipoRedencion;
+                else:
+                    $nameCtrl = 'monto'; $class = 'inputRcupon left txtMntoDescR';
+                endif;
+            ?>
+            <tr class="<?php echo (($i+1)%2==0?'':'even'); ?>">
+                <td class="mictTdRedimido mictbRight mictbTop">
+                    <?php echo ($i+1); ?>
+                </td>
+                <td class="mictTdRedimido mictbRight mictbTop grid4">
+                   <!--<span class="black left medidaCP">< ?=$this->monedaArray["tipo_moneda"]?></span>-->
+                   <?$hasError = $this->formRedimirC->{$nameCtrl.($i+1)}->hasErrors(); ?>
+                   <?=$this->formRedimirC->{$nameCtrl.($i+1)}->setAttribs(
+                          array(
+                              'class' => $class
+                              ,'tabindex' => $nrotab
+                          ))->renderViewHelper();
+                   ?>
+                   <?php if($this->tipoFlag):?>
+                       <a class="showMessageTipo iTooltip" rel="" href="#">
+                           <span class="tip hide">Seleccione Descuento</span>
+                           <img src="<?php echo $this->mediaUrl; ?>/images/info.png" class="mT5 ml5"/>
+                       </a>
+                   <?php endif;?>
+                   <span class="responseT left <?=$hasError?' bad':''?>"><?=$hasError?$this->formRedimirC->{$nameCtrl.($i+1)}->errMsg:''?></span>
+                </td>
+                <?php if(!$this->tipoFlag): ?>
+                    <td class="mictTdRedimido mictbRight mictbTop grid1">
+                    <?php $nrotab++; ?>
+                    <?$hasError = $this->formRedimirC->{'numero_cupon'.($i+1)}->hasErrors(); ?>
+                    <?=$this->formRedimirC->{'numero_cupon'.($i+1)}->setAttribs(
+                        array(
+                            'class' => 'inputRcupon left'
+                            ,'tabindex' => $nrotab
+                        )
+                    )->renderViewHelper();
+                    ?>
+                        <span class="responseT left <?=$hasError?' bad':''?>">
+                            <?=$hasError?$this->formRedimirC->{'numero_cupon'.($i+1)}->errMsg:''?></span>
+                    </td>
+                <?php else : if($this->tipo_redencion==0): 
+                    $selectv=$this->formRedimirC->{$nameCtrl.($i+1)}->getValue();
+                    $arrSelectv=explode('-',$selectv);
+                    $arr1Selectv=isset($arrSelectv[1])?$arrSelectv[1]:'';
+                    $arr2Selectv=isset($arrSelectv[2])?(
+                            (empty($arrSelectv[2]) || $arrSelectv[2]=='0.00')?'':$arrSelectv[2]):'';
+                    $arr3Selectv=isset($arrSelectv[3])?(
+                            (empty($arrSelectv[3]) || $arrSelectv[3]=='0.00')?'':$arrSelectv[3]):'';
+                        
+                ?>
+                        <td class="mictTdRedimido mictbRight mictbTop grid1"><?=$arr2Selectv?></td>
+                        <td class="mictTdRedimido mictbRight mictbTop grid1"><?=$arr3Selectv?></td>
+                        <td class="mictTdRedimido mictbRight mictbTop grid1"><?=$arr1Selectv?></td>
+                        <td class="mictTdRedimido mictbRight mictbTop grid1">
+                            <?php $nrotab++; ?>
+                            <?$hasError = $this->formRedimirC->{'numero_cupon'.($i+1)}->hasErrors(); ?>
+                            <?=$this->formRedimirC->{'numero_cupon'.($i+1)}->setAttribs(
+                                array(
+                                    'class' => 'inputRcupon left'
+                                    ,'tabindex' => $nrotab
+                                )
+                            )->renderViewHelper();
+                            ?>
+                            <span class="responseT left <?=$hasError?' bad':''?>"><?=$hasError?$this->formRedimirC->{'numero_cupon'.($i+1)}->errMsg:''?></span>
+                        </td>
+                    <?php else : ?>
+                        <td class="mictTdRedimido mictbRight mictbTop grid1">
+                            <?=$this->formRedimirC->{'monto'.($i+1)}->setAttribs(
+                                    array(
+                                        'class' => 'inputRcupon left classCierraPuerta2',
+                                        'tabindex' => $nrotab
+                                    ))->renderViewHelper();
+                            ?>
+                        </td>
+                        <td class="mictTdRedimido mictbRight mictbTop grid1">
+                            <?php $montov=$this->formRedimirC->{'monto'.($i+1)}->getValue();
+                                  $selectv=$this->formRedimirC->{$nameCtrl.($i+1)}->getValue();
+                                  $arrSelectv=explode('-',$selectv);
+                                  $arr4Selectv=isset($arrSelectv[4])?$arrSelectv[4]:0;
+                                  $ahorroV=($montov*$arr4Selectv)/100;
+                                  echo (!empty($montov)&&!empty($arr4Selectv))?(round($ahorroV,2)):'';
+                            ?>
+                        </td>
+                        <td class="mictTdRedimido mictbRight mictbTop grid1">
+                            <?=(!empty($montov)&&!empty($arr4Selectv))?(round($montov-$ahorroV,2)):'';?>
+                        </td>
+                <?php endif;endif;?> 
+            </tr>
+        <?php endfor; ?>
+        <tr></tr>
+    </tbody>
+</table>

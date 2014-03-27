@@ -1,0 +1,185 @@
+<div id="footerContainer">
+    <div id="iFoot" class="block">
+        <div class="boxFoot left">
+            <h4 class="tituloFooter">Los más vistos</h4>
+            <!-- Promos más acogidas -->
+            <ul class="ulListF">
+                <?php foreach ($this->layout()->promos_acogidas as $promo):
+                        //$filtros = array('id' => $promo['id'], 'slug' => $promo['slug'] );
+                        //$ruta = $this->url($filtros, 'deta_beneficio', true);
+                        $ruta = "/".$this->TextToUrl($promo['titulo']).'-'.$promo['id'];
+                ?>
+                    <li class="linksFooter"> 
+                        <h3 class="font12 margin0"><a class="linkWhite" href="<?php echo $ruta; ?>">
+                            <?php echo $this->escape($promo['titulo']); ?>
+                        </a></h3>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+            <div class="verTodasfooter">
+                <div class="linksFooter">
+                    <a class="linkWhite" href="<?php echo $this->url(array(
+                            'action'=>'index',
+                            'controller'=>'catalogo-virtual'),
+                        'default',true);?>/mas-visto/todos/#ac">
+                        Ver todas
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="boxFoot lastFoot left">
+            <h4 class="tituloFooter font18">Los más consumidos</h4>
+            <ul class="ulListF">
+                <?php foreach ($this->layout()->promos_mas_consumidas as $promo):
+                    //$filtros = array('id' => $promo['beneficio_id'], 'slug' => $promo['slug'] );
+                    //$ruta = $this->url($filtros, 'deta_beneficio', true);
+                    $ruta = "/".$this->TextToUrl($promo['titulo']).'-'.$promo['id'];
+                ?>
+                    <li class="linksFooter"> 
+                        <h3 class="font12 margin0">
+                            <a class="linkWhite" href="<?=$ruta?>"><?=$this->escape($promo['titulo'])?></a>
+                        </h3>
+                    </li>
+                <?php endforeach;?>
+            </ul>
+            <div class="verTodasfooter">
+                <div class="linksFooter"> 
+                    <a class="linkWhite" href="<?php echo $this->url(array(
+                            'action'=>'index',
+                            'controller'=>'catalogo-virtual'),
+                        'default',true);?>/mas-consumido/todos/#ac">
+                        Ver todas
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="boxFoot lastFoot right">
+            <h4 class="tituloFooter font18">Central de Ayuda</h4>
+            <ul class="ulListF">
+                <li class="linksFooter"> 
+                    <h3 class="font12 margin0">
+                        <a class="linkWhite" href="<?php echo $this->url(array(),'preguntas_frecuentes',true); ?>">
+                            Preguntas Frecuentes
+                        </a>
+                    </h3>
+                </li> 
+                <li class="linksFooter"> 
+                <?php if(empty($this->layout()->auth['suscriptor'])):?>
+                    <h3 class="font12 margin0">
+                        <a class="winModal noScrollTop linkWhite" href="#loginModalW">Quejas y Reclamos</a>
+                    </h3>
+                <?php else:  ?>
+                    <h3 class="font12 margin0">
+                        <a class="linkWhite" href="<?php echo $this->url(array(),'quejas_reclamos',true); ?>">
+                                Quejas y Reclamos
+                        </a>
+                    </h3>
+                <?php endif; ?>
+                </li>
+                <li class="linksFooter"> 
+                    <h3 class="font12 margin0">
+                        <a class="linkWhite" href="<?php echo $this->url(array(), 'contacto', true); ?>">
+                            Déjanos un mensaje
+                        </a>
+                    </h3>
+                </li>
+                <li class="linksFooter">
+                <?php if(empty($this->layout()->auth['suscriptor'])):?>
+                    <h3 class="font12 margin0">
+                        <a class="winModal noScrollTop linkWhite" href="#loginModalW">Mi cuenta</a>
+                    </h3>
+                <?php else:  ?>
+                    <h3 class="font12 margin0">
+                        <a class="linkWhite" href="<?php echo $this->url(array(
+                                'action'=>'index', 
+                                'controller'=>'mi-cuenta', 
+                                'module'=>'suscriptor'),
+                            'default',true); ?>">
+                            Mi cuenta
+                        </a>
+                    </h3>
+                <?php endif; ?>
+                </li>
+                <li class="linksFooter_sep2"> 
+                    <h3 class="font12 margin0">
+                        <a class="linkWhite" href="<?php echo $this->url(array(),'login_establecimiento', true); ?>">
+                            Acceso a establecimiento
+                        </a>
+                    </h3>
+                </li>
+                <li class="linksFooter_sep3"> 
+                    <h3 class="font12 margin0">
+                        <a id="idTerminosCondiciones" class="linkWhite" 
+                        target="_blank" 
+                        href="<?=MEDIA_URL;?>/TERMINOS_Y_CONDICIONES_DE_LA_SUSUCRIPCIÓN_AL_REPARTO_DE_DIARIOS_O_REVISTAS_2012.pdf">
+                            Términos y condiciones del servicio de suscripciones
+                        </a>
+                    </h3>
+                </li>
+            </ul>
+            <div class="verTodasfooter">
+                <div class="linksFooter"> <a class="linkWhite" href="#"></a></div>
+            </div>
+        </div>
+    </div>  
+    <div id="copyright" class="grid8"> © <?php echo date('Y'); ?> Club de suscriptores</div>
+</div>
+<div class="see-also">
+  <div class="w1000"><span>Visite también:</span>
+    <ul>
+      <li><a target="_blank" title="Diario el Comercio" href="http://elcomercio.pe?ref=clubsuscriptor">elcomercio.pe</a></li>
+      <li><a target="_blank" title="Peru.com" href="http://peru.com?ref=clubsuscriptor">peru.com</a></li>
+      <li><a target="_blank" title="Diario Perú21" href="http://peru21.pe?ref=clubsuscriptor">peru21.pe</a></li>
+      <li><a target="_blank" title="La Prensa" href="http://laprensa.com.pe?ref=clubsuscriptor">laprensa.com.pe</a></li>
+      <li><a target="_blank" title="Diario Gestión" href="http://gestion.pe?ref=clubsuscriptor">gestion.pe</a></li>
+      <li><a target="_blank" title="Depor.pe" href="http://depor.pe?ref=clubsuscriptor">depor.pe</a></li>
+      <li><a target="_blank" title="Diario Trome" href="http://trome.pe?ref=clubsuscriptor">trome.pe</a></li>
+      <li><a target="_blank" title="Publimetro" href="http://publimetro.pe?ref=clubsuscriptor">publimetro.pe</a></li>
+      <li><a target="_blank" title="GEC" href="http://gec.pe?ref=clubsuscriptor">gec.pe</a></li>
+      <li class="last"><a target="_blank" title="Clasificados" href="http://clasificados.pe/?ref=clubsuscriptor">clasificados.pe</a></li>
+    </ul>
+    <ul>
+      <li><a target="_blank" title="Aptitus" href="http://aptitus.pe?ref=clubsuscriptor">aptitus.pe</a></li>
+      <li><a target="_blank" title="Kotear" href="http://kotear.pe?ref=clubsuscriptor">kotear.pe</a></li>
+      <li><a target="_blank" title="Urbania" href="http://urbania.pe?ref=clubsuscriptor">urbania.pe</a></li>
+      <li><a target="_blank" title="Neoauto" href="http://neoauto.pe?ref=clubsuscriptor">neoauto.pe</a></li>
+      <li><a target="_blank" title="GuiaGPS" href="http://guiagps.pe?ref=clubsuscriptor">guiagps.pe</a></li>
+      <li><a target="_blank" title="Ofertop" href="http://ofertop.pe?ref=clubsuscriptor">ofertop.pe</a></li>
+      <li><a target="_blank" title="NuestroMercado" href="http://nuestromercado.pe?ref=clubsuscriptor">nuestromercado.pe</a></li>
+      <li><a target="_blank" title="PagoEfectivo" href="http://pagoefectivo.pe?ref=clubsuscriptor">pagoefectivo.pe</a></li>
+      <li class="last"><a target="_blank" title="PeruRed" href="http://perured.pe?ref=clubsuscriptor">perured.pe</a></li>
+    </ul>
+  </div>
+</div>
+<?php /*
+<div id="footerLinks" class="all">
+    <p class="linkOut">Visite tambi&eacute;n: 
+        <a target="_blank" class="linkF" href="http://elcomercio.pe" title="Diario El Comercio">elcomercio.pe</a>
+        <span class="pipe">|</span> 
+        <a target="_blank" class="linkF" href="http://peru21.pe" title="Diario Peru21">peru21.pe</a>
+        <span class="pipe">|</span> 
+        <a target="_blank" class="linkF" href="http://gestion.pe" title="Diario Gestion">gestion.pe</a>
+        <span class="pipe">|</span> 
+        <a target="_blank" class="linkF" href="http://depor.pe" title="Depor.pe">depor.pe</a>
+        <span class="pipe">|</span> 
+        <a target="_blank" class="linkF" href="http://trome.pe" title="Diario Trome">trome.pe</a>
+        <span class="pipe">|</span> 
+        <a target="_blank" class="linkF" href="http://clasificados.elcomercio.com.pe" 
+           title="Clasificados El Comercio">clasificados.pe</a>
+        <span class="pipe">|</span> 
+        <a target="_blank" class="linkF" href="http://aptitus.pe" title="Aptitus">aptitus.pe</a>
+        <span class="pipe">|</span> 
+        <a target="_blank" class="linkF" href="http://neoauto.pe" title="Neoauto">neoauto.pe</a>
+        <span class="pipe">|</span> 
+        <a target="_blank" class="linkF" href="http://urbania.pe" title="Urbania">urbania.pe</a>
+        <span class="pipe">|</span> 
+        <a target="_blank" class="linkF" href="http://guiagps.pe" title="Guia GPS">guiagps.pe</a>
+        <span class="pipe">|</span> 
+        <a target="_blank" class="linkF" href="http://kotear.pe" title="Kotear">kotear.pe</a>
+        <span class="pipe">|</span> 
+        <a target="_blank" class="linkF" href="http://nuestromercado.com" 
+           title="Nuestromercado.com">nuestromercado.com</a>
+    </p>
+</div>
+*/ ?>
+

@@ -1,0 +1,115 @@
+<div id="divContentEncG" rel="<?php echo $this->state; ?>" class="<?php echo ($this->state)?'hide':''?>">
+    <h6 class="<?php echo ($this->edita?'admintituLightbox2':'admintituLightbox'); ?>">
+        <?php echo ($this->edita?'Editar información de encuesta<br/>"'.$this->encuesta['nombre'].'"':'Nueva Encuesta'); ?>
+    </h6>
+
+    <form id="frmEncuestasEG" name="frmEncuestasEG" method="post" action="">
+        <?php if($this->edita):?>
+        <input name="txtnombre" type="hidden" id="txtnombre" value="<?php echo $this->encuesta['nombre']; ?>"/>
+        <?php endif;?>
+        <input name="accion" type="hidden" id="accion" value="<?php echo ($this->edita?'E':'N'); ?>"/>
+        <input name="id" type="hidden" id="id" value="<?php echo $this->codigo; ?>"/>
+        <fieldset id="formencuesta">
+            <?php if(!$this->edita):?>
+                <div class="block">
+                    <label class="labelAdminGestEE" style="width: 52px;">Nombre</label>
+    <!--                <input id="nombre" class="inputAdminGEE Trebuchet11 gray ml10 left" type="text" name="nombre" value="" <?php echo $this->onlyRead; ?>>-->
+                    <?php 
+                        $errors = $this->formEncuesta->nombre->hasErrors();
+                        echo $this->formEncuesta->nombre->setAttribs(
+                            array('class'=>'inputAdminGEE Trebuchet11 gray ml10 left '.(!$errors && $this->ispost?'ready':''))
+                        )->renderViewHelper();
+                    ?>
+                    <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                        <?php echo ($errors?$this->formEncuesta->nombre->errMsg:''); ?>
+                    </span>
+                </div>
+            <?php endif; ?>
+            <div class="block">
+                <label class="labelAdminGestEE" for="ftitulo">Pregunta</label>
+    <!--            <input id="pregunta" class="inputAdminGEE Trebuchet11 gray ml10 left" type="text" name="pregunta" value="<?php echo (!empty($this->encuesta['pregunta'])?$this->encuesta['pregunta']:''); ?>" <?php echo $this->onlyRead; ?>>-->
+                <?php 
+                    $errors = $this->formEncuesta->pregunta->hasErrors();
+                    echo $this->formEncuesta->pregunta->setAttribs(
+                        array('class'=>'inputAdminGEE Trebuchet11 gray ml10 left '.(!$errors && $this->ispost?'ready':''))
+                    )->renderViewHelper();
+                ?>
+                <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                    <?php echo ($errors?$this->formEncuesta->pregunta->errMsg:''); ?>
+                </span>
+            </div>
+            <div class="contentOptionsEncO">
+            <?php 
+                for($i=0;$i<$this->nrooptions;$i++):
+                    $option = array();
+                    if(array_key_exists($i, $this->opciones)){
+                        $option = $this->opciones[$i];
+                    }
+            ?>
+            <div class="block camposEncuesta">
+                <label class="labelAdminGestEE" for="fOpcion<?php echo $i+1; ?>">Opción <?php echo $i+1; ?></label>
+    <!--            <input id="opcion< ?php echo $i+1; ?>" class="inputAdminGEE2 Trebuchet11 gray ml10 left" type="text" name="opcion[]" value="< ?php echo (!empty($option['opcion'])?$option['opcion']:''); ?>" < ?php echo $this->onlyRead; ?>>-->
+                <?php 
+                    $errors = $this->formEncuesta->{'opcion'.($i+1)}->hasErrors();
+                    $this->formEncuesta->{'opcion'.($i+1)}->setValue(!empty($option['opcion'])?$option['opcion']:'');
+                    /*echo $this->formEncuesta->opcion->setAttribs(
+                        array('id'=>'opcion'.($i+1),'name'=>'opcion'.($i+1),'class'=>'inputAdminGEE2 Trebuchet11 gray ml10 left '.(!$errors && $this->ispost?'ready':''))
+                    )->renderViewHelper();*/
+                    echo $this->formEncuesta->{'opcion'.($i+1)}->setAttribs(
+                        array('class'=>'inputAdminGEE2 Trebuchet11 gray ml10 left '.(!$errors && $this->ispost?'ready':''))
+                    )->renderViewHelper();
+                    $this->formEncuesta->{'idop'.($i+1)}->setValue(!empty($option['id'])?$option['id']:'');
+                    /*echo $this->formEncuesta->idop->setAttribs(
+                        array('id'=>'idop'.($i+1),'name'=>'idop'.($i+1))
+                    )->renderViewHelper();*/
+                    echo $this->formEncuesta->{'idop'.($i+1)}->renderViewHelper();
+                ?>
+                <span class="response left <?php echo ($errors)?'bad':'' ?>">
+                    <?php echo ($errors?$this->formEncuesta->opcion->errMsg:''); ?>
+                </span>
+    <!--            <input id="idop< ?php echo $i+1; ?>" type="hidden" name="idop[]" value="< ?php echo (!empty($option['id'])?$option['id']:''); ?>">-->
+            </div>
+            <?php endfor;?>
+            </div>
+            <?php if($this->msjOps){ ?>
+                <span class="camposEncuesta bad ml100">
+                    <?php echo $this->cadMsjOps; ?>
+                </span>
+            <?php } ?>
+            <?php if(!$this->edita): ?>
+            <div class="block camposEncuesta">
+<!--                <input value="1" class="ml20 mT10" for="fPublicarautomaticamente" type="checkbox" name="activo" id="activo">-->
+                <?php 
+                 echo $this->formEncuesta->activo->setAttribs(
+                     array('class'=>'ml20 mT10', 'for'=>"fPublicarautomaticamente")
+                 )->renderViewHelper();
+                ?>
+                <span class="Trebuchet11 black m10all c3 ">Publicar automáticamente</span>
+            </div>
+            <?php endif; ?>
+
+            <div class="block BtnesPublicarEE">
+                <?php if($this->edita && $this->onlyRead!=''): ?>
+                <label class="labelAdminGestEE"><?php echo $this->messageNoEdit; ?></label>
+                <?php endif; ?>
+                <input id="btnCloseEG" type="button" value="" class="btnAll EEcancelarBtn right closeWM"/>
+                <?php if($this->onlyRead==''): ?>
+                <input type="button" value="" class="btnAll EEguardarBtn right" id="btnGuardarEG"/>
+                <?php endif; ?>
+                <?php if($this->edita && $this->onlyRead==''): ?>
+                <input value="" type="button" class="btnAll EEPublicarBtn right" id="btnPublicarEG"/>
+                <?php endif; ?>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<?="<div class='hide' id='csrf2'>".$this->csrf."</div>"?>
+<div id="winConfirma" class="<?php echo ($this->state && $this->msj)?'':'hide'?>">
+    <h6 class="TilutoLightbox">Mensaje de confirmación</h6>
+    <div id="diagContent" class="infoDialog">¿ Realmente desea publicar la encuesta ?<br/>
+        La encuesta aún vigente pasara a no vigente para que esta tome su lugar.</div> 
+    <div class="btnMsjModal">
+        <a id="idAceptarOkEG" class="adminAceptBtn left" href="#"></a>
+        <a id="idCancelarEG" class="adminQuitBtnbene left" href="#"></a>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div id="main-content2" class="grid20">
+    <div id="content" class="left grid14">
+<!--        <div id="TopboxBack">
+            <div id="topBox" class="grayborder2 mB20 r5">
+
+                <div class="flowWAll">	 
+                    <h6 class="Titulo680 bold">SERVICIOS AL SUSCRIPTOR</h6>
+                    <h2 id="titunuevasVentajas"></h2>
+                    <div id="ventajas-img">                    
+                        <div id="iVentajas-img">
+                            <div id="inVentajas-img">
+                                <div class="caja_nuevaventajSS">
+                                    <div class="imgServPhoto left">
+                                        <img src="<?php echo $this->mediaUrl; ?>/images/caribe.jpg" width="180" height="102" alt="Club del suscriptor"/>
+                                    </div>
+                                    <div id="descripNVentajas" class="right">
+                                        <h6 class="TitulodeEstaP">Descuentos para ti y tu familia para el Caribe</h6>
+                                        <p class="ftxt14 fnormal c3">
+                                            Conóce nuevas amistades y playas
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="caja_nuevaventajSS">
+                                    <div class="imgServPhoto left">
+                                        <img src="<?php echo $this->mediaUrl; ?>/images/cine.jpg" width="180" height="102" alt="Club del suscriptor"/>
+                                    </div>
+                                    <div id="descripNVentajas" class="right">
+                                        <h6 class="TitulodeEstaP">Asiste a toda la temporada del festival de cine de Lima</h6>
+                                        <p class="ftxt14 fnormal c3">
+                                            Asiste a las proyecciones y premiaciones
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+
+                        <div id="cajatxtSS" >
+                            <div class="f16">Suscríbete a El Comercio y disfruta de los beneficios de pertenecer a nuestra comunidad de suscriptores.</div>
+                            <div id="worldOfNV"><img src="<?php echo $this->mediaUrl; ?>/images/CsVentajas.jpg" alt="Club del suscriptor"/></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>-->
+        <div id="bottomBox" class="grayborder2 r5">
+            <div class="flowWAll">	
+                <h6 class="Titulo680 bold">SUSCRIPCIONES</h6>
+                <div id="destacadosContainer">
+                    <a target="_blank" href="<?php echo $this->mediaUrl; ?>/TERMINOS_Y_CONDICIONES_DE_LA_SUSUCRIPCIÓN_AL_REPARTO_DE_DIARIOS_O_REVISTAS_2012.pdf">
+                        Términos y condiciones del servicio de suscripciones.
+                    </a>
+                    
+                </div>
+            </div>	
+        </div>
+    </div>
+    <!--SIDEBAR -->
+    <div id="sidebar" class="grid6 right">
+        
+        <?php //echo $this->partial('home/_siguenos.phtml',array('cuentas'=> $this->cuentas)); ?>
+        
+        <div id="content-viewproducts">
+            <div id="viewproducts" class="grayborder2 mB20 r5">
+                <h6 class="mbgray bold">CATÁLOGO</h6>
+                <div id="catalogoImg"></div>
+                <a id="print-products" class="btnAll" target="_blank" href="<?php echo $this->siteUrl; ?>/magazine/mostrar-catalogo/"></a>
+            </div>
+        </div>
+        <?php echo $this->partial('home/_articulo.phtml', array('portada_articulo' => $this->portada_articulo, 'imagenes_articulo' => $this->imagenes_articulo, 'elementsUrl' => $this->elementsUrl,'mediaUrl'=>$this->mediaUrl, 'sufixlittle' => $this->sufixlittle)); ?>
+
+        <?php echo $this->partial('home/_encuesta.phtml', array('encuesta' => $this->encuesta, 'opciones' => $this->opciones, 'existe_voto' => $this->existe_voto)); ?>
+    </div>
+</div>

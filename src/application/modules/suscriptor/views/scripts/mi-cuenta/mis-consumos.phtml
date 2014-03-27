@@ -1,0 +1,51 @@
+<div id="MictaMainContentBox" class="grayborder2 r5">
+  <div id="MictaMainBox" class="all">
+    <?= $this->partial('mi-cuenta/_menu.phtml', array('menu_post_sel' => $this->menu_post_sel)) ?>
+    <div id="mictaInnerContent" class="all">
+      <?= $this->partial('mi-cuenta/_sidebar_mi_cuenta.phtml', array('menu_sel_side' => $this->menu_sel_side)) ?>
+        <div id="MictaContentBox" class="right">
+            <form id="formFiltroDate" class="all" method="post" action="">
+                <div class="mctaTittle bold">Mis Consumos</div>
+                <div class="mCtaGridW  r3 "> 
+                    <div id="mictaConsFiltro" class="left grayborder2">
+                        <label class="mConsumosFiltro">
+                            <?php 
+                                $aTSelec=$this->arrayTiposSeleccionados;
+                                $vaTSelec=count($this->tipo_beneficio)+1;
+                            ?>
+                            <input type="checkbox" class="noBdr left consumopaginator" value="0" name="chktipobenef[]" 
+                               <?=empty($aTSelec)?'checked':(($vaTSelec == (count($aTSelec)))?'checked':'')?>  rel="0">
+                        <span class="mcitaCoDes ml5 right fnormal">Todo</span> 
+                        </label>
+                        <?php 
+                        foreach($this->tipo_beneficio as $cod=>$tipo):?>
+                            <label class="mConsumosFiltro">
+                            <input type="checkbox" class="noBdr left consumopaginator optionalA" 
+                                   value="<?php echo $cod; ?>" 
+                                   <?=empty($aTSelec)?'checked':(!empty($aTSelec[$cod])?'checked':'')?> 
+                                   name="chktipobenef[]" rel="0">
+                            <span class="mcitaCoDes ml5 right fnormal"><?php echo $this->escape($tipo); ?></span> 
+                            </label>
+                        <?php endforeach;?>
+                    </div>
+                    <div id="mictaConsTable_filDate" class="left">
+                        <?= $this->partial('mi-cuenta/mis-filtro-date.phtml', 
+                                array(
+                                    'frmFiltroDate' => $this->frmFiltroDate,
+                                    'consumosAnual' => $this->consumosAnual
+                                )); ?>
+                    </div>
+                    <div id="mictaConsTable" class="right">
+                        <?= $this->partial('mi-cuenta/mis-consumos-tipo.phtml', 
+                                array(
+                                    'consumos' => $this->consumos,
+                                    'ord' => $this->ord,
+                                    'col' => $this->col
+                                )); ?>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>

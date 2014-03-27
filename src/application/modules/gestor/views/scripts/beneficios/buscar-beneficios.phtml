@@ -1,0 +1,83 @@
+<div class="all cntPagFix">
+    <?php if (!!$this->beneficios->getCurrentItemCount()) { ?>
+        <div class="left m5all"><?php echo $this->mostrando; ?></div>
+        <?= $this->paginationControl($this->beneficios, 'Sliding', '_partials/_pag.phtml') ?>
+    <?php } ?>
+</div><div class="mictaContet grayborder2 r3 mB20 table960Fix">
+    <table id="mictBenContent">
+        <thead id="mictaBenTitle">
+            <tr>
+                <th class="mictBenTiTH ml5 mictbRight bold"><input id="chk_all" type="checkbox"/></th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Tipo</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Nombre</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Establecimiento</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Categoría</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Fecha<br/>
+                    Registro</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Estado</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Inicio<br/>Vigencia</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Fin<br/>Vigencia</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Stock</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Stock disponible</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Cupos Generados</th>
+                <th class="mictBenTiTH ml5 mictbRight bold">Cupos Consumidos</th>
+                <th class="mictBenTiTH ml5 bold">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $estado = array();
+            $estado[0][0] = 'Borrador';
+            $estado[0][1] = 'Pendiente';
+            $estado[1][0] = 'Vencido';
+            $estado[1][1] = 'Publicado';
+            $class = array(0 => 'even', 1 => '');
+            $i = 0;
+            ?>
+            <? foreach ($this->beneficios as $beneficio) : ?>
+                <tr class="<?= $class[$i++ % 2] ?>">
+                    <td class="mictBenFluTd mictbRight mictbTop"><input <?= (!($beneficio['publicado'] == 1 && $beneficio['activo'] == 1)) ? 'disabled="disabled"' : '' ?> class="chk_item" type="checkbox" value="<?= $beneficio['id'] ?>" /></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($beneficio['tb_nombre']) ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($beneficio['nombre']) ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($beneficio['e_nombre']) ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= str_replace("|", "<br/>", $this->escape($beneficio['categorias'])) ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= date('d/m/Y', strtotime($beneficio['fecha_registro']))."<br>".date('h:i A', strtotime($beneficio['fecha_registro'])) ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $estado[$beneficio['publicado']][$beneficio['activo']] ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= date('d/m/Y', strtotime($beneficio['bv_fecha_inicio_vigencia'])) ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= date('d/m/Y', strtotime($beneficio['bv_fecha_fin_vigencia'])) ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?=($beneficio['sin_stock']==1)?'Ilimitado':$beneficio['bv_stock'] ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <?=($beneficio['sin_stock']==1)?'Ilimitado':$beneficio['bv_stock_actual'] ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $beneficio['generado'] ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $beneficio['redimido'] ?></td>
+                    <td class="mictBenFluTd mictbTop">
+                        <a href="<?= $this->url(array('action' => 'editar-beneficio', 'controller' => 'beneficios', 'module' => 'gestor', 'id' => $beneficio['id']), 'default', true); ?>">Editar</a><br/>
+                        <? if ($beneficio['publicado'] == 1 && $beneficio['activo'] == 1) : ?>
+<!--                            <a rel="< ?= $beneficio['id'] ?>" href="#editBene" class="winModal">Editar</a><br/>-->
+                            <a rel="<?= $beneficio['id'] ?>" href="#beneVencer" class="winModal venc">Vencer</a><br/>
+                        <? // else : ?>
+                            <? // if ($beneficio['publicado'] == 0) : ?>
+<!--                                <a href="< ?= $this->url(array('action' => 'editar-beneficio', 'controller' => 'beneficios', 'module' => 'gestor', 'id' => $beneficio['id']), 'default', true); ?>">Editar</a><br/>-->
+                            <? // endif ?>
+                        <? endif ?>
+                        <a rel="<?= $beneficio['id'] ?>" href="#previewBene" class="winModal">Vista Previa</a><br/>
+                        <a rel="<?= $beneficio['id'] ?>" href="#darBajaBeneficio" class="winModal aDarBajaBenef">Dar&nbsp;de&nbsp;Baja</a>
+                    </td>
+                </tr>
+            <? endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<?="<div class='hide' id='csrf'>".$this->csrf."</div>"?>
+<?php if (!!$this->beneficios->getCurrentItemCount()) : ?>
+    <div class="all cntPagFix">
+        <div class="left m5all"><?php echo $this->nroregistros; ?></div>
+        <?= $this->paginationControl($this->beneficios, 'Sliding', '_partials/_pag.phtml') ?>
+    </div>
+<?php elseif (!$this->beneficios->getCurrentItemCount()) : ?>
+    <div class="paginador all">
+        <div class='pagUl theta alignL'> - No hay datos registrados con esos parámetros </div>
+    </div>
+<?php endif; ?>
+

@@ -1,0 +1,150 @@
+<?php 
+$cont = 0;
+$totalcupons = count($this->cupones);
+foreach ($this->cupones as $cupon):
+    $cont++;
+?>
+    <table style="width: 600px; border:1px dashed black;" align="center">
+        <tr>
+            <td align="left" style="padding-top: 15px;" colspan="2">                
+                <table style="margin:0;padding:0;" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>
+                            <div style=" float: left">
+                                <img src="<?=MEDIA_URL?>/images/logocs.png"  
+                                    style="width:300px; height:78px; margin-left:10px; text-align:left;" />
+                            </div>
+                        </td>
+                        <td>
+                            <table width="238" height="32" style="margin:0;padding:0;" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td width="10" height="32" style="width: 10px;height: 32px;">
+                                        <div style="height: 32px;float: left;width: 10px;">
+                                            <img src="<?=MEDIA_URL?>/images/cup_codigoImgIzq.png" style="border:none;display: block;
+                                                width: 10px;height: 32px;" />
+                                        </div>
+                                    </td>
+                                    <td width="218" height="32" style="width: 218px;height: 32px;background: #000;">
+                                        <div height="32" style="height: 32px;width: 218px;float:left;font:bold 20px/20px Arial; 
+                                            vertical-align: middle;text-align: center; color:#FFF;">
+                                            <span style="vertical-align: top; display: block;padding-top: 5px;">
+                                                <?php echo $cupon['codigo']; ?></span>
+                                        </div>
+                                    </td>
+                                    <td width="10" height="32" style="width: 10px;height: 32px;">
+                                        <div style="height: 32px;float: left;width: 10px;">
+                                            <img src="<?=MEDIA_URL?>/images/cup_codigoImgDer.png" 
+                                                style="border:none;display: block;width: 10px;height: 32px;" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                                    
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" style="padding-top: 15px;" colspan="2">
+                <hr width="97%" style="border: 0 none #000;border-top: 1px solid #000;height: 1px;margin: 5px 0;
+                    display: block;clear: both;">
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="padding-top: 8px;padding-left: 10px;" colspan="2">
+                <div style="font-size: 28px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif;
+                        padding-top: 10px;">
+                    <?php echo $this->beneficio['titulo']; ?>
+<!--                        CIERRA PUERTAS SAGA MAMÁ-->
+                    <span style=" color: red">*</span>
+                </div>
+                <div style="padding-top: 10px; font-family: Arial; font-size: 13px;">
+                    <?php echo $this->beneficio['codigo']; ?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px 10px 10px 10px;width: 240px" >
+                <img class="imgflujo" width="240" height="134" 
+                src="<?= $this->beneficio['elementsUrl']; ?>/images/beneficios/<?= $this->ImgName($this->beneficio['path_logo'],$this->beneficio['sufixmedium']); ?>" 
+                />
+            </td>
+            <td style="padding: 10px 10px 10px 10px;line-height:115%" >
+                <div style="font-size: 12px;text-align:justify;word-break: break-all;width: 320px;" >
+                    <?php if(!empty($this->beneficio['descripcion_cupon'])) {
+                            echo $this->beneficio['descripcion_cupon'];
+                        }
+                    ?>
+<!--                        ¡Engríe a Mamá en su día! El Club de Suscriptores y Saga Falabella te invitan 
+                    a un exclusivo Cierra Puertas.-->
+                </div>
+                <div style="font-size: 11px;font-weight: bold;padding-top: 8px;" >
+                    <?php if(!empty($this->beneficio['cuando'])) {
+                            echo "<b>Cuándo:</b> ".$this->beneficio['cuando'];
+                            }
+                    ?>
+<!--                        Viernes 11 de mayo de 2012-->
+                    <br>
+                    <?php if(!empty($this->beneficio['direccion'])) {
+                            echo "<b>Dónde:</b> ".$this->beneficio['direccion'];
+                            }
+                    ?>
+<!--                        Saga Falabella del Jockey Plaza, San Miguel, Miraflores y San Isidro.-->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" style="padding-top: 15px;" colspan="2">
+                <hr width="97%" style="border: 0 none #000;border-top: 1px solid #000;height: 1px;margin: 5px 0;
+                    display: block;clear: both;">
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="padding: 10px 10px 10px 10px;" colspan="2">
+                Suscriptor:<br>
+                <div style="font-size: 14px;font-weight: bold;float: left;margin-top: 5px;" >
+                    <?php  echo $this->datos_suscriptor; ?>
+<!--                        Ernesto Anaya-->
+                </div>
+                <div style="font-size: 14px;font-weight: bold;float: left;margin-left: 20px;" >
+<!--                        DNI 099999940-->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" style="padding-top: 5px;" colspan="2">
+                <hr width="97%" style="border: 0 none #000;border-top: 1px solid #000;height: 1px;margin: 5px 0;
+                    display: block;clear: both;">
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="padding: 10px 10px 10px 10px;" colspan="2">
+                <div style="font-size: 9px;word-break: break-all;width: 580px;" >
+                    <span style=" color: red">*</span>
+                    <?php echo $this->beneficio['terminos_condiciones_cupon'];?>
+<!--                        !Ven y Renuévate con Descuentos Exclusivos para tí y tu familia! Acércate con tu DNI al local de tu preferencia, solicita la tarjeta de descuento y preséntala en la caja al momento de pagar para acceder a los beneficios.-->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2" >
+                <center>
+                    <img src="<?=MEDIA_URL?>/images/cup_linkclubNegro.jpg"  
+                            style="text-align:center;margin:0 auto;" />
+                </center>
+                <br>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 5px 0 5px 0;letter-spacing:1px;font-size: 10px; background-color: #CCCCCC;
+                display: table-cell;vertical-align: middle;" 
+                align="center" colspan="2" >
+                ES INDISPENSABLE IMPRIMIR ESTE CUPÓN
+            </td>
+        </tr>
+    </table>
+<br/><br/>
+<?php endforeach;?>
+<b>Administrador del Club</b>
+<br><br>

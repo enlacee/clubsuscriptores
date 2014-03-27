@@ -1,0 +1,73 @@
+<?php if (!empty($this->portada_articulo)): ?>
+    <div id="socialifeBox" class="grayborder2 mB20 r5">
+        <h3 class="mbgray bold font18"> VIDA SOCIAL </h3>
+        <h4 class="vidaSocialTittle">
+            <?php
+            $params = array(
+                'id'=>$this->portada_articulo['id'],
+                'slug'=>$this->portada_articulo['slug'],
+                'idimg'=>$this->portada_articulo['orden']
+            );
+            $route = $this->url(
+                $params, 'deta_articulo', true
+            );
+            ?>
+            <a href="<?php echo $route; ?>"><?php echo $this->escape($this->portada_articulo['titulo']); ?></a>
+        </h4>
+        <p class="vidaSocialBajada">
+            <?php echo $this->escape($this->ReduceString($this->portada_articulo['contenido'],150,'')); ?>
+        </p>
+
+        <div id="fotosContainer">
+            <a class="aLinkVD" href="<?php echo $route; ?>" indice="1">
+                <img id="idvidasocial1" width="258" height="160"
+                     alt="Vida social 1" 
+                     src="<?=$this->elementsUrl?>/images/sociales/<?=$this->portada_articulo['imagen']?>"
+                     onerror="this.src='<?php echo $this->mediaUrl; ?>/images/vida_social_c.jpg'"
+                     />
+            </a>
+            <?php
+            /*$nrofilas = round(count($this->imagenes_articulo)/2,0);
+            $nrofilas = (count($this->imagenes_articulo)%2==0?$nrofilas:$nrofilas-1);
+            $nrecord = 0;
+            $maxfilas = 4;
+            for ($i=0;$i<$nrofilas;$i++):
+                if($i>=$maxfilas) break;
+            ?>
+            <div class="firstLine">
+                <div class="line1">
+                    <?php 
+                    for ($k=0;$k<2;$k++):
+                        if(array_key_exists($nrecord, $this->imagenes_articulo)):
+                            $params['idimg'] = $this->imagenes_articulo[$nrecord]['orden'];
+                            $route = $this->url($params, 'deta_articulo', true);
+                    ?>
+                        <a class="aLinkVD" href="<?php echo $route; ?>" indice="<?php 
+                            echo $this->imagenes_articulo[$nrecord]['orden']; ?>">
+                            <img id="idvidasocial<?php echo $nrecord; ?>" width="125" height="80" 
+                                 alt="Vida social <?php echo $nrecord; ?>" 
+                                 src="<?php echo $this->elementsUrl; ?>/articulos/<?php 
+                                    echo $this->imagenes_articulo[$nrecord]['articulo_id'].'/'.
+                                            $this->SufijoImagen($this->imagenes_articulo[$nrecord]['path_imagen'],
+                                                    $this->sufixlittle);?>" 
+                                 onerror="this.src='<?php echo $this->mediaUrl; ?>/images/vida_social_c.jpg'"/>
+                        </a>
+                    <?php 
+                        $nrecord++;
+                        endif;
+                    endfor;
+                    ?>	              	
+                </div>
+            </div>
+            <?php 
+            endfor;*/
+            ?>
+        </div>
+        <div class="all alignR">
+            <a href="<?php echo $this->url(array(
+                    'action'=>'index',
+                    'controller'=>'vida-social'),
+                'default',true); ?>" class="VerMasF">Ver más</a> 
+        </div>
+    </div>
+<?php endif; ?>

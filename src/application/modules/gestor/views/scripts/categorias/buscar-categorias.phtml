@@ -1,0 +1,59 @@
+<div id="mictBeneBtnBox" class="mB20 all">
+    <?php if (!!$this->categorias->getCurrentItemCount()) : ?>
+        <div class="alignR left"><?php echo $this->mostrando; ?></div>
+        <?= $this->paginationControl($this->categorias, 'Sliding', '_partials/_pag.phtml') ?>
+    <?php endif ?>
+</div>
+
+<div id="tableCatGe" class="mictaContet grayborder2 r3">
+    <table id="mictBenContent" ord="<?= $this->ord ?>" col="<?= $this->col ?>" pag="<?= $this->pag ?>">
+        <thead id="mictaBenTitle">
+            <tr>
+                <th class="mictBenTiTH ml5 mictbRight bold" width="4%" >
+                    <input type="checkbox" name="selectAll" class="noBdr" /></th>
+                <th class="mictBenTiTH ml5 mictbRight bold" width="20%">Nombre
+                    <a class="<?= ($this->col == 'nombre' && ( $this->ord == '' || $this->ord == 'ASC')) ? 'esblueArrow' : 'esblueArrowDown' ?> right mR10 mT5 ordenar" col="<?= $col = 'nombre' ?>" ord="<?= $ord = $this->col == $col && $this->ord == 'ASC' ? 'DESC' : 'ASC' ?>" pag="<?= $this->pag ?>" ></a>
+                </th>
+                <th class="mictBenTiTH ml5 mictbRight bold " width="40%">Descripción</th>
+                <th class="mictBenTiTH ml5 mictbRight bold " width="15%">N° de Beneficios Activos</th>
+                <th class="mictBenTiTH ml5 mictbRight bold" width="7%" >Estado </th>
+                <th class="mictBenTiTH  bold" width="10%">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <? $class = array(0 => 'even', 1 => '');
+            $i = 0; ?>
+            <? foreach ($this->categorias as $categoria) : ?>
+                <tr class="<?= $class[$i++ % 2] ?>">
+                    <td class="mictBenFluTd mictbRight mictbTop">
+                        <input type="checkbox" name="select" estado="<?= $categoria["activo"] ?>" id="<?= $categoria['id'] ?>" />
+                    </td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($categoria['nombre']) ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($categoria['descripcion']) ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $categoria['num_beneficio'] != null ? $categoria['num_beneficio'] : '0' ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?= $categoria['activo'] ? 'Activo' : 'Inactivo' ?></td>
+                    <td class="mictBenFluTd mictbTop">
+                        <ul>
+                            <li><a rel="<?= $categoria['id'] ?>" href="#loginModalW" class="editCat winModal" >Editar</a></li>
+                            <?php if ($categoria['activo'] == '0' && $categoria['num_beneficio'] == null) { ?>
+                                <li><a rel="<?= $categoria['id'] ?>" href="#winAlertCategoria" class="winModal elimina" >Eliminar</a></li>
+                            <?php } ?>
+                            <li><a rel="<?= $categoria['id'] ?>" estado="<?= $categoria["activo"] ?>" href="#adminGesCategModal" class="marginCero winModal cambEstadoOne" >Cambiar Estado</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            <? endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<div id="csrf" class="hidden"><?=$this->csrf?></div>
+<div id="mictBeneBtnBox" class="mT20 all">
+    <?php if (!!$this->categorias->getCurrentItemCount()) : ?>
+        <div class="alignR left"><?php echo $this->nroregistros; ?></div>
+        <?= $this->paginationControl($this->categorias, 'Sliding', '_partials/_pag.phtml') ?>
+    <?php elseif (!$this->categorias->getCurrentItemCount()) : ?>
+        <div class="paginador all">
+            <div class='pagUl theta alignL'> - No hay datos registrados con esos parámetros </div>
+        </div>
+    <?php endif; ?>
+</div>

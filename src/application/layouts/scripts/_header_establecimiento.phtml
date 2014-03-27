@@ -1,0 +1,61 @@
+<!--<h1 id="logo" class="sptAll left"> <a href="/" id="logoA" class="hideIndent">Club Suscriptor</a></h1>
+<div id="inputPortada" class="grid11 right" style="margin-left: 120px;">
+<? if (!empty($this->layout()->auth['establecimiento'])): ?>
+        <span id="" class="right Trebuchet14" style="padding-right: 10px;margin-top: 40px;">
+    <?php
+    echo 'Bienvenido(a) ';
+    echo $this->escape(ucfirst($this->layout()->auth['usuario']->nombre));
+    echo ' (Administrador establecimiento "' .
+    $this->escape(ucfirst($this->layout()->auth['establecimiento']['nombre']))
+    . '") ';
+    ?>&nbsp;
+            <a href="<?= $this->url(array(), 'logout_est', true); ?>">Salir</a>
+        </span>
+<? else: ?>
+        <span id="AdminDate" class="right Trebuchet14">
+    <?php
+    $today = new Zend_Date();
+    $format = Zend_Date::WEEKDAY . ' ' . Zend_Date::DAY . " 'de' " . Zend_Date::MONTH_NAME . " 'del' " . Zend_Date::YEAR;
+    echo $today->get($format);
+    ?>
+        </span>
+<? endif; ?>
+</div>-->
+
+<h1 id="logo" class="sptAll left">
+    <a href="/" id="logoA" class="hideIndent">Club Suscriptor</a>
+</h1>
+<div id="AdminEsCsContacto" class="grid4 left ml20">
+    <div class="userRegistrate inline left mT5">
+        <a href="mailto:atencionalcliente@clubsuscriptores.pe">atencionalcliente@clubsuscriptores.pe</a>
+        <br/>
+    		<span class="gray left mT5">Teléfonos: 700-1-700</span>
+    </div>   
+</div>
+
+<div id="inputUserAdmin" class="right">
+    <? if (!empty($this->layout()->auth['establecimiento'])): ?>
+        <ul id="userAdmin" class="grid6 alignR mB5">
+            <li class="linkLog inline pipeN">
+                <?php echo ($this->layout()->auth['datos']['sexo'] == 'M') ? 'Bienvenido ' : 'Bienvenida '; ?>
+                <?php
+                echo $this->escape(
+                    ucfirst($this->layout()->auth['datos']['nombres']) . " " .
+                    ucfirst($this->layout()->auth['datos']['apellido_paterno']) . " " .
+                    ucfirst($this->layout()->auth['datos']['apellido_materno'])
+                );
+                ?>
+            </li>
+            <li class="linkLog inline"><a href="<?= $this->url(array(), 'logout_est', true); ?>">Salir</a></li>
+        </ul>
+        <div class="alignR"><a href="#winChangePassE" class="winModal">Cambiar Contraseña</a></div>
+    <? else: ?>
+        <?php
+        /* $today = new Zend_Date();
+          $format = Zend_Date::WEEKDAY . ' ' . Zend_Date::DAY . " 'de' " . Zend_Date::MONTH_NAME . " 'del' ". Zend_Date::YEAR; */
+        ?>
+        <ul id="userAdmin" class="grid6 alignR mB5">
+            <li class="linkLog inline pipeN"><span><?php echo $this->FormatoFecha("now"); //echo $today->get($format);  ?></span></li>
+        </ul>
+<? endif; ?>
+</div>

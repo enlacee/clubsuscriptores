@@ -1,0 +1,10 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?php    
+    foreach ($this->urls as $data) {
+?>
+    <url>
+        <loc><?=  SITE_URL . "/" . $data["slug"] . "-" . $data["id"]; ?></loc>
+        <lastmod><?=  $this->DateFormatOpen($data["fecha_inicio_publicacion"],"Y-m-dT00:00:00+00:00"); ?></lastmod>
+    </url>
+<?php } ?>
+</urlset>

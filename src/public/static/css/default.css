@@ -1,0 +1,91 @@
+/* reset & default */
+/* reset */
+body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, a, abbr,
+acronym, address, code, del, dfn,
+em, img, q, dl, dt,
+dd, ol, ul, li, fieldset,
+form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th,
+td, article, aside, dialog, figure,
+footer, header, hgroup, nav, section,
+menu, details {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline
+}
+article, aside, dialog, figure, footer,
+header, hgroup, nav, section, menu { display:block }
+table { border-collapse: collapse;  border-spacing: 0 }
+caption, th, td { text-align: left;  font-weight: normal }
+table, th, td {  vertical-align: middle }
+img, a img { border:0 none }
+img { -ms-interpolation-mode: bicubic }
+audio:not([controls]) { display: none }
+[hidden] { display: none }
+:focus { outline: 0 }
+
+/* default */
+html{ /*height:100%;*/ color:#333; direction:ltr }
+body {
+    background-color:#F5F3F1;
+    font-family: "Trebuchet MS", Tahoma, Arial, sans-serif, Garuda;
+    font-size: 12px;
+    line-height: 1.25
+}
+
+a, .link { color:#0066CC; text-decoration: underline }
+a:hover, .link:hover { color:#0066CC; text-decoration:none; cursor:pointer }
+small { font-size: 75% }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline }
+sup { top: -0.5em }
+sub { bottom: -0.25em }
+dfn, i { font-style: italic }
+pre, code, kbd, samp { font-family: 'courier new', monospace, serif; font-size: 1em }
+pre { white-space: pre-wrap; word-wrap: break-word }
+h1, h2, h3, h4, h5, h6{ 
+	margin:0 0 10px;
+	font-weight:normal; 
+	font-family: "Trebuchet MS", Tahoma, Arial, sans-serif, Garuda;
+	line-height: 1.25
+}
+h1{ font-size: 36px }
+h2{ font-size: 32px }
+h3{ font-size: 28px }
+h4{ font-size: 24px }
+h5{ font-size: 20px }
+h6{ font-size: 18px }
+p { margin: 0 0 15px; font-size:14px }
+li { list-style: none }
+em, cite { font-style: normal }
+strong { font-weight: bold }
+/* selects mouse */
+::selection { color: white;  background-color: #111 }
+::-moz-selection { color: white;  background-color: #111 }
+::-webkit-selection { color: white;  background-color: #111 }
+/* form */
+label { cursor: pointer }
+input, select { border: 1px solid #CFCFD0 }
+input{ padding: 6px 5px; margin: 0; }
+select{ padding:2px 4px }
+textarea{
+	border: 1px solid #CFCFD0;
+	padding: 6px 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	resize: none
+}
+fieldset { display: block }
+input:focus, select:focus, textarea:focus{
+	border-color:#C7A158;
+	-moz-box-shadow: inset 1px 1px 1px #E6C27D;
+	-webkit-box-shadow: inset 1px 1px 1px #E6C27D;
+	box-shadow:inset 1px 1px 1px #E6C27D;
+}
+button{ cursor:pointer }
+input[disabled], select[disabled], textarea[disabled]{ background-color: #EBEBE4 }

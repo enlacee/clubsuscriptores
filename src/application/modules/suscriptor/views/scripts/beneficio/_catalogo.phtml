@@ -1,0 +1,143 @@
+<!-- breadcrumb -->
+<?
+    $url = "/catalogo-virtual/";
+    $actualQuebuscas = $this->itemsSeleccionados["quebuscas"]["slug"]."/";
+    $actualQuebuscas_descrip = $this->itemsSeleccionados["quebuscas"]["quebuscas_descrip"];
+    $actualBeneficios_descrip = empty($this->itemsSeleccionados["beneficios"]["nombre"])?"todos":
+               $this->itemsSeleccionados["beneficios"]["nombre"];
+    
+    $actualBeneficios=empty($this->itemsSeleccionados["beneficios"]["slug"])?"todos":
+                      $this->itemsSeleccionados["beneficios"]["slug"];
+    
+    //$actualBeneficios_descrip=  ucwords(str_replace("-", " ",$actualBeneficios_descrip));
+    $actualBeneficios_descrip=  $actualBeneficios_descrip;
+    
+    $actualCategoria = $this->escape($this->nombrecategoria);
+?>
+<ul class="breadcrumb" itemprop="breadcrumb" itemscope itemtype="http://schema.org/WebPage">
+    <li><a href="/">ClubDeSuscriptores</a> <span class="divider">&#62;</span></li>
+    <li><a href="<?=$url.$actualQuebuscas?>"><?=$actualQuebuscas_descrip?></a> <span class="divider">&#62;</span></li>
+    <?if(!empty($actualCategoria)){?>
+    <li>
+        <a href="<?=$url.$actualQuebuscas.$actualBeneficios?>"><?=$actualBeneficios_descrip?></a> 
+        <span class="divider">&#62;</span>
+    </li>
+    <li class="active"><?=$actualCategoria?></li>
+    <?} else {?>
+        <li class="active"><?=$actualBeneficios_descrip?></li>
+    <?}?>
+</ul>
+
+<div id="quieroLaPromoMainContentbox" class="grayborder2 r5">
+    <div id="iQuieroLPromo">
+        <h1 class="Titulo980 bold font18 textTranNone">Catálogo virtual de Beneficios</h1>
+        <div id="quieroLaPromoContentbox" class="all">
+            <div id="quieroLaPromoSearchContent" class="grid6">
+                <?php echo $this->partial('beneficio/_search_content.phtml', 
+                        array(
+                            "itemsSeleccionados"=>$this->itemsSeleccionados, 
+                            'idCategorias'=>$this->idCategorias)); 
+                ?>
+            </div>
+            <div id="quieroLaPromoDetalleContent" class="right">
+                <a name="ac"><span></span></a>
+                <div id="laPromoLista" class="TilutoDetallePromo"> 
+    <!--                <div id="quieroLaPromoOtras">-->
+                    <div id="filtroTitulo" class="tituFiltro" >
+    <!--                    Mostrando lo último de Beneficios permanentes en: Deportes, Salud y Belleza, Gastronomía y más-->
+                        <?=$this->escape($this->messageSearch)?>
+                    </div>
+
+                    <div id="QBuscadorPromo" class="bbSolid">
+                        <div class="Qp2leftt left">
+                            <span class="Qpromo fnormal gray ml5">
+                                <form id="frmnpaginado" 
+                                      action="/catalogo-virtual/<?=
+                                          ($this->ActionActual()=="lista"?"lista/":"")?><?=$this->cadenabusqueda?>" 
+                                      method="post">
+                                <?php
+                                    $select = "<select name='np' id='npaginado' monstrandode=".$this->MostrandoDe.">";
+                                    for($i=$this->MostrandoDe;$i>0;$i--) {
+                                        $select.="<option ".($i==$this->MostrandoN?"selected='selected'":"").
+                                                " value='".($i)."'>".($i)."</option>";
+                                    }
+                                    $select.= "</select>";
+                                    echo "Mostrando ".$select." de ".$this->MostrandoDe;
+                                ?>
+                                </form>
+                            </span>
+                        </div>
+                        <div class="Qp1right right">
+                            <span class="QverComo gray mR10 Trebuchet" >Ver como</span>
+                            <?
+                            $tipo = $this->tipo == "imagenes";
+                            $urlImagenes = $this->url(array(
+                                                            'action' => 'index', 
+                                                            'controller' => 'catalogo-virtual'
+                                                      ), 'default', true);
+                            $urlLista = $this->url(array(
+                                                        'action' => 'lista', 
+                                                        'controller' => 'catalogo-virtual'
+                                                    ), 'default', true);
+                            ?>
+                            <a href="<?=$tipo?"#":$urlImagenes."/".$this->cadenabusqueda ?>#ac"
+                            class="QshowImag mR10 Trebuchet <?=($tipo?"linkstatic bold":"")?> ">
+                                Imágenes
+                            </a>
+                            <a href="<?=$tipo?$urlLista."/".$this->cadenabusqueda."#ac":"#" ?>"
+                            class="Qlista Trebuchet <?=($tipo?"":"linkstatic bold")?>" >
+                                Lista
+                            </a>
+                        </div>
+                    </div>
+                    <div class="all">
+                       <?php echo $this->paginationControl(
+                               $this->busqueda_beneficios,
+                               'Sliding','beneficio/_page.phtml',
+                               array(
+                                   "pos"=>1,
+                                   "cadenabusqueda"=>$this->cadenabusquedaAll
+                               )
+                             ); 
+                       ?>
+                    </div>
+                    <?php
+                        if ($this->tipo == "imagenes") :
+                            echo $this->partial('beneficio/_result_busqueda.phtml',
+                                    array('mediaUrl' => $this->mediaUrl,
+                                        'elementsUrl' => $this->elementsUrl,
+                                        'busqueda_beneficios' => $this->busqueda_beneficios,
+                                        'totalitems' => $this->totalitems,
+                                        'mostrando' => $this->mostrando,
+                                        'ord' => $this->ord,
+                                        'col' => $this->col,
+                                        'cadenabusqueda' => $this->cadenabusqueda,
+                                        'sufixmedium' => $this->sufixmedium));
+                        else :
+                            echo $this->partial('beneficio/_result_busqueda_lista.phtml',
+                                    array('mediaUrl' => $this->mediaUrl,
+                                        'elementsUrl' => $this->elementsUrl,
+                                        'busqueda_beneficios' => $this->busqueda_beneficios,
+                                        'totalitems' => $this->totalitems,
+                                        'mostrando' => $this->mostrando,
+                                        'ord' => $this->ord,
+                                        'col' => $this->col,
+                                        'cadenabusqueda' => $this->cadenabusqueda,
+                                        'sufixlittle'=> $this->sufixlittle));
+                        endif;
+                    ?>
+                    <?php echo $this->paginationControl(
+                            $this->busqueda_beneficios,
+                            'Sliding',
+                            'beneficio/_page.phtml',
+                             array(
+                                 "pos"=>0,
+                                 "cadenabusqueda"=>$this->cadenabusquedaAll
+                             )
+                           ); 
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

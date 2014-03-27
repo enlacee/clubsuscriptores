@@ -1,0 +1,162 @@
+<?php $valRol=$this->formAdministrador->rol->getValue();
+$disabled='other';$disabledSelectOnfocus='';$disabledSelectOnchange='';$disabledSelectCheked='';
+if ($valRol=='S') {
+    $disabled='readonly';
+    $disabledSelectOnfocus='this.defaultIndex=this.selectedIndex;';
+    $disabledSelectOnchange='this.selectedIndex=this.defaultIndex;';
+    $disabledSelectCheked='return false;';
+}
+?>
+<h6 class="admintituLightbox" data-error="<?= $this->data ?>">
+    <?=($valRol=='S')?'Editar Suscriptor':'Editar Usuario';?></h6>
+<form method="post" id="formUsuarioA" action="/admin/usuarios/editar-usuario" class="<?=($valRol=='S')?'no-datepicker':''?>">
+    <input type="hidden" value="<?= $this->id ?>" name="id" id="id"/>
+    <input type="hidden" value="<?= $this->tip ?>" name="tip" id="tip"/>
+    <fieldset id="formencuesta">
+        <div class="block camposusuEditar">
+            <label class="labelAdminUsurio" for="nombres">
+                <span class="req" title="Requerido">*</span> 
+                Nombre:</label>
+            <?= $this->formAdministrador->nombres->setAttribs(array(
+                    'id' => 'nombres', 
+                    'class' => 'inputAdminGEE2 fields left ready', 
+                    'tabindex' => 1,
+                    $disabled => $disabled
+                ))->renderHelper() ?>
+            <span class="response left"></span>
+        </div>
+        <div class="block camposusuEditar">
+            <label class="labelAdminUsurio" for="apellido_paterno">
+                <span class="req" title="Requerido">*</span> 
+                Apellido Paterno:</label>
+            <?= $this->formAdministrador->apellido_paterno->setAttribs(array(
+                    'class' => 'inputAdminGEE2 fields left ready', 
+                    'tabindex' => 2,
+                    $disabled => $disabled
+                ))->renderHelper() ?>
+            <span class="response left"></span>
+        </div>
+        <div class="block camposusuEditar">
+            <label class="labelAdminUsurio" for="apellido_materno">
+                <span class="req" title="Requerido">*</span> 
+                Apellido Materno:</label>
+            <?= $this->formAdministrador->apellido_materno->setAttribs(array(
+                    'class' => 'inputAdminGEE2 fields left ready', 
+                    'tabindex' => 3,
+                    $disabled => $disabled
+                ))->renderHelper() ?>
+
+            <span class="response left"></span>
+        </div>
+        <div class="block camposusuEditar">
+            <label class="labelAdminUsurio" for="tipo_documento">
+                <span class="req" title="Requerido">*</span> 
+                Tipo de doc:</label>
+            <?= $this->formAdministrador->tipo_documento->setAttribs(array(
+                    'id' => 'tipo_documento', 
+                    'class' => 'inputAdminGEE3 fields ready left', 
+                    'tabindex' => 4,
+                    'onfocus'=>$disabledSelectOnfocus,
+                    'onchange'=>$disabledSelectOnchange
+                ))->renderHelper() ?>
+            <span class="response left"></span>
+        </div>
+        <div class="block camposusuEditar">
+            <label class="labelAdminUsurio" for="numero_documento">
+                <span class="req" title="Requerido">*</span> 
+                Numero Documento:</label>
+            <?= $this->formAdministrador->numero_documento->setAttribs(array(
+                    'id' => 'numero_documento', 
+                    'class' => 'inputAdminGEE2 fields left ready', 
+                    'tabindex' => 5,
+                    $disabled => $disabled
+                ))->renderHelper() ?>
+            <span class="response left"></span>
+        </div>
+        <div class="block camposusuEditar">
+            <label class="labelAdminUsurio" for="email">
+                <span class="req" title="Requerido">*</span> 
+                Email:</label>
+            <?= $this->formAdministrador->email->setAttribs(array(
+                    'id' => 'email', 
+                    'class' => 'inputAdminGEE2 fields left ready', 
+                    'tabindex' => 6
+                ))->renderHelper() ?>
+            <span class="response left"></span>
+        </div>
+        <div class="block camposusuEditar">
+            <label class="labelAdminUsurio" for="fecha_nacimiento">
+                <span class="noReq">&nbsp;</span> 
+                Fecha de nacimiento:
+            </label>
+            <?= $this->formAdministrador->fecha_nacimiento->setAttribs(array(
+                    'id' => 'fecha_nacimiento', 
+                    'class' => 'icoCalendar inputAdminGEE2 left', 
+                    'tabindex' => 7,
+                    $disabled => $disabled
+                ))->renderHelper() ?>
+            <span class="response left"></span>
+        </div>
+        <div class="block camposusuEditar">
+            <label class="labelAdminUsurio" for="sexo">  <span class="noReq">&nbsp;</span> 
+                Sexo:</label>
+            <?= $this->formAdministrador->sexo->setAttribs(array(
+                    'id' => 'sexo', 
+                    'class' => 'ml20 mT10', 
+                    'tabindex' => 8,
+                    'onclick'=>$disabledSelectCheked
+                ))->renderHelper() ?>
+            <span class="response left"></span>
+        </div>
+        <div class="block camposusuEditar">
+            <label class="labelAdminUsurio" for="rol"><span class="noReq">&nbsp;</span> Perfil:</label>
+            <?= $this->formAdministrador->rol->setAttribs(array(
+                    'id' => 'rol', 
+                    'class' => 'inputAdminGEE3 left fields ready', 
+                    'tabindex' => 9,
+                    'onfocus'=>$disabledSelectOnfocus,
+                    'onchange'=>$disabledSelectOnchange
+                ))->renderHelper() ?>
+            <span class="response left"></span>
+        </div>
+        <div class="block camposusuEditar">
+            <label class="labelAdminUsurio" for="subRol"><span class="noReq">&nbsp;</span> Sub Perfil:</label>
+            <?= $this->formAdministrador->subRol->setAttribs(array(
+                    'id' => 'subRol', 
+                    'class' => 'inputAdminGEE3 left fields', 
+                    'tabindex' => 9,
+                    'onfocus'=>$disabledSelectOnfocus,
+                    'onchange'=>$disabledSelectOnchange
+                ))->renderHelper() ?>
+            <span class="response left"></span>
+        </div>
+        <div class="block camposusuEditar">
+            <label class="labelAdminUsurio" for="establecimiento"><span class="noReq">&nbsp;</span> Establecimiento:</label>
+            <?= $this->formAdministrador->establecimiento->setAttribs(array(
+                    'id' => 'establecimiento', 
+                    'class' => 'inputAdminGEE3 left', 
+                    'tabindex' => 10,
+                    'onfocus'=>$disabledSelectOnfocus,
+                    'onchange'=>$disabledSelectOnchange
+                ))->renderHelper() ?>
+            <span class="response left"></span>    
+        </div>
+
+        <div class="block camposusuEditar">
+            <label class="labelAdminUsurio" for="activo"><span class="noReq">&nbsp;</span> Estado:</label>
+            <?= $this->formAdministrador->activo->setAttribs(array(
+                    'id' => 'activo', 
+                    'class' => 'inputAdminGEE3 left', 
+                    'tabindex' => 11,
+                    'onfocus'=>$disabledSelectOnfocus,
+                    'onchange'=>$disabledSelectOnchange
+                ))->renderHelper() ?>
+        </div>
+        <?php //if ($valRol!='S') { ?>
+        <div class=" block BtnesPublicarU">
+            <input type="submit" id="saveBtnUsuario" value="" class="btnAll EEguardarBtn left"/>
+            <button value="" class="btnAll closeWM EEcancelarBtn left"/></button>
+        </div>
+        <?php //} ?>
+    </fieldset>
+</form>

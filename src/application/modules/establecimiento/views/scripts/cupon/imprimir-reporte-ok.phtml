@@ -1,0 +1,85 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="<?php echo MEDIA_URL; ?>/css/main.css" media="all" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    .rptConsumeEstable{
+        font-family: Arial;
+    }
+    body{
+        background-color: #FFF;
+    }
+</style>
+<div class="rptConsumeEstable">
+<?php 
+    $nrovisible = 15;
+    $contreg = 0;
+    foreach ($this->consumos as $consumo): $contreg++; 
+    
+    if(($contreg-1)%$nrovisible==0 || $contreg==1): ?>
+<div style="margin-bottom: 15px;">
+<!--    <div style="margin-bottom: 12px;">Fecha: <?php //echo date('d/m/Y h:i:m'); ?></div>-->
+    <h5 align="center">
+        Consumo de Promociones Club del Suscriptor
+        <?php echo (!empty($this->fechadesde) && !empty($this->fechahasta)?' Del ':''); ?>
+        <?php echo (!empty($this->fechadesde) && empty($this->fechahasta)?' desde ':''); ?>
+        <?php echo (!empty($this->fechadesde)?$this->fechadesde:''); ?>
+        <?php echo (!empty($this->fechadesde) && !empty($this->fechahasta)?' al ':''); ?>
+        <?php echo (!empty($this->fechahasta) && empty($this->fechadesde)?' hasta ':''); ?>
+        <?php echo (!empty($this->fechahasta)?$this->fechahasta:''); ?>
+    </h5>
+    <div align="center">
+        <?php echo (!empty($this->estado)?'con Estado : '.ucwords($this->estado).'<br/>':''); ?>
+        <?php echo $this->name_establecimiento; ?>
+    </div>
+</div>
+<div class="grayborder2 mB20">
+<table width="100%">
+    <thead id="mictaBenTitle">
+        <tr>
+          <th class="mictBenTiTH ml5 mictbRight bold">Fecha <br/>Generación</th>
+          <th class="mictBenTiTH ml5 mictbRight bold">Nombre <br/>Promoción</th>
+          <th class="mictBenTiTH ml5 mictbRight bold">Tipo <br/>Beneficio</th>
+          <th class="mictBenTiTH ml5 mictbRight bold">Código Suscriptor</th>
+          <th class="mictBenTiTH ml5 mictbRight bold">Documento <br/>Identidad</th>
+          <th class="mictBenTiTH ml5 mictbRight bold">Cliente</th>
+          <th class="mictBenTiTH mictbRight bold ">Monto<br/>Promoción</th>
+          <th class="mictBenTiTH ml5 mictbRight bold">N°<br/>Voucher</th>
+          <th class="mictBenTiTH  bold mictbRight">Fecha<br/>Consumo</th>
+          <th class="mictBenTiTH  bold">Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php endif; 
+            $strcad = 'ajsdhaSDFAhajksdhkjashdahdjkasdoaoaodisajdñasmasjxñ asASDsxciasjcasc ascjañlscjñasjcosudñasdjasdj
+                ladkaskd ABDCalñskdlñaskdlñaskdlñ asdlña sdlñ ASASAMNXZCZOP l aksdlaskd5axajshdajkhsdjDFhsdkhsjdasdasdas
+                asd';
+        ?>
+            <tr bgcolor="<?php echo ($contreg%2==0?'#FFF':'#ECF7FF'); ?>" height="80">
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $this->DateFormatOpen($consumo['fecha_emision']); ?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $consumo['titulo']; ?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $consumo['abreviado']; ?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $consumo['codigo_suscriptor']; ?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $consumo['tipo_documento'].'<br/>'.$consumo['numero_documento']; ?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $consumo['names']; ?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $consumo['monto_descontado']; ?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $consumo['numero_comprobante']; ?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo (!empty($consumo['fecha_consumo'])?$this->DateFormatOpen($consumo['fecha_consumo']):''); ?></td>
+                <td class="mictBenFluTd mictbRight mictbTop"><?php echo $consumo['estado']; ?></td>
+            </tr>
+        <?php
+            /*if($contreg<=0){
+                echo '<tr class="even"><td class="mictBenFluTd mictbRight mictbTop" colspan="10" style="text-align:center;"> - No se encontraron registros - </td></tr>';
+            }*/
+        if($contreg%$nrovisible==0 || $contreg==$this->totalreg):
+        ?>
+        <tr></tr>
+    </tbody>
+</table>
+</div>
+<?php if($contreg<$this->totalreg):?>
+<div style="page-break-after: always;"></div>
+<?php endif;
+endif;
+endforeach;
+
+echo '<div style="text-align:right;color: #333;font-size: 13px;padding:10px;background-color: #FFF;">Nro de Registos: '.count($this->consumos).'</div><br/>'; ?>
+</div>

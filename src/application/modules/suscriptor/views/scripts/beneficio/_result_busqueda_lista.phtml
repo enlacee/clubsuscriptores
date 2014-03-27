@@ -1,0 +1,117 @@
+<div id="topListaresultados">
+  	<div class="titleLinkV topListaresultados"> 
+        <?php $base = array('module' => 'suscriptor', 'controller' => 'catalogo-virtual', 'action' => 'lista'); 
+        $col = 'nombre';
+        $ord = ($this->col == $col && $this->ord == 'ASC') ? 'z-a': 'a-z';
+        //$url = $this->url(array_merge($base,array('col'=>$col,'ord'=>$ord)), 'default',false)."/".$this->cadenabusqueda
+        $url = $this->url(array_merge($base), 'default',false)."/".$this->cadenabusqueda.$col."/".$ord;
+        ?>
+        <a href="<?=$url?>" 
+           class="titu1L bold block left linkstatic 
+                  <?=($this->col==$col && $this->ord=='ASC')?'flechasOrdenASC':'flechasOrdenDSC'?>">
+            Nombre
+        </a>
+        <?php $base = array('module' => 'suscriptor', 'controller' => 'catalogo-virtual', 'action' => 'lista');
+        $col = 'oferta';
+        $ord = ($this->col == $col && $this->ord == 'ASC') ? 'z-a': 'a-z';
+        //$url = $this->url(array_merge($base,array('col'=>$col,'ord'=>$ord)), 'default',false)."/".$this->cadenabusqueda
+        $url = $this->url(array_merge($base), 'default',false)."/".$this->cadenabusqueda.$col."/".$ord;
+        ?>
+        <a href="<?=$url?>" 
+           class="titu2L bold block left linkstatic 
+               <?=($this->col == $col && $this->ord=='ASC')?'flechasOrdenASC':'flechasOrdenDSC'?>">
+            Oferta
+        </a>
+        <?php $base = array('module' => 'suscriptor', 'controller' => 'catalogo-virtual', 'action' => 'lista');
+        $col = 'tipo';
+        $ord = ($this->col == $col && $this->ord == 'ASC') ? 'z-a': 'a-z';
+        //$url = $this->url(array_merge($base,array('col'=>$col,'ord'=>$ord)), 'default',false)."/".$this->cadenabusqueda
+        $url = $this->url(array_merge($base), 'default',false)."/".$this->cadenabusqueda.$col."/".$ord;
+        ?>
+        <a href="<?=$url?>" 
+           class="titu3L bold  block left linkstatic 
+                  <?=($this->col==$col && $this->ord=='ASC')?'flechasOrdenASC':'flechasOrdenDSC'?>">
+            Tipo
+        </a>
+        <?php $base = array('module' => 'suscriptor', 'controller' => 'catalogo-virtual', 'action' => 'lista');
+        $col = 'categoria';
+        $ord = ($this->col == $col && $this->ord == 'ASC') ? 'z-a': 'a-z';
+        //$url = $this->url(array_merge($base,array('col'=>$col,'ord'=>$ord)), 'default',false)."/".$this->cadenabusqueda
+        $url = $this->url(array_merge($base), 'default',false)."/".$this->cadenabusqueda.$col."/".$ord;
+        ?>
+        <a href="<?=$url?>" 
+           class="titu4L bold  block left linkstatic 
+                  <?=($this->col==$col && $this->ord=='ASC')?'flechasOrdenASC':'flechasOrdenDSC'?>">
+            Categoría
+        </a>
+        <?php $base = array('module' => 'suscriptor', 'controller' => 'catalogo-virtual', 'action' => 'lista');
+        $col = 'fecha';
+        $ord = ($this->col == $col && $this->ord == 'ASC') ? 'z-a': 'a-z';
+        //$url = $this->url(array_merge($base,array('col'=>$col,'ord'=>$ord)), 'default',false)."/".$this->cadenabusqueda
+        $url = $this->url(array_merge($base), 'default',false)."/".$this->cadenabusqueda.$col."/".$ord;
+        ?>
+        <a href="<?=$url?>" 
+           class="titu5L bold block left linkstatic 
+                  <?=($this->col==$col && $this->ord=='ASC')?'flechasOrdenASC':'flechasOrdenDSC'?>">
+            Fecha
+        </a>
+	</div> 
+<?php 
+//$colors = array('rojo','verde','azul','amarillo');
+foreach ($this->busqueda_beneficios as $index => $item):
+    $fecfinvig = new Zend_Date($item['fecha_fin_vigencia']);
+    $ruta = "/".$item['slug'].'-'.$item['id'];
+?>
+    <div itemscope itemtype="http://schema.org/Product" 
+         class="textVistaL bbSolid <?=($index%2==0)?"":"seleccPromoBenef"?>">
+        <div class="conte1L left">
+            <h2 class="font12">
+                <div class="QPhoto2 center">
+                    <a href="<?=$ruta?>">
+                        <img itemprop="image" height="102" width="180"  
+                            src="<?=$this->elementsUrl?>/images/beneficios/<?=$item['path_logo']?>" 
+                            title="<?=$this->escape($item['titulo'].'-'.$item['cat_nombre'].'-'.$item['abreviado'])?>" 
+                            alt="<?=$this->escape($item['titulo'].'-'.$item['cat_nombre'].'-'.$item['abreviado'].
+                                    '-Club De Suscriptores El Comercio Perú.')?>" 
+                            onerror="this.src='<?=$this->mediaUrl?>/images/fcatalogo_chica.jpg'"/>
+                    </a>
+                    <div class="Qtoferta5">
+                        <?php if($item['chapita']!=""): ?>
+                            <div class="promoflujoNM QtextoPromoChico <?=$this->escape($item['chapita_color'])?> 
+                                 Tshadow">
+                                <?=$item['chapita']?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>            
+                <div class="Qdescription center">
+                    <a itemprop="name" href="<?=$ruta?>"><?=$this->escape($item['titulo'])?></a>
+                    <span class="Qdate"><?=$this->escape($item['cuando'])?></span>
+                </div>
+            </h2>
+        </div>
+        <div class="conte2L left textalign">
+            <ul>
+                <li itemprop="description" class="linkstatic Qdate">
+                   <?=$this->escape($this->ReduceString($item['descripcioncorta'],150,'...'))?>
+                </li>
+            </ul>
+        </div>
+        <div class="conte3L left textalign">
+            <h2 class="Qpromotexto left r2 bold"><?=$this->escape($item['abreviado'])?></h2>
+        </div>
+        <div class="conte4L left textalign">
+            <ul>
+                <li class="linkstatic Qdate">
+                   <h2 class="font12"><?=str_replace("-", "<br />", $this->escape($item['cat_nombre']))?></h2>
+                </li>
+            </ul>
+        </div>
+        <div class="conte5L left textalign">
+            <ul>
+                <li class="linkstatic Qdate"><?=$fecfinvig->toString('dd/MM/YYYY'); ?></li>
+            </ul>
+        </div>
+    </div>
+<?php endforeach; ?>
+</div>

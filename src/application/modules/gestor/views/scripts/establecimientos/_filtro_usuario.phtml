@@ -1,0 +1,14 @@
+<form id="formBoxUsu">
+    <div class="left Trebuchet black"> 
+        Estado:
+        <?= $this->formFiltroUsuario->estado->setAttribs(array('id' => 'estado', 'class' => 'm15'))->renderViewHelper() ?>
+    </div>
+    <fieldset id="adminformSearch" class="field textoinput right">
+        <strong class="">Nombre del Usuario:</strong>
+        <?= $this->formFiltroUsuario->nombre->setAttribs(array('id' => 'nombre', 'class' => 'cGray  grid4'))->renderViewHelper() ?>
+        <input type="button" id="searchbt" value="" class="btnAll searchbt"/>
+    </fieldset>
+    <div class="hide">
+    	<input type="hidden" name="idEst" id="idEst" value = "<?=$this->idEst ?>"> 
+    </div>
+</form>

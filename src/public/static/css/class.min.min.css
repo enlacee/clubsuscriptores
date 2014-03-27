@@ -1,0 +1,184 @@
+.showGrid{background:url(../images/1000_20_10_10.png) repeat-y center}.left{float:left}.right{float:right}.hide,.close{display:none}.all,.block{width:100%;overflow:hidden}
+.block{display:block;margin:0 0 10px}.inactive{cursor:default}.active{cursor:pointer}.liMianMenu{background:url(../images/btNavInactive400.png) right bottom no-repeat;margin:0 2px 0 0}
+.liMianMenu .aMenuMain{display:block;background:url(../images/btnavInactive20.png) left bottom no-repeat;padding:13px 20px 0;height:27px;overflow:hidden;color:#999;font-weight:bold;font-family:Arial,Helvetica,sans-serif;font-size:14px;text-decoration:none}
+#mainNav .active{background-image:url(../images/btNavActive400.png)}#mainNav .active .aMenuMain{background-image:url(../images/btnavActive20.png);color:black}
+.r10{-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px}.r5{-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px}.r2{-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px}
+.r3{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.def,.response,.cajaGray{color:gray;padding-left:0}.warning,.error,.exceeded,.bad,.errors li{color:#c33}
+.block .bad,.block .good{padding-left:15px;background-position:left 3px}.block .good{background-image:url(../images/check.png)}.block .bad,.bloque .bad{background-image:url(../images/icoError.png)}
+.good,.success{color:#390}.bold{font-weight:bold}.nBold{font-weight:normal}.noBdr{border:0 none}.opacity{filter:alpha(opacity=0);opacity:.0;-moz-opacity:0}
+.ads300x600,.ads300x250,.ads300x300,.ads728x90{margin:0 0 10px;width:300px;overflow:hidden}.ads300x600{height:600px}.ads300x600{height:300px}.ads300x250{height:250px}
+.ads728x90{width:728px;height:90px}.loading{background:url(../images/loading.gif) center no-repeat;width:32px;height:32px}.grid1{width:30px}.grid2{width:80px}
+.grid3{width:130px}.grid4{width:180px}.grid5{width:230px}.grid6{width:280px}.grid7{width:330px}.grid8{width:380px}.grid9{width:430px}.grid10{width:480px}
+.grid11{width:530px}.grid12{width:580px}.grid13{width:630px}.grid14{width:680px}.grid15{width:730px}.grid16{width:780px}.grid17{width:830px}.grid18{width:880px}
+.grid19{width:930px}.grid20{width:980px}.gridS20{width:1000px}.gridS20DOS{width:998px}.last{margin-right:0}.hidden{visibility:hidden}.alignR{text-align:right}
+.alignC{text-align:center}.center{margin:0 auto}.wordBreack{display:block;overflow:hidden;word-wrap:break-word}.noUnderline,.noUnderline:hover{text-decoration:none}
+.hideIndent{text-indent:-9999em}.text1{margin:0 0 5px;color:#1d1d1d}.sptAll{background-image:url(../images/spt.png);background-repeat:no-repeat;background-color:transparent}
+.btnAll,.btnAdminAll{border:0 none;background-repeat:no-repeat;background-color:transparent;cursor:pointer}.btnAll{background-image:url(../images/botones.png)}
+.btnAdminAll{background-image:url(../images/botonesAdmin.png)}.cGray{color:#8c8d91}.mbgray{border-bottom:#ccc solid 1px;display:block;padding:0 0 5px;margin:0 0 10px}
+.mbgray2{border-bottom:#999 solid 1px;display:block;padding:0 0 5px;margin:0 0 10px}.grayborder2{border:#CCC 1px solid}.mB5{margin-bottom:5px}.mB10{margin-bottom:10px}
+.mB0{margin-bottom:0}.mB2{margin-bottom:2px}.mT10{margin-top:10px}.mB20{margin-bottom:20px}.mT20{margin-top:20px}.m5all{margin:5px 5px 5px 5px}.m10all{margin:10px}
+.m20all{margin:20px}.fieldSearch{font-size:10px;color:#ccc}.inline{display:inline}.pleft{padding-left:10px}.textHidden{display:block;text-indent:-9999em}
+.noBdr{border:0 none}.linkLog{padding:0;margin-left:10px}.pipeN{border-right:1px solid #bdbdbd;padding-right:10px}.textoInput{font-size:10px;color:#999}
+.textoInput strong{vertical-align:top}.categorias{padding:5px;margin:0 0 0 5px;width:180px}#wrap .titleError{background:url(../images/pageError.jpg) 0 0 no-repeat;padding:40px 0 0 170px;height:70px;font-size:26px;font-weight:bold}
+.inPageError{padding:0 0 0 170px}.iPageError{padding:40px 0 80px}.f18{font-size:18px}.searchbt{background-position:0 -261px;width:83px;height:30px;border:0;margin:0 0 0 5px;cursor:pointer;vertical-align:top}
+.searchbt:hover{background-position:-88px -261px}.aMenuMain{color:black}.aMenuMain:hover{color:#06c}.Tshadow{text-shadow:2px 2px 2px #000}.Trebuchet11{font-size:12px}
+.Trebuchet14{font-size:14px}.firstphoto{position:relative;width:660px;height:371px;vertical-align:top}.imgflujo{position:absolute;left:0;top:0;z-index:2}
+.imgFlujoVidaSocial{position:absolute;left:0;top:0;z-index:2;margin-left:38px}.flechaG{display:block;background-image:url(../images/flechasG.png);background-repeat:no-repeat;position:absolute;z-index:3;top:320px;width:16px;height:23px;overflow:hidden}
+.tipodeoferta{background:url(../images/cintadestacada.png) 0 0 no-repeat;height:30px;width:660px;position:absolute;z-index:3;top:342px;left:0}.tipodeoferta2{background-image:url(../images/cintaflujo.png);background-repeat:no-repeat;height:30px;width:325px;position:absolute;z-index:3;left:0;top:153px;bottom:0}
+.promostexto,.promostexto2{color:white;font-size:14px;font-weight:bold}.promostexto{background:url(../images/cintadestacada1.png) no-repeat 0 0;padding:5px 0 0 10px;margin:0;height:25px;width:105px}
+.promostexto2{padding:5px 0 0 5px;margin:0}.botonVerdetalle{display:block;background-image:url(../images/botones.png);background-position:0 -219px;width:95px;height:30px}
+.botonVerdetalle:hover{background-position:-97px -219px}.secondDescription{padding:10px 10px 0}.date{display:block;padding:0 0 5px;line-height:1;color:#666;font-size:12px}
+.promoTitle{margin:0;padding:0 0 5px;height:40px;overflow:hidden;font-size:18px;line-height:1;overflow:hidden}#firstdescription .promoTitle,#firstdescription .promoDescription{height:auto}
+.agotado{padding:0 0 0 10px;color:#f30;font-size:12px}.promoDescription{height:36px;margin-bottom:5px;overflow:hidden}.secondphoto{position:relative;margin:0;width:325px;height:182px}
+.secondLineVidasocial .secondphoto{margin-bottom:10px}.slider{position:absolute;left:0;top:0;z-index:2;width:495px;height:371px}.botonVerdetalleDos{position:absolute;background-image:url(../images/botones.png);background-position:0 -219px;width:95px;height:40px;top:294px;left:-267px;cursor:pointer;margin:0 0 0 480px}
+.botonVerdetalleDos:hover{background-position:-97px -219px}.thirdphoto{position:relative;margin:0;width:315px;height:182px}.botonVerdetalleTres{position:absolute;background-image:url(../images/botones.png);background-position:0 -219px;width:95px;height:40px;top:294px;left:-267px;cursor:pointer;margin:0 0 0 480px}
+.botonVerdetalleTres:hover{background-position:-97px -219px}.twitter,.facebook,.youtube,.google_s{position:absolute;top:55px;display:block;height:65px}
+.twitter{background-position:1px -75px;width:65px;left:10px}.facebook{background-position:-68px -75px;width:65px;left:80px}.youtube{background-position:-134px -75px;width:70px;left:145px}
+.google_s{background-position:-527px -75px;width:70px;left:210px}.vidaSocialTittle{display:block;font-size:18px;font-weight:normal}.vidaSocialBajada{display:block;margin:5px 0 0;font-size:12px;color:#666;font-weight:normal}
+.firstLine,.secondLine,.thirdLine,.fourthLine{width:260px}.VerMasFotos{display:block;border-top:#CCC solid 1px;padding:10px 2px 0 0;margin:10px 0 0 7px;width:240px;height:25px;font-weight:normal;float:left;font-size:12px}
+.imgDegradesorteos{position:absolute;z-index:2;width:262px;height:59px}.detalleSorteo{background-image:url(../images/degradeSorteos.png);background-repeat:no-repeat;position:absolute;width:262px;height:59px;top:124px;color:white;padding:0 0 10px 5px;font-size:18px}
+.anchoSorteos{width:60px;margin-bottom:0}.SorteosPager{width:35px;float:right}.linkstatic{color:black;text-decoration:none;cursor:default}.topListaresultados .flechasOrdenASC,.topListaresultados .flechasOrdenDSC{cursor:pointer}
+.flechasOrdenASC{background:url(../images/flechaA.gif) right center no-repeat}.flechasOrdenDSC{background:url(../images/flechaB.gif) right center no-repeat}
+.textostatic14{color:#000;text-decoration:none;font-size:14px}.fnormal{font-weight:normal;font-size:12px}.textoEncuesta{font-size:14px;width:260px}.ml5{margin-left:5px}
+.fielserEncuesta{border-bottom:1px solid #ccc;margin:0 0 10px;overflow:hidden}.inputEncT{display:block;margin:1px 0 0;padding:0;width:15px;height:13px;line-height:1}
+.fielserEncuesta .block{line-height:1.75}.fielserEncuesta .spanEncT{line-height:1.2}.spanEncT{width:230px}.encuestaVer{margin-top:5px}#promo1Content .textoPromo{padding:22px 4px 0 0;width:72px;height:54px;font-weight:bold;font-size:24px;color:white;text-align:center}
+.secondLineA{width:325px}.secondLineB{padding:0;margin:0 0 0 10px;width:325px}.textoPromoChico{background-repeat:no-repeat;position:absolute;padding:21px 6px 0 0;font-weight:bold;font-size:18px;color:white;text-align:center}
+.mR10S{margin-right:10px}.promoflujo{position:absolute;width:58px;height:48px;top:-17px;left:263px;z-index:4;text-align:center}.fucsiaBIG{background-image:url(../images/ofertadestacada.png)}
+.azul{background-image:url(../images/ofertaazul.png)}#promo1Content .azul,#previewChapa .azul{background-image:url(../images/ofertadestacadaceleste.png)}
+.rojo{background-image:url(../images/ofertaroja.png)}#promo1Content .rojo,#previewChapa .rojo{background-image:url(../images/ofertadestacadarojo.png)}
+.amarillo{background-image:url(../images/ofertamarilla.png)}#promo1Content .amarillo,#previewChapa .amarillo{background-image:url(../images/ofertadestacaAmarillo.png)}
+.verde{background-image:url(../images/ofertaverde.png)}#promo1Content .verde,#previewChapa .verde{background-image:url(../images/ofertadestacadaverde.png)}
+.fucsiaBIG,.azul,.rojo,.amarillo,.verde{background-repeat:no-repeat}.tituloFooter{background:url(../images/linefoot.png) left bottom repeat-x;padding:0 5px 10px;margin-bottom:20px;color:#999;font-size:18px;line-height:1}
+.ulListF{padding:0 5px;height:180px;overflow:hidden}.verTodasfooter{display:block;float:right;width:100px}.TilutoLightbox{background:url(../images/LineTitulo538Lightbox.png) center bottom no-repeat;color:black;display:block;font-size:24px;height:54px;line-height:1}
+.linksFooter{padding:0 0 4px}.linkWhite{color:white}.linkWhite:hover{color:#FC0}.TextoInputLogin{display:block;margin:0 0 5px;color:black}.TextoConect{color:black;text-align:center;width:237px;font-size:12px}
+.sizeInputLogin{margin:0 0 5px;width:235px}.ForgotPcontainer{margin:10px 0 0;width:250px;overflow:hidden}.ForgotP{display:block;margin:10px 0 0;width:140px;height:53px}
+.aLinkVD,.aLinkVD:hover{text-decoration:none}.Gclave{float:right;margin:20px 0 0;width:140px;height:45px;color:black}.secondLineVidasocial{padding:0 0 10px;margin:0 0 10px}
+.checkboxlogin{margin:0 5px 0 0}.loginRedes{position:absolute;top:0;left:58px;margin:8px 0 0;width:73px;color:#666;font-size:12px}.AnclaFacebook,.Anclatwitter,.AnclaGoogle{display:block;margin:2px 0 0 2px;width:42px;height:43px}
+.AnclaFacebook{background-position:-211px -83px}.Anclatwitter{background-position:-259px -83px}.AnclaGoogle{background-position:-308px -83px}.Qpromobtn{background-image:url(../images/botones.png);background-position:1px -84px;width:145px;height:34px;float:right;margin:20px 0 0 0;cursor:pointer;border:0}
+.Qpromobtn:hover{background-image:url(../images/botones.png);background-position:-149px -84px}.QPbtnInactive{background-image:url(../images/botones.png);background-position:-301px -84px;width:145px;height:34px;float:right;margin:20px 0 0;border:0 none;cursor:default}
+.qParticiparbtn,.qParticiparInactive{width:142px;height:35px;float:right;margin:20px 0 0 0;cursor:pointer;border:0 none}.qParticiparbtn{background-position:0 -787px}
+.qParticiparbtn:hover{background-position:-146px -787px}.qParticiparInactive,.qParticiparInactive:hover{background-position:-299px -787px;cursor:default}
+h6.TilutoCatalogo{background-image:url("../images/CatalodoLineBottom.png");background-position:center bottom;background-repeat:no-repeat;color:black;height:55px;margin:10px 0 20px;padding:0}
+h6.TilutoDetallePromo{background:url(../images/bdDetallePromo.png) no-repeat;padding:5px 0 0 10px;margin-bottom:20px;height:29px;color:black}.queBuscasTexto,.queBeneficiosTexto,h6.queCategoriasTexto{background-position:0 -156px;left:0;bottom:0;padding:0 5px 10px 0;margin:10px 0 0 0;width:260px;height:43px;color:white}
+h6.queBuscasTexto,h6.queBeneficiosTexto,h6.queCategoriasTexto{padding:5px 0 0 18px}.queBuscasOp{margin:10px 20px 20px 10px;width:240px;color:black}.LineQuebuscas{background-image:url(../images/bglineqbuscas.png);margin:10px 0 0 10px;width:260px;height:18px}
+.fotoSombra{background:url(../images/bgFotoDetalleProno.png) bottom left no-repeat;margin:0;width:290px;height:86px}.Qtipodeoferta2{position:absolute;z-index:3;bottom:0;top:189px;left:2px;margin-left:12px;height:29px;width:315px}
+#DetalleEstContFoto .Qtipodeoferta2{top:152px}.promostexto3{background-color:black;padding:5px 0 0 15px;height:24px;width:80px;font-size:14px;font-weight:bold;color:white}
+.QtextoPromoChico{background-repeat:no-repeat;position:absolute;padding:18px 9px 0 0;width:57px;height:48px;text-align:center;font-weight:bold;font-size:18px;color:white}
+.npromostexto{display:block;width:245px;color:#333}.bbdotted{border-bottom:#CCC dotted 1px}.DescripdeEstaP{margin:0;display:block;font-size:11px}#DetalleEstContText .TitulodeEstaP2{font-size:12px}
+h6 .DescripdeEstaP .TitulodeEstaP2{margin:0}.QPhoto{width:210px;height:115px;position:relative}.QPhoto2{width:180px;height:102px;position:relative}.QpromoDescription{margin:0;height:30px;overflow:hidden;color:#000;font-size:14px;font-size:12px}
+.Qdescription{margin-top:10px;width:180px;height:auto}.QpromoTitle{margin:0;padding:0;height:25px;overflow:hidden;font-size:16px;font-weight:normal}.Qdate{display:block;padding:5px 0 0;font-size:12px;color:#666}
+.QbotonVerdetalle{display:block;background-image:url(../images/botones.png);background-repeat:no-repeat;background-position:0 -219px;padding:0 10px 0 0;width:85px;height:40px}
+.QbotonVerdetalle:hover{background-position:-97px -219px}.Qpromotexto{background-color:black;background-repeat:no-repeat;padding:5px 10px 0 10px;width:65px;height:22px;font-size:12px;color:white}
+.Qpromotexto2{font-size:12px;font-weight:bold;padding:5px 0 0 5px}.Qtoferta{position:absolute;z-index:3;top:108px;width:66px;height:66px}.Qtoferta5{position:absolute;z-index:3;top:95px;left:39px;width:66px;height:66px}
+.Qtoferta2{position:absolute;z-index:3;top:88px;left:0;width:210px;height:30px}.Qpromoflujo2{position:absolute;padding:18px 9px 0 0;width:57px;height:48px;top:-26px;left:146px;z-index:2}
+.Qpromoflujo3{position:absolute;padding:18px 9px 0 0;width:57px;height:48px;top:-26px;left:154px;z-index:2}.bbSolid{border-bottom:#CCC solid 1px}.QuieroMainBox{width:660px;padding-bottom:10px;overflow:hidden}
+.Qboxcenter{margin-left:51px}.Qboxright{float:right;padding-right:0}.Qboxleft{width:210px;padding-right:10px}.lineBottom650{background-image:url(../images/CatalodoLineBottom.png);background-repeat:no-repeat;width:660px;height:18px;margin:0}
+.Qpagination{margin-top:10px;text-align:right}.black{color:black}.gray{color:#666}.mR10{margin-right:10px}.Qpromo{float:left;width:193px;height:30px}.Qp1right{margin:5px 0 0;width:213px}
+.Qp2Left{float:left;width:192px}.QshowImag{background:url(../images/imgs15x15.png) no-repeat;padding-left:20px;padding-bottom:1px;width:auto;height:30px}
+.Qlista{background:url(../images/list15x15.png) no-repeat;padding-left:20px;width:43px}.QverComo{width:auto}.tituFiltro{display:block;padding:5px 0 0;font-size:13px;color:#333;font-weight:bold}
+.promoLista{background-color:black;position:absolute;z-index:3;bottom:0;left:2px;height:30px;width:auto}.promoListatext{color:white;height:29px;width:auto;font-size:14px;font-weight:bold;padding:5px 10px 0 10px}
+.pagination{font-size:12px;padding:15px 0}.lBGray{border-bottom:1px solid #dcdbdb}.all{width:100%;overflow:hidden}.pagLegend{padding:0}.mB0{margin-bottom:0}
+.grid7{margin-left:10px;margin-right:10px}.c3{color:#333}.pagUl{padding:0}.theta{margin-right:0;margin-left:0}.itemPag{display:inline;padding:0 10px 0 0;color:#007fd3}
+.itemPag .active{color:black;font-weight:bold;cursor:default;text-decoration:none}.window{display:none;position:fixed;left:50%;top:50%;z-index:9999}.initModal{margin:0 0 0 -356px;top:50px;width:730px;height:400px}
+.modalInfo{margin:-116px 0 0 -225px;width:550px;height:232px}.btnMsjModal{margin:0 auto;width:250px;overflow:hidden}.infoDialog{padding-left:5px;margin-bottom:10px;font-size:14px;font-weight:bold;color:#666}
+.iWindow{background-color:white;border:1px solid #ccc;box-shadow:0 0 1px rgba(0,0,0,0.25),0 1px 5px 3px rgba(0,0,0,0.05),0 5px 4px -3px rgba(0,0,0,0.06);-webkit-box-shadow:0 0 1px rgba(0,0,0,.25),0 1px 5px 3px rgba(0,0,0,.05),0 5px 4px -3px rgba(0,0,0,.06);margin:10px 10px 0 0;overflow:hidden}
+.inWindow{padding:20px 20px 30px}.windowF{display:none;position:absolute;z-index:9999}.icoCWM{display:block;background-position:0 -219px;position:absolute;top:0;right:0;width:24px;height:24px}
+.checkbox{margin:0 5px 0 0}.formRegister .block{margin-bottom:20px}.req{color:#F00}.noReq .req{padding-left:2px}.iBlockN{width:190px}.labelCheck{margin:0 10px 0 0;line-height:1}
+.inputNr{width:420px}.iDateP{width:80px}.idatecog{width:170px}.selectRegis{margin:0 10px 0 0;width:109px}.checkN{margin:0 5px 0 0;width:12px;height:12px;overflow:hidden}
+.TextoInputreg{color:black;font-size:13px;margin:25px 0}.textforReg{color:#333;font-size:12px;margin:25px 0 0}.cogregistro{background-color:#ffffe1;width:340px;height:86px}
+.codigotext{display:block;margin:5px 0 10px;font-size:12px;font-weight:normal;color:#666}.labelNr{float:left;margin:0 20px 0 0;width:200px;font-weight:bold}
+.selectMN{margin:0 10px 0 0;width:150px}.response{display:block;background-repeat:no-repeat;background-position:left 3px;margin:0 0 0 20px;padding:0;width:120px;overflow:hidden;line-height:1.2;text-align:left}
+.amiCtaBtn{background-color:#faf7f7;border:#c7c7c7 solid 1px;border-bottom:0;display:block;float:left;padding:5px;height:12px;color:#999;text-decoration:none;font-size:11px}
+.amiCtaBtn:hover{background-color:white;border:#999 solid 1px;border-bottom:white solid 1px;color:#333}.amiCtaBtnActive,.amiCtaBtnActive:hover{background-color:#fff;font-size:12px;color:#000;border:#000 solid 1px;border-bottom:#fff solid 1px;font-weight:bold;cursor:default}
+.ml2{margin-left:2px}.mictaContet{background-color:#fcfcfc;padding:14px;overflow:hidden}.miCtaTable{background-color:#fcfcfc;width:808px;overflow:hidden}
+.blockField{background-color:white;border:1px solid #e0e0e0;margin:0 0 20px;padding:20px;overflow:hidden}.labelN{float:left;margin:0 20px 0 0;padding:0 0 0 10px;width:200px;color:#333;font-weight:bold}
+#beneficiariosInv .labelN{width:100px}.label{cursor:pointer}.inputNmicta{width:230px}.mctaTittle{margin-bottom:10px;font-size:26px;color:black}.blockBDC{width:430px;overflow:hidden}
+.pl10{padding-left:5px}.mctaDescription{display:block;font-size:14px;color:black}.mctaDescriptionRedes{display:block;margin:20px 0 0 20px;text-align:center;font-size:14px;color:black}
+.mictaNoRedes{padding:10px 0 20px 120px;color:gray}.saveChangesBredes{display:block;background:url(../images/botones.png) 1px -457px;border:0 none;margin:20px 0 20px 330px;width:152px;height:29px;cursor:pointer}
+.saveChangesBredes:hover{background:url(../images/botones.png) -155px -457px;display:block;border:0 none;margin:20px 0 20px 330px;height:29px;width:152px;cursor:pointer}
+.liMictanMenu{margin:0 2px 0 0}.MictalabelN{float:left;margin:0;width:200px;font-weight:bold}.selectMictaCategia{width:230px}.aMenuMictaMain{display:block;background:url(../images/btNavMictaInactivebg.png) repeat-x;border:#e2e2e2 solid 1px;border-bottom:0;padding:5px 10px 0;width:108px;height:19px;overflow:hidden;color:#b2b2b2;font-weight:bold;font-size:12px;text-decoration:none}
+.aMenuMictaMain:hover{color:black}.active .aMenuMictaMain{background-image:none;background-color:black;border:0;width:110px;color:white}.labelLI{display:block;margin:5px 0 0;width:120px}
+.inputLI{width:230px}.selectLI{width:240px}.mr20{margin-right:20px}.pT20{padding-top:20px}.MictalabelMA{color:black;font-size:13px}.bloqueMicta{width:530px;margin-top:18px;overflow:hidden}
+.mlMASchanges{margin-left:0}.bloqueMictaCbox{margin:0 0 20px 200px;width:230px;overflow:hidden;color:#999}.mictaSC{color:black}.ralerta{width:120px}.labelNcontacto{float:left;margin:0 20px 0 0;width:160px;font-weight:normal;color:black;font-size:14px}
+.MictaContactoDOS{width:250px;margin:10px 0 0 150px}.bloqueMictaCont{margin:10px 180px 0 180px;color:#999}.mictaCaptcha{margin-top:10px}.txtChackNM{display:block}
+.mcitaCoDes{font-size:12px;color:#666}.mictaTitFiltro{background-color:#efefef;padding:10px 0 10px 10px;font-size:14px;color:black}.mictaConsTableInner{width:100%}
+.mictaCosnsBg{background:url(../images/mictaConsumosBg.png) repeat-y 149px}.mictaConsBlock{color:black;border-bottom:#e4e4e4 solid 1px}.mictaptLr{padding:10px 0 10px 10px}
+.mictaMantbtnCont{background-image:url(../images/botones.png);display:block;background-position:1px -342px;background-repeat:no-repeat;margin:20px 0 8px 270px;width:180px;height:38px}
+.mictaMantbtnCont:hover{background-position:-180px -342px;width:180px;height:38px}.InSomeonelseT{display:block;width:280px;color:black;font-size:13px}
+.mictBenTiTH{padding:10px 5px}.mictbRight{border-right:#CCC solid 1px}.mictbTop{border-top:#CCC solid 1px}.mictBenFluTd{padding:10px 5px;color:#333;font-size:12px}
+tr.even td{background-color:#ecf7ff}.mictaBtnIvit{background:url(../images/botones.png) 3px -492px no-repeat;bottom:0;left:0;display:block;margin:0;width:85px;height:35px}
+.mictaBtnIvit:hover{background-position:-83px -492px}.ml20{margin-left:20px}.marginSexo{margin-left:180px}.blockBDCdate{overflow:hidden;padding-top:20px}
+.labelbenefi{color:#333;float:left;font-weight:bold;margin:0 20px 0 0;padding:20px 0 0 10px}.mictaBeneInvit{background:url(../images/botones.png) 1px -528px no-repeat;display:block;margin:10px auto;width:120px;height:42px}
+.mictaBeneInvit:hover{background-position:-128px -528px}.bTsolid{border-top:#dfdfdf solid 1px}.ml20{margin-left:20px}.marginSexo{margin-left:180px}.blockBDCdate{overflow:hidden;padding-top:20px}
+.mictaBeneInvit{background-image:url(../images/botones.png);background-position:1px -528px;background-repeat:no-repeat;display:block;border:0 none;margin:10px auto 0;width:120px;height:42px}
+.mictaBeneInvit:hover{background-position:-128px -528px}.bTsolid{border-top:#dfdfdf solid 1px}.mictaBeneQuitarDesc{margin:20px 0 0 50px;font-size:16px;color:#333;font-weight:normal;text-align:center}
+.mictaBeneQuitarQuest{margin-top:10px;color:#f33;font-size:16px;text-align:center}.mictaBeneBtnSi{display:block;background:url(../images/botones.png) 3px -577px;width:146px;height:29px}
+.mictaBeneBtnSi:hover{background-position:-144px -577px}.mictaBeneBtnNo{background-image:url(../images/botones.png);display:block;background-position:0 -612px;width:102px;height:29px}
+.mictaBeneBtnNo:hover{background-position:-104px -612px}.mictaBeneInfoInvit{background-image:url(../images/botones.png);display:block;background-position:0 -649px;margin:20px 0 20px 210px;width:82px;height:29px}
+.mictaBeneInfoInvit:hover{background-position:-87px -649px}.labelInfoInvitado{margin:0 0 0 20px;float:left;font-weight:bold;font-size:14px;color:black}
+.Trebuchet16{font-size:16px}.btnDirectos{background:url(../images/bt_directosFase2.png) no-repeat;display:block;height:32px;position:absolute;top:0;z-index:2}
+.bDpromociones{background-position:0 -4px;width:157px;left:130px}.bDpromociones:hover{background-position:0 -39px}.bDtickets{background-position:-160px -3px;width:118px;left:292px}
+.bDtickets:hover{background-position:-160px -38px}.bDbenfpermanentes{background-position:-278px -2px;width:108px;left:412px}.bDbenfpermanentes:hover{background-position:-278px -37px}
+.bDcierrapuertas{background-position:-386px -2px;width:146px;left:519px}.bDcierrapuertas:hover{background-position:-386px -37px}.bDcines{background-position:-541px -2px;left:678px;width:86px}
+.bDcines:hover{background-position:-541px -37px}.bbSolidwhitd{border-bottom:white solid 1px}.Recuperarclave{margin:5px 0 0;color:black;font-size:12px}
+.inputrecupClave{margin:5px 0 0;width:450px}.TextoInputclave{display:block;margin:25px 0 0 0;padding:0 0 10px 0;color:black;font-size:12px}.cajaBtcambiar{width:250px;height:53px}
+.btncambiar{background:url(../images/btn_cambiarclave.png) no-repeat;text-indent:-9999em}.Gcambclave{width:auto;float:left;color:black}.legendLink{margin:0 0 10px 10px;color:#007fd3;line-height:1}
+.cajaAgrade{background-color:#ffffe1}.f16{font-size:16px}.lineAgradecim{background:url(../images/graciasLine.png) no-repeat;margin:20px 0 10px 0;height:18px}
+#detalleImpreso .TitulodeEstaP2{font-size:12px}.topListaresultados{background:url(../images/fdoLargo.jpg) no-repeat 0 0 transparent;height:36px;width:660px;color:#454e5e;font-weight:bold}
+.Qtoferta5 .promoflujoNM{left:82px}#topListaresultados .Qtoferta{top:48px;left:120px}.promoflujoNM{position:absolute;top:-48px;left:120px;z-index:3;padding:18px 9px 0 0;width:57px;height:48px}
+.titu1L,.titu2L,.titu3L,.titu4L,.titu5L{padding:10px 0 5px 15px}.titu1L{width:180px;padding:10px 0 5px 15px}.titu2L{width:121px;padding:10px 0 5px 15px}
+.titu3L{width:93px;padding:10px 0 5px 15px}.titu4L{width:110px;padding:10px 0 5px 15px}.titu5L{width:80px;padding:10px 0 5px 15px}.f14{font-size:14px}
+.f16{font-size:16px}.textVistaL,.titleLinkV{width:660px;overflow:hidden}.titleLinkV{height:36px;overflow:hidden}.textVistaL{padding:10px 0}.conte1L{padding:0 5px;width:185px}
+.conte2L{padding:40px 5px 0;width:126px}.conte3L{padding:40px 5px 0;width:98px}.conte4L{padding:40px 5px 0;width:115px}.conte5L{padding:40px 5px 0;width:85px}
+.Qbeneficiotexto{background-color:#fc0;padding:5px 10px 0 10px;width:auto;height:22px;font-size:12px;color:#000}.seleccPromoBenef{background-color:#ffffe1}
+.flechasOrden{background:url(../images/flechas.jpg) no-repeat}.itemL{margin-right:5px;line-height:1}.btnesL{display:block;height:25px;overflow:hidden}
+.mensajeI,.liMensaje{width:22px}.twitterI,.liTwitter,.facebookI,.liFacebook{width:18px}.mensajeI{background-position:-320px -157px;right:120px}.twitterI{background-position:-299px -156px;right:120px}
+.facebookI{background-position:-278px -156px;right:55px}.twitterI,.facebookI,.mensajeI{display:block;height:18px;background-image:url(../images/spt.png);background-repeat:no-repeat;text-indent:-9999em}
+.textChareF{width:115px}#winVerVidaSocial .textChareF{width:65px}h6.TilutoVidaso{background:url(../images/CatalodoLineBottom_v.png) bottom center no-repeat;margin:10px 0 0 10px;padding:10px 0 0 5px;height:55px;color:black}
+.vsDescription{margin:0 0 10px;line-height:1.1}.vsTitle{margin:0 0 10px;padding:0;font-size:18px;line-height:1.1}.mainContentInvitarInfo{margin:0 auto;height:360px;padding:0;position:fixed;width:580px;background-color:white;margin:-225px 0 0 -322px}
+.mainContentBenQuitar{position:fixed;background:#FFF url(../images/bgbeneficiariosmictaQuitar.png) no-repeat bottom;margin:-225px 0 0 -322px;padding:0;width:580px;height:250px}
+.ftxt14{font-size:14px}.mT5{margin-top:5px}.firstBlockTest{background-color:#febf01;height:20px}.ml10{margin-left:10px}.ml100{margin-left:100px}.blSolidfirstBlockTest{border-left:solid 2px #a80}
+.blSolidSblockTest{border-left:solid 2px #dd6f00}.SecondBlockTest{background-color:#f93;height:20px}.blSolidTblockTest{border-left:solid 2px #c33}.thirdBlockTest{background-color:#f60;height:20px}
+.blSolidFblockTest{border-left:solid 2px #480000}.fourthBlockTest{background-color:#c00;height:20px}.linkOut{padding:5px 0;margin-bottom:0;color:#ffb700;text-align:center;font-size:11px}
+.linkF,.pipe{color:white}.linkF:hover{color:#FC0}.linkOut .linkF,.pipe{padding:0 2px}.secondLinedestacado{margin:0 auto;width:660px;overflow:hidden}.secondLinedestacadoB{border-bottom:solid 1px #ccc;padding:0 0 10px;margin:0 0 10px;overflow:hidden}
+.lastBLine{border-bottom:0 none;margin-bottom:0}.boxFoot{width:280px;margin-right:65px}.lastFoot{margin-right:0}.flowWAll{width:660px;padding:9px;overflow:hidden}
+.msgBlue{background-color:#bfdeff;border:1px solid #39f;padding:10px}.msgRed{background-color:#fcc;border:1px solid #c00;padding:10px}.msgYellow{background-color:#fc0;border:1px solid #dfb300;padding:10px;color:black}
+.flash-message{margin:10px auto 0;width:958px;overflow:hidden;font-size:14px}.msgLoginOK{background:#fc0 url(../images/loginImgOK.png) 10px bottom no-repeat;border:1px solid #dfb300;padding:10px 10px 10px 120px;font-size:16px;color:black}
+.msgLogin{background-color:#fc0;border:1px solid #dfb300;padding:10px;font-size:16px;color:black}.flash-message-small{margin:10px auto;width:938px;overflow:hidden;font-size:14px}
+.bFieldRS{width:450px;overflow:hidden}.titleRedSoc{font-size:14px}.titleRedSoc,.bDelete,.bFieldRS{border-width:0 0 1px;border-style:solid;border-color:#ccc;padding:10px 5px}
+.bFieldRS{color:#666}.bFacebook,.bGoogle{background-image:url(../images/icoSociales.png);background-repeat:no-repeat;padding-left:25px}.bGoogle{background-position:0 11px}
+.bFacebook{background-position:0 -65px}.ctaVacio{display:block;padding:0}.inputCN,.textareaCN{width:250px}.selectCN{width:262px}.mCtaGridW{width:808px;overflow:hidden}
+.mConsumosFiltro{display:block;margin:0 0 10px;overflow:hidden;line-height:1;vertical-align:top}.mcitaCoDes{display:block;width:105px}.consumopaginator{display:block;margin:0;padding:0;width:12px;height:12px}
+.mictaTitFiltro{height:20px}.nuemroPreguntasf{font-size:16px;color:white;display:block;font-weight:bold;font-weight:bold;height:auto;width:30px;margin-left:10px;margin-top:10px}
+.txtPreguntasf{font-size:16px;color:black;display:block;font-weight:bold;font-weight:bold;height:auto;width:580px;margin-left:10px;padding-top:10px}.imgPreguntasf{background-image:url(../images/vineta_pf.jpg);background-repeat:no-repeat;height:38px;width:657px;margin:20px 0}
+.imgPreguntasfV2{background-image:url(../images/vineta_pf2.jpg);background-repeat:no-repeat;height:38px;width:657px;margin:20px 0}.imgpreguntasP1{position:absolute;z-index:2;left:338px;top:167px;width:329px;height:118px;background-image:url(../images/imgp1.jpg);background-repeat:no-repeat}
+.imgpreguntasP2{position:absolute;z-index:2;left:544px;top:347px;width:99px;height:62px;background-image:url(../images/imgp2.jpg);background-repeat:no-repeat}
+#fechacabecera{text-align:right;margin:40px 0 0;font-size:14px}.inputRC{width:290px}.labelRC{width:185px}.msgRC{clear:both;width:300px;padding:5px 0 0 215px}
+.titleProB{margin:0;padding:0;font-size:12px}#cuponSuccess .QPhoto{padding-bottom:20px}.blockWM{width:234px}.labelOpt{display:block}.inputSm{width:210px}
+.blockWM .response{margin:5px 0 0;width:210px}.responseCP{display:block;padding:5px 0 0 185px;clear:both}#formuContacto .bloqueMicta{margin-top:10px}#formuContacto .marginBS{margin-left:340px}
+.horarioAtencion{background-color:#e8e8e8;padding:10px;margin:10px 0 10px 0}.Titulo980,.Titulo680{height:50px;padding:10px 0 0;margin:0 0 20px;line-height:1;color:black}
+.Titulo980{background:url(../images/LineTitulo980.png) bottom no-repeat;text-transform:uppercase}.Titulo680{background:url(../images/LineTitulo680.png) bottom no-repeat}
+.titleFix{margin-left:10px;padding-left:5px}.cntVacio{display:block;padding:10px}#destacadosContainer .noLineD{border-bottom:0 none}#firstLinedestacado .date{padding-top:10px}
+#numeropromos .npromostexto{padding-top:5px}#NombredeEstaP .TitulodeEstaP{margin-bottom:0}.msjLoadMFF{background-repeat:no-repeat}.optCuentaBtn{margin-left:20px;width:540px}
+.btnCloseAdm{display:block;background-position:0 -644px;margin:20px 0 20px 210px;width:82px;height:29px}.btnCloseAdm:hover{background-position:-89px -645px}
+.modalCtaBen{margin:-190px 0 0 -340px;width:680px;height:380px}.miCtaQuitarBtn{margin:10px 0 0 162px;height:29px}.adminGesEditPar{position:fixed;background-color:white;width:538px;height:300px;margin:-121px 0 0 -287px;padding:0}
+#adminGSave{background-position:1px -421px;border:0 none;cursor:pointer;height:29px;margin:0 0 0 5px;width:91px}#adminGquit:hover{background-position:-102px -612px}
+.itemSearchBeneficios input{border:0 none}#adminGquit{background-position:2px -612px;border:0 none;cursor:pointer;height:29px;margin:0 0 0 5px;width:105px}
+#adminGSave:hover{background-position:-99px -421px}.adminGLabelEdit{color:black;float:left;font-size:14px;font-weight:bold;margin:0 0 0 20px;width:150px}
+.adminGeSQ{width:210px;margin:20px auto 0;overflow:hidden}.adminGesInput{width:170px}.modalAdminGesPar{height:380px;margin:-230px 0 0 -260px;width:540px}
+.caja_nuevaventajSS{background-color:#f5f3f1;margin:0 0 20px;padding:20px;width:560px;overflow:hidden}#challenge-element{float:left;width:325px;overflow:hidden}
+#recaptcha_logo,#recaptcha_tagline{display:none}#recaptcha_response_field{border:1px solid #cfcfd0!important;padding:6px 5px;width:270px!important;font-size:12px!important}
+#recaptcha_table{border:0 none!important}.recaptchatable,#recaptcha_area tr,#recaptcha_area td,#recaptcha_area th{padding:0!important}#recaptcha_table .recaptcha_image_cell{padding-right:10px!important}
+.recaptchatable #recaptcha_image{border:1px solid #3c3c3c!important}#recaptcha_table .recaptcha_image_cell{width:280px!important}#recaptcha_table #recaptcha_image,#recaptcha_image img{width:280px!important}
+#recaptcha_table .response{margin-top:5px;color:#c33}#formContact,#formSuscribete{width:630px;overflow:hidden}.inputFC{width:270px;margin:0}.divFC{width:280px;overflow:hidden}
+.labelFC{display:block;margin:5px 10px 0 0;width:130px}.selectFC{width:280px}.responseFC{display:block;margin:5px 0 0 10px;width:180px}.selectSFC{width:145px}
+.inputSFC{width:115px}.textareaFC{width:270px}.emptyFC{padding-left:140px;width:490px;overflow:hidden}.adminAceptBtn{background:url("../images/botonesAdmin.png") 0 -830px no-repeat;display:block;height:27px;margin:10px 0 0 20px;width:89px}
+.adminAceptBtn:hover{background-position:-100px -830px}.adminQuitBtnbene{background-image:url("../images/botonesAdmin.png");background-position:0 -171px;background-repeat:no-repeat;display:block;height:29px;margin:10px 0 0 10px;width:102px}
+.adminQuitBtnbene:hover{background-position:-104px -171px}.btnLovePromo{display:block;background-position:0 -753px;margin:0 auto;width:164px;height:30px}
+.btnLovePromo:hover{background-position:-172px -753px}.selectEB{width:150px}.divMA,.labelMA{display:block;width:120px}.frmAlertasAM .response{width:135px}
+.labelFCS{padding:8px 5px 0 0}.maxLenghtN{width:130px}.linksFooter_es{background:url("../images/linefoot2.png") repeat-x scroll left top;color:#999;font-size:12px;line-height:4;margin-bottom:20px;padding:0 0 10px;margin-top:15px;width:165px}
+#wrap .table960Fix,#wrap .table482Fix{overflow-x:auto;overflow-y:hidden}#wrap .table960Fix{overflow:960px}#wrap .table482Fix{width:482px}.relative{position:relative}
+.line-exclusive{background:url("../images/line-exclusive.png") no-repeat scroll left top transparent;height:43px;position:absolute;right:-4px;top:-7px;width:84px}
+#tiendaImg{background-image:url("../images/img-ir-tienda.jpg");height:113px;margin:0 auto;width:231px}#go-tienda:link,#go-tienda:visited{background-image:url("../images/ir-tienda.png");display:block;height:33px;left:45px;position:absolute;top:180px;width:195px}
+#go-tienda:hover{background-position:0 -33px}.qResultadosSorteo:hover{background-position:-150px -950px}.qResultadosSorteo{background-position:0 -950px}
+.qResultadosSorteo,.qResultadosSorteoInactive{width:142px;height:35px;float:right;margin:20px 0 0 0;cursor:pointer;border:0 none}#winVerEncuesta .contentGraphEView{max-height:320px;overflow-y:scroll}

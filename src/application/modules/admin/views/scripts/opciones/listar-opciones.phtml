@@ -1,0 +1,49 @@
+<? if (count($this->opciones) > 0) : ?>
+    <div id="mictBeneBtnBox" class="mB20 all">
+        <? if (!!$this->opciones->getCurrentItemCount()) : ?>
+            <div class="left m5all"><?php echo $this->mostrando; ?></div>
+                <?= $this->paginationControl($this->opciones, 'Sliding', '_partials/_pag.phtml') ?>
+        <? endif; ?>
+    </div>
+    <div class="mictaContet grayborder2 r3 all">
+        <table id="mictBenContent">
+            <thead id="mictaBenTitle">
+                <tr>
+                    <th width="21%" class="mictBenTiTH ml5 mictbRight bold">Nombre</th>
+                    <th width="31%" class="mictBenTiTH ml5 mictbRight bold">Descripción</th>
+                    <th width="14%" class="mictBenTiTH mictbRight bold">Módulo</th>
+                    <th width="13%" class="mictBenTiTH  bold">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?
+                $class = array(0 => 'even', 1 => '');
+                $i = 0;
+                foreach ($this->opciones as $key => $opciones) :
+                    ?>
+                    <tr class="<?= $class[$i++ % 2] ?>">
+                        <td class="mictBenFluTd mictbRight mictbTop"><?=$opciones['nombreop']?></td>
+                        <td class="mictBenFluTd mictbRight mictbTop"><?=$opciones['descripop']?></td>
+                        <td class="mictBenFluTd mictbRight mictbTop"><?=$opciones['modulo']?></td>
+                        <td class="mictBenFluTd mictbTop"><a href="#lboxEeditarOp" class="optEdit winModal" rel="<?=$opciones['id']?>" >Editar</a></td>
+                    </tr>
+                <? endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <div id="mictBeneBtnBox" class="mT20 all">
+        <? if (!!$this->opciones->getCurrentItemCount()) : ?>
+            <div class="all cntPagFix">
+                <div class="left m5all"><?php echo $this->nroregistros; ?></div>
+                <?= $this->paginationControl($this->opciones, 'Sliding', '_partials/_pag.phtml') ?>
+            </div>
+        <? elseif (!$this->opciones->getCurrentItemCount()) : ?>
+            <div class="paginador all">
+                <div class='pagUl theta alignL'> - No hay datos registrados con esos parámetros </div>
+            </div>
+        <? endif; ?>
+    <? else : ?>
+        NO HAY OPCIONES REGISTRADAS
+    <? endif; ?>
+</div>
+

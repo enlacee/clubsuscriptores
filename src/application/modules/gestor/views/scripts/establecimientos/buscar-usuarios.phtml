@@ -1,0 +1,53 @@
+<div class="all" id="adminEstaContentBox">
+    <div id="mictBeneBtnBox" class="mB20 all">
+            <div class="alignR left"><?php echo $this->mostrando; ?></div>
+            <?php if ($this->establecimientos != null) { ?>
+            <?= $this->paginationControl($this->establecimientos, 'Sliding', '_partials/_pag.phtml') ?>
+            <?php } ?>
+    </div>
+        
+          <div class="mictaContet grayborder2 r3">
+            <table id="mictBenContent" class="pagUsu" ord="<?=$this->ord ?>" col="<?=$this->col ?>" pag="<?=$this->pag ?>">
+              <thead id="mictaBenTitle">
+                <tr>
+<!--                  <th width="4%" class="mictBenTiTH ml5 mictbRight bold"><input type="checkbox"></th>-->
+                  <th width="4%" class="mictBenTiTH ml5 mictbRight bold"></th>
+                  <th width="37%" class="mictBenTiTH ml5 mictbRight bold" >
+                  Nombre 
+                  <a class="<?= ($this->col=='apellidos' && ( $this->ord =='' || $this->ord=='ASC'))? 'esblueArrow':'esblueArrowDown'?> right mR10 mT5 ordenar" col="<?= $col = 'apellidos' ?>" ord="<?= $ord = $this->col == $col && $this->ord == 'ASC' ? 'DESC': 'ASC' ?>" pag="<?=$this->pag ?>" ></a></th>
+                  <th width="13%" class="mictBenTiTH ml5 mictbRight bold">DNI</th>
+                  <th width="21%" class="mictBenTiTH ml5 mictbRight bold">E-mail</th>
+                  <th width="16%" class="mictBenTiTH ml5 mictbRight bold" >
+                  Estado
+                  <a class="<?= ($this->col=='activo' && ( $this->ord =='ASC' || $this->ord=='DES'))? 'esblueArrow':'esblueArrowDown'?> right mR10 mT5 ordenar" col="<?= $col = 'activo' ?>" ord="<?= $ord = $this->col == $col && $this->ord == 'ASC' ? 'DESC': 'ASC' ?>" pag="<?=$this->pag ?>" ></a></th>
+                  <th width="9%" class="mictBenTiTH ml5 bold">Acciones</th>
+              </tr>
+              </thead>
+            <tbody>
+                <? $class = array(0 => 'even', 1 => '');
+                $i = 0; ?>
+                <? foreach ($this->establecimientos as $establecimiento) : ?>
+                    <tr class="<?= $class[$i++ % 2] ?>">
+                    	<td class="mictBenFluTd mictbRight mictbTop"></td>
+                        <td class="mictBenFluTd mictbRight mictbTop"><?= $this->escape($establecimiento['nombres']).' '.$this->escape($establecimiento['apellidos']) ?></td>
+                        <td class="mictBenFluTd mictbRight mictbTop"><?= $establecimiento['numero_documento'] ?></td>
+                        <td class="mictBenFluTd mictbRight mictbTop"><?= $establecimiento['email'] ?></td>
+                        <td class="mictBenFluTd mictbRight mictbTop"><?= $establecimiento['activo'] ? 'Activo' : 'No activo' ?></td>
+                        <td class="mictBenFluTd mictbTop">
+                            <ul>
+                                <li><a class="winModal editarUsu" href="#winModUsuario" rel="<?=$establecimiento['id'] ?>" >Editar</a></li>
+                                <li><a class="winModal cambioClaveUsu" href="#winModUsuario" rel="<?=$establecimiento['id'] ?>" >Cambia Clave</a></li></ul>
+                        </td>
+                    </tr>
+                <? endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?="<div class='hide' id='csrf'>".$this->csrf."</div>"?>
+    <div id="mictBeneBtnBox" class="mT20 all">
+        <div class="alignR left"><?php echo $this->nroregistros; ?></div>
+        <?php if ($this->establecimientos != null) { ?>
+        <?= $this->paginationControl($this->establecimientos, 'Sliding', '_partials/_pag.phtml') ?>
+        <?php } ?>
+    </div>
+</div>

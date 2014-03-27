@@ -1,0 +1,55 @@
+<span class="span_suscriptorForm" style="display:none;">
+<div class="block TextoInputreg">¿Sobre que te gustaría obtener beneficios e información?</div>
+<div class="block">
+    <label for="" class="labelNr black noReq left Trebuchet"><span class="req">&nbsp;</span> Categoría 1</label>
+    <? $hasError = $this->formCategorias->categoria_1->hasErrors(); ?>
+    <?=
+    $this->formCategorias
+    ->categoria_1->setAttribs(array(
+        'id' => 'fCategoria1',
+        'class' => 'categoriax left' . ((!$hasError && $this->idSuscriptor == null) ? '' : ' ready'),
+        'tabindex' => '17')
+    )->renderViewHelper();
+    ?>
+    <span class="response cajaGray left<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formCategorias->categoria_1->errMsg : '' ?></span>
+</div>
+<div class="block">
+    <label for="" class=" labelNr black noReq left Trebuchet"><span class="req">&nbsp;</span> Categoría 2</label>
+    <? $hasError = $this->formCategorias->categoria_2->hasErrors(); ?>
+    <?=
+    $this->formCategorias
+    ->categoria_2->setAttribs(array(
+        'id' => 'fCategoria2',
+        'class' => 'categoriax left' . ((!$hasError && $this->idSuscriptor == null) ? '' : ' ready'),
+        'tabindex' => '18')
+    )->renderViewHelper();
+    ?>
+    <span class="response cajaGray left<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formCategorias->categoria_2->errMsg : '' ?></span>
+</div>
+<div class="block">
+    <label for="" class="labelNr black noReq left Trebuchet"><span class="req">&nbsp;</span> Categoría 3</label>
+    <? $hasError = $this->formCategorias->categoria_3->hasErrors(); ?>
+    <?=
+    $this->formCategorias
+    ->categoria_3->setAttribs(array(
+        'id' => 'fCategoria3',
+        'class' => 'categoriax left' . ((!$hasError && $this->idSuscriptor == null) ? '' : ' ready'),
+        'tabindex' => '19')
+    )->renderViewHelper();
+    ?>
+    <span class="response cajaGray left<?= $hasError ? ' bad' : '' ?>"><?= $hasError ? $this->formCategorias->categoria->errMsg : '' ?></span>
+</div>
+<div id="checkEnviarinfo">
+    <label class="forgotP"><span class="Gcambclave ml5 fnormal left">
+            <? $hasError = $this->formCategorias->enviar_alertas_email->hasErrors(); ?>
+            <?=
+            $this->formCategorias
+            ->enviar_alertas_email->setAttribs(array(
+                'id' => 'enviar_alertas_email',
+                'class' => 'checkboxlogin Trebuchet11' . ((!$hasError && $this->idSuscriptor == null) ? '' : ' ready'),
+                'tabindex' => '20')
+            )->renderViewHelper();
+            ?>
+            Quiero que me envíen la información a mi e-mail.  </span></label>
+</div>
+</span>

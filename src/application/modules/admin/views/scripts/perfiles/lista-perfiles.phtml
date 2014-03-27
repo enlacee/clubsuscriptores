@@ -1,0 +1,44 @@
+<div class="adminGestorContet grayborder2 r3 mB20">
+    <table id="mictBenContent">
+        <thead id="mictaBenTitle">
+            <tr>
+                <th width="20%" class="mictBenTiTH ml5 mictbRight bold">Nombre</th>
+                <th width="31%" class="mictBenTiTH ml5 mictbRight bold">Descripción</th>
+                <th width="14%" class="mictBenTiTH ml5 mictbRight bold">Fecha Registro</th>
+                <th width="15%" class="mictBenTiTH ml5 mictbRight bold">Fecha Actualización</th>
+                <th width="8%" class="mictBenTiTH ml5 mictbRight bold">Usuarios</th>
+                <th width="12%" class="mictBenTiTH ml5 bold">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $contreg = 0;
+                foreach ($this->perfiles as $perfil): $contreg++; ?>
+                <tr class="<?php echo ($contreg%2==0?'':'even'); ?>">
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $this->escape($perfil['nombre']); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $this->escape($perfil['descripcion']); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $this->DateFormatOpen($perfil['fecha_registro']); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $this->DateFormatOpen($perfil['fecha_actualizacion']); ?></td>
+                    <td class="mictBenFluTd mictbRight mictbTop"><?php echo $this->escape($perfil['nrouser']); ?></td>
+                    <td class="mictBenFluTd mictbTop">
+                        <a href="#winAdminPerfil" class="winModal noScrollTop perfilOperaA" rel="<?php echo $perfil['id']; ?>">Editar</a>
+                        <br/>
+                        <a href="/admin/usuarios/tipo/<?php echo $perfil['id']; ?>" rel="<?php echo $perfil['id']; ?>">Ver Usuarios</a>
+                        <?php if(empty($perfil['nrouser'])):?>
+                            <br/>
+                            <a href="#modalConfirmDeletePA" class="winModal noScrollTop linkDeletePA" rel="<?php echo $perfil['id']; ?>">Eliminar</a>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; 
+                if($contreg<=0){
+                    echo '<tr class="even"><td class="mictBenFluTd mictbRight mictbTop" colspan="8" style="text-align:center;"> - No se encontraron registros - </td></tr>';
+                }
+            ?>
+        </tbody>
+    </table>
+</div>
+<div class="all cntPagFix">
+    <div class="left m5all"><?php echo $this->nroregistros; ?></div>
+</div>
+<div id="csrf" class="hidden"><?=$this->csrf?></div>
+<!--<li class="itemPag"><a class="linkPag points" href="#">...</a></li>-->

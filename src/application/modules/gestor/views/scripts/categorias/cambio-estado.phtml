@@ -1,0 +1,18 @@
+<h6 class="TilutoLightbox">Cambiar estado</h6>
+<div id="estCa" class="block pl10 bold" rel= "<?= $this->estado ?>"> 
+<?php if ((count($this->arrayCategoria))> 1) { ?>
+	<span class="Trebuchet14 gray">¿Estás seguro que deseas <?= $this->estado==0 ? 'activar':'desactivar' ?> todas las categorías seleccionadas?</span>
+<?php } else {?>
+	<span class="Trebuchet14 gray">¿Estás seguro que deseas <?= $this->estado==0 ? 'activar':'desactivar' ?> la categoría seleccionada?</span>
+<?php } ?>
+    <ul class="mT20 ml10 ">
+    <?php foreach ($this->arrayCategoria as $Categoria) : ?>
+            <li class="adminGesCatIco Trebuchet11"><span class="mT5 displayBlock" id="<?=$Categoria['id'] ?>"><?= $this->escape($Categoria['nombre']) ?></span></li>            
+    <?php endforeach; ?>
+    </ul>
+</div> 
+<div id="csrf" class="hidden"><?=$this->csrf?></div>
+<div class="marginCero" id="adminSaveCancEB">
+    <a class="adminAceptBtn left"></a>
+    <a class="adminQuitBtnbene left"></a>
+</div>
