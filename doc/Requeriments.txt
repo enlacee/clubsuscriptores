@@ -1,0 +1,43 @@
+﻿- Framework: Zend 1.11.11 (zf debe ser instalado dentro de la carpeta library de la aplicacion)
+- extensión de php: openssl
+- extensión de php: gd2
+- extensión de php: mbstring
+- extensión de php: soap
+- Antes de poner en producción:
+  - ejecutar:
+    - php util/sync.php   (para actualizar la estructura de la BD)
+
+- Configurar las urls del site en el archivo application.ini
+  - app.siteUrl
+  - app.mediaUrl
+  - app.elementsUrl
+  - app.adminUrl
+
+- Configurar las credenciales del autenticación del servidor de correos
+  
+- Crear la aplicacion de facebook con la URL que tendrá en el deplyment y setear estos parámetros (archivo cs.ini):
+  (Esta parte de la configuración es para que funcione correctamente el login con facebbok)
+	[apis]
+	facebook.appid = "299521546734371" ; (ejemplo)
+	facebook.appsecret = "bac0251b6a4220612b3ea51a1a264ae8" ; (ejemplo)
+
+
+- generar indices ZendLucene con la instruccion:
+   
+       php util/lucene_index_maker.php 
+
+- Configurar re-captcha de google, actualmente usa una cuenta por defecto creada por nosotros, 
+  deberian modificarla con el re-captcha de su cuenta gmail (archivo cs.ini):
+  [recaptcha]
+  publickey = "6LdXHMsSAAAAAMKdaYLd6dS6ddGIigXz-vYbAgwt" ; (ejemplo)
+  privatekey = "6LdXHMsSAAAAAALpclguIYAmGekVJOHuczDhzOox" ; (ejemplo)
+  
+- Configurar las cuentas de recepcion de correo por Contacto, en archivo cs.ini:
+  [cuenta]
+  mail.contacto = "clubsc@e-solutions.com.pe" ; (ejemplo)
+  mail.suscribete = "clubsc@e-solutions.com.pe" ; (ejemplo)
+  mail.micuenta.contacto = "clubsc@e-solutions.com.pe" ; (ejemplo)
+
+
+- Darle permisos 0777 para la carpeta /bin del proyecto.
+
